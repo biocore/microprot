@@ -5,11 +5,13 @@ dbs/uniprot20/*
 dbs/uniref100/*
 dbs/uniref90/*
 data/*
+!data/
 
 # other folders
 benchmarking/*
 tmp/*
 tools/*
+!tools/
 
 # Temporary files
 *~
