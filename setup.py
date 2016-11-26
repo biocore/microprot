@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 # ----------------------------------------------------------------------------
-# Copyright (c) 2015--, microprot development team.
+# Copyright (c) 2016--, microprot development team.
 #
 # Distributed under the terms of the Modified BSD License.
 #
@@ -22,7 +22,7 @@ with open('microprot/__init__.py', 'rb') as f:
     version = str(ast.literal_eval(hit))
 
 classifiers = [
-    'Development Status :: 2 - Pre-Alpha',
+    'Development Status :: 1 - Pre-Alpha',
     'License :: OSI Approved :: BSD License',
     'Environment :: Console',
     'Topic :: Software Development :: Libraries :: Application Frameworks',
@@ -42,7 +42,7 @@ description = 'MICROPROT: annotation pipeline for microbial (meta)proteomes'
 with open('README.md') as f:
     long_description = f.read()
 
-keywords = 'protein annotation structure',
+keywords = 'proteins residue-residue contact predictions protein families',
 
 setup(name='microprot',
       version=version,
@@ -61,7 +61,6 @@ setup(name='microprot',
       install_requires=[
           'click >= 6',
           'scikit-bio >= 0.4.0',
-          'burrito >= 0.9'
       ],
       extras_require={'test': ["nose", "pep8", "flake8"],
                       'coverage': ["coverage"]})
