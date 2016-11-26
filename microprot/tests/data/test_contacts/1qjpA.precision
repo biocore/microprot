@@ -1,0 +1,9 @@
+all L Precision = 0.5766  79 correct in top 137
+all L/2 Precision = 0.7500  51 correct in top 68
+all L/5 Precision = 0.8889  24 correct in top 27
+all L/10 Precision = 0.8462  11 correct in top 13
+lr L Precision = 0.2336  32 correct in top 137
+lr L/2 Precision = 0.3676  25 correct in top 68
+lr L/10 Precision = 0.7692  10 correct in top 13
+sr L/2 Precision = 0.7941  54 correct in top 68
+sr L/10 Precision = 0.9231  12 correct in top 13

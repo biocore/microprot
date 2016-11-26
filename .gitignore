@@ -1,3 +1,16 @@
+# databases
+dbs/nr/*
+dbs/pdb70/*
+dbs/uniprot20/*
+dbs/uniref100/*
+dbs/uniref90/*
+data/*
+
+# other folders
+benchmarking/*
+tmp/*
+tools/*
+
 # Temporary files
 *~
 \#*#
