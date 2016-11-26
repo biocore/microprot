@@ -4,3 +4,16 @@ microProt clusters and annotates microbial metagenome sequences for the ultimate
 
 ## Install
 
+## Requirements
+
+### dbs
+* PDB100
+* nr
+* uniprot20
+
+### tools
+* HH-suite 3.0
+* PSIPRED
+* DISOPRED3
+* HMMer
+* metaPSICOV
