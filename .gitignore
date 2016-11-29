@@ -1,11 +1,6 @@
 # databases
-dbs/nr/*
-dbs/pdb70/*
-dbs/uniprot20/*
-dbs/uniref100/*
-dbs/uniref90/*
+dbs/*
 data/*
-!data/
 
 # other folders
 benchmarking/*
