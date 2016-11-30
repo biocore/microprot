@@ -1,0 +1,3 @@
+PDB_hmmer:
+    params: '-E 1e-3 --tblout --cpu 8'
+    threads: 8
