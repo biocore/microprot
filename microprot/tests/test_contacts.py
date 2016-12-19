@@ -2,25 +2,21 @@ from unittest import TestCase, main
 from skbio.util import get_data_path
 import re
 
-# FIX
-import sys
-sys.path.append('/Users/tomasz/projects/MicroProt/microprot/scripts')
-
-from contacts import _topN_contacts
-from contacts import (read_PDB_coordinates,
-                      read_contact_predictions,
-                      find_PDB_contacts,
-                      contact_precision,
-                      _contacts)
+from microprot.scripts.contacts import _topN_contacts
+from microprot.scripts.contacts import (read_PDB_coordinates,
+                                        read_contact_predictions,
+                                        find_PDB_contacts,
+                                        contact_precision,
+                                        _contacts)
 
 
 class ContactsTests(TestCase):
     def setUp(self):
-        self.jbe_con = get_data_path('1jbeA.psicov')
-        self.jbe_pdb = get_data_path('1jbeA_clean.pdb')
+        self.jbe_con = get_data_path('test_contacts/1jbeA.psicov')
+        self.jbe_pdb = get_data_path('test_contacts/1jbeA_clean.pdb')
 
-        self.qjp_con = get_data_path('1qjpA.psicov')
-        self.qjp_pdb = get_data_path('1qjpA_clean.pdb')
+        self.qjp_con = get_data_path('test_contacts/1qjpA.psicov')
+        self.qjp_pdb = get_data_path('test_contacts/1qjpA_clean.pdb')
 
         self.real_n_con_qjp = {'lr': 6441,
                                'sr': 2337,
