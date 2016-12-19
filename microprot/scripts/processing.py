@@ -6,8 +6,9 @@ __version__ = "1.01b"
 __last_update__ = "12/19/2016"
 
 
-import click
 import sys
+import click
+
 from skbio import io, Sequence
 
 
