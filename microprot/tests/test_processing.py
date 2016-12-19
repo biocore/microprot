@@ -2,7 +2,7 @@ from unittest import TestCase, main
 from skbio.util import get_data_path
 from skbio import Sequence
 
-from processing import extract_sequences
+from microprot.scripts.processing import extract_sequences
 
 
 class ProcessingTests(TestCase):
