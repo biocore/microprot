@@ -1,0 +1,6 @@
+nose
+pep8
+flake8
+snakemake
+scikit-bio>=0.5
+click>=6.0
