@@ -1,3 +1,6 @@
+[![Coverage Status](https://coveralls.io/repos/github/biocore/microprot/badge.svg?branch=master)](https://coveralls.io/github/biocore/microprot?branch=master)
+[![Build Status](https://travis-ci.org/biocore/microprot.svg?branch=master)](https://travis-ci.org/biocore/microprot)
+
 # microprot
 ## Introduction
 microProt clusters and annotates microbial metagenome sequences for the ultimate goal of predicting the 3 dimensional structure and function of these proteins.
