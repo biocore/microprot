@@ -6,8 +6,7 @@ from microprot.scripts.contacts import _topN_contacts
 from microprot.scripts.contacts import (read_PDB_coordinates,
                                         read_contact_predictions,
                                         find_PDB_contacts,
-                                        contact_precision,
-                                        _contacts)
+                                        contact_precision)
 
 
 class ContactsTests(TestCase):
@@ -46,7 +45,8 @@ class ContactsTests(TestCase):
 
     def test_read_contacts(self):
         for inp_fp, real_con in zip([self.jbe_con, self.qjp_con],
-                                    [self.real_n_con_jbe, self.real_n_con_qjp]):
+                                    [self.real_n_con_jbe,
+                                     self.real_n_con_qjp]):
             for contype in ['all', 'sr', 'lr']:
                 inp_fh = open(inp_fp, 'r')
                 out_aa, out_ppv = read_contact_predictions(inp_fh,
@@ -60,8 +60,9 @@ class ContactsTests(TestCase):
             inp_fh = open(inp_fp, 'r')
             for contype in ['all', 'lr']:
                 con_file = re.sub('_clean.pdb', '.contacts_', inp_fp)+contype
-                for _c, _l in zip(find_PDB_contacts(read_PDB_coordinates(inp_fh),
-                                                    con_type=contype),
+                for _c, _l in zip(find_PDB_contacts(
+                                     read_PDB_coordinates(inp_fh),
+                                     con_type=contype),
                                   open(con_file).readlines()):
                     _i = _l.split()
                     self.assertEqual(_c[0], _i[0])

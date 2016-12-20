@@ -1,12 +1,11 @@
 #!/usr/bin/env python
 
+from optparse import OptionParser
+from contacts import calc_distance, get_PDB_coordinates
+
 __author__ = "Tomasz Kosciolek"
 __version__ = "1.01b"
 __last_update__ = "07/04/2016"
-
-import numpy as np
-from optparse import OptionParser
-from contacts import calc_distance, get_PDB_coordinates
 
 
 def find_contacts(out_fh, coords, seq_sep, contact_coff):
