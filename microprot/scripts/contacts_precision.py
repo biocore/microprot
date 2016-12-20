@@ -3,7 +3,7 @@
 
 from optparse import OptionParser
 import numpy as np
-from find_contacts import calc_distance
+from microprot.scripts.find_contacts import _calc_distance
 
 __author__ = "Tomasz Kosciolek"
 __version__ = "1.01b"
@@ -123,9 +123,9 @@ def FindPDBContacts(con_fp, pdb_fp, out_fp, aacid, coff, mind, topl, contype):
         actual = coords[i][0]
         for j in coords[i:]:
             if j[0] >= actual + int(mind):
-                distance = calc_distance(coords[i][1], j[1],
-                                         coords[i][2], j[2],
-                                         coords[i][3], j[3])
+                distance = _calc_distance(coords[i][1], j[1],
+                                          coords[i][2], j[2],
+                                          coords[i][3], j[3])
                 if (distance <= float(coff)) and \
                    ([str(actual), str(j[0])] in PredCons):
 
