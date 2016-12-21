@@ -2,6 +2,8 @@
 [![Build Status](https://travis-ci.org/biocore/microprot.svg?branch=master)](https://travis-ci.org/biocore/microprot)
 
 # microprot
+microProt is coded in Python 3.x
+
 ## Introduction
 microProt clusters and annotates microbial metagenome sequences for the ultimate goal of predicting the 3 dimensional structure and function of these proteins.
 
