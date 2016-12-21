@@ -4,9 +4,6 @@
 import numpy as np
 import click
 
-__author__ = "Tomasz Kosciolek"
-__version__ = "1.04"
-__last_update__ = "15/04/2016"
 
 r'''
 Functions:
