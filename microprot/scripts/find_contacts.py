@@ -1,12 +1,11 @@
 #!/usr/bin/env python
 
+from optparse import OptionParser
+from microprot.scripts.contacts import _calc_distance, read_PDB_coordinates
+
 __author__ = "Tomasz Kosciolek"
 __version__ = "1.01b"
 __last_update__ = "07/04/2016"
-
-import numpy as np
-from optparse import OptionParser
-from contacts import calc_distance, get_PDB_coordinates
 
 
 def find_contacts(out_fh, coords, seq_sep, contact_coff):
@@ -15,9 +14,9 @@ def find_contacts(out_fh, coords, seq_sep, contact_coff):
         actual = coords[i][0]
         for j in coords[i:]:
             if j[0] >= actual + int(seq_sep):
-                distance = calc_distance(coords[i][1], j[1],
-                                         coords[i][2], j[2],
-                                         coords[i][3], j[3])
+                distance = _calc_distance(coords[i][1], j[1],
+                                          coords[i][2], j[2],
+                                          coords[i][3], j[3])
                 if distance <= float(contact_coff):
                     out_fh.write('%s\t%s\t%s\n' % (str(actual),
                                  str(j[0]), str(distance)))
@@ -42,7 +41,7 @@ def main():
     foutput = open(args[1], 'w')
 
     # extract coords
-    coords = get_PDB_coordinates(finp, options.aminoacid)
+    coords = read_PDB_coordinates(finp, options.aminoacid)
 
     find_contacts(foutput, coords, options.seq_separation, options.cutoff)
 
