@@ -4,7 +4,7 @@ from skbio import io
 
 
 def extract_sequences(infile, seqidx=0):
-    """ Extract sequence(s) from a multi-sequence FASTA file
+    """ Extract sequence(s) from a multi-sequence FASTA file.
 
     Parameters
     ----------
