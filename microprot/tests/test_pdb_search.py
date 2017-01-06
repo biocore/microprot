@@ -303,7 +303,7 @@ class ParsersTests(TestCase):
 
     def test_report_uncovered_subsequences(self):
         hits = select_hits(parse_pdb_match(self.file_a))
-        subseqs = report_uncovered_subsequences(hits, self.true_query, 0)
+        subseqs = report_uncovered_subsequences(hits, self.query, 0)
         self.assertEqual(subseqs, self.true_subseqs)
 
 if __name__ == '__main__':

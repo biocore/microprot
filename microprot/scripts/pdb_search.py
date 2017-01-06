@@ -1,6 +1,3 @@
-import sys
-
-
 _HEADER = ['No',
            'Hit',
            'Prob',
