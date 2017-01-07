@@ -285,6 +285,9 @@ class ParsersTests(TestCase):
         del r9['SS']
         self.assertEqual(self.true_block_b, r9)
 
+        with self.assertRaises(IOError):
+            parse_pdb_match('/does/not/exist')
+
     def test_select_hits(self):
         hits = parse_pdb_match(self.file_b)
         self.assertEqual(len(select_hits(hits, e_value_threshold=100)), 2)
