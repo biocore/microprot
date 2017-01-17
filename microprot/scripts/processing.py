@@ -1,5 +1,4 @@
 import os
-import sys
 import urllib
 import click
 from xml.dom import minidom
@@ -58,7 +57,6 @@ def extract_sequences(infile, identifiers=None):
             else:
                 ids.add(i)  # protein ID (name)
     seqs = []
-    iseq = 0  # current sequence index
     for i, seq in enumerate(io.read(infile, format='fasta')):
         if ids:
             if seq.metadata['id'] in ids:

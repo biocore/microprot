@@ -2,14 +2,13 @@ from unittest import TestCase, main
 from shutil import rmtree
 from os import remove
 from os.path import join
-from tempfile import mkstemp, mkdtemp
+from tempfile import mkdtemp
 from skbio.util import get_data_path
 from skbio import Sequence
 
 from microprot.scripts.processing import (extract_sequences,
                                           write_sequences,
-                                          read_representatives,
-                                          _processing)
+                                          read_representatives)
 
 
 class ProcessingTests(TestCase):
