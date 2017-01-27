@@ -30,14 +30,11 @@ def is_overlapping(intA, intB):
     ValueError
         If left component of intA or intB is greater than its right component.
     '''
-    if (intA[0] > intA[1]):
-        raise ValueError("Left component of intA cannot be larger than its "
-                         "right component, i.e. the interval must be forward "
-                         "oriented.")
-    if (intB[0] > intB[1]):
-        raise ValueError("Left component of intB cannot be larger than its "
-                         "right component, i.e. the interval must be forward "
-                         "oriented.")
+    for x in zip(["intA", "intB"], [intA, intB]):
+        if (x[1][0] > x[1][1]):
+            raise ValueError("Left component of %s cannot be larger than its "
+                             "right component, i.e. the interval must be "
+                             "forward oriented." % x[0])
 
     return not (((intA[0] > intB[0]) & (intA[0] > intB[1])) |
                 ((intA[1] < intB[0]) & (intA[1] < intB[1])))

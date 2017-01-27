@@ -252,10 +252,21 @@ class ParsersTests(TestCase):
         self.assertFalse(is_overlapping((20, 100), (150, 200)))
         self.assertFalse(is_overlapping((20, 100), (1, 8)))
 
-        with self.assertRaises(ValueError):
+        with self.assertRaises(ValueError) as ve:
             is_overlapping((100, 20), (1, 8))
-        with self.assertRaises(ValueError):
+        self.assertEqual(
+            ('Left component of intA cannot be larger than its right component'
+             ', i.e. the interval must be forward oriented.'),
+            str(ve.exception)
+        )
+        with self.assertRaises(ValueError) as ve:
             is_overlapping((10, 20), (-9, -20))
+        print(str(ve.exception))
+        self.assertEqual(
+            ('Left component of intB cannot be larger than its right component'
+             ', i.e. the interval must be forward oriented.'),
+            str(ve.exception)
+        )
 
     def test__parse_hit_summary_line(self):
         self.assertEqual(self.true_a, _parse_hit_summary_line(self.line_a))
