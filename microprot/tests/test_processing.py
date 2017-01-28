@@ -66,6 +66,11 @@ class ProcessingTests(TestCase):
         exp = [self.seqs[1]]
         self.assertListEqual(obs, exp)
 
+        # specify protein indexes using a Python list
+        obs = extract_sequences(self.input_faa, identifiers=['2', '3'])
+        exp = [self.seqs[1], self.seqs[2]]
+        self.assertListEqual(obs, exp)
+
         # specify protein indexes using a comma-separated list
         obs = extract_sequences(self.input_faa, identifiers='1,3')
         exp = [self.seqs[0], self.seqs[2]]
@@ -96,6 +101,11 @@ class ProcessingTests(TestCase):
         obs = read_representatives(self.represent)
         exp = ['1k5n_B', '2vb1_A', '3j4f_A']
         self.assertListEqual(obs, exp)
+
+        err = ('Error: You must specify a local file path or the clustering '
+               'level.')
+        with self.assertRaisesRegex(ValueError, err):
+            read_representatives('invalid_string')
 
 
 if __name__ == '__main__':
