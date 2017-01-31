@@ -98,10 +98,16 @@ class ProcessingTests(TestCase):
         self.assertListEqual(obs, exp)
 
     def test_read_representatives(self):
+        # read from local file
         obs = read_representatives(self.represent)
         exp = ['1k5n_B', '2vb1_A', '3j4f_A']
         self.assertListEqual(obs, exp)
 
+        # read from server (test if not empty)
+        obs = read_representatives('90')
+        self.assertTrue(obs)
+
+        # bad parameter
         err = ('Error: You must specify a local file path or the clustering '
                'level.')
         with self.assertRaisesRegex(ValueError, err):

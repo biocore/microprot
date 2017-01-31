@@ -151,5 +151,6 @@ def _processing(infile, outfile, identifiers, represent):
         write_sequences(seqs, outfile)
     print('Task completed.')
 
+
 if __name__ == "__main__":
     _processing()
