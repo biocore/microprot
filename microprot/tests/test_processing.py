@@ -116,6 +116,7 @@ class ProcessingTests(TestCase):
             read_representatives('invalid_string')
 
     def test__processing(self):
+        # get representative proteins
         params = ['--infile', self.input_faa,
                   '--outfile', join(self.working_dir, 'output.faa'),
                   '--identifiers', None,
@@ -124,6 +125,17 @@ class ProcessingTests(TestCase):
         self.assertEqual(res.exit_code, 0)
         exp = ('Number of representative proteins: 3\n'
                'Number of extracted proteins: 0\n'
+               'Task completed.\n')
+        self.assertEqual(res.output, exp)
+
+        # extract proteins
+        params = ['--infile', self.input_faa,
+                  '--outfile', join(self.working_dir, 'output.faa'),
+                  '--identifiers', '1,3',
+                  '--represent', None]
+        res = CliRunner().invoke(_processing, params)
+        self.assertEqual(res.exit_code, 0)
+        exp = ('Number of extracted proteins: 2\n'
                'Task completed.\n')
         self.assertEqual(res.output, exp)
 
