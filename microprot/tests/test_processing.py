@@ -1,4 +1,5 @@
 from unittest import TestCase, main
+from click.testing import CliRunner
 from shutil import rmtree
 from os import remove
 from os.path import join
@@ -8,7 +9,8 @@ from skbio import Sequence
 
 from microprot.scripts.processing import (extract_sequences,
                                           write_sequences,
-                                          read_representatives)
+                                          read_representatives,
+                                          _processing)
 
 
 class ProcessingTests(TestCase):
@@ -112,6 +114,18 @@ class ProcessingTests(TestCase):
                'level.')
         with self.assertRaisesRegex(ValueError, err):
             read_representatives('invalid_string')
+
+    def test__processing(self):
+        params = ['--infile', self.input_faa,
+                  '--outfile', join(self.working_dir, 'output.faa'),
+                  '--identifiers', None,
+                  '--represent', self.represent]
+        res = CliRunner().invoke(_processing, params)
+        self.assertEqual(res.exit_code, 0)
+        exp = ('Number of representative proteins: 3\n'
+               'Number of extracted proteins: 0\n'
+               'Task completed.\n')
+        self.assertEqual(res.output, exp)
 
 
 if __name__ == '__main__':

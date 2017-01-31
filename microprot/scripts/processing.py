@@ -144,12 +144,12 @@ def _processing(infile, outfile, identifiers, represent):
     """
     if represent:
         identifiers = read_representatives(represent)
-        print('Number of representative proteins: %s' % len(identifiers))
+        click.echo('Number of representative proteins: %s' % len(identifiers))
     seqs = extract_sequences(infile, identifiers)
-    print('Number of extracted proteins: %s' % len(seqs))
+    click.echo('Number of extracted proteins: %s' % len(seqs))
     if seqs:
         write_sequences(seqs, outfile)
-    print('Task completed.')
+    click.echo('Task completed.')
 
 
 if __name__ == "__main__":
