@@ -1,3 +1,4 @@
-PDB_hmmer:
-    params: '-E 1e-3 --tblout --cpu 8'
+PDB_match:
+    params: '-e 0.001'
     threads: 8
+PDB_split:
