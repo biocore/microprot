@@ -1,4 +1,16 @@
-PDB_match:
+search_PDB:
     params: '-e 0.001'
     threads: 8
-PDB_split:
+PSIBLAST_PSSM:
+    params: '-j 3 -h 0.001'
+    dbname: ''
+search_CM:
+    params: '-e 0.1'
+    threads: 8
+search_Pfam:
+    params: '-e 0.1'
+    threads: 8
+MSA_hhblits:
+    params: ''
+MSA_ripe:
+    params: ''
