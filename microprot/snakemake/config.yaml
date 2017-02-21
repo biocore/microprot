@@ -11,6 +11,5 @@ search_Pfam:
     params: '-e 0.1'
     threads: 8
 MSA_hhblits:
-    params: ''
-MSA_ripe:
-    params: ''
+    params: '-n 3 -e 0.001 -maxfilt 500000 -diff inf -id 99 -cov 50 -cpu 8'
+    threads: 8
