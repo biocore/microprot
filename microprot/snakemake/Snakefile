@@ -3,6 +3,8 @@
 # "qsub -k eo -m n -l nodes=1:ppn={cluster.n} -l mem={cluster.mem}gb \
 # -l walltime={cluster.time}" --directory "$@"
 
+### what happens if we run out of sequence at some point?
+### e.g. if the whole sequence hits a PDB record and there is nothing left for subsequent steps?
 
 import os
 
