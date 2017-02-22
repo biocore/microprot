@@ -19,6 +19,6 @@ Some of the tools and databases we're using were developed externally and cannot
 * [PfamA](http://wwwuser.gwdg.de/~compbiol/data/hhsuite/databases/hhsuite_dbs/pfamA_30.0.tgz) for HH-suite (updated approx. every 6 months)
 
 ### tools
-Some tools requiring manual installation are listed and linked below:
+Tools requiring manual installation are listed and linked below:
 * [HH-suite 3.0](https://github.com/soedinglab/hh-suite)
 * [metaPSICOV](http://bioinfadmin.cs.ucl.ac.uk/downloads/MetaPSICOV/)
