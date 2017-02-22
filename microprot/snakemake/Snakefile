@@ -5,122 +5,144 @@
 
 
 import os
-# import yaml
-#
-# with open(paths_fp, 'r') as f:
-#     paths = yaml.load(f)
-configfile: "../../paths.yml"
+
+configfile: "config.yaml"
+# pathsfile: '../../paths.yml'
+
+
+SEQUENCES=config['SEQUENCES']
 
 rule all:
-    inputs:
-        outputs
+    input:
+        expand("results/{seq}/10-Rosetta/{seq}.msa",
+               seq=SEQUENCES)
 
 rule search_PDB:
     input:
-        expand('data/input/{seq}.fasta', seq=SEQUENCES)
+        expand('data/{seq}.fasta',
+               seq=SEQUENCES)
     output:
-        'results/01-search_pdb/{seq}.out'
+        out='results/{seq}/01-search_pdb/{seq}.out',
+        a3m='results/{seq}/01-search_pdb/{seq}.a3m'
     log:
-        'results/log/{seq}.search_pdb.log'
+        'results/log/{seq}/search_pdb.log'
     shell:
-        '{TOOLS.hhsuite}/bin/hhsearch -i {input} {search_PDB.params} -d {DBS.pdb100} -o {output}'
+        '{TOOLS.hhsuite}/bin/hhsearch -i {input} {search_PDB.params} \
+        -d {DBS.pdb100} \
+        -o {output.out} \
+        -oa3m {output.a3m}'
 
 rule split_PDB:
     input:
-        'results/01-search_pdb/{seq}.out'
+        'results/{seq}/01-search_pdb/{seq}.out'
     output:
-        'results/02-split_pdb/'
+        pdb='results/{seq}/02-split_pdb/{seq}.pdb',
+        non_pdb='results/{seq}/02-split_pdb/{seq}.non_pdb'
     log:
-        'results/log/{seq}.split_pdb.log'
+        'results/log/{seq}/split_pdb.log'
     shell:
-        'python {SCRIPTS}/pdb_search.py -i {input} -o {output}.pdb -o2 {output}{seq}.non_pdb'
+        'python {SCRIPTS}/split_sequence.py -i {input} {split_PDB.params}\
+        -o {output.pdb} \
+        -o2 {output.non_pdb}'
 
 rule PSIBLAST_PSSM:
     input:
-        'results/02-split_pdb/{seq}.non_pdb'
+        'results/{seq}/02-split_pdb/{seq}.non_pdb'
     output:
-        'results/03-secondary_predictions/{seq}.chk'
+        'results/{seq}/03-secondary_predictions/{seq}.chk'
     log:
-        'results/log/{seq}.psiblast_pssm.log'
+        'results/log/{seq}/psiblast_pssm.log'
     shell:
         'python {SCRIPTS}/psiblast.py -i {input} -o {output}'
 
 # run secondary structure, disorder and TMH predictions on output from `PSIBLAST_PSSM`
 rule PSIBLAST_predictions:
     input:
-        'results/03-secondary_predictions/{seq}.chk'
+        'results/{seq}/03-secondary_predictions/{seq}.chk'
     output:
-        'results/03-secondary_predictions/'
+        ss='results/{seq}/03-secondary_predictions/{seq}.ss',
+        disorder='results/{seq}/03-secondary_predictions/{seq}.diso',
+        tm='results/{seq}/03-secondary_predictions/{seq}.tmh'
     log:
-        'results/log/{seq}.psiblast_predictions.log'
+        'results/log/{seq}/psiblast_predictions.log'
     shell:
-        'python {SCRIPTS}/secondary_preds.py -i {input} -o {output}'
+        'python {SCRIPTS}/secondary_preds.py -i {input} \
+                                             -out_ss {output.ss} \
+                                             -out_diso {output.disorder} \
+                                             -out_tmh {output.tm}'
 
 rule search_CM:
     input:
-        'results/02-split_pdb/{seq}.non_pdb'
+        'results/{seq}/02-split_pdb/{seq}.non_pdb'
     output:
-        'results/04-search_CM/{seq}'
+        out='results/{seq}/04-search_CM/{seq}.out',
+        a3m='results/{seq}/04-search_CM/{seq}.a3m'
     log:
-        'results/log/{seq}.search_cm.log'
+        'results/log/{seq}/search_cm.log'
     shell:
         '{TOOLS.hhsuite}/bin/hhsearch -i {input} {search_CM.params} \
         -d {DBS.pdb100} \
-        -o {output}.out \
-        -oa3m {output}.a3m'
+        -o {output.out} \
+        -oa3m {output.a3m}'
 
 rule split_CM:
     input:
-        'results/04-search_CM/{seq}.out'
+        'results/{seq}/04-search_CM/{seq}.out'
     output:
-        'results/05-split_CM/'
+        cm='results/{seq}/05-split_CM/{seq}.cm',
+        fm='results/{seq}/05-split_CM/{seq}.fm'
     log:
         'results/log/{seq}.split_cm.log'
     shell:
-        'python {SCRIPTS}/pdb_search.py -i {input} -o {output}.cm -o2 {output}{seq}.fm'
+        'python {SCRIPTS}/split_sequence.py -i {input} {split_CM.params}\
+        -o {output.cm} \
+        -o2 {output.fm}'
 
 rule search_Pfam:
     input:
-        'results/05-split_CM/{seq}.fm'
+        'results/{seq}/05-split_CM/{seq}.fm'
     output:
-        'results/06-search_Pfam/{seq}'
+        out='results/{seq}/06-search_Pfam/{seq}.out',
+        a3m='results/{seq}/06-search_Pfam/{seq}.a3m'
     log:
-        'results/log/{seq}.search_pfam.log'
+        'results/log/{seq}/search_pfam.log'
     shell:
         '{TOOLS.hhsuite}/bin/hhsearch -i {input} {search_Pfam.params} \
         -d {DBS.pfamA} \
-        -o {output}.out \
-        -oa3m {output}.a3m'
+        -o {output.out} \
+        -oa3m {output.a3m}'
 
 rule split_Pfam:
     input:
-        'results/06-search_Pfam/{seq}.out'
+        'results/{seq}/06-search_Pfam/{seq}.out'
     output:
-        'results/07-split_Pfam/'
+        'results/{seq}/07-split_Pfam/{seq}'
     log:
         'results/log/{seq}.split_pfam.log'
     shell:
-        'python {SCRIPTS}/pdb_search.py -i {input} -o {output}'
+        'python {SCRIPTS}/split_sequence.py -i {input} {split_Pfam.params} \
+        -o {output}'
 
 rule MSA_hhblits:
     input:
-        'results/07-split_Pfam/{seq}.*'
+        'results/{seq}/07-split_Pfam/{seq}'
     output:
-        'results/08-MSA_hhblits/'
+        out='results/{seq}/08-MSA_hhblits/{seq}.out',
+        a3m='results/{seq}/08-MSA_hhblits/{seq}.a3m'
     log:
         'results/log/{seq}.msa_hhblits.log'
     shell:
         '{TOOLS.hhsuite}/bin/hhblits -i {input} {MSA_hhblits.params} \
-        -d {DBS.hhblits_db} \
-        -o {output}.out \
-        -oa3m {output}.a3m'
+                                     -d {DBS.hhblits_db} \
+                                     -o {output.out} \
+                                     -oa3m {output.a3m}'
 
 rule MSA_ripe:
     input:
-        'results/08-MSA_hhblits/{seq}.a3m'
+        'results/{seq}/08-MSA_hhblits/{seq}.out'
     output:
-        not_ripe='results/09-not_ripe/{seq}.msa',
-        ripe='results/10-Rosetta/{seq}.msa'
+        not_ripe='results/{seq}/09-not_ripe/{seq}.msa',
+        ripe='results/{seq}/10-Rosetta/{seq}.msa'
     # calculate Nf
     shell:
         'python {SCRIPTS}/calculate_Nf.py -i {input} \

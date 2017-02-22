@@ -5,9 +5,10 @@ TOOLS:
     disopred: /projects/microprot/tools/disopred3
     metapsicov: /projects/microprot/tools/contact_predictions/metaPSICOV
 
-
 DBS:
     pdb100: /projects/microprot/dbs/pdb100/
     psiblast_db: /projects/microprot/dbs/uniref90/
     hhblits_db: /projects/microprot/dbs/uniboost30/
     pfamA: /projects/microprot/dbs/pfamA/
+
+MICROPROT_MAIN: /projects/microprot/
