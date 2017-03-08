@@ -7,6 +7,13 @@
 ### e.g. if the whole sequence hits a PDB record and there is nothing left for subsequent steps?
 
 import os
+import skbio
+import split_sequence, mask_sequence, calculate_Nf
+
+# load sequence into a sequence object
+def read_sequence(fasta_fp):
+    seq = skbio.Protein.read(fasta_fp)
+    return seq
 
 configfile: "config.yaml"
 # pathsfile: '../../paths.yml'
@@ -17,7 +24,11 @@ SEQUENCES=config['SEQUENCES']
 rule all:
     input:
         expand("results/{seq}/10-Rosetta/{seq}.msa",
-               seq=SEQUENCES)
+               seq=SEQUENCES),
+        expand("results/{seq}/03-secondary_predictions/{seq}_{n}.{suffix}",
+               seq=SEQUENCES,
+               n=['1-100', '101-250', '251-400'],
+               suffix=['ss', 'diso', 'tmh'])
 
 rule search_PDB:
     input:
@@ -38,115 +49,119 @@ rule split_PDB:
     input:
         'results/{seq}/01-search_pdb/{seq}.out'
     output:
-        pdb='results/{seq}/02-split_pdb/{seq}.pdb',
-        non_pdb='results/{seq}/02-split_pdb/{seq}.non_pdb'
+        'results/{seq}/02-split_pdb/{seq}.split_pdb',
     log:
         'results/log/{seq}/split_pdb.log'
-    shell:
-        'python {SCRIPTS}/split_sequence.py -i {input} {split_PDB.params}\
-        -o {output.pdb} \
-        -o2 {output.non_pdb}'
+    run:
+        mask_sequence({input}, {output}, {split_PDB.params})
 
 rule PSIBLAST_PSSM:
     input:
-        'results/{seq}/02-split_pdb/{seq}.non_pdb'
+        split='results/{seq}/02-split_pdb/{seq}.split_pdb',
+        seq='data/{seq}.fasta'
     output:
-        'results/{seq}/03-secondary_predictions/{seq}.chk'
+        dynamic('results/{seq}/03-secondary_predictions/{seq}_{n}.chk')
     log:
         'results/log/{seq}/psiblast_pssm.log'
-    shell:
-        'python {SCRIPTS}/psiblast.py -i {input} -o {output}'
+    run:
+        for d_boundaries, domain in split_sequence({input.seq}, {input.split}):
+            n = str(d_boundaries[0])+"-"+str(d_boundaries[1])
+            shell('python {SCRIPTS}/psiblast.py -i {domain} -o {output}{n}')
 
 # run secondary structure, disorder and TMH predictions on output from `PSIBLAST_PSSM`
 rule PSIBLAST_predictions:
     input:
-        'results/{seq}/03-secondary_predictions/{seq}.chk'
+        dynamic('results/{seq}/03-secondary_predictions/{seq}_{n}.chk')
     output:
-        ss='results/{seq}/03-secondary_predictions/{seq}.ss',
-        disorder='results/{seq}/03-secondary_predictions/{seq}.diso',
-        tm='results/{seq}/03-secondary_predictions/{seq}.tmh'
+        ss=dynamic('results/{seq}/03-secondary_predictions/{seq}_{n}.ss'),
+        diso=dynamic('results/{seq}/03-secondary_predictions/{seq}_{n}.diso'),
+        tm=dynamic('results/{seq}/03-secondary_predictions/{seq}_{n}.tmh')
     log:
         'results/log/{seq}/psiblast_predictions.log'
     shell:
         'python {SCRIPTS}/secondary_preds.py -i {input} \
                                              -out_ss {output.ss} \
-                                             -out_diso {output.disorder} \
+                                             -out_diso {output.diso} \
                                              -out_tmh {output.tm}'
 
 rule search_CM:
     input:
-        'results/{seq}/02-split_pdb/{seq}.non_pdb'
+        split='results/{seq}/02-split_pdb/{seq}.split_pdb',
+        seq='data/{seq}.fasta'
     output:
-        out='results/{seq}/04-search_CM/{seq}.out',
-        a3m='results/{seq}/04-search_CM/{seq}.a3m'
+        out=dynamic('results/{seq}/04-search_CM/{seq}_{n}.out'),
+        a3m=dynamic('results/{seq}/04-search_CM/{seq}_{n}.a3m')
     log:
         'results/log/{seq}/search_cm.log'
-    shell:
-        '{TOOLS.hhsuite}/bin/hhsearch -i {input} {search_CM.params} \
-        -d {DBS.pdb100} \
-        -o {output.out} \
-        -oa3m {output.a3m}'
+    run:
+        for d_boundaries, domain in split_sequence({input.seq}, {input.split}):
+            n = str(d_boundaries[0])+"-"+str(d_boundaries[1])
+            shell('{TOOLS.hhsuite}/bin/hhsearch -i {domain} {search_CM.params} \
+                   -d {DBS.pdb100} \
+                   -o {output.out}{n} \
+                   -oa3m {output.a3m}{n}')
 
 rule split_CM:
     input:
-        'results/{seq}/04-search_CM/{seq}.out'
+        dynamic('results/{seq}/04-search_CM/{seq}_{n}.out')
     output:
-        cm='results/{seq}/05-split_CM/{seq}.cm',
-        fm='results/{seq}/05-split_CM/{seq}.fm'
+        'results/{seq}/05-split_CM/{seq}.split_cm',
     log:
         'results/log/{seq}.split_cm.log'
-    shell:
-        'python {SCRIPTS}/split_sequence.py -i {input} {split_CM.params}\
-        -o {output.cm} \
-        -o2 {output.fm}'
+    run:
+        mask_sequence({input}, {output}, {split_CM.params})
 
 rule search_Pfam:
     input:
-        'results/{seq}/05-split_CM/{seq}.fm'
+        split='results/{seq}/05-split_CM/{seq}.split_cm',
+        seq='data/{seq}.fasta'
     output:
-        out='results/{seq}/06-search_Pfam/{seq}.out',
-        a3m='results/{seq}/06-search_Pfam/{seq}.a3m'
+        out=dynamic('results/{seq}/06-search_Pfam/{seq}_{n}.out'),
+        a3m=dynamic('results/{seq}/06-search_Pfam/{seq}_{n}.a3m')
     log:
         'results/log/{seq}/search_pfam.log'
-    shell:
-        '{TOOLS.hhsuite}/bin/hhsearch -i {input} {search_Pfam.params} \
-        -d {DBS.pfamA} \
-        -o {output.out} \
-        -oa3m {output.a3m}'
+    run:
+        for d_boundaries, domain in split_sequence({input.seq}, {input.split}):
+            n = str(d_boundaries[0])+"-"+str(d_boundaries[1])
+            shell('{TOOLS.hhsuite}/bin/hhsearch -i {domain} {search_Pfam.params} \
+                   -d {DBS.pfamA} \
+                   -o {output.out}{n} \
+                   -oa3m {output.a3m}{n}')
 
 rule split_Pfam:
     input:
-        'results/{seq}/06-search_Pfam/{seq}.out'
+        dynamic('results/{seq}/06-search_Pfam/{seq}_{n}.out')
     output:
-        'results/{seq}/07-split_Pfam/{seq}'
+        'results/{seq}/07-split_Pfam/{seq}.split_pfam'
     log:
         'results/log/{seq}.split_pfam.log'
-    shell:
-        'python {SCRIPTS}/split_sequence.py -i {input} {split_Pfam.params} \
-        -o {output}'
+    run:
+        mask_sequence({input}, {output}, {split_Pfam.params})
 
 rule MSA_hhblits:
     input:
-        'results/{seq}/07-split_Pfam/{seq}'
+        split='results/{seq}/07-split_Pfam/{seq}.split_pfam',
+        seq='data/{seq}.fasta'
     output:
-        out='results/{seq}/08-MSA_hhblits/{seq}.out',
-        a3m='results/{seq}/08-MSA_hhblits/{seq}.a3m'
+        out=dynamic('results/{seq}/08-MSA_hhblits/{seq}_{n}.out'),
+        a3m=dynamic('results/{seq}/08-MSA_hhblits/{seq}_{n}.a3m')
     log:
         'results/log/{seq}.msa_hhblits.log'
     shell:
-        '{TOOLS.hhsuite}/bin/hhblits -i {input} {MSA_hhblits.params} \
-                                     -d {DBS.hhblits_db} \
-                                     -o {output.out} \
-                                     -oa3m {output.a3m}'
+        for d_boundaries, domain in split_sequence({input.seq}, {input.split}):
+            n = str(d_boundaries[0])+"-"+str(d_boundaries[1])
+            shell('{TOOLS.hhsuite}/bin/hhblits -i {domain} {MSA_hhblits.params} \
+                   -d {DBS.hhblits_db} \
+                   -o {output.out}{n} \
+                   -oa3m {output.a3m}{n}')
 
 rule MSA_ripe:
     input:
-        'results/{seq}/08-MSA_hhblits/{seq}.out'
+        out=dynamic('results/{seq}/08-MSA_hhblits/{seq}_{n}.out'),
+        a3m=dynamic('results/{seq}/08-MSA_hhblits/{seq}_{n}.a3m')
     output:
-        not_ripe='results/{seq}/09-not_ripe/{seq}.msa',
-        ripe='results/{seq}/10-Rosetta/{seq}.msa'
+        not_ripe=dynamic('results/{seq}/09-not_ripe/{seq}.msa'),
+        ripe=dynamic('results/{seq}/10-Rosetta/{seq}.msa')
     # calculate Nf
-    shell:
-        'python {SCRIPTS}/calculate_Nf.py -i {input} \
-        -O {output.ripe} \
-        -o {output.not_ripe}'
+    run:
+        calculate_Nf(input.out, input.a3m, output.ripe, output.not_ripe)
