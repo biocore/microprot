@@ -3,9 +3,6 @@
 # "qsub -k eo -m n -l nodes=1:ppn={cluster.n} -l mem={cluster.mem}gb \
 # -l walltime={cluster.time}" --directory "$@"
 
-### what happens if we run out of sequence at some point?
-### e.g. if the whole sequence hits a PDB record and there is nothing left for subsequent steps?
-
 import os
 import skbio
 import split_sequence, mask_sequence, calculate_Nf
@@ -89,7 +86,7 @@ rule search_CM:
         split='results/{seq}/02-split_pdb/{seq}.split_pdb',
         seq='data/{seq}.fasta'
     output:
-        out=dynamic('results/{seq}/04-search_CM/{seq}_{n}.out'),
+        out_prefix=dynamic('results/{seq}/04-search_CM/{seq}_{n}.out'),
         a3m=dynamic('results/{seq}/04-search_CM/{seq}_{n}.a3m')
     log:
         'results/log/{seq}/search_cm.log'
