@@ -1,3 +1,7 @@
+import re
+from skbio import Protein
+
+
 _HEADER = ['No',
            'Hit',
            'Prob',
@@ -235,6 +239,9 @@ def parse_pdb_match(filename):
         fh = open(filename, 'r')
         line = ""
 
+        # read the first line, which contains the fasta header of the input
+        queryname = re.sub('Query\s+', '', fh.readline().rstrip())
+
         # read until header of summary table is found
         while(len(set(line.rstrip().split()) & set(_HEADER)) < 8):
             line = fh.readline()
@@ -271,7 +278,7 @@ def parse_pdb_match(filename):
             del hits[idx][_HEADER[10]]  # match states
 
         fh.close()
-        return hits
+        return (queryname, hits)
     except IOError:
         raise IOError('Cannot read file "%s"' % filename)
 
@@ -388,3 +395,107 @@ def report_uncovered_subsequences(hits, query, min_subseq_len=40):
 
     return [u for u in uncovered if (u['sequence'] != '') &
                                     (len(u['sequence']) >= min_subseq_len)]
+
+
+def mask_sequence(hhsuite_fp, fullsequence_fp, subsequences_fp=None,
+                  min_prob=None, max_pvalue=None, max_evalue=None,
+                  min_fragment_length=None):
+    """ Splits a protein sequence according to HHsuits results.
+
+    The returned sub-sequences will seamlessly build the full sequence if
+    re-concatenated.
+
+    Parameters
+    ----------
+    hhsuite_fp : str
+        Filepath to HHblits/HHsearch output.
+    fullsequence_fp : str
+        Filepath to the protein sequence of the original query.
+    subsequences_fp : str
+        Filepath to which sub-sequences are written as a multiple fasta file.
+        Each sequence makes up one header and one sequence file, i.e. sequences
+        are not wrapped.
+        Default: None, i.e. no file is written.
+    min_prob: float
+        Minimal probability of a hit to be included in the resulting list.
+        Note: probabilities are in the range of 100.0 to 0.0.
+        Default: None, i.e. no filtering on probability.
+    max_pvalue: float
+        Maximal P-value of a hit to be included in the resulting list.
+        Default: None, i.e. no filtering on P-value.
+    max_evalue: float
+        Maximal E-value of a hit to be included in the resulting list.
+        Default: None, i.e. no filtering on E-value.
+    min_fragment_length: int
+        Minimal fragment length of a hit to be included in the resulting list.
+        Default: None, i.e. no filtering on fragment length.
+
+    Returns
+    -------
+    [(str, str)] where first component is a fasta header, while the second is
+    its fasta sequence.
+
+    Raises
+    ------
+    IOError
+        If the file cannot be written.
+
+    Notes
+    -----
+    A hit must satisfy ALL filtering options (min_prob, max_pvalue, max_evalue,
+    min_fragment_length) to be included in the resulting list.
+    """
+
+    # parse hits from file
+    queryname, hits = parse_pdb_match(hhsuite_fp)
+
+    # filter hits
+    if min_prob is not None:
+        hits = [hit for hit in hits if hit['Probab'] >= min_prob]
+    if max_pvalue is not None:
+        hits = [hit for hit in hits if hit['P-value'] <= max_pvalue]
+    if max_evalue is not None:
+        hits = [hit for hit in hits if hit['E-value'] <= max_evalue]
+    if min_fragment_length is not None:
+        def frag_size(hit):
+            return (hit['alignment']['Q Consensus']['end'] -
+                    hit['alignment']['Q Consensus']['start'] +
+                    1)
+        hits = [hit for hit in hits if frag_size(hit) >= min_fragment_length]
+
+    results = []
+    # select non overlapping positive hits
+    subseqs_pos = select_hits(hits, e_value_threshold=999999)
+    for hit in subseqs_pos:
+        header = "%s_%i-%i" % (queryname,
+                               hit['alignment']['Q Consensus']['start'],
+                               hit['alignment']['Q Consensus']['end'])
+        seq = hit['alignment']['Q Consensus']['sequence'].replace('-', '')
+        results.append((header, seq, hit['alignment']['Q Consensus']['start']))
+
+    seq = str(Protein.read(fullsequence_fp, seq_num=1))
+
+    # collect gaps between positive hits
+    subseqs_neg = report_uncovered_subsequences(subseqs_pos, seq,
+                                                min_subseq_len=0)
+    for hit in subseqs_neg:
+        header = "%s_%i-%i" % (queryname,
+                               hit['start'],
+                               hit['end'])
+        seq = hit['sequence']
+        results.append((header, seq, hit['start']))
+
+    # write sub-sequences to a multiple fasta file, sequences are un-wrapped
+    try:
+        # sort by start position
+        results = sorted(results, key=lambda x: x[2])
+
+        if subsequences_fp is not None:
+            f = open(subsequences_fp, 'w')
+            for res in results:
+                f.write(">%s\n%s\n" % res[:2])
+            f.close()
+
+        return list(map(lambda x: x[:2], results))
+    except IOError:
+        raise IOError('Cannot write to file "%s"' % subsequences_fp)
