@@ -1,4 +1,3 @@
-import re
 from skbio import Protein
 
 
@@ -239,9 +238,6 @@ def parse_pdb_match(filename):
         fh = open(filename, 'r')
         line = ""
 
-        # read the first line, which contains the fasta header of the input
-        queryname = re.sub('Query\s+', '', fh.readline().rstrip())
-
         # read until header of summary table is found
         while(len(set(line.rstrip().split()) & set(_HEADER)) < 8):
             line = fh.readline()
@@ -278,7 +274,7 @@ def parse_pdb_match(filename):
             del hits[idx][_HEADER[10]]  # match states
 
         fh.close()
-        return (queryname, hits)
+        return hits
     except IOError:
         raise IOError('Cannot read file "%s"' % filename)
 
@@ -447,7 +443,7 @@ def mask_sequence(hhsuite_fp, fullsequence_fp, subsequences_fp=None,
     """
 
     # parse hits from file
-    queryname, hits = parse_pdb_match(hhsuite_fp)
+    hits = parse_pdb_match(hhsuite_fp)
 
     # filter hits
     if min_prob is not None:
@@ -463,6 +459,10 @@ def mask_sequence(hhsuite_fp, fullsequence_fp, subsequences_fp=None,
                     1)
         hits = [hit for hit in hits if frag_size(hit) >= min_fragment_length]
 
+    # read the original protein file, used to run HHsearch
+    p = Protein.read(fullsequence_fp, seq_num=1)
+    queryname = p.metadata['id'] + " " + p.metadata['description']
+
     results = []
     # select non overlapping positive hits
     subseqs_pos = select_hits(hits, e_value_threshold=999999)
@@ -473,10 +473,8 @@ def mask_sequence(hhsuite_fp, fullsequence_fp, subsequences_fp=None,
         seq = hit['alignment']['Q Consensus']['sequence'].replace('-', '')
         results.append((header, seq, hit['alignment']['Q Consensus']['start']))
 
-    seq = str(Protein.read(fullsequence_fp, seq_num=1))
-
     # collect gaps between positive hits
-    subseqs_neg = report_uncovered_subsequences(subseqs_pos, seq,
+    subseqs_neg = report_uncovered_subsequences(subseqs_pos, str(p),
                                                 min_subseq_len=0)
     for hit in subseqs_neg:
         header = "%s_%i-%i" % (queryname,
