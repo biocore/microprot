@@ -24,3 +24,5 @@ split_Pfam:
 MSA_hhblits:
     params: '-n 3 -e 0.001 -maxfilt 500000 -diff inf -id 99 -cov 50 -cpu 8'
     threads: 8
+
+SEQUENCES: 'chuj'
