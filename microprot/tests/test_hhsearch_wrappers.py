@@ -159,6 +159,9 @@ class SplitSeq(TestCase):
         self.assertIn(seq+"\n", obs)
         self.assertIn(">"+header+"\n", obs)
 
+        with self.assertRaises(IOError):
+            mask_sequence(self.file_a, self.file_query, '/dev')
+
     def test_frag_size(self):
         obs = frag_size(self.minhit)
         self.assertEqual(obs, 30)
