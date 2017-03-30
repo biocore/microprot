@@ -393,6 +393,29 @@ def report_uncovered_subsequences(hits, query, min_subseq_len=40):
                                     (len(u['sequence']) >= min_subseq_len)]
 
 
+def frag_size(hit):
+    """ Compute the fragment length of a hit.
+
+    Parameters
+    ----------
+    A hit parsed from an HHsearch output file, i.e. dict with at least the key
+    'alignment' which is a dict by itself and comes at least with the key
+    'Q xxx' where xxx is some identifier. The value for this 'Q xxx' key is a
+    third dict which needs to contain the key 'sequence'.
+
+    Returns
+    -------
+    The length of the un-gapped sequence for the given hit."""
+    # find the right ID
+    id_ = [id_ for id_ in hit['alignment'].keys()
+           if id_.startswith('Q')
+           and id_ != 'Q Consensus'][0]
+    subseq = hit['alignment'][id_]['sequence']
+    # remove gap characters
+    subseq = subseq.replace('-', '')
+    return len(subseq)
+
+
 def mask_sequence(hhsuite_fp, fullsequence_fp, subsequences_fp=None,
                   min_prob=None, max_pvalue=None, max_evalue=None,
                   min_fragment_length=None):
@@ -453,25 +476,23 @@ def mask_sequence(hhsuite_fp, fullsequence_fp, subsequences_fp=None,
     if max_evalue is not None:
         hits = [hit for hit in hits if hit['E-value'] <= max_evalue]
     if min_fragment_length is not None:
-        def frag_size(hit):
-            return (hit['alignment']['Q Consensus']['end'] -
-                    hit['alignment']['Q Consensus']['start'] +
-                    1)
         hits = [hit for hit in hits if frag_size(hit) >= min_fragment_length]
 
     # read the original protein file, used to run HHsearch
     p = Protein.read(fullsequence_fp, seq_num=1)
     queryname = p.metadata['id'] + " " + p.metadata['description']
 
-    results = []
+    results = {'match': [], 'non_match': []}
     # select non overlapping positive hits
     subseqs_pos = select_hits(hits, e_value_threshold=999999)
+
     for hit in subseqs_pos:
         header = "%s_%i-%i" % (queryname,
                                hit['alignment']['Q Consensus']['start'],
                                hit['alignment']['Q Consensus']['end'])
         seq = hit['alignment']['Q Consensus']['sequence'].replace('-', '')
-        results.append((header, seq, hit['alignment']['Q Consensus']['start']))
+        results['match'].append((header, seq,
+                                hit['alignment']['Q Consensus']['start']))
 
     # collect gaps between positive hits
     subseqs_neg = report_uncovered_subsequences(subseqs_pos, str(p),
@@ -481,19 +502,23 @@ def mask_sequence(hhsuite_fp, fullsequence_fp, subsequences_fp=None,
                                hit['start'],
                                hit['end'])
         seq = hit['sequence']
-        results.append((header, seq, hit['start']))
+        results['non_match'].append((header, seq, hit['start']))
 
     # write sub-sequences to a multiple fasta file, sequences are un-wrapped
     try:
         # sort by start position
-        results = sorted(results, key=lambda x: x[2])
+        for type_ in results:
+            results[type_] = sorted(results[type_], key=lambda x: x[2])
 
         if subsequences_fp is not None:
             f = open(subsequences_fp, 'w')
-            for res in results:
-                f.write(">%s\n%s\n" % res[:2])
+            for type_ in results:
+                for res in results[type_]:
+                    f.write(">%s\n%s\n" % res[:2])
             f.close()
 
-        return list(map(lambda x: x[:2], results))
+        # removing the start position component from all subsequences
+        return {type_: list(map(lambda x: x[:2], results[type_]))
+                for type_ in results}
     except IOError:
         raise IOError('Cannot write to file "%s"' % subsequences_fp)
