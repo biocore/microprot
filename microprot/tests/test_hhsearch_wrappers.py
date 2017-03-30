@@ -99,6 +99,17 @@ class SplitSeq(TestCase):
         header = ('gi|556503834|ref|NC_000913.3|_2 # 337 # 2799 # 1 # ID=1_2;'
                   'partial=00;start_type=ATG;rbs_motif=GGAG/GAGG;rbs_spacer=5'
                   '-10bp;gc_cont=0.531_1-461')
+        header_nm = ('gi|556503834|ref|NC_000913.3|_2 # 337 # 2799 # 1 # ID=1_'
+                     '2;partial=00;start_type=ATG;rbs_motif=GGAG/GAGG;rbs_spac'
+                     'er=5-10bp;gc_cont=0.531_462-820')
+        seq_nm = ('TDQVIEVFVIGVGGVGGALLEQLKRQQSWLKNKHIDLRVCGVANSKALLTNVHGLNLEN'
+                  'WQEELAQAKEPFNLGRLIRLVKEYHLLNPVIVDCTSSQAVADQYADFLREGFHVVTPNK'
+                  'KANTSSMDYYHQLRYAAEKSRRKFLYDTNVGAGLPVIENLQNLLNAGDELMKFSGILSG'
+                  'SLSYIFGKLDEGMSFSEATTLAREMGYTEPDPRDDLSGMDVARKLLILARETGRELELA'
+                  'DIEIEPVLPAEFNAEGDVAAFMANLSQLDDLFAARVAKARDEGKVLRYVGNIDEDGVCR'
+                  'VKIAEVDGNDPLFKVKNGENALAFYSHYYQPLPLVLRGYGAGNDVTAAGVFADLLRTLS'
+                  'WKLGV')
+
         exp = (header, seq)
         obs = mask_sequence(self.file_a, self.file_query,
                             min_fragment_length=450)
@@ -108,12 +119,19 @@ class SplitSeq(TestCase):
         mask_sequence(self.file_a, self.file_query, filename,
                       min_fragment_length=450)
 
-        f = open(filename, 'r')
+        f = open(filename+'.match', 'r')
         obs = f.readlines()
         f.close()
-        os.remove(filename)
+        os.remove(filename+'.match')
         self.assertIn(seq+"\n", obs)
         self.assertIn(">"+header+"\n", obs)
+
+        f = open(filename+'.non_match', 'r')
+        obs = f.readlines()
+        f.close()
+        os.remove(filename+'.non_match')
+        self.assertIn(seq_nm+"\n", obs)
+        self.assertIn(">"+header_nm+"\n", obs)
 
         with self.assertRaises(IOError):
             mask_sequence(self.file_a, self.file_query, '/dev')

@@ -453,6 +453,9 @@ def mask_sequence(hhsuite_fp, fullsequence_fp, subsequences_fp=None,
         Filepath to which sub-sequences are written as a multiple fasta file.
         Each sequence makes up one header and one sequence file, i.e. sequences
         are not wrapped.
+        Two files will be produces, suffixed by '.match' and '.non_match'. The
+        first holds sub-sequences of hits, the second holds the none-hit
+        covered subsequences.
         Default: None, i.e. no file is written.
     min_prob: float
         Minimal probability of a hit to be included in the resulting list.
@@ -530,11 +533,11 @@ def mask_sequence(hhsuite_fp, fullsequence_fp, subsequences_fp=None,
             results[type_] = sorted(results[type_], key=lambda x: x[2])
 
         if subsequences_fp is not None:
-            f = open(subsequences_fp, 'w')
             for type_ in results:
+                f = open('%s.%s' % (subsequences_fp, type_), 'w')
                 for res in results[type_]:
                     f.write(">%s\n%s\n" % res[:2])
-            f.close()
+                f.close()
 
         # removing the start position component from all subsequences
         return {type_: list(map(lambda x: x[:2], results[type_]))
