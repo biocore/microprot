@@ -6,7 +6,8 @@ from microprot.scripts.pdb_search import (is_overlapping,
                                           _parse_hit_summary_line,
                                           _parse_hit_block, parse_pdb_match,
                                           select_hits, report_hits,
-                                          report_uncovered_subsequences)
+                                          report_uncovered_subsequences,
+                                          frag_size, get_q_id)
 
 
 class ParsersTests(TestCase):
@@ -209,24 +210,24 @@ class ParsersTests(TestCase):
             'pdb_id': '2j0w_A',
             'start': 1,
             'covered_sequence':
-                ('MRVLKFGGTSVANAERFLRVADILESNARQGQVATVLSAPAKITNHLVAMIEKTISGQDA'
-                 'LPNISDAERIFAELLTGLAAAQPGFPLAQLKTFVDQEFAQIKHVLHGISLLGQCPDSINA'
-                 'ALICRGEKMSIAIMAGVLEARGHNVTVIDPVEKLLAVGHYLESTVDIAESTRRIAASRIP'
-                 'ADHMVLMAGFTAGNEKGELVVLGRNGSDYSAAVLAACLRADCCEIWTDVDGVYTCDPRQV'
-                 'PDARLLKSMSYQEAMELSYFGAKVLHPRTITPIAQFQIPCLIKNTGNPQAPGTLIGASRD'
-                 'EDELPVKGISNLNNMAMFSVSGPGMKGMVGMAARVFAAMSRARISVVLITQSSSEYSISF'
-                 'CVPQSDCVRAERAMQEEFYLELKEGLLEPLAVTERLAIISVVGDGMRTLRGISAKFFAAL'
-                 'ARANINIVAIAQGSSERSISVVVNNDDATTGVRVTHQMLFN')}, {
+            ('MRVLKFGGTSVANAERFLRVADILESNARQGQVATVLSAPAKITNHLVAMIEKTISGQDA'
+             'LPNISDAERIFAELLTGLAAAQPGFPLAQLKTFVDQEFAQIKHVLHGISLLGQCPDSINA'
+             'ALICRGEKMSIAIMAGVLEARGHNVTVIDPVEKLLAVGHYLESTVDIAESTRRIAASRIP'
+             'ADHMVLMAGFTAGNEKGELVVLGRNGSDYSAAVLAACLRADCCEIWTDVDGVYTCDPRQV'
+             'PDARLLKSMSYQEAMELSYFGAKVLHPRTITPIAQFQIPCLIKNTGNPQAPGTLIGASRD'
+             'EDELPVKGISNLNNMAMFSVSGPGMKGMVGMAARVFAAMSRARISVVLITQSSSEYSISF'
+             'CVPQSDCVRAERAMQEEFYLELKEGLLEPLAVTERLAIISVVGDGMRTLRGISAKFFAAL'
+             'ARANINIVAIAQGSSERSISVVVNNDDATTGVRVTHQMLFN')}, {
             'end': 815,
             'pdb_id': '1ebf_A',
             'start': 464,
             'covered_sequence':
-                ('QVIEVFVIGVGGVGGALLEQLKRQQSWLKNKHIDLRVCGVANSKALLTNVHGLNLENWQE'
-                 'ELAQAKEPFNLGRLIRLVKEYHLLNPVIVDCTSSQAVADQYADFLREGFHVVTPNKKANT'
-                 'SSMDYYHQLRYAAEKSRRKFLYDTNVGAGLPVIENLQNLLNAGDELMKFSGILSGSLSYI'
-                 'FGKLDEGMSFSEATTLAREMGYTEPDPRDDLSGMDVARKLLILARETGRELELADIEIEP'
-                 'VLPAEFNAEGDVAAFMANLSQLDDLFAARVAKARDEGKVLRYVGNIDEDGVCRVKIAEVD'
-                 'GNDPLFKVKNGENALAFYSHYYQPLPLVLRGYGAGNDVTAAGVFADLLRTLS')}]
+            ('QVIEVFVIGVGGVGGALLEQLKRQQSWLKNKHIDLRVCGVANSKALLTNVHGLNLENWQE'
+             'ELAQAKEPFNLGRLIRLVKEYHLLNPVIVDCTSSQAVADQYADFLREGFHVVTPNKKANT'
+             'SSMDYYHQLRYAAEKSRRKFLYDTNVGAGLPVIENLQNLLNAGDELMKFSGILSGSLSYI'
+             'FGKLDEGMSFSEATTLAREMGYTEPDPRDDLSGMDVARKLLILARETGRELELADIEIEP'
+             'VLPAEFNAEGDVAAFMANLSQLDDLFAARVAKARDEGKVLRYVGNIDEDGVCRVKIAEVD'
+             'GNDPLFKVKNGENALAFYSHYYQPLPLVLRGYGAGNDVTAAGVFADLLRTLS')}]
         self.query = (
             'MRVLKFGGTSVANAERFLRVADILESNARQGQVATVLSAPAKITNHLVAMIEKTISGQDALPNIS'
             'DAERIFAELLTGLAAAQPGFPLAQLKTFVDQEFAQIKHVLHGISLLGQCPDSINAALICRGEKMS'
@@ -243,6 +244,51 @@ class ParsersTests(TestCase):
             'YSHYYQPLPLVLRGYGAGNDVTAAGVFADLLRTLSWKLGV')
         self.true_subseqs = [{'sequence': 'TD', 'start': 462, 'end': 463},
                              {'sequence': 'WKLGV', 'start': 816, 'end': 820}]
+
+        self.hit = {
+            'No': 225,
+            'Hit': ('3ofg_A BOCA/MESD chaperone for YWTD beta-propeller-EGF P;'
+                    ' molecular chaperone, protein folding, YWTD propeller, LD'
+                    'LR; HET: MSE; 1.37A {Caenorhabditis elegans}'),
+            'Similarity': 0.24,
+            'alignment': {
+                'Q gi|556503834|r': {
+                    'start': 483, 'totallen': 820, 'end': 525,
+                    'sequence': 'QLKRQQSWLKNKHIDLRVCGVANSKALLTNVHGLNLENWQEEL'},
+                'T Consensus': {
+                    'start': 35, 'totallen': 95, 'end': 77,
+                    'sequence': 'ia~~Wq~~L~n~~I~v~~y~vd~~r~if~~~dG~~a~e~k~FL'},
+                'Q Consensus': {
+                    'start': 483, 'totallen': 820, 'end': 525,
+                    'sequence': 'qlkrqqswlknkhidlrvcgvanskalltnvhglnlenwqeel'},
+                'Confidence': {
+                    'sequence': '3456788899999999999999999999988887665444433'},
+                'column score': {
+                    'sequence': '--++-|+-|.|.||+.++.+|..++++.+--+|-......+=|'},
+                'T 3ofg_A': {
+                    'start': 35, 'totallen': 95, 'end': 77, 'sequence':
+                    'WTQIWQSQLYNNHVDLQVFVIDDNRAIFMFKNGEQAFEAKKFL'},
+                'T ss_dssp': {
+                    'sequence': 'HHHHHHHHHHHTTCCEEEEEEETTEEEEEESSGGGHHHHHHHH'},
+                'T ss_pred': {
+                    'sequence': 'HHHHHHHHHHhCCeEEEEEEEcCCEEEEEeCchhhHHHHHHHH'}
+            },
+            'Aligned_cols': 43,
+            'SS': 0.0,
+            'Score': 28.65,
+            'Probab': 20.11,
+            'Cols': 43,
+            'P-value': 0.0011,
+            'Identities': 0.26,
+            'E-value': 41.0,
+            'Sum_probs': 34.5,
+            'Template_Neff': 5.6}
+
+        self.minhit = {
+            'alignment': {
+                'Q gi|556503834|r': {
+                    'sequence': 'QLKRQQSWLKNK--ALL---T-NVHGLNLENWQEEL'}}
+            }
 
     def test_is_overlapping(self):
         self.assertTrue(is_overlapping((20, 100), (30, 150)))
@@ -261,7 +307,6 @@ class ParsersTests(TestCase):
         )
         with self.assertRaises(ValueError) as ve:
             is_overlapping((10, 20), (-9, -20))
-        print(str(ve.exception))
         self.assertEqual(
             ('Left component of intB cannot be larger than its right component'
              ', i.e. the interval must be forward oriented.'),
@@ -319,6 +364,45 @@ class ParsersTests(TestCase):
         hits = select_hits(parse_pdb_match(self.file_a))
         subseqs = report_uncovered_subsequences(hits, self.query, 0)
         self.assertEqual(subseqs, self.true_subseqs)
+
+    def test_frag_size(self):
+        obs = frag_size(self.minhit)
+        self.assertEqual(obs, 30)
+
+        obs = frag_size(self.hit)
+        self.assertEqual(obs, 43)
+
+        self.assertRaisesRegex(KeyError,
+                               'alignment',
+                               frag_size,
+                               {})
+
+        self.assertRaisesRegex(IndexError,
+                               'list index out of range',
+                               frag_size,
+                               {'alignment': {}})
+
+        self.assertRaisesRegex(KeyError,
+                               'sequence',
+                               frag_size,
+                               {'alignment': {'Q consensus': {}}})
+
+    def test_get_q_id(self):
+        obs = get_q_id(self.minhit)
+        self.assertEqual(obs, 'Q gi|556503834|r')
+
+        obs = get_q_id(self.hit)
+        self.assertEqual(obs, 'Q gi|556503834|r')
+
+        self.assertRaisesRegex(KeyError,
+                               'alignment',
+                               get_q_id,
+                               {})
+
+        self.assertRaisesRegex(IndexError,
+                               'list index out of range',
+                               get_q_id,
+                               {'alignment': {}})
 
 if __name__ == '__main__':
     main()

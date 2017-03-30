@@ -300,13 +300,15 @@ def select_hits(hits, e_value_threshold=0.001):
 
     for hit in hits:
         if hit['E-value'] < e_value_threshold:
+            id_hit = get_q_id(hit)
             # check if there is an overlap to previous results
             noOverlap = True
             for good in good_hits:
-                if is_overlapping((hit['alignment']['Q Consensus']['start'],
-                                   hit['alignment']['Q Consensus']['end']),
-                                  (good['alignment']['Q Consensus']['start'],
-                                   good['alignment']['Q Consensus']['end'])):
+                id_good = get_q_id(good)
+                if is_overlapping((hit['alignment'][id_hit]['start'],
+                                   hit['alignment'][id_hit]['end']),
+                                  (good['alignment'][id_good]['start'],
+                                   good['alignment'][id_good]['end'])):
                     noOverlap = False
                     break
             if noOverlap:
@@ -333,15 +335,14 @@ def report_hits(hits):
     report = []
     for hit in hits:
         # find the right key for the query sequence information
-        q_keys = [k for k in hit['alignment'].keys()
-                  if k.startswith('Q') & (k != 'Q Consensus')]
+        q_keys = get_q_id(hit)
 
         # compose a new dict as report for this hit.
         report.append({'pdb_id': hit['Hit'].split()[0],
-                       'covered_sequence': hit['alignment'][q_keys[0]]
+                       'covered_sequence': hit['alignment'][q_keys]
                        ['sequence'].replace('-', ''),
-                       'start': hit['alignment'][q_keys[0]]['start'],
-                       'end': hit['alignment'][q_keys[0]]['end']})
+                       'start': hit['alignment'][q_keys]['start'],
+                       'end': hit['alignment'][q_keys]['end']})
     return report
 
 
@@ -371,10 +372,9 @@ def report_uncovered_subsequences(hits, query, min_subseq_len=40):
     covered = []
     for hit in hits:
         # find the right key for the query sequence information
-        q_keys = [k for k in hit['alignment'].keys()
-                  if k.startswith('Q') & (k != 'Q Consensus')]
-        covered.append((hit['alignment'][q_keys[0]]['start'],
-                        hit['alignment'][q_keys[0]]['end']))
+        q_keys = get_q_id(hit)
+        covered.append((hit['alignment'][q_keys]['start'],
+                        hit['alignment'][q_keys]['end']))
 
     uncovered = []
     curEnd = 0
@@ -393,6 +393,27 @@ def report_uncovered_subsequences(hits, query, min_subseq_len=40):
                                     (len(u['sequence']) >= min_subseq_len)]
 
 
+def get_q_id(hit):
+    """ Returns the query ID for a hit.
+
+    Parameters
+    ----------
+    A hit parsed from an HHsearch output file, i.e. dict with at least the key
+    'alignment' which is a dict by itself and comes at least with the key
+    'Q xxx' where xxx is some identifier. The value for this 'Q xxx' key is a
+    third dict which needs to contain the key 'sequence'.
+
+    Returns
+    -------
+    str : The query ID starting with 'Q '.
+    """
+    # find the right ID
+    id_ = [id_ for id_ in hit['alignment'].keys()
+           if id_.startswith('Q')
+           and id_ != 'Q Consensus'][0]
+    return id_
+
+
 def frag_size(hit):
     """ Compute the fragment length of a hit.
 
@@ -407,9 +428,7 @@ def frag_size(hit):
     -------
     The length of the un-gapped sequence for the given hit."""
     # find the right ID
-    id_ = [id_ for id_ in hit['alignment'].keys()
-           if id_.startswith('Q')
-           and id_ != 'Q Consensus'][0]
+    id_ = get_q_id(hit)
     subseq = hit['alignment'][id_]['sequence']
     # remove gap characters
     subseq = subseq.replace('-', '')
@@ -487,12 +506,12 @@ def mask_sequence(hhsuite_fp, fullsequence_fp, subsequences_fp=None,
     subseqs_pos = select_hits(hits, e_value_threshold=999999)
 
     for hit in subseqs_pos:
+        _id = get_q_id(hit)
         header = "%s_%i-%i" % (queryname,
-                               hit['alignment']['Q Consensus']['start'],
-                               hit['alignment']['Q Consensus']['end'])
-        seq = hit['alignment']['Q Consensus']['sequence'].replace('-', '')
-        results['match'].append((header, seq,
-                                hit['alignment']['Q Consensus']['start']))
+                               hit['alignment'][_id]['start'],
+                               hit['alignment'][_id]['end'])
+        seq = hit['alignment'][_id]['sequence'].replace('-', '')
+        results['match'].append((header, seq, hit['alignment'][_id]['start']))
 
     # collect gaps between positive hits
     subseqs_neg = report_uncovered_subsequences(subseqs_pos, str(p),
