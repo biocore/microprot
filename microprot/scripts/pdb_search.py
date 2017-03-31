@@ -406,12 +406,19 @@ def get_q_id(hit):
     Returns
     -------
     str : The query ID starting with 'Q '.
+
+    Notes
+    -----
+    Each 'hit' has one 'alignment', which comes with different lines. One of
+    those lines is 'Q consensus'. Another line is called 'Q xxx' where xxx is
+    the ID of the input query sequence. This function find this 'Q xxx' ID.
+    We assume that there are only two line names starting with 'Q '.
     """
     # find the right ID
-    id_ = [id_ for id_ in hit['alignment'].keys()
-           if id_.startswith('Q')
-           and id_ != 'Q Consensus'][0]
-    return id_
+    _id = [_id for _id in hit['alignment'].keys()
+           if _id.startswith('Q')
+           and _id != 'Q Consensus'][0]
+    return _id
 
 
 def frag_size(hit):
@@ -428,11 +435,10 @@ def frag_size(hit):
     -------
     The length of the un-gapped sequence for the given hit."""
     # find the right ID
-    id_ = get_q_id(hit)
-    subseq = hit['alignment'][id_]['sequence']
-    # remove gap characters
-    subseq = subseq.replace('-', '')
-    return len(subseq)
+    _id = get_q_id(hit)
+    subseq = hit['alignment'][_id]['sequence']
+    # remove gap characters and return length
+    return len(subseq) - subseq.count('-')
 
 
 def mask_sequence(hhsuite_fp, fullsequence_fp, subsequences_fp=None,
