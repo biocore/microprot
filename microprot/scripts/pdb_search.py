@@ -459,7 +459,7 @@ def mask_sequence(hhsuite_fp, fullsequence_fp, subsequences_fp=None,
         Filepath to which sub-sequences are written as a multiple fasta file.
         Each sequence makes up one header and one sequence file, i.e. sequences
         are not wrapped.
-        Two files will be produces, suffixed by '.match' and '.non_match'. The
+        Two files will be produced, suffixed by '.match' and '.non_match'. The
         first holds sub-sequences of hits, the second holds the none-hit
         covered subsequences.
         Default: None, i.e. no file is written.
@@ -508,7 +508,7 @@ def mask_sequence(hhsuite_fp, fullsequence_fp, subsequences_fp=None,
 
     # read the original protein file, used to run HHsearch
     p = Protein.read(fullsequence_fp, seq_num=1)
-    queryname = p.metadata['id'] + " " + p.metadata['description']
+    queryname = p.metadata['id'] + ' ' + p.metadata['description']
 
     results = {'match': [], 'non_match': []}
     # select non overlapping positive hits
