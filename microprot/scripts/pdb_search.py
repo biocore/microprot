@@ -1,3 +1,6 @@
+from skbio import Protein
+
+
 _HEADER = ['No',
            'Hit',
            'Prob',
@@ -297,13 +300,15 @@ def select_hits(hits, e_value_threshold=0.001):
 
     for hit in hits:
         if hit['E-value'] < e_value_threshold:
+            id_hit = get_q_id(hit)
             # check if there is an overlap to previous results
             noOverlap = True
             for good in good_hits:
-                if is_overlapping((hit['alignment']['Q Consensus']['start'],
-                                   hit['alignment']['Q Consensus']['end']),
-                                  (good['alignment']['Q Consensus']['start'],
-                                   good['alignment']['Q Consensus']['end'])):
+                id_good = get_q_id(good)
+                if is_overlapping((hit['alignment'][id_hit]['start'],
+                                   hit['alignment'][id_hit]['end']),
+                                  (good['alignment'][id_good]['start'],
+                                   good['alignment'][id_good]['end'])):
                     noOverlap = False
                     break
             if noOverlap:
@@ -330,15 +335,14 @@ def report_hits(hits):
     report = []
     for hit in hits:
         # find the right key for the query sequence information
-        q_keys = [k for k in hit['alignment'].keys()
-                  if k.startswith('Q') & (k != 'Q Consensus')]
+        q_keys = get_q_id(hit)
 
         # compose a new dict as report for this hit.
         report.append({'pdb_id': hit['Hit'].split()[0],
-                       'covered_sequence': hit['alignment'][q_keys[0]]
+                       'covered_sequence': hit['alignment'][q_keys]
                        ['sequence'].replace('-', ''),
-                       'start': hit['alignment'][q_keys[0]]['start'],
-                       'end': hit['alignment'][q_keys[0]]['end']})
+                       'start': hit['alignment'][q_keys]['start'],
+                       'end': hit['alignment'][q_keys]['end']})
     return report
 
 
@@ -368,10 +372,9 @@ def report_uncovered_subsequences(hits, query, min_subseq_len=40):
     covered = []
     for hit in hits:
         # find the right key for the query sequence information
-        q_keys = [k for k in hit['alignment'].keys()
-                  if k.startswith('Q') & (k != 'Q Consensus')]
-        covered.append((hit['alignment'][q_keys[0]]['start'],
-                        hit['alignment'][q_keys[0]]['end']))
+        q_keys = get_q_id(hit)
+        covered.append((hit['alignment'][q_keys]['start'],
+                        hit['alignment'][q_keys]['end']))
 
     uncovered = []
     curEnd = 0
@@ -388,3 +391,162 @@ def report_uncovered_subsequences(hits, query, min_subseq_len=40):
 
     return [u for u in uncovered if (u['sequence'] != '') &
                                     (len(u['sequence']) >= min_subseq_len)]
+
+
+def get_q_id(hit):
+    """ Returns the query ID for a hit.
+
+    Parameters
+    ----------
+    A hit parsed from an HHsearch output file, i.e. dict with at least the key
+    'alignment' which is a dict by itself and comes at least with the key
+    'Q xxx' where xxx is some identifier. The value for this 'Q xxx' key is a
+    third dict which needs to contain the key 'sequence'.
+
+    Returns
+    -------
+    str : The query ID starting with 'Q '.
+
+    Notes
+    -----
+    Each 'hit' has one 'alignment', which comes with different lines. One of
+    those lines is 'Q consensus'. Another line is called 'Q xxx' where xxx is
+    the ID of the input query sequence. This function find this 'Q xxx' ID.
+    We assume that there are only two line names starting with 'Q '.
+    """
+    # find the right ID
+    _id = [_id for _id in hit['alignment'].keys()
+           if _id.startswith('Q')
+           and _id != 'Q Consensus'][0]
+    return _id
+
+
+def frag_size(hit):
+    """ Compute the fragment length of a hit.
+
+    Parameters
+    ----------
+    A hit parsed from an HHsearch output file, i.e. dict with at least the key
+    'alignment' which is a dict by itself and comes at least with the key
+    'Q xxx' where xxx is some identifier. The value for this 'Q xxx' key is a
+    third dict which needs to contain the key 'sequence'.
+
+    Returns
+    -------
+    The length of the un-gapped sequence for the given hit."""
+    # find the right ID
+    _id = get_q_id(hit)
+    subseq = hit['alignment'][_id]['sequence']
+    # remove gap characters and return length
+    return len(subseq) - subseq.count('-')
+
+
+def mask_sequence(hhsuite_fp, fullsequence_fp, subsequences_fp=None,
+                  min_prob=None, max_pvalue=None, max_evalue=None,
+                  min_fragment_length=None):
+    """ Splits a protein sequence according to HHsuits results.
+
+    The returned sub-sequences will seamlessly build the full sequence if
+    re-concatenated.
+
+    Parameters
+    ----------
+    hhsuite_fp : str
+        Filepath to HHblits/HHsearch output.
+    fullsequence_fp : str
+        Filepath to the protein sequence of the original query.
+    subsequences_fp : str
+        Filepath to which sub-sequences are written as a multiple fasta file.
+        Each sequence makes up one header and one sequence file, i.e. sequences
+        are not wrapped.
+        Two files will be produced, suffixed by '.match' and '.non_match'. The
+        first holds sub-sequences of hits, the second holds the none-hit
+        covered subsequences.
+        Default: None, i.e. no file is written.
+    min_prob: float
+        Minimal probability of a hit to be included in the resulting list.
+        Note: probabilities are in the range of 100.0 to 0.0.
+        Default: None, i.e. no filtering on probability.
+    max_pvalue: float
+        Maximal P-value of a hit to be included in the resulting list.
+        Default: None, i.e. no filtering on P-value.
+    max_evalue: float
+        Maximal E-value of a hit to be included in the resulting list.
+        Default: None, i.e. no filtering on E-value.
+    min_fragment_length: int
+        Minimal fragment length of a hit to be included in the resulting list.
+        Default: None, i.e. no filtering on fragment length.
+
+    Returns
+    -------
+    [(str, str)] where first component is a fasta header, while the second is
+    its fasta sequence.
+
+    Raises
+    ------
+    IOError
+        If the file cannot be written.
+
+    Notes
+    -----
+    A hit must satisfy ALL filtering options (min_prob, max_pvalue, max_evalue,
+    min_fragment_length) to be included in the resulting list.
+    """
+
+    # parse hits from file
+    hits = parse_pdb_match(hhsuite_fp)
+
+    # filter hits
+    if min_prob is not None:
+        hits = [hit for hit in hits if hit['Probab'] >= min_prob]
+    if max_pvalue is not None:
+        hits = [hit for hit in hits if hit['P-value'] <= max_pvalue]
+    if max_evalue is not None:
+        hits = [hit for hit in hits if hit['E-value'] <= max_evalue]
+    if min_fragment_length is not None:
+        hits = [hit for hit in hits if frag_size(hit) >= min_fragment_length]
+
+    # read the original protein file, used to run HHsearch
+    p = Protein.read(fullsequence_fp, seq_num=1)
+    queryname = p.metadata['id'] + ' ' + p.metadata['description']
+
+    results = {'match': [], 'non_match': []}
+    # select non overlapping positive hits
+    subseqs_pos = select_hits(hits, e_value_threshold=999999)
+
+    for hit in subseqs_pos:
+        _id = get_q_id(hit)
+        header = "%s_%i-%i" % (queryname,
+                               hit['alignment'][_id]['start'],
+                               hit['alignment'][_id]['end'])
+        seq = hit['alignment'][_id]['sequence'].replace('-', '')
+        results['match'].append((header, seq, hit['alignment'][_id]['start']))
+
+    # collect gaps between positive hits
+    subseqs_neg = report_uncovered_subsequences(subseqs_pos, str(p),
+                                                min_subseq_len=0)
+    for hit in subseqs_neg:
+        header = "%s_%i-%i" % (queryname,
+                               hit['start'],
+                               hit['end'])
+        seq = hit['sequence']
+        results['non_match'].append((header, seq, hit['start']))
+
+    # write sub-sequences to a multiple fasta file, sequences are un-wrapped
+    try:
+        # sort by start position
+        for type_ in results:
+            results[type_] = sorted(results[type_], key=lambda x: x[2])
+
+        if subsequences_fp is not None:
+            for type_ in results:
+                f = open('%s.%s' % (subsequences_fp, type_), 'w')
+                for res in results[type_]:
+                    f.write(">%s\n%s\n" % res[:2])
+                f.close()
+
+        # removing the start position component from all subsequences
+        return {type_: list(map(lambda x: x[:2], results[type_]))
+                for type_ in results}
+    except IOError:
+        raise IOError('Cannot write to file "%s"' % subsequences_fp)
