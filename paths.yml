@@ -1,12 +1,14 @@
 TOOLS:
-    hmmer: /Users/tomasz/barnacle/microprot/tools/HMMer
-    hhsuite: /Users/tomasz/barnacle/microprot/tools/hhsuite-3.0.0
-    psipred: /Users/tomasz/barnacle/microprot/tools/psipred4
-    disopred: /Users/tomasz/barnacle/microprot/tools/disopred3
-    metapsicov: /Users/tomasz/barnacle/microprot/tools/contact_predictions/metaPSICOV
-
+    hhsuite: /projects/microprot/tools/hh-suite-3.0.0
+    blast: /projects/microprot/tools/blast-2.2.26
+    psipred: /projects/microprot/tools/psipred4
+    disopred: /projects/microprot/tools/disopred3
+    metapsicov: /projects/microprot/tools/contact_predictions/metaPSICOV
 
 DBS:
-    pdb100: /Users/tomasz/barnacle/microprot/dbs/pdb100/
-    nr: /Users/tomasz/barnacle/microprot/dbs/nr/
-    uniprot20: /Users/tomasz/barnacle/microprot/dbs/uniprot20/
+    pdb100: /projects/microprot/dbs/pdb100/
+    psiblast_db: /projects/microprot/dbs/uniref90/
+    hhblits_db: /projects/microprot/dbs/uniboost30/
+    pfamA: /projects/microprot/dbs/pfamA/
+
+MICROPROT_MAIN: /projects/microprot/
