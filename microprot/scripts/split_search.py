@@ -557,7 +557,7 @@ def pretty_output(mask_out):
     for key in mask_out.keys():
         print(key)
         for i in range(len(mask_out[key])):
-            print('\t>%s\n\t%s' % (mask_out[key][i][0], mask_out[key][i][1])
+            print('\t>%s\n\t%s' % (mask_out[key][i][0], mask_out[key][i][1]))
     pass
 
 
