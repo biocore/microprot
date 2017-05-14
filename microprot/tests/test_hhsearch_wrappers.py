@@ -3,12 +3,12 @@ import os
 
 from skbio.util import get_data_path
 
-from microprot.scripts.pdb_search import mask_sequence
+from microprot.scripts.split_search import mask_sequence
 
 
 class SplitSeq(TestCase):
     def setUp(self):
-        self.file_a = get_data_path('test_pdb_search/NC_000913.3_2.out')
+        self.file_a = get_data_path('test_split_search/NC_000913.3_2.out')
         self.query = (
             'MRVLKFGGTSVANAERFLRVADILESNARQGQVATVLSAPAKITNHLVAMIEKTISGQDALPNIS'
             'DAERIFAELLTGLAAAQPGFPLAQLKTFVDQEFAQIKHVLHGISLLGQCPDSINAALICRGEKMS'
@@ -23,7 +23,8 @@ class SplitSeq(TestCase):
             'MSFSEATTLAREMGYTEPDPRDDLSGMDVARKLLILARETGRELELADIEIEPVLPAEFNAEGDV'
             'AAFMANLSQLDDLFAARVAKARDEGKVLRYVGNIDEDGVCRVKIAEVDGNDPLFKVKNGENALAF'
             'YSHYYQPLPLVLRGYGAGNDVTAAGVFADLLRTLSWKLGV')
-        self.file_query = get_data_path('test_pdb_search/NC_000913.3_2.fasta')
+        self.file_query = get_data_path(
+                          'test_split_search/NC_000913.3_2.fasta')
 
     def test_mask_sequence_filtering(self):
         s1 = (('gi|556503834|ref|NC_000913.3|_2 # 337 # 2799 # 1 # ID=1_2;part'

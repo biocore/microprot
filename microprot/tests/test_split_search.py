@@ -2,12 +2,12 @@ from unittest import TestCase, main
 
 from skbio.util import get_data_path
 
-from microprot.scripts.pdb_search import (is_overlapping,
-                                          _parse_hit_summary_line,
-                                          _parse_hit_block, parse_pdb_match,
-                                          select_hits, report_hits,
-                                          report_uncovered_subsequences,
-                                          frag_size, get_q_id)
+from microprot.scripts.split_search import (is_overlapping,
+                                            _parse_hit_summary_line,
+                                            _parse_hit_block, parse_pdb_match,
+                                            select_hits, report_hits,
+                                            report_uncovered_subsequences,
+                                            frag_size, get_q_id)
 
 
 class ParsersTests(TestCase):
@@ -203,8 +203,8 @@ class ParsersTests(TestCase):
                     'nomics, MCSG; 1.95A {Alicyclobacillus acidocaldarius subs'
                     'p}'),
             'Identities': 0.13}
-        self.file_a = get_data_path('test_pdb_search/NC_000913.3_2.out')
-        self.file_b = get_data_path('test_pdb_search/T0810-D1.fasta.out')
+        self.file_a = get_data_path('test_split_search/NC_000913.3_2.out')
+        self.file_b = get_data_path('test_split_search/T0810-D1.fasta.out')
         self.true_a_hits_report = [{
             'end': 461,
             'pdb_id': '2j0w_A',

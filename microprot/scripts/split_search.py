@@ -1,4 +1,5 @@
 from skbio import Protein
+import click
 
 
 _HEADER = ['No',
@@ -550,3 +551,54 @@ def mask_sequence(hhsuite_fp, fullsequence_fp, subsequences_fp=None,
                 for type_ in results}
     except IOError:
         raise IOError('Cannot write to file "%s"' % subsequences_fp)
+
+
+def pretty_output(mask_out):
+    for key in mask_out.keys():
+        print(key)
+        for i in range(len(mask_out[key])):
+            print('\t>%s\n\t%s' % (mask_out[key][i][0], mask_out[key][i][1]))
+    pass
+
+
+# RUN FROM COMMAND LINE
+@click.command()
+@click.option('--subseq_fp', '-o', default=None,
+              type=click.Path(),
+              help='Root of output file\n'
+              'Filepath to which sub-sequences are written as a multiple fasta \
+              files. Each sequence makes up one header and one sequence file, \
+              i.e. sequences are not wrapped.'
+              'Two files will be produced, suffixed by ''.match'' and \
+              ''.non_match''. The first holds sub-sequences of hits, the \
+              second holds the none-hit covered subsequences.')
+@click.option('--prob', '-p', default=None,
+              help='Minimum HHsuite probability value')
+@click.option('--e_val', '-e',  default=None,
+              help='Maximum E-value')
+@click.option('--frag_len', '-l', default=None,
+              help='Minimum fragment length')
+@click.option('--p_val', '-v', default=None,
+              help='Maximum P-value')
+@click.argument('hh_fp', nargs=1, type=click.Path(exists=True))
+@click.argument('fullseq_fp', nargs=1, type=click.Path(exists=True))
+def _split_search(hh_fp, fullseq_fp, subseq_fp,
+                  prob,
+                  p_val,
+                  e_val,
+                  frag_len):
+
+    _out = mask_sequence(hh_fp,
+                         fullseq_fp,
+                         subseq_fp,
+                         prob,
+                         p_val,
+                         e_val,
+                         frag_len)
+
+    if subseq_fp is None:
+        pretty_output(_out)
+
+
+if __name__ == "__main__":
+    _split_search()
