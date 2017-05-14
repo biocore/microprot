@@ -16,6 +16,7 @@ def read_sequence(fasta_fp):
 
 configfile: "config.yaml"
 paths = yaml.load('../../paths.yml')
+seqs = yaml.load('../../inputs.yml')
 
 
 SEQUENCES=config['SEQUENCES']
