@@ -509,7 +509,7 @@ def mask_sequence(hhsuite_fp, fullsequence_fp, subsequences_fp=None,
 
     # read the original protein file, used to run HHsearch
     p = Protein.read(fullsequence_fp, seq_num=1)
-    queryname = p.metadata['id'] + ' ' + p.metadata['description']
+    queryname = [p.metadata['id'], p.metadata['description']]
 
     results = {'match': [], 'non_match': []}
     # select non overlapping positive hits
@@ -517,9 +517,9 @@ def mask_sequence(hhsuite_fp, fullsequence_fp, subsequences_fp=None,
 
     for hit in subseqs_pos:
         _id = get_q_id(hit)
-        header = "%s_%i-%i" % (queryname,
+        header = "%s_%i-%i %s" % (queryname[0],
                                hit['alignment'][_id]['start'],
-                               hit['alignment'][_id]['end'])
+                               hit['alignment'][_id]['end'], queryname[1])
         seq = hit['alignment'][_id]['sequence'].replace('-', '')
         results['match'].append((header, seq, hit['alignment'][_id]['start']))
 
@@ -527,9 +527,9 @@ def mask_sequence(hhsuite_fp, fullsequence_fp, subsequences_fp=None,
     subseqs_neg = report_uncovered_subsequences(subseqs_pos, str(p),
                                                 min_subseq_len=0)
     for hit in subseqs_neg:
-        header = "%s_%i-%i" % (queryname,
+        header = "%s_%i-%i %s" % (queryname[0],
                                hit['start'],
-                               hit['end'])
+                               hit['end'], queryname[1])
         seq = hit['sequence']
         results['non_match'].append((header, seq, hit['start']))
 
