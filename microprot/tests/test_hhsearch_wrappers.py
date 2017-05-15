@@ -27,9 +27,9 @@ class SplitSeq(TestCase):
                           'test_split_search/NC_000913.3_2.fasta')
 
     def test_mask_sequence_filtering(self):
-        s1 = (('gi|556503834|ref|NC_000913.3|_2 # 337 # 2799 # 1 # ID=1_2;part'
-               'ial=00;start_type=ATG;rbs_motif=GGAG/GAGG;rbs_spacer=5-10bp;gc'
-               '_cont=0.531_1-461'),
+        s1 = (('gi|556503834|ref|NC_000913.3|_2_1-461 # 337 # 2799 # 1 # ID=1_'
+               '2;partial=00;start_type=ATG;rbs_motif=GGAG/GAGG;rbs_spacer='
+               '5-10bp;gc_cont=0.531'),
               ('MRVLKFGGTSVANAERFLRVADILESNARQGQVATVLSAPAKITNHLVAMIEKTISGQDALP'
                'NISDAERIFAELLTGLAAAQPGFPLAQLKTFVDQEFAQIKHVLHGISLLGQCPDSINAALIC'
                'RGEKMSIAIMAGVLEARGHNVTVIDPVEKLLAVGHYLESTVDIAESTRRIAASRIPADHMVL'
@@ -38,33 +38,33 @@ class SplitSeq(TestCase):
                'NLNNMAMFSVSGPGMKGMVGMAARVFAAMSRARISVVLITQSSSEYSISFCVPQSDCVRAER'
                'AMQEEFYLELKEGLLEPLAVTERLAIISVVGDGMRTLRGISAKFFAALARANINIVAIAQGS'
                'SERSISVVVNNDDATTGVRVTHQMLFN'))
-        s2 = (('gi|556503834|ref|NC_000913.3|_2 # 337 # 2799 # 1 # ID=1_2;part'
-               'ial=00;start_type=ATG;rbs_motif=GGAG/GAGG;rbs_spacer=5-10bp;gc'
-               '_cont=0.531_462-463'), 'TD')
-        s3 = (('gi|556503834|ref|NC_000913.3|_2 # 337 # 2799 # 1 # ID=1_2;part'
-               'ial=00;start_type=ATG;rbs_motif=GGAG/GAGG;rbs_spacer=5-10bp;gc'
-               '_cont=0.531_464-815'),
+        s2 = (('gi|556503834|ref|NC_000913.3|_2_462-463 # 337 # 2799 # 1 # ID='
+               '1_2;partial=00;start_type=ATG;rbs_motif=GGAG/GAGG;rbs_spacer='
+               '5-10bp;gc_cont=0.531'), 'TD')
+        s3 = (('gi|556503834|ref|NC_000913.3|_2_464-815 # 337 # 2799 # 1 # ID='
+               '1_2;partial=00;start_type=ATG;rbs_motif=GGAG/GAGG;rbs_spacer='
+               '5-10bp;gc_cont=0.531'),
               ('QVIEVFVIGVGGVGGALLEQLKRQQSWLKNKHIDLRVCGVANSKALLTNVHGLNLENWQEEL'
                'AQAKEPFNLGRLIRLVKEYHLLNPVIVDCTSSQAVADQYADFLREGFHVVTPNKKANTSSMD'
                'YYHQLRYAAEKSRRKFLYDTNVGAGLPVIENLQNLLNAGDELMKFSGILSGSLSYIFGKLDE'
                'GMSFSEATTLAREMGYTEPDPRDDLSGMDVARKLLILARETGRELELADIEIEPVLPAEFNA'
                'EGDVAAFMANLSQLDDLFAARVAKARDEGKVLRYVGNIDEDGVCRVKIAEVDGNDPLFKVKN'
                'GENALAFYSHYYQPLPLVLRGYGAGNDVTAAGVFADLLRTLS'))
-        s4 = (('gi|556503834|ref|NC_000913.3|_2 # 337 # 2799 # 1 # ID=1_2;part'
-               'ial=00;start_type=ATG;rbs_motif=GGAG/GAGG;rbs_spacer=5-10bp;gc'
-               '_cont=0.531_816-820', 'WKLGV'))
-        s5 = (('gi|556503834|ref|NC_000913.3|_2 # 337 # 2799 # 1 # ID=1_2;part'
-               'ial=00;start_type=ATG;rbs_motif=GGAG/GAGG;rbs_spacer=5-10bp;gc'
-               '_cont=0.531_462-820'),
+        s4 = (('gi|556503834|ref|NC_000913.3|_2_816-820 # 337 # 2799 # 1 # ID='
+               '1_2;partial=00;start_type=ATG;rbs_motif=GGAG/GAGG;rbs_spacer='
+               '5-10bp;gc_cont=0.531', 'WKLGV'))
+        s5 = (('gi|556503834|ref|NC_000913.3|_2_462-820 # 337 # 2799 # 1 # ID'
+               '=1_2;partial=00;start_type=ATG;rbs_motif=GGAG/GAGG;rbs_spacer='
+               '5-10bp;gc_cont=0.531'),
               ('TDQVIEVFVIGVGGVGGALLEQLKRQQSWLKNKHIDLRVCGVANSKALLTNVHGLNLENWQE'
                'ELAQAKEPFNLGRLIRLVKEYHLLNPVIVDCTSSQAVADQYADFLREGFHVVTPNKKANTSS'
                'MDYYHQLRYAAEKSRRKFLYDTNVGAGLPVIENLQNLLNAGDELMKFSGILSGSLSYIFGKL'
                'DEGMSFSEATTLAREMGYTEPDPRDDLSGMDVARKLLILARETGRELELADIEIEPVLPAEF'
                'NAEGDVAAFMANLSQLDDLFAARVAKARDEGKVLRYVGNIDEDGVCRVKIAEVDGNDPLFKV'
                'KNGENALAFYSHYYQPLPLVLRGYGAGNDVTAAGVFADLLRTLSWKLGV'))
-        s6 = (('gi|556503834|ref|NC_000913.3|_2 # 337 # 2799 # 1 # ID=1_2;part'
-               'ial=00;start_type=ATG;rbs_motif=GGAG/GAGG;rbs_spacer=5-10bp;gc'
-               '_cont=0.531_1-820'), self.query)
+        s6 = (('gi|556503834|ref|NC_000913.3|_2_1-820 # 337 # 2799 # 1 # ID='
+               '1_2;partial=00;start_type=ATG;rbs_motif=GGAG/GAGG;rbs_spacer='
+               '5-10bp;gc_cont=0.531'), self.query)
 
         obs = mask_sequence(self.file_a, self.file_query, None)
         exp = {'match': [s1, s3], 'non_match': [s2, s4]}
@@ -97,12 +97,12 @@ class SplitSeq(TestCase):
                'NLNNMAMFSVSGPGMKGMVGMAARVFAAMSRARISVVLITQSSSEYSISFCVPQSDCVRAER'
                'AMQEEFYLELKEGLLEPLAVTERLAIISVVGDGMRTLRGISAKFFAALARANINIVAIAQGS'
                'SERSISVVVNNDDATTGVRVTHQMLFN')
-        header = ('gi|556503834|ref|NC_000913.3|_2 # 337 # 2799 # 1 # ID=1_2;'
-                  'partial=00;start_type=ATG;rbs_motif=GGAG/GAGG;rbs_spacer=5'
-                  '-10bp;gc_cont=0.531_1-461')
-        header_nm = ('gi|556503834|ref|NC_000913.3|_2 # 337 # 2799 # 1 # ID=1_'
-                     '2;partial=00;start_type=ATG;rbs_motif=GGAG/GAGG;rbs_spac'
-                     'er=5-10bp;gc_cont=0.531_462-820')
+        header = ('gi|556503834|ref|NC_000913.3|_2_1-461 # 337 # 2799 # 1 # ID='
+                  '1_2;partial=00;start_type=ATG;rbs_motif=GGAG/GAGG;rbs_spacer'
+                  '=5-10bp;gc_cont=0.531')
+        header_nm = ('gi|556503834|ref|NC_000913.3|_2_462-820 # 337 # 2799 # 1'
+                     ' # ID=1_2;partial=00;start_type=ATG;rbs_motif=GGAG/GAGG;'
+                     'rbs_spacer=5-10bp;gc_cont=0.531')
         seq_nm = ('TDQVIEVFVIGVGGVGGALLEQLKRQQSWLKNKHIDLRVCGVANSKALLTNVHGLNLEN'
                   'WQEELAQAKEPFNLGRLIRLVKEYHLLNPVIVDCTSSQAVADQYADFLREGFHVVTPNK'
                   'KANTSSMDYYHQLRYAAEKSRRKFLYDTNVGAGLPVIENLQNLLNAGDELMKFSGILSG'
