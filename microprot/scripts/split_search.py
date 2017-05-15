@@ -572,13 +572,13 @@ def pretty_output(mask_out):
               'Two files will be produced, suffixed by ''.match'' and \
               ''.non_match''. The first holds sub-sequences of hits, the \
               second holds the none-hit covered subsequences.')
-@click.option('--prob', '-p', default=None,
+@click.option('--prob', '-p', default=None, type=float,
               help='Minimum HHsuite probability value')
-@click.option('--e_val', '-e',  default=None,
+@click.option('--e_val', '-e',  default=None, type=float,
               help='Maximum E-value')
-@click.option('--frag_len', '-l', default=None,
+@click.option('--frag_len', '-l', default=None, type=float,
               help='Minimum fragment length')
-@click.option('--p_val', '-v', default=None,
+@click.option('--p_val', '-v', default=None, type=float,
               help='Maximum P-value')
 @click.argument('hh_fp', nargs=1, type=click.Path(exists=True))
 @click.argument('fullseq_fp', nargs=1, type=click.Path(exists=True))
