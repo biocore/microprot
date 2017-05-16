@@ -518,18 +518,19 @@ def mask_sequence(hhsuite_fp, fullsequence_fp, subsequences_fp=None,
     for hit in subseqs_pos:
         _id = get_q_id(hit)
         header = "%s_%i-%i %s" % (queryname[0],
-                               hit['alignment'][_id]['start'],
-                               hit['alignment'][_id]['end'], queryname[1])
+                                  hit['alignment'][_id]['start'],
+                                  hit['alignment'][_id]['end'], queryname[1])
         seq = hit['alignment'][_id]['sequence'].replace('-', '')
         results['match'].append((header, seq, hit['alignment'][_id]['start']))
 
     # collect gaps between positive hits
     subseqs_neg = report_uncovered_subsequences(subseqs_pos, str(p),
-                                                min_subseq_len=0)
+                                                min_subseq_len=
+                                                min_fragment_length)
     for hit in subseqs_neg:
         header = "%s_%i-%i %s" % (queryname[0],
-                               hit['start'],
-                               hit['end'], queryname[1])
+                                  hit['start'],
+                                  hit['end'], queryname[1])
         seq = hit['sequence']
         results['non_match'].append((header, seq, hit['start']))
 
