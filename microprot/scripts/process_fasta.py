@@ -123,7 +123,7 @@ def read_representatives(represent):
     return sorted(list(ids))
 
 
-def split_fasta(seqs, prefix=None):
+def split_fasta(seqs, prefix=None, outdir=None):
     """Split a multi-protein FASTA file into single-sequence FASTAs
 
     Parameters
@@ -133,13 +133,15 @@ def split_fasta(seqs, prefix=None):
     prefix : str
         Name prefix to be added to output single-sequence FASTA files
     """
+    if not outdir:
+        outdir = os.getcwd()
     for seq in seqs:
         if prefix:
-            io.write(seq, format='fasta', into='%s_%s.fasta' %
-                     (prefix, seq.metadata['id']))
+            io.write(seq, format='fasta', into='%s/%s_%s.fasta' %
+                     (outdir, prefix, seq.metadata['id']))
         else:
-            io.write(seq, format='fasta', into='%s.fasta' % seq.metadata['id'])
-    pass
+            io.write(seq, format='fasta', into='%s/%s.fasta' %
+                     (outdir, seq.metadata['id']))
 
 
 @click.command()

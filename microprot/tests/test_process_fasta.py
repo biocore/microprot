@@ -116,8 +116,10 @@ class ProcessingTests(TestCase):
             read_representatives('invalid_string')
 
     def test_split_fasta(self):
-        self.assertEqual(obs, exp)
         # TODO without prefix
+        split_fasta(self.input_faa)
+        self.assertEqual(obs, exp)
+
 
         # TODO with prefix
 
