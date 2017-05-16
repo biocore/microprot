@@ -2,12 +2,7 @@ from unittest import TestCase, main
 
 from skbio.util import get_data_path
 
-from microprot.scripts.split_search import (is_overlapping,
-                                            _parse_hit_summary_line,
-                                            _parse_hit_block, parse_pdb_match,
-                                            select_hits, report_hits,
-                                            report_uncovered_subsequences,
-                                            frag_size, get_q_id)
+from microprot.scripts.split_search import parse_pdb_match
 
 
 class ParsersTests(TestCase):
