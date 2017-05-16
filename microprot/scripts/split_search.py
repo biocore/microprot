@@ -73,6 +73,17 @@ def _parse_hit_summary_line(line):
     """
 
     fields = line.rstrip().split()
+
+    # In some cases the field for Template HMM start-end positions is too long,
+    # such that no space is left for the delimiting char to the neighboring
+    # column (length). We detect those pathological cases by testing if the
+    # last field does not start with '('. We then need to 'manually' split this
+    # field. See issue https://github.com/biocore/microprot/issues/33
+    if not fields[-1].startswith('('):
+        pos, length = fields[-1].split('(')
+        del fields[-1]
+        fields.extend([pos, '(' + length])
+
     hit = {}
 
     try:
@@ -525,7 +536,6 @@ def mask_sequence(hhsuite_fp, fullsequence_fp, subsequences_fp=None,
 
     # collect gaps between positive hits
     subseqs_neg = report_uncovered_subsequences(subseqs_pos, str(p),
-                                                min_subseq_len=
                                                 min_fragment_length)
     for hit in subseqs_neg:
         header = "%s_%i-%i %s" % (queryname[0],
