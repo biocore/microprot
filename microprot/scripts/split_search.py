@@ -536,7 +536,6 @@ def mask_sequence(hhsuite_fp, fullsequence_fp, subsequences_fp=None,
 
     # collect gaps between positive hits
     subseqs_neg = report_uncovered_subsequences(subseqs_pos, str(p),
-                                                min_subseq_len=
                                                 min_fragment_length)
     for hit in subseqs_neg:
         header = "%s_%i-%i %s" % (queryname[0],
