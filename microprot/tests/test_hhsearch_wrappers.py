@@ -102,9 +102,9 @@ class SplitSeq(TestCase):
                'NLNNMAMFSVSGPGMKGMVGMAARVFAAMSRARISVVLITQSSSEYSISFCVPQSDCVRAER'
                'AMQEEFYLELKEGLLEPLAVTERLAIISVVGDGMRTLRGISAKFFAALARANINIVAIAQGS'
                'SERSISVVVNNDDATTGVRVTHQMLFN')
-        header = ('gi|556503834|ref|NC_000913.3|_2_1-461 # 337 # 2799 # 1 # ID='
-                  '1_2;partial=00;start_type=ATG;rbs_motif=GGAG/GAGG;rbs_spacer'
-                  '=5-10bp;gc_cont=0.531')
+        header = ('gi|556503834|ref|NC_000913.3|_2_1-461 # 337 # 2799 # 1 # ID'
+                  '=1_2;partial=00;start_type=ATG;rbs_motif=GGAG/GAGG;rbs_spac'
+                  'er=5-10bp;gc_cont=0.531')
         header_nm = ('gi|556503834|ref|NC_000913.3|_2_462-820 # 337 # 2799 # 1'
                      ' # ID=1_2;partial=00;start_type=ATG;rbs_motif=GGAG/GAGG;'
                      'rbs_spacer=5-10bp;gc_cont=0.531')
