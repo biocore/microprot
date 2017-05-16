@@ -566,7 +566,7 @@ def mask_sequence(hhsuite_fp, fullsequence_fp, subsequences_fp=None,
 
 
 def pretty_output(mask_out):
-    for key in mask_out.keys():
+    for key in sorted(mask_out.keys()):
         print(key)
         for i in range(len(mask_out[key])):
             print('\t>%s\n\t%s' % (mask_out[key][i][0], mask_out[key][i][1]))

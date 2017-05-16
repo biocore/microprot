@@ -1,9 +1,26 @@
 from unittest import TestCase, main
 import os
+import sys
+
+from filecmp import cmp
+from shutil import rmtree
+from io import StringIO
+from contextlib import contextmanager
 
 from skbio.util import get_data_path
 
-from microprot.scripts.split_search import mask_sequence
+from microprot.scripts.split_search import mask_sequence, pretty_output
+
+
+@contextmanager
+def captured_output():
+    new_out, new_err = StringIO(), StringIO()
+    old_out, old_err = sys.stdout, sys.stderr
+    try:
+        sys.stdout, sys.stderr = new_out, new_err
+        yield sys.stdout, sys.stderr
+    finally:
+        sys.stdout, sys.stderr = old_out, old_err
 
 
 class SplitSeq(TestCase):
@@ -130,6 +147,17 @@ class SplitSeq(TestCase):
 
         with self.assertRaises(IOError):
             mask_sequence(self.file_a, self.file_query, '/dev')
+
+    def test_pretty_output(self):
+        pretty_fp = get_data_path('test_split_search/NC_000913.3_2.pretty')
+        with open(pretty_fp, 'r') as f:
+            pretty = f.read()
+        mask_obs = mask_sequence(self.file_a, self.file_query,
+                                 min_fragment_length=5)
+        with captured_output() as (out, err):
+            pretty_output(mask_obs)
+        output = out.getvalue()
+        self.assertEqual(output, pretty)
 
 
 if __name__ == '__main__':
