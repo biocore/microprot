@@ -105,16 +105,6 @@ class SplitSeq(TestCase):
         header = ('gi|556503834|ref|NC_000913.3|_2_1-461 # 337 # 2799 # 1 # ID'
                   '=1_2;partial=00;start_type=ATG;rbs_motif=GGAG/GAGG;rbs_spac'
                   'er=5-10bp;gc_cont=0.531')
-        header_nm = ('gi|556503834|ref|NC_000913.3|_2_462-820 # 337 # 2799 # 1'
-                     ' # ID=1_2;partial=00;start_type=ATG;rbs_motif=GGAG/GAGG;'
-                     'rbs_spacer=5-10bp;gc_cont=0.531')
-        seq_nm = ('TDQVIEVFVIGVGGVGGALLEQLKRQQSWLKNKHIDLRVCGVANSKALLTNVHGLNLEN'
-                  'WQEELAQAKEPFNLGRLIRLVKEYHLLNPVIVDCTSSQAVADQYADFLREGFHVVTPNK'
-                  'KANTSSMDYYHQLRYAAEKSRRKFLYDTNVGAGLPVIENLQNLLNAGDELMKFSGILSG'
-                  'SLSYIFGKLDEGMSFSEATTLAREMGYTEPDPRDDLSGMDVARKLLILARETGRELELA'
-                  'DIEIEPVLPAEFNAEGDVAAFMANLSQLDDLFAARVAKARDEGKVLRYVGNIDEDGVCR'
-                  'VKIAEVDGNDPLFKVKNGENALAFYSHYYQPLPLVLRGYGAGNDVTAAGVFADLLRTLS'
-                  'WKLGV')
 
         exp = (header, seq)
         obs = mask_sequence(self.file_a, self.file_query,
