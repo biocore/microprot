@@ -2,8 +2,6 @@ from unittest import TestCase, main
 import os
 import sys
 
-from filecmp import cmp
-from shutil import rmtree
 from io import StringIO
 from contextlib import contextmanager
 
