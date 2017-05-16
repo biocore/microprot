@@ -86,7 +86,12 @@ class SplitSeq(TestCase):
         obs = mask_sequence(self.file_a, self.file_query, min_prob=99.0,
                             max_evalue=4.90e-41, max_pvalue=0.00011,
                             min_fragment_length=200)
-        self.assertEqual(obs, {'match': [s1, s3], 'non_match': [s2, s4]})
+        self.assertEqual(obs, {'match': [s1, s3], 'non_match': []})
+
+        obs = mask_sequence(self.file_a, self.file_query, min_prob=99.0,
+                            max_evalue=4.90e-41, max_pvalue=0.00011,
+                            min_fragment_length=4)
+        self.assertEqual(obs, {'match': [s1, s3], 'non_match': [s4]})
 
     def test_mask_sequence_information(self):
         seq = ('MRVLKFGGTSVANAERFLRVADILESNARQGQVATVLSAPAKITNHLVAMIEKTISGQDALP'
@@ -131,8 +136,7 @@ class SplitSeq(TestCase):
         obs = f.readlines()
         f.close()
         os.remove(filename+'.non_match')
-        self.assertIn(seq_nm+"\n", obs)
-        self.assertIn(">"+header_nm+"\n", obs)
+        self.assertFalse(obs)
 
         with self.assertRaises(IOError):
             mask_sequence(self.file_a, self.file_query, '/dev')

@@ -444,7 +444,7 @@ def frag_size(hit):
 
 def mask_sequence(hhsuite_fp, fullsequence_fp, subsequences_fp=None,
                   min_prob=None, max_pvalue=None, max_evalue=None,
-                  min_fragment_length=None):
+                  min_fragment_length=0):
     """ Splits a protein sequence according to HHsuits results.
 
     The returned sub-sequences will seamlessly build the full sequence if
@@ -476,7 +476,7 @@ def mask_sequence(hhsuite_fp, fullsequence_fp, subsequences_fp=None,
         Default: None, i.e. no filtering on E-value.
     min_fragment_length: int
         Minimal fragment length of a hit to be included in the resulting list.
-        Default: None, i.e. no filtering on fragment length.
+        Default: 0, i.e. no filtering on fragment length.
 
     Returns
     -------
@@ -577,7 +577,7 @@ def pretty_output(mask_out):
               help='Minimum HHsuite probability value')
 @click.option('--e_val', '-e',  default=None, type=float,
               help='Maximum E-value')
-@click.option('--frag_len', '-l', default=None, type=float,
+@click.option('--frag_len', '-l', default=0, type=float,
               help='Minimum fragment length')
 @click.option('--p_val', '-v', default=None, type=float,
               help='Maximum P-value')
