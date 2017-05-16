@@ -123,11 +123,30 @@ def read_representatives(represent):
     return sorted(list(ids))
 
 
+def split_fasta(seqs, prefix=None):
+    """Split a multi-protein FASTA file into single-sequence FASTAs
+
+    Parameters
+    ----------
+    seqs : list of skbio.sequence
+        List of skbio protein sequences with a protein name in header
+    prefix : str
+        Name prefix to be added to output single-sequence FASTA files
+    """
+    for seq in seqs:
+        if prefix:
+            io.write(seq, format='fasta', into='%s_%s.fasta' %
+                     (prefix, seq.metadata['id']))
+        else:
+            io.write(seq, format='fasta', into='%s.fasta' % seq.metadata['id'])
+    pass
+
+
 @click.command()
 @click.option('--infile', '-i', required=True,
               type=click.Path(resolve_path=True, readable=True, exists=True),
               help='Input protein sequence file in FASTA format.')
-@click.option('--outfile', '-o', required=True,
+@click.option('--outfile', '-o', required=False,
               type=click.Path(resolve_path=True, readable=True, exists=False),
               help='Output protein sequence file in FASTA format.')
 @click.option('--identifiers', '-d', required=False,
@@ -139,15 +158,26 @@ def read_representatives(represent):
               'provide a local protein ID list file (XML format), or let the '
               'program download it from the PDB server by specifying a '
               'desired clustering level.')
-def _processing(infile, outfile, identifiers, represent):
+@click.option('--split', '-s', required=False, is_flag=True,
+              help='Split multi-sequence FASTA file into single sequence FAST'
+                   'As with sequence name as file name.')
+@click.option('--prefix', '-p', required=False, default=None,
+              help='Prefix to be used in splitting multi-sequence FASTA file.')
+def _processing(infile, outfile, identifiers, represent, split, prefix):
     """ Parsing arguments for processing
     """
+    if not outfile and not split:
+        raise IOError('No outfile or split flag used. You need to specify at '
+                      'least one.')
+
     if represent:
         identifiers = read_representatives(represent)
         click.echo('Number of representative proteins: %s' % len(identifiers))
     seqs = extract_sequences(infile, identifiers)
     click.echo('Number of extracted proteins: %s' % len(seqs))
-    if seqs:
+    if split:
+        split_fasta(seqs, prefix)
+    elif seqs:
         write_sequences(seqs, outfile)
     click.echo('Task completed.')
 
