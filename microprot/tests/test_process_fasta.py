@@ -115,6 +115,13 @@ class ProcessingTests(TestCase):
         with self.assertRaisesRegex(ValueError, err):
             read_representatives('invalid_string')
 
+    def test_split_fasta(self):
+        self.assertEqual(obs, exp)
+        # TODO without prefix
+
+        # TODO with prefix
+
+
     def test__processing(self):
         # get representative proteins
         params = ['--infile', self.input_faa,
@@ -138,6 +145,8 @@ class ProcessingTests(TestCase):
         exp = ('Number of extracted proteins: 2\n'
                'Task completed.\n')
         self.assertEqual(res.output, exp)
+
+        # TODO split fasta
 
 
 if __name__ == '__main__':
