@@ -1,0 +1,83 @@
+Query         NZ_GG666849.1_2 # 798 # 2885 # -1 # ID=1_2;partial=00;start_type=TTG;rbs_motif=AGxAGG/AGGxGG;rbs_spacer=5-10bp;gc_cont=0.499
+Match_columns 695
+No_of_seqs    1 out of 1
+Neff          1
+Searched_HMMs 36595
+Date          Sat May 13 16:30:35 2017
+Command       hhsearch -i 2.faa -d /projects/microprot/dbs/pdb70/pdb70 -e 0.001 -o test_100_prots_pdb.out -oa3m test_100_prots_pdb.a3m
+
+ No Hit                             Prob E-value P-value  Score    SS Cols Query HMM  Template HMM
+  1 3b85_A Phosphate starvation-in  97.6 1.2E-07 3.4E-12   75.6   0.0   28  223-250    22-49  (208)
+362 3cmu_A Protein RECA, recombina  92.2   0.022 5.9E-07   62.6   0.0   28  222-249  1080-1107(2050)
+454 3j16_B RLI1P; ribosome recycli  90.4   0.052 1.4E-06   54.8   0.0   25  224-248   379-403 (608)
+455 4f4c_A Multidrug resistance pr  90.4   0.052 1.4E-06   56.1   0.0   26  224-249  1106-1131(1321)
+456 3tqc_A Pantothenate kinase; bi  90.4   0.052 1.4E-06   48.8   0.0   26  221-246    90-115 (321)
+
+No 1
+>3b85_A Phosphate starvation-inducible protein; PHOH2, ATPase, PFAM: PF02562, ST genomics, PSI-2, protein structure initiative; 2.35A {Corynebacterium glutamicum atcc 13032}
+Probab=97.61  E-value=1.2e-07  Score=75.62  Aligned_cols=28  Identities=29%  Similarity=0.363  Sum_probs=22.9  Template_Neff=10.900
+
+Q NZ_GG666849.1_  223 PKLIFVQGAAGTGKTVLLSHLFYRIAAE  250 (695)
+Q Consensus       223 pklifvqgaagtgktvllshlfyriaae  250 (695)
+                      ++.++++|+||||||+++..+..+++..
+T Consensus        22 ~~~~~i~g~~GtGKT~~~~~~~~~~~~~   49 (208)
+T 3b85_A           22 NTIVFGLGPAGSGKTYLAMAKAVQALQS   49 (208)
+T ss_dssp             CSEEEEECCTTSSTTHHHHHHHHHHHHT
+T ss_pred             CCeEEEECCCCCCHHHHHHHHHHHHHHh
+Confidence            4678999999999999999866665543
+
+
+No 362
+>3cmu_A Protein RECA, recombinase A; homologous recombination, recombination/DNA complex; HET: DNA ADP; 4.20A {Escherichia coli}
+Probab=92.19  E-value=0.022  Score=62.61  Aligned_cols=28  Identities=18%  Similarity=0.293  Sum_probs=24.1  Template_Neff=10.000
+
+Q NZ_GG666849.1_  222 HPKLIFVQGAAGTGKTVLLSHLFYRIAA  249 (695)
+Q Consensus       222 hpklifvqgaagtgktvllshlfyriaa  249 (695)
+                      .++++.+.|+||+|||+|+..+....+.
+T Consensus      1080 ~g~~ill~G~~G~GKT~la~~la~~~~~ 1107 (2050)
+T 3cmu_A         1080 MGRIVEIYGPESSGKTTLTLQVIAAAQR 1107 (2050)
+T ss_dssp             TTSEEEEECCTTSSHHHHHHHHHHHHHT
+T ss_pred             CCeEEEEECCCCCCHHHHHHHHHHHHHH
+Confidence            5678999999999999999988777643
+
+
+No 454
+>3j16_B RLI1P; ribosome recycling, translation, eukarya, ribosome; HET: ATP; 7.20A {Saccharomyces cerevisiae} PDB: 4crm_P*
+Probab=90.39  E-value=0.052  Score=54.77  Aligned_cols=25  Identities=32%  Similarity=0.530  Sum_probs=20.9  Template_Neff=8.100
+
+Q NZ_GG666849.1_  224 KLIFVQGAAGTGKTVLLSHLFYRIA  248 (695)
+Q Consensus       224 klifvqgaagtgktvllshlfyria  248 (695)
+                      ..+.+.|+.|+|||||++.+.-.+.
+T Consensus       379 ei~~i~G~nGsGKSTllk~l~G~~~  403 (608)
+T 3j16_B          379 EILVMMGENGTGKTTLIKLLAGALK  403 (608)
+T ss_dssp             CEEEEESCTTSSHHHHHHHHHTSSC
+T ss_pred             cEEEEECCCCCCHHHHHHHHhcCCC
+Confidence            4688999999999999998766554
+
+
+No 455
+>4f4c_A Multidrug resistance protein PGP-1; ABC transporter, ATPase, multi-drug transporter, exporter, A binding, hydrolase,protein transport; HET: NDG NAG BMA MAN 0SA; 3.40A {Caenorhabditis elegans}
+Probab=90.38  E-value=0.052  Score=56.06  Aligned_cols=26  Identities=19%  Similarity=0.308  Sum_probs=21.2  Template_Neff=10.500
+
+Q NZ_GG666849.1_  224 KLIFVQGAAGTGKTVLLSHLFYRIAA  249 (695)
+Q Consensus       224 klifvqgaagtgktvllshlfyriaa  249 (695)
+                      +.+.+.|+.|+|||||++.|.-....
+T Consensus      1106 e~vaIvG~sGsGKSTLl~lL~g~~~~ 1131 (1321)
+T 4f4c_A         1106 QTLALVGPSGCGKSTVVALLERFYDT 1131 (1321)
+T ss_dssp             CEEEEECSTTSSTTSHHHHHTTSSCC
+T ss_pred             CEEEEECCCCCCHHHHHHHHHhccCC
+Confidence            46788999999999999988765543
+
+
+No 456
+>3tqc_A Pantothenate kinase; biosynthesis of cofactors, prosthetic groups, carriers, TRAN; HET: ADP; 2.30A {Coxiella burnetii}
+Probab=90.37  E-value=0.052  Score=48.80  Aligned_cols=26  Identities=23%  Similarity=0.271  Sum_probs=22.4  Template_Neff=9.300
+
+Q NZ_GG666849.1_  221 RHPKLIFVQGAAGTGKTVLLSHLFYR  246 (695)
+Q Consensus       221 rhpklifvqgaagtgktvllshlfyr  246 (695)
+                      ..+.+|.+.|++|+|||||++.|...
+T Consensus        90 ~~~~~i~i~G~~gsGKstl~~~l~~~  115 (321)
+T 3tqc_A           90 KVPYIIGIAGSVAVGKSTTSRVLKAL  115 (321)
+T ss_dssp             CCCEEEEEECCTTSSHHHHHHHHHHH
+T ss_pred             CCCeEEEEECCCCCCHHHHHHHHHHH
+Confidence            45788999999999999999988654
