@@ -160,10 +160,10 @@ def split_fasta(seqs, prefix=None, outdir=None):
     for seq in seqs:
         if prefix:
             skbio.io.write(seq, format='fasta', into='%s/%s_%s.fasta' %
-                     (outdir, prefix, seq.metadata['id']))
+                           (outdir, prefix, seq.metadata['id']))
         else:
             skbio.io.write(seq, format='fasta', into='%s/%s.fasta' %
-                     (outdir, seq.metadata['id']))
+                           (outdir, seq.metadata['id']))
 
 
 @click.command()
