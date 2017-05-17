@@ -50,6 +50,14 @@ rule all:
                 yaml.dump(paths, yaml_file, default_flow_style=False)
 
 
+rule extract_sequence:
+    input:
+        SEQUENCES
+    output:
+        'data/{seq}.fasta'
+    run:
+        # extract single sequence from aggregate fasta file
+
 rule search_PDB:
     input:
         'data/{seq}.fasta'

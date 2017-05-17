@@ -73,6 +73,17 @@ def _parse_hit_summary_line(line):
     """
 
     fields = line.rstrip().split()
+
+    # In some cases the field for Template HMM start-end positions is too long,
+    # such that no space is left for the delimiting char to the neighboring
+    # column (length). We detect those pathological cases by testing if the
+    # last field does not start with '('. We then need to 'manually' split this
+    # field. See issue https://github.com/biocore/microprot/issues/33
+    if not fields[-1].startswith('('):
+        pos, length = fields[-1].split('(')
+        del fields[-1]
+        fields.extend([pos, '(' + length])
+
     hit = {}
 
     try:
@@ -444,7 +455,7 @@ def frag_size(hit):
 
 def mask_sequence(hhsuite_fp, fullsequence_fp, subsequences_fp=None,
                   min_prob=None, max_pvalue=None, max_evalue=None,
-                  min_fragment_length=None):
+                  min_fragment_length=0):
     """ Splits a protein sequence according to HHsuits results.
 
     The returned sub-sequences will seamlessly build the full sequence if
@@ -476,7 +487,7 @@ def mask_sequence(hhsuite_fp, fullsequence_fp, subsequences_fp=None,
         Default: None, i.e. no filtering on E-value.
     min_fragment_length: int
         Minimal fragment length of a hit to be included in the resulting list.
-        Default: None, i.e. no filtering on fragment length.
+        Default: 0, i.e. no filtering on fragment length.
 
     Returns
     -------
@@ -509,7 +520,8 @@ def mask_sequence(hhsuite_fp, fullsequence_fp, subsequences_fp=None,
 
     # read the original protein file, used to run HHsearch
     p = Protein.read(fullsequence_fp, seq_num=1)
-    queryname = p.metadata['id'] + ' ' + p.metadata['description']
+    query_id = p.metadata['id']
+    query_desc = p.metadata['description']
 
     results = {'match': [], 'non_match': []}
     # select non overlapping positive hits
@@ -517,19 +529,19 @@ def mask_sequence(hhsuite_fp, fullsequence_fp, subsequences_fp=None,
 
     for hit in subseqs_pos:
         _id = get_q_id(hit)
-        header = "%s_%i-%i" % (queryname,
-                               hit['alignment'][_id]['start'],
-                               hit['alignment'][_id]['end'])
+        header = "%s_%i-%i %s" % (query_id,
+                                  hit['alignment'][_id]['start'],
+                                  hit['alignment'][_id]['end'], query_desc)
         seq = hit['alignment'][_id]['sequence'].replace('-', '')
         results['match'].append((header, seq, hit['alignment'][_id]['start']))
 
     # collect gaps between positive hits
     subseqs_neg = report_uncovered_subsequences(subseqs_pos, str(p),
-                                                min_subseq_len=0)
+                                                min_fragment_length)
     for hit in subseqs_neg:
-        header = "%s_%i-%i" % (queryname,
-                               hit['start'],
-                               hit['end'])
+        header = "%s_%i-%i %s" % (query_id,
+                                  hit['start'],
+                                  hit['end'], query_desc)
         seq = hit['sequence']
         results['non_match'].append((header, seq, hit['start']))
 
@@ -554,11 +566,10 @@ def mask_sequence(hhsuite_fp, fullsequence_fp, subsequences_fp=None,
 
 
 def pretty_output(mask_out):
-    for key in mask_out.keys():
+    for key in sorted(mask_out.keys()):
         print(key)
         for i in range(len(mask_out[key])):
             print('\t>%s\n\t%s' % (mask_out[key][i][0], mask_out[key][i][1]))
-    pass
 
 
 # RUN FROM COMMAND LINE
@@ -572,13 +583,13 @@ def pretty_output(mask_out):
               'Two files will be produced, suffixed by ''.match'' and \
               ''.non_match''. The first holds sub-sequences of hits, the \
               second holds the none-hit covered subsequences.')
-@click.option('--prob', '-p', default=None,
+@click.option('--prob', '-p', default=None, type=float,
               help='Minimum HHsuite probability value')
-@click.option('--e_val', '-e',  default=None,
+@click.option('--e_val', '-e',  default=None, type=float,
               help='Maximum E-value')
-@click.option('--frag_len', '-l', default=None,
+@click.option('--frag_len', '-l', default=0, type=float,
               help='Minimum fragment length')
-@click.option('--p_val', '-v', default=None,
+@click.option('--p_val', '-v', default=None, type=float,
               help='Maximum P-value')
 @click.argument('hh_fp', nargs=1, type=click.Path(exists=True))
 @click.argument('fullseq_fp', nargs=1, type=click.Path(exists=True))
