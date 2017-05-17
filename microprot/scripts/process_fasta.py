@@ -1,8 +1,10 @@
 import os
 import urllib
 import click
-import skbio
 from xml.dom import minidom
+from skbio import io
+from skbio.sequence import Sequence
+
 
 """
 Notes:
@@ -58,7 +60,7 @@ def extract_sequences(infile, identifiers=None):
             else:
                 ids.add(i)  # protein ID (name)
     seqs = []
-    for i, seq in enumerate(skbio.io.read(infile, format='fasta')):
+    for i, seq in enumerate(io.read(infile, format='fasta')):
         if ids:
             if seq.metadata['id'] in ids:
                 seqs.append(seq)
@@ -83,7 +85,7 @@ def write_sequences(seqs, outfile):
     def outseqs():
         for seq in seqs:
             yield seq
-    skbio.io.write(outseqs(), format='fasta', into=outfile)
+    io.write(outseqs(), format='fasta', into=outfile)
 
 
 def read_representatives(represent):
@@ -140,15 +142,19 @@ def split_fasta(seqs, prefix=None, outdir=None):
         seqs needs to be a filepath or skbio.sequence object
     """
 
-    if type(seqs) is str:
+    if isinstance(seqs, str):
         if os.path.exists(seqs):
             seqs = extract_sequences(seqs)
         else:
             raise TypeError('split_fasta sequence input is not a filepath or '
                             'filepath does not exist.')
-    elif (type(seqs) is list) and (type(seqs[0]) is
-                                   skbio.sequence._sequence.Sequence):
-        pass
+    elif isinstance(seqs, list):
+        if len(seqs) == 0:
+            raise ValueError('Empty list provided to split_fasta')
+        else:
+            if not isinstance(seqs[0], Sequence):
+                raise TypeError('Object you provided to split_fasta is not '
+                                'a skbio.sequence object')
     else:
         raise TypeError('split_fasta input sequences need to be a filepath or'
                         'skbio.sequence object.')
@@ -159,10 +165,10 @@ def split_fasta(seqs, prefix=None, outdir=None):
         os.makedirs(outdir)
     for seq in seqs:
         if prefix:
-            skbio.io.write(seq, format='fasta', into='%s/%s_%s.fasta' %
+            io.write(seq, format='fasta', into='%s/%s_%s.fasta' %
                            (outdir, prefix, seq.metadata['id']))
         else:
-            skbio.io.write(seq, format='fasta', into='%s/%s.fasta' %
+            io.write(seq, format='fasta', into='%s/%s.fasta' %
                            (outdir, seq.metadata['id']))
 
 
