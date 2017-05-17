@@ -6,16 +6,17 @@ from skbio import io
 
 """
 Notes:
-This script has two functions:
+This script has three functionalities:
 1. Extract select protein(s) from a multi-sequence Fasta file:
-    python processing.py -i input.faa -d 10 -o output.faa
-    python processing.py -i input.faa -d 1K5N.B -o output.faa
-    python processing.py -i input.faa -d 1,2,3 -o output.faa
-    python processing.py -i input.faa -d list.txt -o output.faa
+    python process_fasta.py -i input.faa -d 10 -o output.faa
+    python process_fasta.py -i input.faa -d 1K5N.B -o output.faa
+    python process_fasta.py -i input.faa -d 1,2,3 -o output.faa
+    python process_fasta.py -i input.faa -d list.txt -o output.faa
 2. Extract representative proteins (local or remote) from PDB:
-    python processing.py -i pdb_seqres.txt -r represents.xml -o output.faa
+    python process_fasta.py -i pdb_seqres.txt -r represents.xml -o output.faa
 Or:
-    python processing.py -i pdb_seqres.txt -r 100 output.faa
+    python process_fasta.py -i pdb_seqres.txt -r 100 output.faa
+3. python process_fasta.py -i input.faa --split -o newdir
 Stats:
     pdb_seqres.txt has 381126 sequences
     representatives?cluster=100 has 70132 protein IDs, as of Jan. 16, 2017.
@@ -135,6 +136,8 @@ def split_fasta(seqs, prefix=None, outdir=None):
     """
     if not outdir:
         outdir = os.getcwd()
+    elif not os.path.exists(outdir):
+        os.makedirs(outdir)
     for seq in seqs:
         if prefix:
             io.write(seq, format='fasta', into='%s/%s_%s.fasta' %
@@ -178,7 +181,7 @@ def _processing(infile, outfile, identifiers, represent, split, prefix):
     seqs = extract_sequences(infile, identifiers)
     click.echo('Number of extracted proteins: %s' % len(seqs))
     if split:
-        split_fasta(seqs, prefix)
+        split_fasta(seqs, prefix, outfile)
     elif seqs:
         write_sequences(seqs, outfile)
     click.echo('Task completed.')
