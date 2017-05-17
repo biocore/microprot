@@ -121,35 +121,36 @@ class ProcessingTests(TestCase):
     def test_split_fasta(self):
         # without prefix
         for prefix in [None, 'dupa']:
-            split_fasta(extract_sequences(self.input_faa), prefix=prefix,
-                        outdir=self.working_dir)
-            if prefix is not None:
-                exp_fnames = sorted(['%s_%s' % (prefix,
-                                                basename(self.split_1)),
-                                     '%s_%s' % (prefix,
-                                                basename(self.split_2)),
-                                     '%s_%s' % (prefix,
-                                                basename(self.split_3))])
-            else:
-                exp_fnames = sorted([basename(self.split_1),
-                                     basename(self.split_2),
-                                     basename(self.split_3)])
+            for inp_faa in [extract_sequences(self.input_faa),
+                            self.input_faa]:
+                split_fasta(inp_faa, prefix=prefix,
+                            outdir=self.working_dir)
+                if prefix is not None:
+                    exp_fnames = sorted(['%s_%s' % (prefix,
+                                                    basename(self.split_1)),
+                                         '%s_%s' % (prefix,
+                                                    basename(self.split_2)),
+                                         '%s_%s' % (prefix,
+                                                    basename(self.split_3))])
+                else:
+                    exp_fnames = sorted([basename(self.split_1),
+                                         basename(self.split_2),
+                                         basename(self.split_3)])
 
+                obs_paths = sorted(glob(self.working_dir+'/*.fasta'))
+                obs_fnames = list(map(basename,
+                                      obs_paths))
+                self.assertListEqual(obs_fnames, exp_fnames)
 
-            obs_paths = sorted(glob(self.working_dir+'/*.fasta'))
-            obs_fnames = list(map(basename,
-                                  obs_paths))
-            self.assertListEqual(obs_fnames, exp_fnames)
+                for obs_fp, exp_fp in zip([self.split_1, self.split_2,
+                                          self.split_3], obs_paths):
+                    obs = open(obs_fp, 'r').read()
+                    exp = open(exp_fp, 'r').read()
+                    self.assertEqual(obs, exp)
 
-            for obs_fp, exp_fp in zip([self.split_1, self.split_2,
-                                      self.split_3], obs_paths):
-                obs = open(obs_fp, 'r').read()
-                exp = open(exp_fp, 'r').read()
-                self.assertEqual(obs, exp)
-
-            # remove fastas
-            for fasta in obs_paths:
-                remove(fasta)
+                # remove fastas
+                for fasta in obs_paths:
+                    remove(fasta)
 
     def test__processing(self):
         # get representative proteins
