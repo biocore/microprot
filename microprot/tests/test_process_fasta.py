@@ -2,15 +2,17 @@ from unittest import TestCase, main
 from click.testing import CliRunner
 from shutil import rmtree
 from os import remove
-from os.path import join
+from os.path import join, basename
 from tempfile import mkdtemp
 from skbio.util import get_data_path
 from skbio import Sequence
+from glob import glob
 
-from microprot.scripts.processing import (extract_sequences,
-                                          write_sequences,
-                                          read_representatives,
-                                          _processing)
+from microprot.scripts.process_fasta import (extract_sequences,
+                                             write_sequences,
+                                             read_representatives,
+                                             split_fasta,
+                                             _processing)
 
 
 class ProcessingTests(TestCase):
@@ -19,10 +21,14 @@ class ProcessingTests(TestCase):
         self.working_dir = mkdtemp()
 
         # test data files
-        dir = 'test_processing'
+        dir = 'test_process_fasta'
         self.input_faa = get_data_path(join(dir, 'input.faa'))
         self.represent = get_data_path(join(dir, 'represent.xml'))
         self.pdb_seqres = get_data_path(join(dir, 'pdb_seqres.txt'))
+
+        self.split_1 = get_data_path(join(dir, '1K5N_B.fasta'))
+        self.split_2 = get_data_path(join(dir, '2VB1_A.fasta'))
+        self.split_3 = get_data_path(join(dir, '3J4F_A.fasta'))
 
         # test protein sequences
         self.seqs = []
@@ -48,9 +54,6 @@ class ProcessingTests(TestCase):
         x.metadata['description'] = ('Chain A, Hewl At 0.65 Angstrom Resolutio'
                                      'n')
         self.seqs.append(x)
-
-    def tearDown(self):
-        rmtree(self.working_dir)
 
     def test_extract_sequences(self):
         # extract all sequences
@@ -115,6 +118,40 @@ class ProcessingTests(TestCase):
         with self.assertRaisesRegex(ValueError, err):
             read_representatives('invalid_string')
 
+    def test_split_fasta(self):
+        # without prefix
+        for prefix in [None, 'dupa']:
+            for inp_faa in [extract_sequences(self.input_faa),
+                            self.input_faa]:
+                split_fasta(inp_faa, prefix=prefix,
+                            outdir=self.working_dir)
+                if prefix is not None:
+                    exp_fnames = sorted(['%s_%s' % (prefix,
+                                                    basename(self.split_1)),
+                                         '%s_%s' % (prefix,
+                                                    basename(self.split_2)),
+                                         '%s_%s' % (prefix,
+                                                    basename(self.split_3))])
+                else:
+                    exp_fnames = sorted([basename(self.split_1),
+                                         basename(self.split_2),
+                                         basename(self.split_3)])
+
+                obs_paths = sorted(glob(self.working_dir+'/*.fasta'))
+                obs_fnames = list(map(basename,
+                                      obs_paths))
+                self.assertListEqual(obs_fnames, exp_fnames)
+
+                for obs_fp, exp_fp in zip([self.split_1, self.split_2,
+                                          self.split_3], obs_paths):
+                    obs = open(obs_fp, 'r').read()
+                    exp = open(exp_fp, 'r').read()
+                    self.assertEqual(obs, exp)
+
+                # remove fastas
+                for fasta in obs_paths:
+                    remove(fasta)
+
     def test__processing(self):
         # get representative proteins
         params = ['--infile', self.input_faa,
@@ -138,6 +175,11 @@ class ProcessingTests(TestCase):
         exp = ('Number of extracted proteins: 2\n'
                'Task completed.\n')
         self.assertEqual(res.output, exp)
+
+        # TODO split fasta
+
+    def tearDown(self):
+        rmtree(self.working_dir)
 
 
 if __name__ == '__main__':

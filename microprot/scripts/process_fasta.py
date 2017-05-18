@@ -3,19 +3,22 @@ import urllib
 import click
 from xml.dom import minidom
 from skbio import io
+from skbio.sequence import Sequence
+
 
 """
 Notes:
-This script has two functions:
+This script has three functionalities:
 1. Extract select protein(s) from a multi-sequence Fasta file:
-    python processing.py -i input.faa -d 10 -o output.faa
-    python processing.py -i input.faa -d 1K5N.B -o output.faa
-    python processing.py -i input.faa -d 1,2,3 -o output.faa
-    python processing.py -i input.faa -d list.txt -o output.faa
+    python process_fasta.py -i input.faa -d 10 -o output.faa
+    python process_fasta.py -i input.faa -d 1K5N.B -o output.faa
+    python process_fasta.py -i input.faa -d 1,2,3 -o output.faa
+    python process_fasta.py -i input.faa -d list.txt -o output.faa
 2. Extract representative proteins (local or remote) from PDB:
-    python processing.py -i pdb_seqres.txt -r represents.xml -o output.faa
+    python process_fasta.py -i pdb_seqres.txt -r represents.xml -o output.faa
 Or:
-    python processing.py -i pdb_seqres.txt -r 100 output.faa
+    python process_fasta.py -i pdb_seqres.txt -r 100 output.faa
+3. python process_fasta.py -i input.faa --split -o newdir
 Stats:
     pdb_seqres.txt has 381126 sequences
     representatives?cluster=100 has 70132 protein IDs, as of Jan. 16, 2017.
@@ -123,11 +126,57 @@ def read_representatives(represent):
     return sorted(list(ids))
 
 
+def split_fasta(seqs, prefix=None, outdir=None):
+    """Split a multi-protein FASTA file into single-sequence FASTAs
+
+    Parameters
+    ----------
+    seqs : list of skbio.sequence
+        List of skbio protein sequences with a protein name in header
+    prefix : str
+        Name prefix to be added to output single-sequence FASTA files
+
+    Raises
+    ------
+    TypeError
+        seqs needs to be a filepath or skbio.sequence object
+    """
+
+    if isinstance(seqs, str):
+        if os.path.exists(seqs):
+            seqs = extract_sequences(seqs)
+        else:
+            raise TypeError('split_fasta sequence input is not a filepath or '
+                            'filepath does not exist.')
+    elif isinstance(seqs, list):
+        if len(seqs) == 0:
+            raise ValueError('Empty list provided to split_fasta')
+        else:
+            if not isinstance(seqs[0], Sequence):
+                raise TypeError('Object you provided to split_fasta is not '
+                                'a skbio.sequence object')
+    else:
+        raise TypeError('split_fasta input sequences need to be a filepath or'
+                        'skbio.sequence object.')
+
+    if not outdir:
+        outdir = os.getcwd()
+    elif not os.path.exists(outdir):
+        os.makedirs(outdir)
+    for seq in seqs:
+        if prefix:
+            io.write(seq, format='fasta', into='%s/%s_%s.fasta' %
+                     (outdir, prefix, seq.metadata['id']))
+        else:
+            io.write(seq, format='fasta', into='%s/%s.fasta' %
+                     (outdir, seq.metadata['id']))
+
+
 @click.command()
 @click.option('--infile', '-i', required=True,
               type=click.Path(resolve_path=True, readable=True, exists=True),
               help='Input protein sequence file in FASTA format.')
-@click.option('--outfile', '-o', required=True,
+@click.option('--outfile', '-o', required=False,
               type=click.Path(resolve_path=True, readable=True, exists=False),
               help='Output protein sequence file in FASTA format.')
 @click.option('--identifiers', '-d', required=False,
@@ -139,15 +188,26 @@ def read_representatives(represent):
               'provide a local protein ID list file (XML format), or let the '
               'program download it from the PDB server by specifying a '
               'desired clustering level.')
-def _processing(infile, outfile, identifiers, represent):
+@click.option('--split', '-s', required=False, is_flag=True,
+              help='Split multi-sequence FASTA file into single sequence FAST'
+                   'As with sequence name as file name.')
+@click.option('--prefix', '-p', required=False, default=None,
+              help='Prefix to be used in splitting multi-sequence FASTA file.')
+def _processing(infile, outfile, identifiers, represent, split, prefix):
     """ Parsing arguments for processing
     """
+    if not outfile and not split:
+        raise IOError('No outfile or split flag used. You need to specify at '
+                      'least one.')
+
     if represent:
         identifiers = read_representatives(represent)
         click.echo('Number of representative proteins: %s' % len(identifiers))
     seqs = extract_sequences(infile, identifiers)
     click.echo('Number of extracted proteins: %s' % len(seqs))
-    if seqs:
+    if split:
+        split_fasta(seqs, prefix, outfile)
+    elif seqs:
         write_sequences(seqs, outfile)
     click.echo('Task completed.')
 
