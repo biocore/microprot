@@ -7,6 +7,7 @@ TOOLS:
 
 DBS:
     pdb100: /projects/microprot/dbs/pdb100/
+    pdb70: /projects/microprot/dbs/pdb70/pdb70
     psiblast_db: /projects/microprot/dbs/uniref90/
     hhblits_db: /projects/microprot/dbs/uniboost30/
     pfamA: /projects/microprot/dbs/pfamA/

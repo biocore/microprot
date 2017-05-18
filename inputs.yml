@@ -1,3 +1,3 @@
-inp_file: /projects/microprot/input/all_prots.faa
+inp_file: /projects/microprot/input/test_10_prots.faa
 inp_from: 1
-inp_to: 100
+inp_to: 2

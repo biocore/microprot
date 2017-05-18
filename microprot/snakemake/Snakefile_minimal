@@ -1,0 +1,84 @@
+# snakemake run example:
+# snakemake -j 32 --local-cores 8 --cluster-config cluster.json --cluster \
+# "qsub -k eo -m n -l nodes=1:ppn={cluster.n} -l mem={cluster.mem}gb \
+# -l walltime={cluster.time}" --directory "$@"
+
+import os
+import skbio
+import yaml
+import re
+from microprot.scripts import split_sequence, mask_sequence, calculate_Nf
+
+# load sequence into a sequence object
+def read_sequence(fasta_fp):
+    seq = skbio.Protein.read(fasta_fp)
+    return seq
+
+configfile: "config.yaml"
+paths = yaml.load('../../paths.yml')
+
+
+SEQUENCES=config['SEQUENCES']
+# SEQUENCES = glob_wildcards(paths['INPUTS'])
+
+def search_X(seq, split, output_base, shell_func):
+    for d_boundaries, domain in split_sequence(seq, split):
+        n = '%s-%s' % (str(d_boundaries[0]), str(d_boundaries[1]))
+        out = '%s_%s.%s' % (output_base, n, 'out')
+        a3m = '%s_%s.%s' % (output_base, n, 'a3m')
+        with open(output_base, 'a') as f:
+            f.write(out)
+            f.write(a3m)
+        shell_func
+        pass
+
+rule all:
+    input:
+        expand("results/{seq}/10-Rosetta/{seq}.msa",
+               seq=SEQUENCES),
+        expand("results/{seq}/03-secondary_predictions/{seq}_{n}.{suffix}",
+               seq=SEQUENCES,
+               n=['1-100', '101-250', '251-400'],
+               suffix=['ss', 'diso', 'tmh'])
+    run:
+        for inp in input:
+            inp = re.sub('{seq}/10-Rosetta/', '', inp)
+            inp = re.sub('results/', 'results/log/', inp)
+            inp = re.sub('.msa', '.params', inp)
+            with open(inp, 'w') as yaml_file:
+                yaml.dump(config, yaml_file, default_flow_style=False)
+                yaml.dump(paths, yaml_file, default_flow_style=False)
+
+
+rule extract_sequence:
+    input:
+        SEQUENCES
+    output:
+        'data/{seq}.fasta'
+    run:
+        # extract single sequence from aggregate fasta file
+
+rule search_PDB:
+    input:
+        'data/{seq}.fasta'
+    output:
+        out='results/{seq}/01-search_pdb/{seq}.out',
+        a3m='results/{seq}/01-search_pdb/{seq}.a3m'
+    log:
+        'results/log/{seq}/search_pdb.log'
+    shell:
+        '{paths[TOOLS][hhsuite]}/bin/hhsearch -i {input} \
+         {config[search_PDB][params]} \
+         -d {paths[DBS][pdb100]} \
+         -o {output.out} \
+         -oa3m {output.a3m}'
+
+rule split_PDB:
+    input:
+        'results/{seq}/01-search_pdb/{seq}.out'
+    output:
+        'results/{seq}/02-split_pdb/{seq}.split_pdb',
+    log:
+        'results/log/{seq}/split_pdb.log'
+    run:
+        mask_sequence(input[0], output[0], config['split_PDB']['params'])
