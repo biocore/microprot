@@ -87,18 +87,27 @@ rule all:
 
 rule extract_sequence:
     input:
-        SEQUENCES
+        expand("{inp}",
+               inp=SEQUENCES),
     output:
         'data/{seq}.fasta'
+    params:
+        _from = SEQ_from
+        _to = SEQ_to
     run:
-        # extract single sequence from aggregate fasta file
+        seqs = process_fasta.extract_sequence(input[0],
+                                              identifiers=(_from,
+                                                           _to))
+        for s in seqs:
+            process_fasta.write_sequences(s, output[0])
+
 
 rule search_PDB:
     input:
         'data/{seq}.fasta'
     output:
-        out='results/01-search_pdb/{seq}.out',
-        a3m='results/01-search_pdb/{seq}.a3m'
+        out = 'results/01-search_pdb/{seq}.out',
+        a3m = 'results/01-search_pdb/{seq}.a3m'
     log:
         'results/log/{seq}/search_pdb.log'
     shell:
