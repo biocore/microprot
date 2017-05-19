@@ -62,7 +62,7 @@ class ProcessingTests(TestCase):
         self.assertListEqual(obs, exp)
 
         # specify protein index
-        obs = extract_sequences(self.input_faa, identifiers='2')
+        obs = extract_sequences(self.input_faa, identifiers=2)
         exp = [self.seqs[1]]
         self.assertListEqual(obs, exp)
 
@@ -71,7 +71,12 @@ class ProcessingTests(TestCase):
         exp = [self.seqs[1]]
         self.assertListEqual(obs, exp)
 
-        # specify protein indexes using a Python list
+        # specify protein indexes using a Python list of int
+        obs = extract_sequences(self.input_faa, identifiers=[1, 3])
+        exp = [self.seqs[0], self.seqs[2]]
+        self.assertListEqual(obs, exp)
+
+        # specify protein indexes using a Python list of str
         obs = extract_sequences(self.input_faa, identifiers=['2', '3'])
         exp = [self.seqs[1], self.seqs[2]]
         self.assertListEqual(obs, exp)
@@ -89,6 +94,41 @@ class ProcessingTests(TestCase):
         remove(listfile)
         exp = [self.seqs[1], self.seqs[2]]
         self.assertListEqual(obs, exp)
+
+        # specify protein index range using a Python tuple (start, end)
+        obs = extract_sequences(self.input_faa, identifiers=(2, 3))
+        exp = [self.seqs[1], self.seqs[2]]
+        self.assertListEqual(obs, exp)
+
+        # raise error when tuple is not properly formatted
+        err = 'Error: Index range must be a tuple of (start, end).'
+        with self.assertRaises(ValueError, msg=err):
+            extract_sequences(self.input_faa, identifiers=('hi', 'there'))
+        with self.assertRaises(ValueError, msg=err):
+            extract_sequences(self.input_faa, identifiers=(1, 2, 3))
+        with self.assertRaises(ValueError, msg=err):
+            extract_sequences(self.input_faa, identifiers=(3, 1))
+
+        # specify protein index range using a str of "start..end"
+        obs = extract_sequences(self.input_faa, identifiers='1..3')
+        exp = [self.seqs[0], self.seqs[1], self.seqs[2]]
+        self.assertListEqual(obs, exp)
+
+        # raise error when "start..end" is not properly formatted
+        err = 'Error: Index range must be formatted as "start..end".'
+        with self.assertRaises(ValueError, msg=err):
+            extract_sequences(self.input_faa, identifiers='not.an..id')
+        with self.assertRaises(ValueError, msg=err):
+            extract_sequences(self.input_faa, identifiers='1..2..3')
+        with self.assertRaises(ValueError, msg=err):
+            extract_sequences(self.input_faa, identifiers='3..1')
+
+        # raise error when identifiers is of incorrect data type
+        err = 'Error: Incorrect data type of identifiers.'
+        with self.assertRaises(ValueError, msg=err):
+            extract_sequences(self.input_faa, identifiers=1.23)
+        with self.assertRaises(ValueError, msg=err):
+            extract_sequences(self.input_faa, identifiers={'1K5N_B': 1})
 
     def test_write_sequences(self):
         seqs = extract_sequences(self.input_faa, identifiers='1')
