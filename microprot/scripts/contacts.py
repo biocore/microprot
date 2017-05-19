@@ -299,5 +299,6 @@ def _contacts(mode, confile, infile, outfile, aminoacid,
             print('%s\t%s\t%.2f' % (str(cons[0]), str(cons[1]),
                                     float(cons[2])))
 
+
 if __name__ == "__main__":
     _contacts()

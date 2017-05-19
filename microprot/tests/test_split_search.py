@@ -404,5 +404,6 @@ class ParsersTests(TestCase):
                                get_q_id,
                                {'alignment': {}})
 
+
 if __name__ == '__main__':
     main()
