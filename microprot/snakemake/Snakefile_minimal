@@ -7,19 +7,9 @@ import os
 import skbio
 import yaml
 import re
-from microprot.scripts import split_sequence, mask_sequence, calculate_Nf
+from datetime import datetime
+from microprot.scripts import split_search, process_fasta
 
-# load sequence into a sequence object
-def read_sequence(fasta_fp):
-    seq = skbio.Protein.read(fasta_fp)
-    return seq
-
-configfile: "config.yaml"
-paths = yaml.load('../../paths.yml')
-
-
-SEQUENCES=config['SEQUENCES']
-# SEQUENCES = glob_wildcards(paths['INPUTS'])
 
 def search_X(seq, split, output_base, shell_func):
     for d_boundaries, domain in split_sequence(seq, split):
@@ -31,6 +21,51 @@ def search_X(seq, split, output_base, shell_func):
             f.write(a3m)
         shell_func
         pass
+
+
+def not_empty(fname, step=None, version=1, db_fp=microprot_db_fp):
+    if os.path.exists(fname) and os.path.getsize(fname) > 0:
+        return True
+    else:
+        append_db(fname, step=step, version=version, db_fp=db_fp)
+        return False
+
+
+def msa_size(msa_fp):
+    msa_dir, msa_ext = os.path.splitext(os.path.abspath(msa_fp))
+    if msa_ext not '.a3m':
+        msa_ext = '.a3m'
+    with(''.join([msa_dir, msa_ext]), 'r') as f:
+        lines = f.readlines()
+    msa_size = len([line for line in lines if line.startswith('>')])-1
+    return msa_size
+
+
+def append_db(fname, step=None, version=1, db_fp='/tmp/protein_db.index'):
+    prots = process_fasta.extract_sequences(fname)
+    for prot in prots:
+        prot_name = prot.metadata['id']
+        timestamp = str(datetime.now())
+        msa_size = msa_size(fname)
+
+        # > protein_name # source # commit_no # timestamp # MSA_size
+        append = '> %s # %s # %i # %s # %i\n' % (prot_name,
+                                                 step,
+                                                 version,
+                                                 timestamp,
+                                                 msa_size)
+        with open(db_fp, 'a') as f:
+            f.write(append)
+
+
+configfile: "config.yaml"
+paths = yaml.load('../../paths.yml')
+inputs = yaml.load('../../inputs.yml')
+
+SEQUENCES = inputs['inp_file']
+SEQ_from = inputs['inp_from']
+SEQ_to = inputs['inp_to']
+
 
 rule all:
     input:
@@ -62,17 +97,23 @@ rule search_PDB:
     input:
         'data/{seq}.fasta'
     output:
-        out='results/{seq}/01-search_pdb/{seq}.out',
-        a3m='results/{seq}/01-search_pdb/{seq}.a3m'
+        out='results/01-search_pdb/{seq}.out',
+        a3m='results/01-search_pdb/{seq}.a3m'
     log:
         'results/log/{seq}/search_pdb.log'
     shell:
         '{paths[TOOLS][hhsuite]}/bin/hhsearch -i {input} \
          {config[search_PDB][params]} \
-         -d {paths[DBS][pdb100]} \
+         -d {paths[DBS][pdb70]} \
          -o {output.out} \
          -oa3m {output.a3m}'
 
+"""
+in fact we should have 3 outputs:
+    * {seq}.match
+    * {seq}.non_match
+    * {seq}.split pdb # placeholder for rule purposes
+"""
 rule split_PDB:
     input:
         'results/{seq}/01-search_pdb/{seq}.out'
@@ -81,4 +122,4 @@ rule split_PDB:
     log:
         'results/log/{seq}/split_pdb.log'
     run:
-        mask_sequence(input[0], output[0], config['split_PDB']['params'])
+        split_search(input[0], output[0], config['split_PDB']['params'])
