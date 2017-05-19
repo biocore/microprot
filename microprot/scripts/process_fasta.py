@@ -13,6 +13,7 @@ This script has three functionalities:
     python process_fasta.py -i input.faa -d 10 -o output.faa
     python process_fasta.py -i input.faa -d 1K5N.B -o output.faa
     python process_fasta.py -i input.faa -d 1,2,3 -o output.faa
+    python process_fasta.py -i input.faa -d 1..3 -o output.faa
     python process_fasta.py -i input.faa -d list.txt -o output.faa
 2. Extract representative proteins (local or remote) from PDB:
     python process_fasta.py -i pdb_seqres.txt -r represents.xml -o output.faa
@@ -32,31 +33,77 @@ def extract_sequences(infile, identifiers=None):
     ----------
     infile : str
         file path to input multi-sequence FASTA file
-    identifiers : str or list of str (optional)
-        IDs (names) or indexes (n-th sequence in the file) of the proteins to
-        extract, may be:
-        1) Python list
-        2) comma-separated list
-        3) file path to the list (one ID or index per line)
+    identifiers :
+        int
+            sequence index (n-th sequence in the file)
+        str
+            sequence ID (name) or index
+                numeric str is treated as index instead of ID
+            comma-separated sequence IDs or indexes
+            file path to sequence list (one ID or index per line)
+            sequence index range as "start..end" (both included)
+                start must be smaller or equal to end
+        list of int
+            sequence indexes
+        list of str
+            sequence IDs or indexes
+        tuple of two int's
+            sequence index range as (start, end)
         if omitted, all sequences will be extracted
 
-    Return
-    ------
+    Returns
+    -------
     list of skbio Sequence
         extracted protein sequences
+
+    Raises
+    ------
+    ValueError
+        if tuple (index range) is not in (start, end) form
+        if index range str is not formatted as "start, end"
     """
     l, ids, indexes = [], set(), set()
     if identifiers:
-        if type(identifiers) is list:  # Python list
+        # IDs or indexes as list
+        if isinstance(identifiers, list):
             l = identifiers
-        elif os.path.isfile(identifiers):  # read from a local file
-            with open(identifiers, 'r') as f:
-                l = f.read().splitlines()
-        else:  # comma-separated list
-            l = list(map(str.strip, identifiers.split(',')))
+        # start and end indexes as tuple of int
+        elif isinstance(identifiers, tuple):
+            if len(identifiers) == 2 \
+                and all(isinstance(n, int) for n in identifiers) \
+                    and 0 < identifiers[0] <= identifiers[1]:
+                l = list(range(identifiers[0], identifiers[1] + 1))
+            else:
+                raise ValueError('Error: Index range must be a tuple of '
+                                 '(start, end).')
+        elif isinstance(identifiers, str):
+            # read from a file
+            if os.path.isfile(identifiers):
+                with open(identifiers, 'r') as f:
+                    l = f.read().splitlines()
+            # start and end indexes as str
+            elif '..' in identifiers:
+                l = identifiers.split('..')
+                if len(l) == 2 \
+                    and all(n.isdigit() for n in l) \
+                        and 0 < int(l[0]) <= int(l[1]):
+                    l = list(range(int(l[0]), int(l[1]) + 1))
+                else:
+                    raise ValueError('Error: Index range must be formatted as '
+                                     '"start..end".')
+            # IDs or indexes as str (single or comma-separated list)
+            else:
+                l = list(map(str.strip, identifiers.split(',')))
+        # index as int
+        elif isinstance(identifiers, int):
+            l = [identifiers]
+        else:
+            raise ValueError('Error: Incorrect data type of identifiers.')
         for i in l:
-            if i.isdigit():
-                indexes.add(int(i))  # index of this protein in the file
+            if isinstance(i, int):  # index of this protein in the file
+                indexes.add(i)
+            elif i.isdigit():
+                indexes.add(int(i))
             else:
                 ids.add(i)  # protein ID (name)
     seqs = []

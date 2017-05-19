@@ -85,5 +85,6 @@ class ContactsTests(TestCase):
 
                 self.assertEqual(ref.split()[4], '%.4f' % out)
 
+
 if __name__ == '__main__':
     main()
