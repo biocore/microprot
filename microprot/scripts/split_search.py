@@ -577,9 +577,9 @@ def pretty_output(mask_out):
 @click.option('--subseq_fp', '-o', default=None,
               type=click.Path(),
               help='Root of output file\n'
-              'Filepath to which sub-sequences are written as a multiple fasta \
-              files. Each sequence makes up one header and one sequence file, \
-              i.e. sequences are not wrapped.'
+              'Filepath to which sub-sequences are written as a multiple \
+              fasta files. Each sequence makes up one header and one sequence \
+              file, i.e. sequences are not wrapped.'
               'Two files will be produced, suffixed by ''.match'' and \
               ''.non_match''. The first holds sub-sequences of hits, the \
               second holds the none-hit covered subsequences.')
