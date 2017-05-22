@@ -9,17 +9,19 @@ import yaml
 import re
 from microprot.scripts import split_sequence, mask_sequence, calculate_Nf
 
+
 # load sequence into a sequence object
 def read_sequence(fasta_fp):
     seq = skbio.Protein.read(fasta_fp)
     return seq
 
+
 configfile: "config.yaml"
 paths = yaml.load('../../paths.yml')
 
-
-SEQUENCES=config['SEQUENCES']
+SEQUENCES = config['SEQUENCES']
 # SEQUENCES = glob_wildcards(paths['INPUTS'])
+
 
 def search_X(seq, split, output_base, shell_func):
     for d_boundaries, domain in split_sequence(seq, split):
@@ -31,6 +33,7 @@ def search_X(seq, split, output_base, shell_func):
             f.write(a3m)
         shell_func
         pass
+
 
 rule all:
     input:
@@ -52,11 +55,20 @@ rule all:
 
 rule extract_sequence:
     input:
-        SEQUENCES
+        expand("{inp}",
+               inp=SEQUENCES),
     output:
         'data/{seq}.fasta'
+    params:
+        _from = SEQ_from
+        _to = SEQ_to
     run:
-        # extract single sequence from aggregate fasta file
+        seqs = process_fasta.extract_sequence(input[0],
+                                              identifiers=(_from,
+                                                           _to))
+        for s in seqs:
+            process_fasta.write_sequences(s, output[0])
+
 
 rule search_PDB:
     input:

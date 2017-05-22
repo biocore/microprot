@@ -3,119 +3,50 @@
 # "qsub -k eo -m n -l nodes=1:ppn={cluster.n} -l mem={cluster.mem}gb \
 # -l walltime={cluster.time}" --directory "$@"
 
-import os
-import skbio
+# snakemake -s Snakefile_minimal -n
+
 import yaml
 import re
-from datetime import datetime
-from microprot.scripts import split_search, process_fasta
+import sys
+from glob import glob
 
-
-def search_X(seq, split, output_base, shell_func):
-    for d_boundaries, domain in split_sequence(seq, split):
-        n = '%s-%s' % (str(d_boundaries[0]), str(d_boundaries[1]))
-        out = '%s_%s.%s' % (output_base, n, 'out')
-        a3m = '%s_%s.%s' % (output_base, n, 'a3m')
-        with open(output_base, 'a') as f:
-            f.write(out)
-            f.write(a3m)
-        shell_func
-        pass
-
-
-def not_empty(fname, step=None, version=1, db_fp=microprot_db_fp):
-    if os.path.exists(fname) and os.path.getsize(fname) > 0:
-        return True
-    else:
-        append_db(fname, step=step, version=version, db_fp=db_fp)
-        return False
-
-
-def msa_size(msa_fp):
-    msa_dir, msa_ext = os.path.splitext(os.path.abspath(msa_fp))
-    if msa_ext not '.a3m':
-        msa_ext = '.a3m'
-    with(''.join([msa_dir, msa_ext]), 'r') as f:
-        lines = f.readlines()
-    msa_size = len([line for line in lines if line.startswith('>')])-1
-    return msa_size
-
-
-def append_db(fname, step=None, version=1, db_fp='/tmp/protein_db.index'):
-    prots = process_fasta.extract_sequences(fname)
-    for prot in prots:
-        prot_name = prot.metadata['id']
-        timestamp = str(datetime.now())
-        msa_size = msa_size(fname)
-
-        # > protein_name # source # commit_no # timestamp # MSA_size
-        append = '> %s # %s # %i # %s # %i\n' % (prot_name,
-                                                 step,
-                                                 version,
-                                                 timestamp,
-                                                 msa_size)
-        with open(db_fp, 'a') as f:
-            f.write(append)
+sys.path.append('/projects/microprot')
+from microprot.scripts import split_search, process_fasta, snakemake_helpers
 
 
 configfile: "config.yaml"
-paths = yaml.load('../../paths.yml')
-inputs = yaml.load('../../inputs.yml')
+with open('%s%s' % (config['MICROPROT_MAIN'], 'paths.yml'), 'r') as f:
+    paths = yaml.load(f)
+with open('%s%s' % (config['MICROPROT_MAIN'], 'inputs.yml'), 'r') as f:
+    inputs = yaml.load(f)
 
 SEQUENCES = inputs['inp_file']
+INP_PATH = inputs['inp_path']
 SEQ_from = inputs['inp_from']
 SEQ_to = inputs['inp_to']
+microprot_db_fp = '/tmp/microprot_db.index'
 
 
 rule all:
     input:
-        expand("results/{seq}/10-Rosetta/{seq}.msa",
-               seq=SEQUENCES),
-        expand("results/{seq}/03-secondary_predictions/{seq}_{n}.{suffix}",
-               seq=SEQUENCES,
-               n=['1-100', '101-250', '251-400'],
-               suffix=['ss', 'diso', 'tmh'])
-    run:
-        for inp in input:
-            inp = re.sub('{seq}/10-Rosetta/', '', inp)
-            inp = re.sub('results/', 'results/log/', inp)
-            inp = re.sub('.msa', '.params', inp)
-            with open(inp, 'w') as yaml_file:
-                yaml.dump(config, yaml_file, default_flow_style=False)
-                yaml.dump(paths, yaml_file, default_flow_style=False)
-
-
-rule extract_sequence:
-    input:
-        expand("{inp}",
-               inp=SEQUENCES),
-    output:
-        'data/{seq}.fasta'
-    params:
-        _from = SEQ_from
-        _to = SEQ_to
-    run:
-        seqs = process_fasta.extract_sequence(input[0],
-                                              identifiers=(_from,
-                                                           _to))
-        for s in seqs:
-            process_fasta.write_sequences(s, output[0])
+        config['MICROPROT_MAIN']+'results/04-split_CM/seq2/seq2'
 
 
 rule search_PDB:
     input:
-        'data/{seq}.fasta'
+        "/projects/microprot/benchmarking/snakemake_test/seq2.faa"
     output:
-        out = 'results/01-search_pdb/{seq}.out',
-        a3m = 'results/01-search_pdb/{seq}.a3m'
+        out = config['MICROPROT_MAIN']+'results/01-search_pdb/{seq}/{seq}.out',
+        a3m = config['MICROPROT_MAIN']+'results/01-search_pdb/{seq}/{seq}.a3m'
     log:
-        'results/log/{seq}/search_pdb.log'
+        config['MICROPROT_MAIN']+'results/log/{seq}/search_pdb.log'
     shell:
         '{paths[TOOLS][hhsuite]}/bin/hhsearch -i {input} \
          {config[search_PDB][params]} \
          -d {paths[DBS][pdb70]} \
          -o {output.out} \
          -oa3m {output.a3m}'
+
 
 """
 in fact we should have 3 outputs:
@@ -125,10 +56,67 @@ in fact we should have 3 outputs:
 """
 rule split_PDB:
     input:
-        'results/{seq}/01-search_pdb/{seq}.out'
+        config['MICROPROT_MAIN']+'results/01-search_pdb/{seq}/{seq}.out',
+        rules.search_PDB.input[0]
     output:
-        'results/{seq}/02-split_pdb/{seq}.split_pdb',
+        config['MICROPROT_MAIN']+'results/02-split_pdb/{seq}/{seq}'
     log:
-        'results/log/{seq}/split_pdb.log'
+        config['MICROPROT_MAIN']+'results/log/{seq}/split_pdb.log'
     run:
-        split_search(input[0], output[0], config['split_PDB']['params'])
+        # produces output.match and output.non_match
+        split_search.mask_sequence(input[0], input[1],
+                                   config['split_PDB']['params'],
+                                   subsequences_fp=output[0])
+        match = '%s.match' % output[0]
+        non_match = '%s.non_match' % output[0]
+
+        if snakemake_helpers.non_empty(match):
+            append_db(match, step="PDB", version=1,
+                      db_fp=microprot_db_fp)
+        if snakemake_helpers.non_empty(non_match):
+            open(output[0], 'a').close()
+
+
+rule search_CM:
+    input:
+        config['MICROPROT_MAIN']+'results/02-split_pdb/{seq}/{seq}'
+    output:
+        config['MICROPROT_MAIN']+'results/03-search_CM/{seq}/{seq}'
+    run:
+        non_match = '%s.non_match' % input[0]
+        outdir = snakemake_helpers.trim(output[0], '/')
+        if snakemake_helpers.non_empty(non_match):
+            process_fasta.split_fasta(process_fasta.extract_sequences(
+                                      non_match), outdir=outdir)
+            touch(output[0])
+        for hh_inp in glob('%s/%s' % (outdir, '*.fasta')):
+            out_root = snakemake_helpers.trim(hh_inp, '.')
+            shell('{paths[TOOLS][hhsuite]}/bin/hhsearch -i {hhinp} \
+                   {config[search_CM][params]} \
+                   -d {paths[DBS][pdb70]} \
+                   -o {out_root}.out \
+                   -oa3m {out_root}.a3m')
+
+
+rule split_CM:
+    input:
+        rules.search_CM.output[0]
+    output:
+        config['MICROPROT_MAIN']+'results/04-split_CM/{seq}/{seq}'
+    run:
+        inpdir = snakemake_helpers.trim(input[0], '/')
+        for hh_inp, fasta_inp in zip(glob('%s/%s' % (inpdir, '*.out')),
+                                     glob('%s/%s' % (inpdir, '*.fasta'))):
+            outname = snakemake_helpers.trim(hh_inp, '.')
+            # produces output.match and output.non_match
+            split_search.mask_sequence(hh_inp, fasta_inp,
+                                       config['split_CM']['params'],
+                                       subsequences_fp=outname)
+            match = '%s.match' % outname
+            non_match = '%s.non_match' % outname
+
+            if snakemake_helpers.non_empty(match):
+                append_db(match, step="CM", version=1,
+                          db_fp=microprot_db_fp)
+            if snakemake_helpers.non_empty(non_match):
+                open(output[0], 'a').close()
