@@ -24,7 +24,11 @@ SEQUENCES = inputs['inp_file']
 INP_PATH = inputs['inp_path']
 SEQ_from = inputs['inp_from']
 SEQ_to = inputs['inp_to']
-microprot_db_fp = '/tmp/microprot_db.index'
+microprot_db_fp = '/localscratch/microprot_db.index'
+
+## FOR NOW
+config['MICROPROT_MAIN'] = '/projects/microprot/benchmarking/snakemake_minimal_test/'
+##########
 
 
 rule all:
@@ -34,14 +38,14 @@ rule all:
 
 rule search_PDB:
     input:
-        "/projects/microprot/benchmarking/snakemake_test/seq2.faa"
+        "/projects/microprot/benchmarking/snakemake_minimal_test/seq2.faa"
     output:
         out = config['MICROPROT_MAIN']+'results/01-search_pdb/{seq}/{seq}.out',
         a3m = config['MICROPROT_MAIN']+'results/01-search_pdb/{seq}/{seq}.a3m'
     log:
         config['MICROPROT_MAIN']+'results/log/{seq}/search_pdb.log'
     shell:
-        '{paths[TOOLS][hhsuite]}/bin/hhsearch -i {input} \
+        '{paths[TOOLS][hhsuite]}/hhsearch -i {input} \
          {config[search_PDB][params]} \
          -d {paths[DBS][pdb70]} \
          -o {output.out} \
@@ -65,15 +69,16 @@ rule split_PDB:
     run:
         # produces output.match and output.non_match
         split_search.mask_sequence(input[0], input[1],
-                                   config['split_PDB']['params'],
-                                   subsequences_fp=output[0])
+                                   subsequences_fp=output[0],
+                                   min_prob=config['split_PDB']['params']['min_prob'],
+                                   min_fragment_length=config['split_PDB']['params']['min_fragment_length'])
         match = '%s.match' % output[0]
         non_match = '%s.non_match' % output[0]
 
-        if snakemake_helpers.non_empty(match):
-            append_db(match, step="PDB", version=1,
-                      db_fp=microprot_db_fp)
-        if snakemake_helpers.non_empty(non_match):
+        if snakemake_helpers.not_empty(match):
+            snakemake_helpers.append_db(match, step="PDB", version=1,
+                                        db_fp=microprot_db_fp)
+        if snakemake_helpers.not_empty(non_match):
             open(output[0], 'a').close()
 
 
@@ -85,17 +90,18 @@ rule search_CM:
     run:
         non_match = '%s.non_match' % input[0]
         outdir = snakemake_helpers.trim(output[0], '/')
-        if snakemake_helpers.non_empty(non_match):
+        if snakemake_helpers.not_empty(non_match):
             process_fasta.split_fasta(process_fasta.extract_sequences(
                                       non_match), outdir=outdir)
             touch(output[0])
         for hh_inp in glob('%s/%s' % (outdir, '*.fasta')):
             out_root = snakemake_helpers.trim(hh_inp, '.')
-            shell('{paths[TOOLS][hhsuite]}/bin/hhsearch -i {hhinp} \
+            shell('{paths[TOOLS][hhsuite]}/hhsearch -i {hh_inp} \
                    {config[search_CM][params]} \
                    -d {paths[DBS][pdb70]} \
                    -o {out_root}.out \
                    -oa3m {out_root}.a3m')
+        shell('touch {output}')
 
 
 rule split_CM:
@@ -107,16 +113,20 @@ rule split_CM:
         inpdir = snakemake_helpers.trim(input[0], '/')
         for hh_inp, fasta_inp in zip(glob('%s/%s' % (inpdir, '*.out')),
                                      glob('%s/%s' % (inpdir, '*.fasta'))):
-            outname = snakemake_helpers.trim(hh_inp, '.')
+            outname = snakemake_helpers.trim(hh_inp, '.').split('/')[-1]
+            outpath = snakemake_helpers.trim(output[0], '/')
             # produces output.match and output.non_match
             split_search.mask_sequence(hh_inp, fasta_inp,
-                                       config['split_CM']['params'],
-                                       subsequences_fp=outname)
-            match = '%s.match' % outname
-            non_match = '%s.non_match' % outname
+                                       subsequences_fp='%s/%s' % (outpath,
+                                                                  outname),
+                                       min_fragment_length=config['split_CM']['params']['min_fragment_length'],
+                                       max_evalue=config['split_CM']['params']['max_evalue']
+                                       )
+            match = '%s/%s.match' % (outpath, outname)
+            non_match = '%s/%s.non_match' % (outpath, outname)
 
-            if snakemake_helpers.non_empty(match):
-                append_db(match, step="CM", version=1,
-                          db_fp=microprot_db_fp)
-            if snakemake_helpers.non_empty(non_match):
-                open(output[0], 'a').close()
+            if snakemake_helpers.not_empty(match):
+                snakemake_helpers.append_db(match, step="CM", version=1,
+                                            db_fp=microprot_db_fp)
+            if snakemake_helpers.not_empty(non_match):
+                shell('touch {output}')
