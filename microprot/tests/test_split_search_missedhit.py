@@ -1,5 +1,6 @@
 from unittest import TestCase, main
 import tempfile
+import os
 
 from skbio.util import get_data_path
 
@@ -59,6 +60,7 @@ class ParsersTests(TestCase):
             obs_filecontents[type_] = f.readlines()
             f.close()
 
+        os.remove(outdir)
         self.assertEqual(obs_filecontents, exp_filecontents)
 
 
