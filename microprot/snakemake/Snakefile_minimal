@@ -31,9 +31,55 @@ config['MICROPROT_MAIN'] = '/projects/microprot/benchmarking/snakemake_minimal_t
 ##########
 
 
+def search_x(inp_0, out_0, config=None, dbs=None):
+    indir = snakemake_helpers.trim(inp_0, '/')
+    outdir = snakemake_helpers.trim(out_0, '/')
+    for non_match in glob('%s/%s' % (indir, '*.non_match')):
+        if snakemake_helpers.not_empty(non_match):
+            process_fasta.split_fasta(process_fasta.extract_sequences(
+                                      non_match), outdir=outdir)
+    for hh_inp in glob('%s/%s' % (outdir, '*.fasta')):
+        out_root = snakemake_helpers.trim(hh_inp, '.')
+        shell('{paths[TOOLS][hhsuite]}/hhsearch -i {hh_inp} \
+               {config} \
+               -d {dbs} \
+               -o {out_root}.out \
+               -oa3m {out_root}.a3m')
+    shell('touch {out_0}')
+
+
+def split_x(inp_0, out_0, step="NA", version=1,
+            frag_len=None,
+            p_val=None,
+            e_val=None,
+            prob=None):
+    inpdir = snakemake_helpers.trim(inp_0, '/')
+    for hh_inp, fasta_inp in zip(glob('%s/%s' % (inpdir, '*.out')),
+                                 glob('%s/%s' % (inpdir, '*.fasta'))):
+        outname = snakemake_helpers.trim(hh_inp, '.').split('/')[-1]
+        outpath = snakemake_helpers.trim(out_0, '/')
+
+        split_search.mask_sequence(hh_inp, fasta_inp,
+                                   subsequences_fp='%s/%s' % (outpath,
+                                                              outname),
+                                   min_fragment_length=frag_len,
+                                   max_evalue=e_val,
+                                   min_prob=prob,
+                                   max_pvalue=p_val
+                                   )
+        match = '%s/%s.match' % (outpath, outname)
+        non_match = '%s/%s.non_match' % (outpath, outname)
+
+        if snakemake_helpers.not_empty(match):
+            snakemake_helpers.append_db(match, step=step, version=version,
+                                        db_fp=microprot_db_fp)
+        if snakemake_helpers.not_empty(non_match):
+            shell('touch {out_0}')
+
+
 rule all:
     input:
-        config['MICROPROT_MAIN']+'results/04-split_CM/seq2/seq2'
+        config['MICROPROT_MAIN']+'results/07-MSA_hhblits/seq2/seq2'
 
 
 rule search_PDB:
@@ -52,12 +98,6 @@ rule search_PDB:
          -oa3m {output.a3m}'
 
 
-"""
-in fact we should have 3 outputs:
-    * {seq}.match
-    * {seq}.non_match
-    * {seq}.split pdb # placeholder for rule purposes
-"""
 rule split_PDB:
     input:
         config['MICROPROT_MAIN']+'results/01-search_pdb/{seq}/{seq}.out',
@@ -88,20 +128,9 @@ rule search_CM:
     output:
         config['MICROPROT_MAIN']+'results/03-search_CM/{seq}/{seq}'
     run:
-        non_match = '%s.non_match' % input[0]
-        outdir = snakemake_helpers.trim(output[0], '/')
-        if snakemake_helpers.not_empty(non_match):
-            process_fasta.split_fasta(process_fasta.extract_sequences(
-                                      non_match), outdir=outdir)
-            touch(output[0])
-        for hh_inp in glob('%s/%s' % (outdir, '*.fasta')):
-            out_root = snakemake_helpers.trim(hh_inp, '.')
-            shell('{paths[TOOLS][hhsuite]}/hhsearch -i {hh_inp} \
-                   {config[search_CM][params]} \
-                   -d {paths[DBS][pdb70]} \
-                   -o {out_root}.out \
-                   -oa3m {out_root}.a3m')
-        shell('touch {output}')
+        search_x(input[0], output[0],
+                 config=config['search_CM']['params'],
+                 dbs=paths['DBS']['pdb70'])
 
 
 rule split_CM:
@@ -110,23 +139,77 @@ rule split_CM:
     output:
         config['MICROPROT_MAIN']+'results/04-split_CM/{seq}/{seq}'
     run:
-        inpdir = snakemake_helpers.trim(input[0], '/')
-        for hh_inp, fasta_inp in zip(glob('%s/%s' % (inpdir, '*.out')),
-                                     glob('%s/%s' % (inpdir, '*.fasta'))):
-            outname = snakemake_helpers.trim(hh_inp, '.').split('/')[-1]
-            outpath = snakemake_helpers.trim(output[0], '/')
-            # produces output.match and output.non_match
-            split_search.mask_sequence(hh_inp, fasta_inp,
-                                       subsequences_fp='%s/%s' % (outpath,
-                                                                  outname),
-                                       min_fragment_length=config['split_CM']['params']['min_fragment_length'],
-                                       max_evalue=config['split_CM']['params']['max_evalue']
-                                       )
-            match = '%s/%s.match' % (outpath, outname)
-            non_match = '%s/%s.non_match' % (outpath, outname)
+        split_x(input[0], output[0],
+                step="CM",
+                frag_len=config['split_CM']['params']['min_fragment_length'],
+                e_val=config['split_CM']['params']['max_evalue'])
 
-            if snakemake_helpers.not_empty(match):
-                snakemake_helpers.append_db(match, step="CM", version=1,
-                                            db_fp=microprot_db_fp)
+
+rule search_Pfam:
+    input:
+        config['MICROPROT_MAIN']+'results/04-split_CM/{seq}/{seq}'
+    output:
+        config['MICROPROT_MAIN']+'results/05-search_Pfam/{seq}/{seq}'
+    log:
+        'results/log/{seq}/search_pfam.log'
+    run:
+        search_x(input[0], output[0],
+                 config=config['search_Pfam']['params'],
+                 dbs=paths['DBS']['pfamA'])
+
+
+rule split_Pfam:
+    input:
+        rules.search_Pfam.output[0]
+    output:
+        config['MICROPROT_MAIN']+'results/06-split_Pfam/{seq}/{seq}'
+    log:
+        'results/log/{seq}.split_pfam.log'
+    run:
+        split_x(input[0], output[0],
+                step="Pfam",
+                frag_len=config['split_Pfam']['params']['min_fragment_length'],
+                e_val=config['split_Pfam']['params']['max_evalue'],
+                prob=config['split_Pfam']['params']['min_prob'])
+
+
+rule MSA_hhblits:
+    input:
+        config['MICROPROT_MAIN']+'results/06-split_Pfam/{seq}/{seq}'
+    output:
+        config['MICROPROT_MAIN']+'results/07-MSA_hhblits/{seq}/{seq}'
+    log:
+        'results/log/{seq}.msa_hhblits.log'
+    run:
+        """
+        it's essentially a copy of `search_x` function, but here we're using
+        HHblits and it has a slightly different commandline input construction
+        """
+        indir = snakemake_helpers.trim(input[0], '/')
+        outdir = snakemake_helpers.trim(output[0], '/')
+        for non_match in glob('%s/%s' % (indir, '*.non_match')):
             if snakemake_helpers.not_empty(non_match):
-                shell('touch {output}')
+                process_fasta.split_fasta(process_fasta.extract_sequences(
+                                          non_match), outdir=outdir)
+        for hh_inp in glob('%s/%s' % (outdir, '*.fasta')):
+            out_root = snakemake_helpers.trim(hh_inp, '.')
+            shell('{paths[TOOLS][hhsuite]}/hhblits -i {hh_inp} \
+                   {config[MSA_hhblits][params]} \
+                   -d {paths[DBS][hhblits_db]} \
+                   -o {out_root}.out \
+                   -oa3m {out_root}.a3m')
+        shell('touch {output}')
+
+
+# rule MSA_ripe:
+#     input:
+#         'results/08-MSA_hhblits/{seq}/{seq}'
+#     output:
+#         not_ripe = 'results/09-not_ripe/{seq}/{seq}.msa',
+#         ripe = 'results/10-Rosetta/{seq}/{seq}.msa'
+#     run:
+#         for inp in open(input[0], 'r').readlines():
+#             inp_out = '%s.%s' % (inp, 'out')
+#             inp_a3m = '%s.%s' % (inp, 'a3m')
+#             calculate_Nf(inp_out, inp_a3m,
+#                          output['ripe'], output['not_ripe'])

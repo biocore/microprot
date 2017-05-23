@@ -1,3 +1,4 @@
-inp_file: /projects/microprot/input/test_10_prots.faa
+inp_path: /projects/microprot/benchmarking/snakemake_test/
+inp_file: 2.faa
 inp_from: 1
 inp_to: 2

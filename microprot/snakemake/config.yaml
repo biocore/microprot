@@ -4,7 +4,9 @@ search_PDB:
     params: '-e 0.001'
     threads: 8
 split_PDB:
-    params: 'min_prob=0.95, min_fragment_length=10'
+    params:
+        min_prob: 0.95
+        min_fragment_length: 10
 
 PSIBLAST_PSSM:
     params: '-j 3 -h 0.001'
@@ -13,13 +15,18 @@ search_CM:
     params: '-e 0.1'
     threads: 8
 split_CM:
-    params: 'max_evalue=0.1, min_fragment_length=40'
+    params:
+        max_evalue: 0.1
+        min_fragment_length: 40
 
 search_Pfam:
     params: '-e 0.1'
     threads: 8
 split_Pfam:
-    params: 'max_evalue=0.01, min_prob=0.95, min_fragment_length=40'
+    params:
+        max_evalue: 0.01
+        min_prob: 0.95
+        min_fragment_length: 40
 
 MSA_hhblits:
     params: '-n 3 -e 0.001 -maxfilt 500000 -diff inf -id 99 -cov 50 -cpu 8'

@@ -1,15 +1,12 @@
 TOOLS:
-    hhsuite: /projects/microprot/tools/hh-suite-3.0.0
+    hhsuite: /projects/microprot/tools/hh-suite-3.0.0/build/bin
     blast: /projects/microprot/tools/blast-2.2.26
     psipred: /projects/microprot/tools/psipred4
     disopred: /projects/microprot/tools/disopred3
     metapsicov: /projects/microprot/tools/contact_predictions/metaPSICOV
 
 DBS:
-    pdb100: /projects/microprot/dbs/pdb100/
     pdb70: /projects/microprot/dbs/pdb70/pdb70
-    psiblast_db: /projects/microprot/dbs/uniref90/
-    hhblits_db: /projects/microprot/dbs/uniboost30/
-    pfamA: /projects/microprot/dbs/pfamA/
-
-MICROPROT_MAIN: /projects/microprot/
+    psiblast_db: /projects/microprot/dbs/uniref90/May_2017/uniref90
+    hhblits_db: /projects/microprot/dbs/uniclust30_2016_09/uniclust30_2016_09
+    pfamA: /projects/microprot/dbs/pfamA/pfam
