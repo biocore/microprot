@@ -32,7 +32,7 @@ def msa_size(msa_fp):
 # adding MSA size information omitted for now
 def append_db(fname, step=None, version=1, db_fp='/tmp/protein_db.index'):
     prots = process_fasta.extract_sequences(fname)
-    fp = trim(fname, '/')
+    # fp = trim(fname, '/')
     for prot in prots:
         prot_name = prot.metadata['id']
         timestamp = str(datetime.now())
