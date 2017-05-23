@@ -16,7 +16,7 @@ class ParsersTests(TestCase):
             'test_split_search/NZ_GG666849.1_2_251-330.fasta')
         self.exp_hits = {
             'non_match':
-            [(('NZ_GG666849.1_2_251-330_1-80 # 798 # 2885 # -1 # ID=1_2;partia'
+            [(('NZ_GG666849.1_2_251-330 # 798 # 2885 # -1 # ID=1_2;partia'
                'l=00;start_type=TTG;rbs_motif=AGxAGG/AGGxGG;rbs_spacer=5-10bp;'
                'gc_cont=0.499'),
               ('IGIQGDTYSEDEDYPELPRTANGRLSSYILVNHKEQVHVYNQIATKLGLQKESGEVVMLPSQ'
@@ -48,7 +48,7 @@ class ParsersTests(TestCase):
 
         exp_filecontents = {
             'non_match':
-            [('>NZ_GG666849.1_2_251-330_1-80 # 798 # 2885 # -1 # ID=1_2;parti'
+            [('>NZ_GG666849.1_2_251-330 # 798 # 2885 # -1 # ID=1_2;parti'
               'al=00;start_type=TTG;rbs_motif=AGxAGG/AGGxGG;rbs_spacer=5-10bp'
               ';gc_cont=0.499\n'),
              ('IGIQGDTYSEDEDYPELPRTANGRLSSYILVNHKEQVHVYNQIATKLGLQKESGEVVMLPSQ'
