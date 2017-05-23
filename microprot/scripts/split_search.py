@@ -462,6 +462,10 @@ def correct_header_positions(header, new_start, new_end, out=sys.stderr):
     ----------
     header : str
         The existing fasta header string with start-end positions as a suffix.
+        Valid header format is specified as the regular expression:
+        '(.+)_(\d+)\-(\d+)$'
+        Examples for valid header: 'test_1_251-330', 'NZ_GG666849.1_2_251-330'
+        Examples for invalid headers: 'NZ_GG666849.1_2', 'test_1_251:330'
     new_start : int
         The new start position.
     new_end : int
