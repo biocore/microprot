@@ -1,0 +1,44 @@
+rule extract_sequence:
+    input:
+        expand("{inp}",
+               inp=SEQUENCES),
+    output:
+        'data/{seq}.fasta'
+    params:
+        _from = SEQ_from
+        _to = SEQ_to
+    run:
+        seqs = process_fasta.extract_sequence(input[0],
+                                              identifiers=(_from,
+                                                           _to))
+        for s in seqs:
+            process_fasta.write_sequences(s, output[0])
+
+
+rule PSIBLAST_PSSM:
+    input:
+        split = 'results/{seq}/02-split_pdb/{seq}.split_pdb',
+        seq = 'data/{seq}.fasta'
+    output:
+        'results/{seq}/03-secondary_predictions/chk/{seq}'
+    log:
+        'results/log/{seq}/psiblast_pssm.log'
+    run:
+        shell_f = shell('{paths[SCRIPTS]/psiblast.py -i {domain} \
+                        -d {paths[DBS][uniref90]} \
+                        -o {out} \
+                        -oa3m {a3m}')
+        search_X(input['seq'], input['split'], output[0], shell_f)
+
+
+# run secondary structure, disorder and TMH predictions on output from `PSIBLAST_PSSM`
+rule PSIBLAST_predictions:
+    input:
+        'results/{seq}/03-secondary_predictions/chk/{seq}'
+    output:
+        'results/{seq}/03-secondary_predictions/{seq}',
+    log:
+        'results/log/{seq}/psiblast_predictions.log'
+    shell:
+        'python {paths[SCRIPTS]}/secondary_preds.py -i {input} \
+                                                    -o {output}'
