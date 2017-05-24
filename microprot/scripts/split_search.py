@@ -1,6 +1,8 @@
-from skbio import Protein
-import click
+import sys
+import re
 
+import click
+from skbio import Protein
 
 _HEADER = ['No',
            'Hit',
@@ -453,6 +455,56 @@ def frag_size(hit):
     return len(subseq) - subseq.count('-')
 
 
+def correct_header_positions(header, new_start, new_end, out=sys.stderr):
+    """Prevents chaining of start-end positions.
+
+    Parameters
+    ----------
+    header : str
+        The existing fasta header string with start-end positions as a suffix.
+        Valid header format is specified as the regular expression:
+        '(.+)_(\d+)\-(\d+)$'
+        Examples for valid header: 'test_1_251-330', 'NZ_GG666849.1_2_251-330'
+        Examples for invalid headers: 'NZ_GG666849.1_2', 'test_1_251:330'
+    new_start : int
+        The new start position, relative to the interval found in the header.
+        Example: header 'test_1_251-330', new_start 50 -> updated_start 300
+    new_end : int
+        The new end position, relative to the interval found in the header.
+        Example: header 'test_1_251-330', new_end 70 -> updated_start 320
+    out : file handle
+        File handle into which verbosity information should be printed.
+
+    Returns
+    -------
+    str : the new fasta header with updated start, end positions.
+
+    Raises
+    ------
+    ValueError if
+        a) input header string does not follow expected format
+        b) old and new start, end positions are incompatible.
+    """
+    pattern = re.compile('(.+)_(\d+)\-(\d+)$')
+
+    hit = pattern.match(header)
+    if hit is None:
+        return '%s_%i-%i' % (header, new_start, new_end)
+    else:
+        prefix, old_start, old_end = hit.group(1), hit.group(2), hit.group(3)
+        len_new = int(new_end) - int(new_start) + 1
+        len_old = int(old_end) - int(old_start) + 1
+        if len_new > len_old:
+            raise ValueError("Intervals are not nested!")
+        if new_start > len_old:
+            raise ValueError("New interval out of old interval borders!")
+
+        updated_start = int(old_start) + int(new_start) - 1
+        updated_end = int(old_start) + int(new_end) - 1
+
+        return "%s_%i-%i" % (prefix, updated_start, updated_end)
+
+
 def mask_sequence(hhsuite_fp, fullsequence_fp, subsequences_fp=None,
                   min_prob=None, max_pvalue=None, max_evalue=None,
                   min_fragment_length=0):
@@ -529,9 +581,10 @@ def mask_sequence(hhsuite_fp, fullsequence_fp, subsequences_fp=None,
 
     for hit in subseqs_pos:
         _id = get_q_id(hit)
-        header = "%s_%i-%i %s" % (query_id,
-                                  hit['alignment'][_id]['start'],
-                                  hit['alignment'][_id]['end'], query_desc)
+        header = "%s %s" % (correct_header_positions(
+            query_id,
+            hit['alignment'][_id]['start'],
+            hit['alignment'][_id]['end']), query_desc)
         seq = hit['alignment'][_id]['sequence'].replace('-', '')
         results['match'].append((header, seq, hit['alignment'][_id]['start']))
 
@@ -539,9 +592,10 @@ def mask_sequence(hhsuite_fp, fullsequence_fp, subsequences_fp=None,
     subseqs_neg = report_uncovered_subsequences(subseqs_pos, str(p),
                                                 min_fragment_length)
     for hit in subseqs_neg:
-        header = "%s_%i-%i %s" % (query_id,
-                                  hit['start'],
-                                  hit['end'], query_desc)
+        header = "%s %s" % (correct_header_positions(
+            query_id,
+            hit['start'],
+            hit['end']), query_desc)
         seq = hit['sequence']
         results['non_match'].append((header, seq, hit['start']))
 
@@ -577,9 +631,9 @@ def pretty_output(mask_out):
 @click.option('--subseq_fp', '-o', default=None,
               type=click.Path(),
               help='Root of output file\n'
-              'Filepath to which sub-sequences are written as a multiple fasta \
-              files. Each sequence makes up one header and one sequence file, \
-              i.e. sequences are not wrapped.'
+              'Filepath to which sub-sequences are written as a multiple \
+              fasta files. Each sequence makes up one header and one sequence \
+              file, i.e. sequences are not wrapped.'
               'Two files will be produced, suffixed by ''.match'' and \
               ''.non_match''. The first holds sub-sequences of hits, the \
               second holds the none-hit covered subsequences.')

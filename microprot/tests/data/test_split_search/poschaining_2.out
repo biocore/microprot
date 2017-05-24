@@ -1,0 +1,190 @@
+Query         NZ_GG666849.1_2_251-330 # 798 # 2885 # -1 # ID=1_2;partial=00;start_type=TTG;rbs_motif=AGxAGG/AGGxGG;rbs_spacer=5-10bp;gc_cont=0.499
+Match_columns 80
+No_of_seqs    1 out of 1
+Neff          1
+Searched_HMMs 36595
+Date          Sun May 21 18:41:09 2017
+Command       hhsearch -i ./02-split_pdb/2/NZ_GG666849.1_2_251-330.fasta -d /projects/microprot/dbs/pdb70/pdb70 -e 0.1 -o ./03-search_cm/NZ_GG666849.1_2_251-330.out -oa3m ./03-search_cm/NZ_GG666849.1_2_251-330.a3m 
+
+ No Hit                             Prob E-value P-value  Score    SS Cols Query HMM  Template HMM
+  1 2j27_A Triosephosphate isomera  27.5      24 0.00065   24.6   0.0   30   26-55     88-121 (250)
+  2 4y96_A Triosephosphate isomera  26.6      25  0.0007   24.7   0.0   29   26-54     92-124 (255)
+  3 4o4v_A Triosephosphate isomera  26.5      26  0.0007   24.6   0.0   30   26-55     87-120 (252)
+  4 1o5x_A TIM, triosephosphate is  25.8      27 0.00073   24.4   0.0   31   26-56     88-122 (248)
+  5 2jgq_A Triosephosphate isomera  25.3      28 0.00076   24.1   0.0   29   26-54     82-114 (233)
+  6 4mva_A Triosephosphate isomera  24.6      29  0.0008   25.1   0.0   31   26-56    112-146 (279)
+  7 1aw2_A Triosephosphate isomera  23.4      32 0.00087   24.2   0.0   31   26-56     90-124 (256)
+  8 3kxq_A Triosephosphate isomera  23.2      32 0.00089   24.7   0.0   30   26-55    113-146 (275)
+  9 3th6_A Triosephosphate isomera  22.9      33 0.00091   24.0   0.0   30   26-55     88-121 (249)
+ 10 2v5b_A Triosephosphate isomera  22.7      33 0.00091   23.7   0.0   29   26-54     82-114 (244)
+ 11 4ogq_C Apocytochrome F; electr  20.6      39  0.0011   26.8   0.0   16   11-26     50-65  (333)
+ 12 4bi6_A Triosephosphate isomera  20.1      41  0.0011   23.5   0.0   31   26-56     89-123 (257)
+
+No 1
+>2j27_A Triosephosphate isomerase glycosomal; TIM, 2PG, LOOP7, glycosome, TIM-barrel, gluconeogenesis, lipid synthesis, atomic resolution; 1.15A {Trypanosoma brucei brucei} PDB: 2j24_A 4jeq_A 1kv5_A 1tpe_A 1tsi_A* 3tim_A 2v2c_A 2v0t_A 1tri_A 1tti_A 1mss_A 1ttj_A* 2wsq_A 2y70_A 2y6z_A* 1ml1_A 2wsr_A 3q37_A 2v2h_A 2v2d_A 1dkw_A 2vei_A 2vek_A* 2vel_A 2vem_A 2ven_A* 2x16_A 2x1r_A* 2x1s_A 2x1t_A* ...
+Probab=27.53  E-value=24  Score=24.64  Aligned_cols=30  Identities=27%  Similarity=0.468  Sum_probs=22.8  Template_Neff=6.900
+
+Q NZ_GG666849.1_   26 SSYILVNHKEQVHVYNQ----IATKLGLQKESGE   55 (80)
+Q Consensus        26 ssyilvnhkeqvhvynq----iatklglqkesge   55 (80)
+                      ..|.+++|.|.-..+++    |+.|+-.-.+.|-
+T Consensus        88 v~~viiGHsErR~~~~E~~~~i~~Kv~~al~~gl  121 (250)
+T 2j27_A           88 VNWIVLGHSERRAYYGETNEIVADKVAAAVASGF  121 (250)
+T ss_dssp             CCEEEESCHHHHHHSCCCHHHHHHHHHHHHHHTC
+T ss_pred             eeEEEccccccccccCCcHHHHHHHHHHHHHCCC
+Confidence            47899999999998887    7777755555443
+
+
+No 2
+>4y96_A Triosephosphate isomerase; TIM barrel, TPI; 1.58A {Gemmata obscuriglobus}
+Probab=26.56  E-value=25  Score=24.72  Aligned_cols=29  Identities=31%  Similarity=0.555  Sum_probs=21.8  Template_Neff=6.700
+
+Q NZ_GG666849.1_   26 SSYILVNHKEQVHVYNQ----IATKLGLQKESG   54 (80)
+Q Consensus        26 ssyilvnhkeqvhvynq----iatklglqkesg   54 (80)
+                      ..|.+++|.|.-..+++    |+.|+-.-.+.|
+T Consensus        92 v~~viiGHsErR~~~~E~~~~i~~Kv~~al~~g  124 (255)
+T 4y96_A           92 CKYALIGHSERRHIIGESETFINHKVHTALEEG  124 (255)
+T ss_dssp             EEEEEESCHHHHHTTCCCHHHHHHHHHHHHHHT
+T ss_pred             ceEEEecchhhhhhccccHHHHHHHHHHHHHCC
+Confidence            46899999999988887    766665544444
+
+
+No 3
+>4o4v_A Triosephosphate isomerase; TIM barrel; 1.23A {Trichomonas vaginalis} PDB: 3qsr_A 4o52_A 4o53_A 4o54_A 4o57_A* 4o50_A 4o4w_A 3qst_A 4wje_A 4rcx_A
+Probab=26.52  E-value=26  Score=24.59  Aligned_cols=30  Identities=20%  Similarity=0.419  Sum_probs=22.7  Template_Neff=6.800
+
+Q NZ_GG666849.1_   26 SSYILVNHKEQVHVYNQ----IATKLGLQKESGE   55 (80)
+Q Consensus        26 ssyilvnhkeqvhvynq----iatklglqkesge   55 (80)
+                      ..|.+++|.|.-..+++    |+.|+-.-.+.|-
+T Consensus        87 ~~~viiGHsErR~~~~E~~~~i~~Kv~~al~~gl  120 (252)
+T 4o4v_A           87 IEWTILGHSERRDILKEDDEFLAAKAKFALENGM  120 (252)
+T ss_dssp             CCEEEESCHHHHHTSCCCHHHHHHHHHHHHHTTC
+T ss_pred             CeEEeccchhhhhhcCCcHHHHHHHHHHHHHCCC
+Confidence            46899999999988877    7777665555543
+
+
+No 4
+>1o5x_A TIM, triosephosphate isomerase; 2- phosphoglycerate, META-phosphate, catalytic LOOP6; HET: 2PG; 1.10A {Plasmodium falciparum} SCOP: c.1.1.1 PDB: 1lzo_A 1m7o_A* 1m7p_A* 1lyx_A* 1ydv_A 2vfi_A* 3psw_A 5brb_A 4zz9_A 3psv_A 5bmw_A* 5bmx_A 3pwa_A 2vfh_A* 5bnk_A 2vff_A 2vfg_A* 1vga_A 1woa_A* 1wob_A 3pvf_A 3py2_A 2vfd_A 2vfe_A*
+Probab=25.83  E-value=27  Score=24.35  Aligned_cols=31  Identities=16%  Similarity=0.338  Sum_probs=22.0  Template_Neff=6.900
+
+Q NZ_GG666849.1_   26 SSYILVNHKEQVHVY----NQIATKLGLQKESGEV   56 (80)
+Q Consensus        26 ssyilvnhkeqvhvy----nqiatklglqkesgev   56 (80)
+                      .+|.+++|.|.-..+    ..|+.|+-.-.+.|-.
+T Consensus        88 v~~viiGHsErR~~~~E~~~~i~~Kv~~al~~gl~  122 (248)
+T 1o5x_A           88 IEYVIIGHFERRKYFHETDEDVREKLQASLKNNLK  122 (248)
+T ss_dssp             CCEEEECCHHHHHHSCCCHHHHHHHHHHHHHTTCE
+T ss_pred             ceEEEecchhhhhhcCCCHHHHHHHHHHHHHCCCE
+Confidence            478999999999888    4566666555555433
+
+
+No 5
+>2jgq_A Triosephosphate isomerase; glycolysis, pentose shunt, gluconeogenesis, lipid synthesis, fatty acid biosynthesis; HET: QGA; 2.3A {Helicobacter pylori}
+Probab=25.32  E-value=28  Score=24.05  Aligned_cols=29  Identities=17%  Similarity=0.352  Sum_probs=21.7  Template_Neff=6.900
+
+Q NZ_GG666849.1_   26 SSYILVNHKEQVHVYNQ----IATKLGLQKESG   54 (80)
+Q Consensus        26 ssyilvnhkeqvhvynq----iatklglqkesg   54 (80)
+                      .+|.+++|.|.-..+++    |+.|+-.-.+.|
+T Consensus        82 ~~~viiGHsErR~~~~e~~~~i~~Kv~~a~~~g  114 (233)
+T 2jgq_A           82 IHTLLIGHSERRTLLKESPSFLKEKFDFFKSKN  114 (233)
+T ss_dssp             CCEEEECCHHHHHTTCCCHHHHHHHHHHHHHTT
+T ss_pred             ceEEEECchhhhhhcccccHHHHHHHHHHHHCC
+Confidence            47899999999988877    777765544444
+
+
+No 6
+>4mva_A Triosephosphate isomerase; structural genomics, niaid, national institute of allergy AN infectious diseases; 1.43A {Escherichia coli} PDB: 4k6a_A 4iot_A 1tre_A 1tmh_A
+Probab=24.62  E-value=29  Score=25.10  Aligned_cols=31  Identities=32%  Similarity=0.546  Sum_probs=23.6  Template_Neff=6.200
+
+Q NZ_GG666849.1_   26 SSYILVNHKEQVHVYNQ----IATKLGLQKESGEV   56 (80)
+Q Consensus        26 ssyilvnhkeqvhvynq----iatklglqkesgev   56 (80)
+                      .+|.+++|.|.-..++.    |+.|+-.-.+.|-.
+T Consensus       112 v~~viIGHSERR~~f~E~d~~I~~Kv~~al~~gL~  146 (279)
+T 4mva_A          112 AQYIIIGHSERRTYHKESDELIAKKFAVLKEQGLT  146 (279)
+T ss_dssp             CCEEEESCHHHHHHTCCCHHHHHHHHHHHHHTTCE
+T ss_pred             ccEEEecccccccccccchHHHHHHHHHHHHCCCE
+Confidence            57899999999999888    77776655555543
+
+
+No 7
+>1aw2_A Triosephosphate isomerase; psychrophilic, vibrio marinus; 2.65A {Moritella marina} SCOP: c.1.1.1 PDB: 1aw1_A
+Probab=23.43  E-value=32  Score=24.16  Aligned_cols=31  Identities=26%  Similarity=0.448  Sum_probs=22.5  Template_Neff=6.800
+
+Q NZ_GG666849.1_   26 SSYILVNHKEQVHVYNQ----IATKLGLQKESGEV   56 (80)
+Q Consensus        26 ssyilvnhkeqvhvynq----iatklglqkesgev   56 (80)
+                      .+|.+++|.|.-..+++    |+.|+-.-.+.|-.
+T Consensus        90 ~~yviiGHsERR~~~~E~~~~i~~Kv~~al~~gl~  124 (256)
+T 1aw2_A           90 ATHIIIGHSERREYHAESDEFVAKKFAFLKENGLT  124 (256)
+T ss_dssp             CCEEEESCHHHHHHSCCCHHHHHHHHHHHHHHTCE
+T ss_pred             ceEEEeccchhhhhccccHHHHHHHHHHHHHCCCE
+Confidence            47899999999988876    66666555555533
+
+
+No 8
+>3kxq_A Triosephosphate isomerase; ssgcid, NIH, niaid, SBRI, UW, gluconeogenesis, glycolysis, pentose shunt; 1.60A {Bartonella henselae}
+Probab=23.16  E-value=32  Score=24.66  Aligned_cols=30  Identities=23%  Similarity=0.451  Sum_probs=22.3  Template_Neff=6.400
+
+Q NZ_GG666849.1_   26 SSYILVNHKEQVHVYNQ----IATKLGLQKESGE   55 (80)
+Q Consensus        26 ssyilvnhkeqvhvynq----iatklglqkesge   55 (80)
+                      .+|.+++|.|.-..+++    |+.|+-.-.+.|-
+T Consensus       113 v~yviiGHSErR~~~~E~~~~I~~Kv~~al~~gL  146 (275)
+T 3kxq_A          113 ASHVIIGHSERRTVYQESDAIVRAKVQAAWRAGL  146 (275)
+T ss_dssp             CSEEEESCHHHHHHTCCCHHHHHHHHHHHHHTTC
+T ss_pred             ceEEEECchhhhhhhccccHHHHHHHHHHHHCCC
+Confidence            47999999999998887    7766655544443
+
+
+No 9
+>3th6_A Triosephosphate isomerase; alpha/beta barrel, embryogenesis, glycolysis; 2.40A {Rhipicephalus microplus}
+Probab=22.87  E-value=33  Score=24.04  Aligned_cols=30  Identities=30%  Similarity=0.597  Sum_probs=23.0  Template_Neff=6.700
+
+Q NZ_GG666849.1_   26 SSYILVNHKEQVHVYNQ----IATKLGLQKESGE   55 (80)
+Q Consensus        26 ssyilvnhkeqvhvynq----iatklglqkesge   55 (80)
+                      .+|.+++|.|.-..+++    |+.|+-.-.+.|-
+T Consensus        88 v~~viiGHSErR~~~~E~~~~i~~Kv~~al~~gl  121 (249)
+T 3th6_A           88 GQWVILGHSERRHVFKEDDVLIGEKIKHALESGL  121 (249)
+T ss_dssp             CCEEEESCHHHHHTSCCCHHHHHHHHHHHHHTTC
+T ss_pred             ceEEEcCchhhhhhcccccHHHHHHHHHHHHCCC
+Confidence            46899999999988887    7777766555553
+
+
+No 10
+>2v5b_A Triosephosphate isomerase; TIM, unfolding, monotctim, glycosome, gluconeogenesis, lipid synthesis, monomeric mutant, glycolysis, pentose shunt; 2.00A {Trypanosoma cruzi}
+Probab=22.74  E-value=33  Score=23.72  Aligned_cols=29  Identities=24%  Similarity=0.439  Sum_probs=21.6  Template_Neff=7.000
+
+Q NZ_GG666849.1_   26 SSYILVNHKEQVHVYN----QIATKLGLQKESG   54 (80)
+Q Consensus        26 ssyilvnhkeqvhvyn----qiatklglqkesg   54 (80)
+                      ..|.+++|.|.-..++    .|+.|+-.-.+.|
+T Consensus        82 v~~viIGHSERR~~~~E~~~~i~~Kv~~al~~g  114 (244)
+T 2v5b_A           82 ISWVVLGHSERRLYYGETNEIVAEKVAQACAAG  114 (244)
+T ss_dssp             CCEEEECCHHHHHHSCCCHHHHHHHHHHHHHTT
+T ss_pred             ceEEEECChhhhhhcccchHHHHHHHHHHHhCC
+Confidence            5799999999999888    4666665544444
+
+
+No 11
+>4ogq_C Apocytochrome F; electron transfer, plastocyanin, cytochrome C6, thylakoid ME electron transport; HET: HEM UMQ 7PH 8K6 2WM CLA OPC MYS SQD 2WD 3WM 2WA 1O2 BCR; 2.50A {Nostoc SP} PDB: 4h44_C* 2zt9_C* 4i7z_C* 2d2c_C* 2e74_C* 2e75_C* 2e76_C* 4h0l_C* 4h13_C* 1vf5_C* 4pv1_C*
+Probab=20.61  E-value=39  Score=26.75  Aligned_cols=16  Identities=44%  Similarity=0.966  Sum_probs=13.6  Template_Neff=2.800
+
+Q NZ_GG666849.1_   11 DEDYPELPRTANGRLS   26 (80)
+Q Consensus        11 dedypelprtangrls   26 (80)
+                      ...|||-||.|+||+-
+T Consensus        50 QQ~YpenPREAtGRIV   65 (333)
+T 4ogq_C           50 QQTYPETPREPTGRIV   65 (333)
+T ss_dssp             HHHSCSCSBCTTSCBG
+T ss_pred             hhcccCCchhhcceEE
+Confidence            4578999999999974
+
+
+No 12
+>4bi6_A Triosephosphate isomerase; HET: PGA; 1.45A {Giardia intestinalis} PDB: 2dp3_A 4bi7_A* 3pf3_A* 4bi5_A
+Probab=20.12  E-value=41  Score=23.53  Aligned_cols=31  Identities=26%  Similarity=0.294  Sum_probs=21.7  Template_Neff=6.900
+
+Q NZ_GG666849.1_   26 SSYILVNHKEQVHVY----NQIATKLGLQKESGEV   56 (80)
+Q Consensus        26 ssyilvnhkeqvhvy----nqiatklglqkesgev   56 (80)
+                      -+|.+++|.|.-..+    ..|+.|+-.-.+.|-.
+T Consensus        89 v~~viiGHSErR~~~~E~~~~i~~Kv~~al~~gl~  123 (257)
+T 4bi6_A           89 LKHVIVGHSERRRIMGETDEQSAKKAKRALEKGMT  123 (257)
+T ss_dssp             CCEEEECCHHHHHTSCCCHHHHHHHHHHHHHTTCE
+T ss_pred             ceEEEECChhhhhhcCCCHHHHHHHHHHHHHCCCE
+Confidence            378999999998777    4666666555555543
+
+
