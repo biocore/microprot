@@ -63,7 +63,7 @@ class ParsersTests(TestCase):
             os.remove(filename)
         shutil.rmtree(outdir)
 
-        self.assertEqual(obs_filecontents, exp_filecontents)
+        self.assertDictEqual(obs_filecontents, exp_filecontents)
 
 
 if __name__ == '__main__':

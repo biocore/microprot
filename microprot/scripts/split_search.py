@@ -1,8 +1,8 @@
-from skbio import Protein
-import click
-import re
 import sys
+import re
 
+import click
+from skbio import Protein
 
 _HEADER = ['No',
            'Hit',
@@ -467,11 +467,13 @@ def correct_header_positions(header, new_start, new_end, out=sys.stderr):
         Examples for valid header: 'test_1_251-330', 'NZ_GG666849.1_2_251-330'
         Examples for invalid headers: 'NZ_GG666849.1_2', 'test_1_251:330'
     new_start : int
-        The new start position.
+        The new start position, relative to the interval found in the header.
+        Example: header 'test_1_251-330', new_start 50 -> updated_start 300
     new_end : int
-        The new end position.
+        The new end position, relative to the interval found in the header.
+        Example: header 'test_1_251-330', new_end 70 -> updated_start 320
     out : file handle
-        File handle into verbosity information should be printed.
+        File handle into which verbosity information should be printed.
 
     Returns
     -------
@@ -481,7 +483,8 @@ def correct_header_positions(header, new_start, new_end, out=sys.stderr):
     ------
     ValueError if
         a) input header string does not follow expected format
-        b) old and new start,end positions are incompatible."""
+        b) old and new start, end positions are incompatible.
+    """
     pattern = re.compile('(.+)_(\d+)\-(\d+)$')
 
     hit = pattern.match(header)
