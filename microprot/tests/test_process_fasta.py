@@ -12,7 +12,7 @@ from microprot.scripts.process_fasta import (extract_sequences,
                                              write_sequences,
                                              read_representatives,
                                              split_fasta,
-                                             _processing)
+                                             _process_fasta)
 
 
 class ProcessingTests(TestCase):
@@ -192,13 +192,13 @@ class ProcessingTests(TestCase):
                 for fasta in obs_paths:
                     remove(fasta)
 
-    def test__processing(self):
+    def test__process_fasta(self):
         # get representative proteins
         params = ['--infile', self.input_faa,
                   '--outfile', join(self.working_dir, 'output.faa'),
                   '--identifiers', None,
                   '--represent', self.represent]
-        res = CliRunner().invoke(_processing, params)
+        res = CliRunner().invoke(_process_fasta, params)
         self.assertEqual(res.exit_code, 0)
         exp = ('Number of representative proteins: 3\n'
                'Number of extracted proteins: 0\n'
@@ -210,7 +210,7 @@ class ProcessingTests(TestCase):
                   '--outfile', join(self.working_dir, 'output.faa'),
                   '--identifiers', '1,3',
                   '--represent', None]
-        res = CliRunner().invoke(_processing, params)
+        res = CliRunner().invoke(_process_fasta, params)
         self.assertEqual(res.exit_code, 0)
         exp = ('Number of extracted proteins: 2\n'
                'Task completed.\n')
