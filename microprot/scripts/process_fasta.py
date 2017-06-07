@@ -27,7 +27,7 @@ Stats:
 
 
 def extract_sequences(infile, identifiers=None):
-    """ Extract sequence(s) from a multi-sequence FASTA file.
+    """Extract sequence(s) from a multi-sequence FASTA file.
 
     Parameters
     ----------
@@ -61,6 +61,7 @@ def extract_sequences(infile, identifiers=None):
     ValueError
         if tuple (index range) is not in (start, end) form
         if index range str is not formatted as "start, end"
+        if the data type of identifiers is incorrect
     """
     l, ids, indexes = [], set(), set()
     if identifiers:
@@ -120,7 +121,7 @@ def extract_sequences(infile, identifiers=None):
 
 
 def write_sequences(seqs, outfile):
-    """ Write sequence(s) into a multi-sequence FASTA file.
+    """Write sequence(s) into a multi-sequence FASTA file.
 
     Parameters
     ----------
@@ -136,7 +137,7 @@ def write_sequences(seqs, outfile):
 
 
 def read_representatives(represent):
-    """ Read representative protein IDs from file or server
+    """Read representative protein IDs from file or server.
 
     Parameters
     ----------
@@ -145,8 +146,8 @@ def read_representatives(represent):
         integer representing the clustering level by which the list will be
         downloaded from the PDB server
 
-    Return
-    ------
+    Returns
+    -------
     list of str
         protein IDs
 
@@ -174,7 +175,7 @@ def read_representatives(represent):
 
 
 def split_fasta(seqs, prefix=None, outdir=None):
-    """Split a multi-protein FASTA file into single-sequence FASTAs
+    """Split a multi-protein FASTA file into single-sequence FASTAs.
 
     Parameters
     ----------
@@ -240,8 +241,8 @@ def split_fasta(seqs, prefix=None, outdir=None):
                    'As with sequence name as file name.')
 @click.option('--prefix', '-p', required=False, default=None,
               help='Prefix to be used in splitting multi-sequence FASTA file.')
-def _processing(infile, outfile, identifiers, represent, split, prefix):
-    """ Parsing arguments for processing
+def _process_fasta(infile, outfile, identifiers, represent, split, prefix):
+    """Parsing arguments for processing.
     """
     if not outfile and not split:
         raise IOError('No outfile or split flag used. You need to specify at '
@@ -260,4 +261,4 @@ def _processing(infile, outfile, identifiers, represent, split, prefix):
 
 
 if __name__ == "__main__":
-    _processing()
+    _process_fasta()
