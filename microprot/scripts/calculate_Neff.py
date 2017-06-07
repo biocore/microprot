@@ -67,7 +67,7 @@ def cluster_sequences(dm, cutoff):
                          criterion='distance'))
 
 
-def effective_family_size(clusters, length):
+def effective_family_size(clusters, length, Nclu=False):
     """Calculate effective family size based on a clustering scheme.
 
     Parameters
@@ -77,14 +77,17 @@ def effective_family_size(clusters, length):
         to the sequence))
     length : int
         length (number of columns) of the multiple sequence alignment
+    Nclu : bool
+        return N_cluster instead of N_eff (default: False)
 
     Returns
     -------
-    float
-        effective family size:
-        N_eff = N_cluster / sqrt(length)
+    float or int
+        effective family size: N_eff = N_cluster / sqrt(length)
+        or number of clusters (N_cluster)
     """
-    return len(set(clusters)) / math.sqrt(length)
+    nc = len(set(clusters))
+    return nc if Nclu else nc / math.sqrt(length)
 
 
 @click.command()

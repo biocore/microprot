@@ -53,6 +53,9 @@ class ProcessingTests(TestCase):
         obs = effective_family_size(clu, msa.shape[1])
         exp = 6.6187612134
         self.assertAlmostEqual(obs, exp)
+        obs = effective_family_size(clu, msa.shape[1], Nclu=True)
+        exp = 74
+        self.assertEqual(obs, exp)
 
     def test__calculate_Neff(self):
         params = ['--infile', self.input_a3m_fp,
