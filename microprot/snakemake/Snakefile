@@ -31,7 +31,7 @@ config['MICROPROT_MAIN'] = '/projects/microprot/benchmarking/snakemake_minimal_t
 ##########
 
 
-def search_x(inp_0, out_0, config=None, dbs=None):
+def search_x(inp_0, out_0, config=None, dbs=None, log=None):
     indir = snakemake_helpers.trim(inp_0, '/')
     outdir = snakemake_helpers.trim(out_0, '/')
     for non_match in glob('%s/%s' % (indir, '*.non_match')):
@@ -44,7 +44,7 @@ def search_x(inp_0, out_0, config=None, dbs=None):
                {config} \
                -d {dbs} \
                -o {out_root}.out \
-               -oa3m {out_root}.a3m')
+               -oa3m {out_root}.a3m 2> {log}')
     # TODO
     # touch only if all hhsearch steps complete successfully?
     shell('touch {out_0}')
@@ -54,13 +54,23 @@ def split_x(inp_0, out_0, step="NA", version=1,
             frag_len=None,
             p_val=None,
             e_val=None,
-            prob=None):
+            prob=None,
+            log=None):
     inpdir = snakemake_helpers.trim(inp_0, '/')
     for hh_inp, fasta_inp in zip(glob('%s/%s' % (inpdir, '*.out')),
                                  glob('%s/%s' % (inpdir, '*.fasta'))):
         outname = snakemake_helpers.trim(hh_inp, '.').split('/')[-1]
         outpath = snakemake_helpers.trim(out_0, '/')
 
+        with open(log, 'wa') as _log:
+            _log.write('hh_inp= %s fasta_inp= %s\n step= %s\n frag_len= %s\n'
+                       ' p_val= %s\n e_val= %s\n prob= %s\n' % (hh_inp,
+                                                                fasta_inp,
+                                                                step,
+                                                                frag_len,
+                                                                p_val,
+                                                                e_val,
+                                                                prob))
         split_search.mask_sequence(hh_inp, fasta_inp,
                                    subsequences_fp='%s/%s' % (outpath,
                                                               outname),
@@ -102,7 +112,7 @@ rule search_PDB:
          {config[search_PDB][params]} \
          -d {paths[DBS][pdb70]} \
          -o {output.out} \
-         -oa3m {output.a3m}'
+         -oa3m {output.a3m} 2> {log}'
 
 
 rule split_PDB:
@@ -134,10 +144,13 @@ rule search_CM:
         config['MICROPROT_MAIN']+'results/02-split_pdb/{seq}/{seq}'
     output:
         config['MICROPROT_MAIN']+'results/03-search_CM/{seq}/{seq}'
+    log:
+        'results/log/{seq}/search_cm.log'
     run:
         search_x(input[0], output[0],
                  config=config['search_CM']['params'],
-                 dbs=paths['DBS']['pdb70'])
+                 dbs=paths['DBS']['pdb70'],
+                 log=log[0])
 
 
 rule split_CM:
@@ -145,11 +158,13 @@ rule split_CM:
         rules.search_CM.output[0]
     output:
         config['MICROPROT_MAIN']+'results/04-split_CM/{seq}/{seq}'
+    log:
+        'results/log/{seq}/split_cm.log'
     run:
         split_x(input[0], output[0],
                 step="CM",
                 frag_len=config['split_CM']['params']['min_fragment_length'],
-                e_val=config['split_CM']['params']['max_evalue'])
+                e_val=config['split_CM']['params']['max_evalue'], log=log[0])
 
 
 rule search_Pfam:
@@ -162,7 +177,8 @@ rule search_Pfam:
     run:
         search_x(input[0], output[0],
                  config=config['search_Pfam']['params'],
-                 dbs=paths['DBS']['pfamA'])
+                 dbs=paths['DBS']['pfamA']
+                 log=log[0])
 
 
 rule split_Pfam:
@@ -171,13 +187,13 @@ rule split_Pfam:
     output:
         config['MICROPROT_MAIN']+'results/06-split_Pfam/{seq}/{seq}'
     log:
-        'results/log/{seq}.split_pfam.log'
+        'results/log/{seq}/split_pfam.log'
     run:
         split_x(input[0], output[0],
                 step="Pfam",
                 frag_len=config['split_Pfam']['params']['min_fragment_length'],
                 e_val=config['split_Pfam']['params']['max_evalue'],
-                prob=config['split_Pfam']['params']['min_prob'])
+                prob=config['split_Pfam']['params']['min_prob'], log=log[0])
 
 
 rule MSA_hhblits:
@@ -186,7 +202,7 @@ rule MSA_hhblits:
     output:
         config['MICROPROT_MAIN']+'results/07-MSA_hhblits/{seq}/{seq}'
     log:
-        'results/log/{seq}.msa_hhblits.log'
+        'results/log/{seq}/msa_hhblits.log'
     run:
         """
         it's essentially a copy of `search_x` function, but here we're using
@@ -194,7 +210,7 @@ rule MSA_hhblits:
         """
         indir = snakemake_helpers.trim(input[0], '/')
         outdir = snakemake_helpers.trim(output[0], '/')
-        # here, we provess both `match` and `non_match` sequences
+        # here, we process both `match` and `non_match` sequences
         # Pfam is our "domain splitting" method
         for _match in glob('%s/%s' % (indir, '*match')):
             if snakemake_helpers.not_empty(_match):
@@ -206,19 +222,19 @@ rule MSA_hhblits:
                    {config[MSA_hhblits][params]} \
                    -d {paths[DBS][hhblits_db]} \
                    -o {out_root}.out \
-                   -oa3m {out_root}.a3m')
+                   -oa3m {out_root}.a3m 2> {log}')
         shell('touch {output}')
 
 
-# rule MSA_ripe:
-#     input:
-#         'results/08-MSA_hhblits/{seq}/{seq}'
-#     output:
-#         not_ripe = 'results/09-not_ripe/{seq}/{seq}.msa',
-#         ripe = 'results/10-Rosetta/{seq}/{seq}.msa'
-#     run:
-#         for inp in open(input[0], 'r').readlines():
-#             inp_out = '%s.%s' % (inp, 'out')
-#             inp_a3m = '%s.%s' % (inp, 'a3m')
-#             calculate_Nf(inp_out, inp_a3m,
-#                          output['ripe'], output['not_ripe'])
+rule MSA_ripe:
+    input:
+        config['MICROPROT_MAIN']+'results/07-MSA_hhblits/{seq}/{seq}'
+    output:
+        not_ripe = config['MICROPROT_MAIN']+'results/09-not_ripe/{seq}/{seq}.msa',
+        ripe = config['MICROPROT_MAIN']+'results/10-Rosetta/{seq}/{seq}.msa'
+    run:
+        # TODO
+        msa = parse_msa_file(infile)
+        hdm = hamming_distance_matrix(msa)
+        clu = cluster_sequences(hdm, cutoff)
+        Neff = effective_family_size(clu, msa.shape[1])

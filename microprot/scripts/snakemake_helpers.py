@@ -20,7 +20,7 @@ def trim(inp_str, symbol):
 
 def msa_size(msa_fp):
     msa_dir, msa_ext = os.path.splitext(os.path.abspath(msa_fp))
-    if msa_ext is not '.a3m':
+    if msa_ext != '.a3m':
         msa_ext = '.a3m'
     with open(''.join([msa_dir, msa_ext]), 'r') as f:
         lines = f.readlines()
