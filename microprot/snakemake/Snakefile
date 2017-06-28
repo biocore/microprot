@@ -9,6 +9,8 @@ import yaml
 import re
 import sys
 from glob import glob
+from os.path import basename, splitext
+from shutil import copyfile
 
 sys.path.append('/projects/microprot')
 from microprot.scripts import split_search, process_fasta, \
@@ -57,13 +59,13 @@ def split_x(inp_0, out_0, step="NA", version=config['VERSION'],
             prob=None,
             log=None):
     inpdir = snakemake_helpers.trim(inp_0, '/')
-    for hh_inp, fasta_inp in zip(glob('%s/%s' % (inpdir, '*.out')),
-                                 glob('%s/%s' % (inpdir, '*.fasta'))):
+    for fasta_inp in glob('%s/%s' % (inpdir, '*.fasta')):
+        hh_inp = re.sub('.fasta$', '.out', fasta_inp)
         outname = snakemake_helpers.trim(hh_inp, '.').split('/')[-1]
         outpath = snakemake_helpers.trim(out_0, '/')
 
         with open(log, 'a') as _log:
-            _log.write('hh_inp= %s fasta_inp= %s\n step= %s\n frag_len= %s\n'
+            _log.write('hh_inp= %s\nfasta_inp= %s\n step= %s\n frag_len= %s\n'
                        ' p_val= %s\n e_val= %s\n prob= %s\n' % (hh_inp,
                                                                 fasta_inp,
                                                                 step,
@@ -231,22 +233,26 @@ rule MSA_ripe:
     input:
         config['MICROPROT_MAIN']+'results/07-MSA_hhblits/{seq}/{seq}'
     output:
-        not_ripe = config['MICROPROT_MAIN']+'results/09-not_ripe/{seq}/{seq}.msa',
-        ripe = config['MICROPROT_MAIN']+'results/10-Rosetta/{seq}/{seq}.msa',
-        placeholder = config['MICROPROT_MAIN']+'results/log/{seq}/msa_ripe.log'
+        config['MICROPROT_MAIN']+'results/log/{seq}/msa_ripe.log'
     run:
-        shell('touch {output[placeholder]}')
-        # TODO
+        not_ripe = config['MICROPROT_MAIN']+'results/09-not_ripe/'
+        ripe = config['MICROPROT_MAIN']+'results/10-Rosetta/'
+        shell('touch {output}')
         indir = snakemake_helpers.trim(input[0], '/')
         for infile in glob('%s/%s' % (indir, '*a3m')):
+            inp_name = splitext(basename(infile))[0]
             msa = calculate_Neff.parse_msa_file(infile)
             hdm = calculate_Neff.hamming_distance_matrix(msa)
             clu = calculate_Neff.cluster_sequences(hdm,
                                                    config['MSA_ripe']['cutoff'])
             Neff = calculate_Neff.effective_family_size(clu, msa.shape[1])
             if Neff >= config['MSA_ripe']['Nf']:
-                shell('echo "ripe" >> {output[placeholder]}')
-                # cp infile to output['ripe']
+                with open(output[0], 'a') as o:
+                    o.write('%s %s %.1f\n' % (inp_name, "ripe:", Neff))
+                copyfile(infile, re.sub('07-MSA_hhblits', '10-Rosetta',
+                                        infile))
             else:
-                shell('echo "not ripe" >> {output[placeholder]}')
-                # cp infile to output['not_ripe']
+                with open(output[0], 'a') as o:
+                    o.write('%s %s %.1f\n' % (inp_name, "not ripe:", Neff))
+                copyfile(infile, re.sub('07-MSA_hhblits', '09-not_ripe',
+                                        infile))
