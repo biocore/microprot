@@ -1,3 +1,6 @@
+MICROPROT_INP: /projects/microprot/data/WCG_inputs/
+MICROPROT_OUT: /projects/microprot/output/
+
 inp_path: /projects/microprot/benchmarking/snakemake_test/
 inp_file: 2.faa
 inp_from: 1

@@ -20,9 +20,9 @@ from microprot.scripts import split_search, process_fasta, \
 
 
 configfile: "config.yaml"
-with open('%s%s' % (config['MICROPROT_MAIN'], 'paths.yml'), 'r') as f:
+with open('%s%s' % (config['MICROPROT_MAIN'], '/paths.yml'), 'r') as f:
     paths = yaml.load(f)
-with open('%s%s' % (config['MICROPROT_MAIN'], 'inputs.yml'), 'r') as f:
+with open('%s%s' % (config['MICROPROT_MAIN'], '/inputs.yml'), 'r') as f:
     inputs = yaml.load(f)
 
 # execute *before* any rules
@@ -34,7 +34,7 @@ SEQS = process_fasta.extract_sequences('%s/%s' % (SEQ_path, SEQ_file),
                                        identifiers=(SEQ_from, SEQ_to))
 SEQ_ids = []
 for SEQ in SEQS:
-    SEQ_ids.append(SEQ.metadata['id'])
+    SEQ_ids.append(_seq)
 
 
 def search_x(inp_0, out_0, config=None, dbs=None, log=None):
@@ -102,16 +102,16 @@ def split_x(inp_0, out_0, step="NA", version=config['VERSION'],
 
 rule all:
     input:
-        expand(config['MICROPROT_MAIN']+'results/log/{seq}/msa_ripe.log',
+        expand(inputs['MICROPROT_OUT']+'/log/{seq}/msa_ripe.log',
                seq=SEQ_ids)
 
 rule read_sequences:
     input:
         '%s/%s' % (SEQ_path, SEQ_file)
     output:
-        config['MICROPROT_MAIN']+'data/WCG_inputs/{seq}.fasta'
+        inputs['MICROPROT_INP']+'/{seq}.fasta'
     log:
-        config['MICROPROT_MAIN']+'results/processed_sequences.fasta'
+        inputs['MICROPROT_OUT']+'/processed_sequences.fasta'
     run:
         for SEQ in SEQS:
             io.write(SEQ, format='fasta', into=output[0])
@@ -119,12 +119,12 @@ rule read_sequences:
 
 rule search_PDB:
     input:
-        config['MICROPROT_MAIN']+'data/WCG_inputs/{seq}.fasta'
+        inputs['MICROPROT_INP']+'/{seq}.fasta'
     output:
-        out = config['MICROPROT_MAIN']+'results/01-search_pdb/{seq}/{seq}.out',
-        a3m = config['MICROPROT_MAIN']+'results/01-search_pdb/{seq}/{seq}.a3m'
+        out = inputs['MICROPROT_OUT']+'/01-search_pdb/{seq}/{seq}.out',
+        a3m = inputs['MICROPROT_OUT']+'/01-search_pdb/{seq}/{seq}.a3m'
     log:
-        config['MICROPROT_MAIN']+'results/log/{seq}/search_pdb.log'
+        inputs['MICROPROT_OUT']+'/log/{seq}/search_pdb.log'
     shell:
         '{paths[TOOLS][hhsuite]}/hhsearch -i {input} \
          {config[search_PDB][params]} \
@@ -135,12 +135,12 @@ rule search_PDB:
 
 rule split_PDB:
     input:
-        config['MICROPROT_MAIN']+'results/01-search_pdb/{seq}/{seq}.out',
+        inputs['MICROPROT_OUT']+'/01-search_pdb/{seq}/{seq}.out',
         rules.search_PDB.input[0]
     output:
-        config['MICROPROT_MAIN']+'results/02-split_pdb/{seq}/{seq}'
+        inputs['MICROPROT_OUT']+'/02-split_pdb/{seq}/{seq}'
     log:
-        config['MICROPROT_MAIN']+'results/log/{seq}/split_pdb.log'
+        inputs['MICROPROT_OUT']+'/log/{seq}/split_pdb.log'
     run:
         # produces output.match and output.non_match
         split_search.mask_sequence(input[0], input[1],
@@ -160,11 +160,11 @@ rule split_PDB:
 
 rule search_CM:
     input:
-        config['MICROPROT_MAIN']+'results/02-split_pdb/{seq}/{seq}'
+        inputs['MICROPROT_OUT']+'/02-split_pdb/{seq}/{seq}'
     output:
-        config['MICROPROT_MAIN']+'results/03-search_CM/{seq}/{seq}'
+        inputs['MICROPROT_OUT']+'/03-search_CM/{seq}/{seq}'
     log:
-        'results/log/{seq}/search_cm.log'
+        inputs['MICROPROT_OUT']+'/log/{seq}/search_cm.log'
     run:
         search_x(input[0], output[0],
                  config=config['search_CM']['params'],
@@ -176,9 +176,9 @@ rule split_CM:
     input:
         rules.search_CM.output[0]
     output:
-        config['MICROPROT_MAIN']+'results/04-split_CM/{seq}/{seq}'
+        inputs['MICROPROT_OUT']+'/04-split_CM/{seq}/{seq}'
     log:
-        'results/log/{seq}/split_cm.log'
+        inputs['MICROPROT_OUT']+'/log/{seq}/split_cm.log'
     run:
         split_x(input[0], output[0],
                 step="CM",
@@ -188,11 +188,11 @@ rule split_CM:
 
 rule search_Pfam:
     input:
-        config['MICROPROT_MAIN']+'results/04-split_CM/{seq}/{seq}'
+        inputs['MICROPROT_OUT']+'/04-split_CM/{seq}/{seq}'
     output:
-        config['MICROPROT_MAIN']+'results/05-search_Pfam/{seq}/{seq}'
+        inputs['MICROPROT_OUT']+'/05-search_Pfam/{seq}/{seq}'
     log:
-        'results/log/{seq}/search_pfam.log'
+        inputs['MICROPROT_OUT']+'/log/{seq}/search_pfam.log'
     run:
         search_x(input[0], output[0],
                  config=config['search_Pfam']['params'],
@@ -204,9 +204,9 @@ rule split_Pfam:
     input:
         rules.search_Pfam.output[0]
     output:
-        config['MICROPROT_MAIN']+'results/06-split_Pfam/{seq}/{seq}'
+        inputs['MICROPROT_OUT']+'/06-split_Pfam/{seq}/{seq}'
     log:
-        'results/log/{seq}/split_pfam.log'
+        inputs['MICROPROT_OUT']+'/log/{seq}/split_pfam.log'
     run:
         split_x(input[0], output[0],
                 step="Pfam",
@@ -217,11 +217,11 @@ rule split_Pfam:
 
 rule MSA_hhblits:
     input:
-        config['MICROPROT_MAIN']+'results/06-split_Pfam/{seq}/{seq}'
+        inputs['MICROPROT_OUT']+'/06-split_Pfam/{seq}/{seq}'
     output:
-        config['MICROPROT_MAIN']+'results/07-MSA_hhblits/{seq}/{seq}'
+        inputs['MICROPROT_OUT']+'/07-MSA_hhblits/{seq}/{seq}'
     log:
-        'results/log/{seq}/msa_hhblits.log'
+        inputs['MICROPROT_OUT']+'/log/{seq}/msa_hhblits.log'
     run:
         """
         it's essentially a copy of `search_x` function, but here we're using
@@ -247,9 +247,9 @@ rule MSA_hhblits:
 
 rule MSA_ripe:
     input:
-        config['MICROPROT_MAIN']+'results/07-MSA_hhblits/{seq}/{seq}'
+        inputs['MICROPROT_OUT']+'/07-MSA_hhblits/{seq}/{seq}'
     output:
-        config['MICROPROT_MAIN']+'results/log/{seq}/msa_ripe.log'
+        inputs['MICROPROT_OUT']+'/log/{seq}/msa_ripe.log'
     run:
         shell('touch {output}')
         indir = snakemake_helpers.trim(input[0], '/')
