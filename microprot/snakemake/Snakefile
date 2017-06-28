@@ -9,8 +9,10 @@ import yaml
 import re
 import sys
 from glob import glob
-from os.path import basename, splitext
+from os import makedirs
+from os.path import basename, splitext, exists
 from shutil import copyfile
+from skbio import io
 
 sys.path.append('/projects/microprot')
 from microprot.scripts import split_search, process_fasta, \
@@ -23,14 +25,16 @@ with open('%s%s' % (config['MICROPROT_MAIN'], 'paths.yml'), 'r') as f:
 with open('%s%s' % (config['MICROPROT_MAIN'], 'inputs.yml'), 'r') as f:
     inputs = yaml.load(f)
 
-SEQUENCES = inputs['inp_file']
-INP_PATH = inputs['inp_path']
+# execute *before* any rules
+SEQ_file = inputs['inp_file']
+SEQ_path = inputs['inp_path']
 SEQ_from = inputs['inp_from']
 SEQ_to = inputs['inp_to']
-
-## FOR NOW
-config['MICROPROT_MAIN'] = '/projects/microprot/benchmarking/snakemake_minimal_test/'
-##########
+SEQS = process_fasta.extract_sequences('%s/%s' % (SEQ_path, SEQ_file),
+                                       identifiers=(SEQ_from, SEQ_to))
+SEQ_ids = []
+for SEQ in SEQS:
+    SEQ_ids.append(SEQ.metadata['id'])
 
 
 def search_x(inp_0, out_0, config=None, dbs=None, log=None):
@@ -98,12 +102,24 @@ def split_x(inp_0, out_0, step="NA", version=config['VERSION'],
 
 rule all:
     input:
-        config['MICROPROT_MAIN']+'results/log/seq2/msa_ripe.log'
+        expand(config['MICROPROT_MAIN']+'results/log/{seq}/msa_ripe.log',
+               seq=SEQ_ids)
 
+rule read_sequences:
+    input:
+        '%s/%s' % (SEQ_path, SEQ_file)
+    output:
+        config['MICROPROT_MAIN']+'data/WCG_inputs/{seq}.fasta'
+    log:
+        config['MICROPROT_MAIN']+'results/processed_sequences.fasta'
+    run:
+        for SEQ in SEQS:
+            io.write(SEQ, format='fasta', into=output[0])
+            io.write(SEQ, format='fasta', into=log[0])
 
 rule search_PDB:
     input:
-        "/projects/microprot/benchmarking/snakemake_minimal_test/seq2.faa"
+        config['MICROPROT_MAIN']+'data/WCG_inputs/{seq}.fasta'
     output:
         out = config['MICROPROT_MAIN']+'results/01-search_pdb/{seq}/{seq}.out',
         a3m = config['MICROPROT_MAIN']+'results/01-search_pdb/{seq}/{seq}.a3m'
@@ -235,8 +251,6 @@ rule MSA_ripe:
     output:
         config['MICROPROT_MAIN']+'results/log/{seq}/msa_ripe.log'
     run:
-        not_ripe = config['MICROPROT_MAIN']+'results/09-not_ripe/'
-        ripe = config['MICROPROT_MAIN']+'results/10-Rosetta/'
         shell('touch {output}')
         indir = snakemake_helpers.trim(input[0], '/')
         for infile in glob('%s/%s' % (indir, '*a3m')):
@@ -249,10 +263,16 @@ rule MSA_ripe:
             if Neff >= config['MSA_ripe']['Nf']:
                 with open(output[0], 'a') as o:
                     o.write('%s %s %.1f\n' % (inp_name, "ripe:", Neff))
-                copyfile(infile, re.sub('07-MSA_hhblits', '10-Rosetta',
-                                        infile))
+                dest = re.sub('07-MSA_hhblits', '10-Rosetta', infile)
+                dest_dir = snakemake_helpers.trim(dest, '/')
+                if not exists(dest_dir):
+                    makedirs(dest_dir)
+                copyfile(infile, dest)
             else:
                 with open(output[0], 'a') as o:
                     o.write('%s %s %.1f\n' % (inp_name, "not ripe:", Neff))
-                copyfile(infile, re.sub('07-MSA_hhblits', '09-not_ripe',
-                                        infile))
+                dest = re.sub('07-MSA_hhblits', '09-not_ripe', infile)
+                dest_dir = snakemake_helpers.trim(dest, '/')
+                if not exists(dest_dir):
+                    makedirs(dest_dir)
+                copyfile(infile, dest)
