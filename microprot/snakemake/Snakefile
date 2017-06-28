@@ -34,6 +34,11 @@ SEQS = process_fasta.extract_sequences('%s/%s' % (SEQ_path, SEQ_file),
                                        identifiers=(SEQ_from, SEQ_to))
 SEQ_ids = []
 for SEQ in SEQS:
+    _seq = SEQ.metadata['id']
+    print(_seq)
+    _seq = _seq.replace('/', '_')
+    _seq = _seq.replace('\\', '_')
+    _seq = _seq.replace('|', '_')
     SEQ_ids.append(_seq)
 
 
