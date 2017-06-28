@@ -10,3 +10,5 @@ DBS:
     psiblast_db: /projects/microprot/dbs/uniref90/May_2017/uniref90
     hhblits_db: /projects/microprot/dbs/uniclust30_2016_09/uniclust30_2016_09
     pfamA: /projects/microprot/dbs/pfamA/pfam
+
+MICROPROT_DB: /projects/microprot/results/microprot_db.index
