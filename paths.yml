@@ -7,8 +7,8 @@ TOOLS:
 
 DBS:
     pdb70: /projects/microprot/dbs/pdb70/pdb70
-    psiblast_db: /projects/microprot/dbs/uniref90/May_2017/uniref90
-    hhblits_db: /projects/microprot/dbs/uniclust30_2016_09/uniclust30_2016_09
+    psiblast_db: /projects/microprot/dbs/uniref90/Jun_2017/uniref90
+    hhblits_db: /projects/microprot/dbs/uniclust30_2017_04/uniclust30_2017_04
     pfamA: /projects/microprot/dbs/pfamA/pfam
 
 MICROPROT_DB: /projects/microprot/results/microprot_db.index
