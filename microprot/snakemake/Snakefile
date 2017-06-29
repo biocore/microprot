@@ -12,7 +12,6 @@ from glob import glob
 from os import makedirs
 from os.path import basename, splitext, exists
 from shutil import copyfile
-from skbio import io
 
 sys.path.append('/projects/microprot')
 from microprot.scripts import split_search, process_fasta, \
@@ -26,24 +25,13 @@ with open('%s%s' % (config['MICROPROT_MAIN'], '/inputs.yml'), 'r') as f:
     inputs = yaml.load(f)
 
 # execute *before* any rules
-SEQ_file = inputs['inp_file']
-SEQ_path = inputs['inp_path']
-SEQ_from = inputs['inp_from']
-SEQ_to = inputs['inp_to']
-SEQS = process_fasta.extract_sequences('%s/%s' % (SEQ_path, SEQ_file),
-                                       identifiers=(SEQ_from, SEQ_to))
-SEQ_ids = []
-for SEQ in SEQS:
-    _seq = SEQ.metadata['id']
-    _seq = _seq.replace('/', '_')
-    _seq = _seq.replace('\\', '_')
-    _seq = _seq.replace('|', '_')
-    SEQ_ids.append(_seq)
-    SEQ.metadata['id'] = _seq
-    io.write(SEQ, format='fasta', into='%s/%s.fasta' % (inputs['MICROPROT_INP'],
-                                                        _seq))
-    io.write(SEQ, format='fasta', into='%s/%s' % (inputs['MICROPROT_OUT'],
-                                                  'processed_sequences.fasta'))
+SEQ_ids = snakemake_helpers.parse_inputs(inp_file=inputs['inp_file'],
+                                         inp_path=inputs['inp_path'],
+                                         inp_from=inputs['inp_from'],
+                                         inp_to=inputs['inp_to'],
+                                         microprot_inp='%s/%s' % (inputs['MICROPROT_OUT'],
+                                                                  '/00-sequences')
+                                         microprot_out=inputs['MICROPROT_OUT'])
 
 
 def search_x(inp_0, out_0, config=None, dbs=None, log=None):
@@ -114,7 +102,7 @@ rule all:
 
 rule search_PDB:
     input:
-        inputs['MICROPROT_INP']+'/{seq}.fasta'
+        inputs['MICROPROT_OUT']+'/00-sequences/{seq}.fasta'
     output:
         out = inputs['MICROPROT_OUT']+'/01-search_pdb/{seq}/{seq}.out',
         a3m = inputs['MICROPROT_OUT']+'/01-search_pdb/{seq}/{seq}.a3m'

@@ -1,6 +1,7 @@
 import os
 from datetime import datetime
 from microprot.scripts import process_fasta
+from skbio import io
 
 
 def not_empty(fname):
@@ -27,6 +28,28 @@ def msa_size(msa_fp):
     msa_size = len([line for line in lines if line.startswith('>')])-1
     return msa_size
 
+
+def parse_inputs(inp_file=None, inp_path=None, inp_from=None, inp_to=None,
+                 microprot_inp=None, microprot_out=None):
+    SEQ_file = inp_file
+    SEQ_path = inp_path
+    SEQ_from = inp_from
+    SEQ_to = inp_to
+    SEQS = process_fasta.extract_sequences('%s/%s' % (SEQ_path, SEQ_file),
+                                           identifiers=(SEQ_from, SEQ_to))
+    SEQ_ids = []
+    for SEQ in SEQS:
+        _seq = SEQ.metadata['id']
+        _seq = _seq.replace('/', '_')
+        _seq = _seq.replace('\\', '_')
+        _seq = _seq.replace('|', '_')
+        SEQ_ids.append(_seq)
+        SEQ.metadata['id'] = _seq
+        io.write(SEQ, format='fasta', into='%s/%s.fasta' % (microprot_inp,
+                                                            _seq))
+        io.write(SEQ, format='fasta',
+                 into='%s/%s' % (microprot_out, 'processed_sequences.fasta'))
+        return SEQ_ids
 
 # TODO
 # adding MSA size information omitted for now
