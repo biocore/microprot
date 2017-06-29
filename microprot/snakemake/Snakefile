@@ -100,13 +100,10 @@ def split_x(inp_0, out_0, step="NA", version=config['VERSION'],
         if snakemake_helpers.not_empty(match):
             snakemake_helpers.append_db(match, step=step, version=version,
                                         db_fp=str(paths['MICROPROT_DB']))
-        # TODO
-        # if non_match is not empty `touch $out.ok`, else `touch $out.pass`?
-        # will this help avoid fails? i.e. in subsequent rules, if `ok` is
-        # present, execte rule, if `pass`, just skip execution and pass on
-        # another dummy file
         if snakemake_helpers.not_empty(non_match):
             shell('touch {out_0}')
+        else:
+            shell('echo "pass" > {out_0}')
 
 
 rule all:
@@ -164,10 +161,13 @@ rule search_CM:
     log:
         inputs['MICROPROT_OUT']+'/log/{seq}/search_cm.log'
     run:
-        search_x(input[0], output[0],
-                 config=config['search_CM']['params'],
-                 dbs=paths['DBS']['pdb70'],
-                 log=log[0])
+        if snakemake_helpers.not_empty(input[0]):
+            shell('echo "pass" > {output}')
+        else:
+            search_x(input[0], output[0],
+                     config=config['search_CM']['params'],
+                     dbs=paths['DBS']['pdb70'],
+                     log=log[0])
 
 
 rule split_CM:
@@ -178,10 +178,14 @@ rule split_CM:
     log:
         inputs['MICROPROT_OUT']+'/log/{seq}/split_cm.log'
     run:
-        split_x(input[0], output[0],
-                step="CM",
-                frag_len=config['split_CM']['params']['min_fragment_length'],
-                e_val=config['split_CM']['params']['max_evalue'], log=log[0])
+        if snakemake_helpers.not_empty(input[0]):
+            shell('echo "pass" > {output}')
+        else:
+            split_x(input[0], output[0],
+                    step="CM",
+                    frag_len=config['split_CM']['params']['min_fragment_length'],
+                    e_val=config['split_CM']['params']['max_evalue'],
+                    log=log[0])
 
 
 rule search_Pfam:
@@ -192,10 +196,13 @@ rule search_Pfam:
     log:
         inputs['MICROPROT_OUT']+'/log/{seq}/search_pfam.log'
     run:
-        search_x(input[0], output[0],
-                 config=config['search_Pfam']['params'],
-                 dbs=paths['DBS']['pfamA'],
-                 log=log[0])
+        if snakemake_helpers.not_empty(input[0]):
+            shell('echo "pass" > {output}')
+        else:
+            search_x(input[0], output[0],
+                     config=config['search_Pfam']['params'],
+                     dbs=paths['DBS']['pfamA'],
+                     log=log[0])
 
 
 rule split_Pfam:
@@ -206,11 +213,15 @@ rule split_Pfam:
     log:
         inputs['MICROPROT_OUT']+'/log/{seq}/split_pfam.log'
     run:
-        split_x(input[0], output[0],
-                step="Pfam",
-                frag_len=config['split_Pfam']['params']['min_fragment_length'],
-                e_val=config['split_Pfam']['params']['max_evalue'],
-                prob=config['split_Pfam']['params']['min_prob'], log=log[0])
+        if snakemake_helpers.not_empty(input[0]):
+            shell('echo "pass" > {output}')
+        else:
+            split_x(input[0], output[0],
+                    step="Pfam",
+                    frag_len=config['split_Pfam']['params']['min_fragment_length'],
+                    e_val=config['split_Pfam']['params']['max_evalue'],
+                    prob=config['split_Pfam']['params']['min_prob'],
+                    log=log[0])
 
 
 rule MSA_hhblits:
