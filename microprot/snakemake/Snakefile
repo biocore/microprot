@@ -35,11 +35,15 @@ SEQS = process_fasta.extract_sequences('%s/%s' % (SEQ_path, SEQ_file),
 SEQ_ids = []
 for SEQ in SEQS:
     _seq = SEQ.metadata['id']
-    print(_seq)
     _seq = _seq.replace('/', '_')
     _seq = _seq.replace('\\', '_')
     _seq = _seq.replace('|', '_')
     SEQ_ids.append(_seq)
+    SEQ.metadata['id'] = _seq
+    io.write(SEQ, format='fasta', into='%s/%s.fasta' % (inputs['MICROPROT_INP'],
+                                                        _seq))
+    io.write(SEQ, format='fasta', into='%s/%s' % (inputs['MICROPROT_OUT'],
+                                                  'processed_sequences.fasta'))
 
 
 def search_x(inp_0, out_0, config=None, dbs=None, log=None):
@@ -110,17 +114,6 @@ rule all:
         expand(inputs['MICROPROT_OUT']+'/log/{seq}/msa_ripe.log',
                seq=SEQ_ids)
 
-rule read_sequences:
-    input:
-        '%s/%s' % (SEQ_path, SEQ_file)
-    output:
-        inputs['MICROPROT_INP']+'/{seq}.fasta'
-    log:
-        inputs['MICROPROT_OUT']+'/processed_sequences.fasta'
-    run:
-        for SEQ in SEQS:
-            io.write(SEQ, format='fasta', into=output[0])
-            io.write(SEQ, format='fasta', into=log[0])
 
 rule search_PDB:
     input:
