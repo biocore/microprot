@@ -61,6 +61,11 @@ def cluster_sequences(dm, cutoff):
     -------
     list of int
         flat cluster numbers to which sequences are assigned
+
+    Raises
+    ------
+    ValueError
+        if the distance matrix is empty
     """
     t = 1.0 - cutoff / 100.0
     return list(fcluster(linkage(dm.condensed_form()), t,
@@ -106,8 +111,11 @@ def _calculate_Neff(infile, outfile, cutoff):
     """
     msa = parse_msa_file(infile)
     hdm = hamming_distance_matrix(msa)
-    clu = cluster_sequences(hdm, cutoff)
-    Neff = effective_family_size(clu, msa.shape[1])
+    try:
+        clu = cluster_sequences(hdm, cutoff)
+        Neff = effective_family_size(clu, msa.shape[1])
+    except ValueError:
+        Neff = 0
     click.echo('Effective family size at %s%% identity: %.3f.'
                % (cutoff, Neff))
     if outfile is not None:
