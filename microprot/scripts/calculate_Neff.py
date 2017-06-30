@@ -115,7 +115,7 @@ def _calculate_Neff(infile, outfile, cutoff):
         clu = cluster_sequences(hdm, cutoff)
         Neff = effective_family_size(clu, msa.shape[1])
     except ValueError:
-        Neff = 0
+        Neff = 0.0
     click.echo('Effective family size at %s%% identity: %.3f.'
                % (cutoff, Neff))
     if outfile is not None:
