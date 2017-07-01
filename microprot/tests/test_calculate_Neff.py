@@ -46,11 +46,8 @@ class ProcessingTests(TestCase):
         with open(self.clusters_fp, 'r') as f:
             exp = [int(x.split('\t')[1]) for x in f.read().splitlines()]
         self.assertListEqual(obs, exp)
-        hdm = DistanceMatrix([[0]])
-        msg = ('The number of observations cannot be determined on an empty '
-               'distance matrix.')
-        with self.assertRaisesRegex(ValueError, msg):
-            cluster_sequences(hdm, 80)
+        obs = cluster_sequences(DistanceMatrix([[0]]), 80)
+        self.assertListEqual(obs, [])
 
     def test_effective_family_size(self):
         msa = parse_msa_file(self.input_a3m_fp)
