@@ -1,8 +1,3 @@
-# snakemake run example:
-# snakemake -j 32 --local-cores 8 --cluster-config cluster.json --cluster \
-# "qsub -k eo -m n -l nodes=1:ppn={cluster.n} -l mem={cluster.mem}gb \
-# -l walltime={cluster.time}" --directory "$@"
-
 # snakemake -s Snakefile_minimal -n
 
 import yaml
@@ -18,38 +13,52 @@ from microprot.scripts import split_search, process_fasta, \
                               snakemake_helpers, calculate_Neff
 
 
-configfile: "config.yaml"
-with open('%s%s' % (config['MICROPROT_MAIN'], '/paths.yml'), 'r') as f:
-    paths = yaml.load(f)
+configfile: "config.yml"
 with open('%s%s' % (config['MICROPROT_MAIN'], '/inputs.yml'), 'r') as f:
     inputs = yaml.load(f)
 
+
 # execute *before* any rules
-SEQ_ids = snakemake_helpers.parse_inputs(inp_file=inputs['inp_file'],
-                                         inp_path=inputs['inp_path'],
+# making it cluster friendly
+try:
+    inputs['inp_from'] = config['seq_no']
+    inputs['inp_to'] = config['seq_no']
+except KeyError:
+    pass
+
+SEQ_ids = snakemake_helpers.parse_inputs(inp_fp=inputs['inp_fp'],
                                          inp_from=inputs['inp_from'],
                                          inp_to=inputs['inp_to'],
                                          microprot_inp='%s/%s' % (inputs['MICROPROT_OUT'],
-                                                                  '/00-sequences')
+                                                                  '/00-sequences'),
                                          microprot_out=inputs['MICROPROT_OUT'])
 
 
-def search_x(inp_0, out_0, config=None, dbs=None, log=None):
+def search_x(inp_0, out_0, params=None, dbs=None, n_cpu=4, log=None,
+             match_exp="non_match", hh="hhsearch"):
     indir = snakemake_helpers.trim(inp_0, '/')
     outdir = snakemake_helpers.trim(out_0, '/')
-    for non_match in glob('%s/%s' % (indir, '*.non_match')):
-        if snakemake_helpers.not_empty(non_match):
+    for _match in glob('%s/%s' % (indir, '*%s' % match_exp)):
+        if snakemake_helpers.not_empty(_match):
             process_fasta.split_fasta(process_fasta.extract_sequences(
-                                      non_match), outdir=outdir)
+                                      _match), outdir=outdir)
     for hh_inp in glob('%s/%s' % (outdir, '*.fasta')):
         out_root = snakemake_helpers.trim(hh_inp, '.')
-        shell('{paths[TOOLS][hhsuite]}/hhsearch -i {hh_inp} \
-               {config} \
-               -d {dbs} \
-               -o {out_root}.out \
-               -oa3m {out_root}.a3m 2> {log}')
-    # TODO
-    # touch only if all hhsearch steps complete successfully?
+        if hh == 'hhsearch':
+            shell('{config[TOOLS][hhsuite]}/hhsearch -i {hh_inp} \
+                   {params} \
+                   -cpu {n_cpu} \
+                   -d {dbs} \
+                   -o {out_root}.out \
+                   -oa3m {out_root}.a3m 2>> {log}')
+        elif hh == 'hhblits':
+            shell('{config[TOOLS][hhsuite]}/hhblits -i {hh_inp} \
+                   {params} \
+                   -cpu {n_cpu} \
+                   -d {dbs} \
+                   -o {out_root}.out \
+                   -oa3m {out_root}.a3m 2>> {log}')
+
     shell('touch {out_0}')
 
 
@@ -65,15 +74,12 @@ def split_x(inp_0, out_0, step="NA", version=config['VERSION'],
         outname = snakemake_helpers.trim(hh_inp, '.').split('/')[-1]
         outpath = snakemake_helpers.trim(out_0, '/')
 
-        with open(log, 'a') as _log:
-            _log.write('hh_inp= %s\nfasta_inp= %s\n step= %s\n frag_len= %s\n'
-                       ' p_val= %s\n e_val= %s\n prob= %s\n' % (hh_inp,
-                                                                fasta_inp,
-                                                                step,
-                                                                frag_len,
-                                                                p_val,
-                                                                e_val,
-                                                                prob))
+        with open('%s.log' % log, 'a') as _log:
+            _log.write('%s\n\thh_inp=%s\n\tfasta_inp=%s\n'
+                       '\t\tstep=%s\tfrag_len=%s\tp_val=%s\t'
+                       'e_val=%s\tprob=%s\n' % (step, hh_inp, fasta_inp,
+                                                step, frag_len, p_val,
+                                                e_val, prob))
         split_search.mask_sequence(hh_inp, fasta_inp,
                                    subsequences_fp='%s/%s' % (outpath,
                                                               outname),
@@ -86,8 +92,8 @@ def split_x(inp_0, out_0, step="NA", version=config['VERSION'],
         non_match = '%s/%s.non_match' % (outpath, outname)
 
         if snakemake_helpers.not_empty(match):
-            snakemake_helpers.append_db(match, step=step, version=version,
-                                        db_fp=str(paths['MICROPROT_DB']))
+            snakemake_helpers.write_db(match, step=step, version=version,
+                                       db_fp=log)
         if snakemake_helpers.not_empty(non_match):
             shell('touch {out_0}')
         else:
@@ -96,34 +102,42 @@ def split_x(inp_0, out_0, step="NA", version=config['VERSION'],
 
 rule all:
     input:
-        expand(inputs['MICROPROT_OUT']+'/log/{seq}/msa_ripe.log',
+        expand(inputs['MICROPROT_TEMP']+'/{seq}/done.{seq}',
                seq=SEQ_ids)
+    # run:
+        # copy outputs from temp to out
+        # shell('scp -r {inputs[MICROPROT_TEMP]}/* {inputs[MICROPROT_OUT]}; ')
+        # # clean up
+        # shell('rm -r {inputs[MICROPROT_TEMP]}')
 
 
 rule search_PDB:
     input:
         inputs['MICROPROT_OUT']+'/00-sequences/{seq}.fasta'
     output:
-        out = inputs['MICROPROT_OUT']+'/01-search_pdb/{seq}/{seq}.out',
-        a3m = inputs['MICROPROT_OUT']+'/01-search_pdb/{seq}/{seq}.a3m'
+        out = inputs['MICROPROT_TEMP']+'/{seq}/01-search_pdb/{seq}.out',
+        a3m = inputs['MICROPROT_TEMP']+'/{seq}/01-search_pdb/{seq}.a3m'
     log:
-        inputs['MICROPROT_OUT']+'/log/{seq}/search_pdb.log'
+        inputs['MICROPROT_TEMP']+'/{seq}/{seq}.log'
+    threads: config['search_PDB']['threads']
     shell:
-        '{paths[TOOLS][hhsuite]}/hhsearch -i {input} \
+        'echo -e "SEARCH PDB\n----------" >> {log}; \
+         {config[TOOLS][hhsuite]}/hhsearch -i {input} \
          {config[search_PDB][params]} \
-         -d {paths[DBS][pdb70]} \
+         -cpu {config[search_PDB][threads]} \
+         -d {config[search_PDB][DB]} \
          -o {output.out} \
-         -oa3m {output.a3m} 2> {log}'
+         -oa3m {output.a3m} 2>> {log}'
 
 
 rule split_PDB:
     input:
-        inputs['MICROPROT_OUT']+'/01-search_pdb/{seq}/{seq}.out',
+        inputs['MICROPROT_TEMP']+'/{seq}/01-search_pdb/{seq}.out',
         rules.search_PDB.input[0]
     output:
-        inputs['MICROPROT_OUT']+'/02-split_pdb/{seq}/{seq}'
+        temp(inputs['MICROPROT_TEMP']+'/{seq}/02-split_pdb/{seq}')
     log:
-        inputs['MICROPROT_OUT']+'/log/{seq}/split_pdb.log'
+        inputs['MICROPROT_TEMP']+'/{seq}/{seq}'
     run:
         # produces output.match and output.non_match
         split_search.mask_sequence(input[0], input[1],
@@ -134,37 +148,43 @@ rule split_PDB:
         non_match = '%s.non_match' % output[0]
 
         if snakemake_helpers.not_empty(match):
-            snakemake_helpers.append_db(match, step="PDB",
+            snakemake_helpers.write_db(match, step="PDB",
                                         version=config['VERSION'],
-                                        db_fp=str(paths['MICROPROT_DB']))
+                                        db_fp=log[0])
         if snakemake_helpers.not_empty(non_match):
-            open(output[0], 'a').close()
+            shell('touch {output}')
+        else:
+            shell('echo "pass" > {output}')
 
 
 rule search_CM:
     input:
-        inputs['MICROPROT_OUT']+'/02-split_pdb/{seq}/{seq}'
+        inputs['MICROPROT_TEMP']+'/{seq}/02-split_pdb/{seq}'
     output:
-        inputs['MICROPROT_OUT']+'/03-search_CM/{seq}/{seq}'
+        temp(inputs['MICROPROT_TEMP']+'/{seq}/03-search_CM/{seq}')
     log:
-        inputs['MICROPROT_OUT']+'/log/{seq}/search_cm.log'
+        inputs['MICROPROT_TEMP']+'/{seq}/{seq}.log'
+    threads: config['search_CM']['threads']
     run:
         if snakemake_helpers.not_empty(input[0]):
             shell('echo "pass" > {output}')
         else:
+            shell('echo -e "SEARCH CM\n---------" >> {log}')
             search_x(input[0], output[0],
-                     config=config['search_CM']['params'],
-                     dbs=paths['DBS']['pdb70'],
-                     log=log[0])
+                     params=config['search_CM']['params'],
+                     n_cpu=config['search_CM']['threads'],
+                     dbs=config['search_CM']['DB'],
+                     log=log[0], hh='hhsearch',
+                     match_exp='non_match')
 
 
 rule split_CM:
     input:
         rules.search_CM.output[0]
     output:
-        inputs['MICROPROT_OUT']+'/04-split_CM/{seq}/{seq}'
+        temp(inputs['MICROPROT_TEMP']+'/{seq}/04-split_CM/{seq}')
     log:
-        inputs['MICROPROT_OUT']+'/log/{seq}/split_cm.log'
+        inputs['MICROPROT_TEMP']+'/{seq}/{seq}'
     run:
         if snakemake_helpers.not_empty(input[0]):
             shell('echo "pass" > {output}')
@@ -178,28 +198,32 @@ rule split_CM:
 
 rule search_Pfam:
     input:
-        inputs['MICROPROT_OUT']+'/04-split_CM/{seq}/{seq}'
+        inputs['MICROPROT_TEMP']+'/{seq}/04-split_CM/{seq}'
     output:
-        inputs['MICROPROT_OUT']+'/05-search_Pfam/{seq}/{seq}'
+        temp(inputs['MICROPROT_TEMP']+'/{seq}/05-search_Pfam/{seq}')
     log:
-        inputs['MICROPROT_OUT']+'/log/{seq}/search_pfam.log'
+        inputs['MICROPROT_TEMP']+'/{seq}/{seq}.log'
+    threads: config['search_Pfam']['threads']
     run:
         if snakemake_helpers.not_empty(input[0]):
             shell('echo "pass" > {output}')
         else:
+            shell('echo -e "SEARCH PFAM\n-----------" >> {log}')
             search_x(input[0], output[0],
-                     config=config['search_Pfam']['params'],
-                     dbs=paths['DBS']['pfamA'],
-                     log=log[0])
+                     params=config['search_Pfam']['params'],
+                     n_cpu=config['search_Pfam']['threads'],
+                     dbs=config['search_Pfam']['DB'],
+                     log=log[0], hh='hhsearch',
+                     match_exp='non_match')
 
 
 rule split_Pfam:
     input:
         rules.search_Pfam.output[0]
     output:
-        inputs['MICROPROT_OUT']+'/06-split_Pfam/{seq}/{seq}'
+        temp(inputs['MICROPROT_TEMP']+'/{seq}/06-split_Pfam/{seq}')
     log:
-        inputs['MICROPROT_OUT']+'/log/{seq}/split_pfam.log'
+        inputs['MICROPROT_TEMP']+'/{seq}/{seq}'
     run:
         if snakemake_helpers.not_empty(input[0]):
             shell('echo "pass" > {output}')
@@ -214,62 +238,96 @@ rule split_Pfam:
 
 rule MSA_hhblits:
     input:
-        inputs['MICROPROT_OUT']+'/06-split_Pfam/{seq}/{seq}'
+        inputs['MICROPROT_TEMP']+'/{seq}/06-split_Pfam/{seq}'
     output:
-        inputs['MICROPROT_OUT']+'/07-MSA_hhblits/{seq}/{seq}'
+        temp(inputs['MICROPROT_TEMP']+'/{seq}/07-MSA_hhblits/{seq}')
     log:
-        inputs['MICROPROT_OUT']+'/log/{seq}/msa_hhblits.log'
+        inputs['MICROPROT_TEMP']+'/{seq}/{seq}.log'
+    threads: config['MSA_hhblits']['threads']
     run:
         """
-        it's essentially a copy of `search_x` function, but here we're using
-        HHblits and it has a slightly different commandline input construction
+        here, we process both `match` and `non_match` sequences
+        Pfam is our "domain splitting" method
         """
-        indir = snakemake_helpers.trim(input[0], '/')
-        outdir = snakemake_helpers.trim(output[0], '/')
-        # here, we process both `match` and `non_match` sequences
-        # Pfam is our "domain splitting" method
-        for _match in glob('%s/%s' % (indir, '*match')):
-            if snakemake_helpers.not_empty(_match):
-                process_fasta.split_fasta(process_fasta.extract_sequences(
-                                          _match), outdir=outdir)
-        for hh_inp in glob('%s/%s' % (outdir, '*.fasta')):
-            out_root = snakemake_helpers.trim(hh_inp, '.')
-            shell('{paths[TOOLS][hhsuite]}/hhblits -i {hh_inp} \
-                   {config[MSA_hhblits][params]} \
-                   -d {paths[DBS][hhblits_db]} \
-                   -o {out_root}.out \
-                   -oa3m {out_root}.a3m 2> {log}')
-        shell('touch {output}')
-
+        shell('echo -e "MSA HHBLITS\n-----------" >> {log}')
+        search_x(input[0], output[0],
+                 params=config['MSA_hhblits']['params'],
+                 n_cpu=config['MSA_hhblits']['threads'],
+                 dbs=config['MSA_hhblits']['DB'],
+                 log=log[0], hh='hhblits',
+                 match_exp='match')
 
 rule MSA_ripe:
     input:
-        inputs['MICROPROT_OUT']+'/07-MSA_hhblits/{seq}/{seq}'
+        inputs['MICROPROT_TEMP']+'/{seq}/07-MSA_hhblits/{seq}'
     output:
-        inputs['MICROPROT_OUT']+'/log/{seq}/msa_ripe.log'
+        temp(inputs['MICROPROT_TEMP']+'/{seq}/{seq}.msa_ripe')
+    log:
+        inputs['MICROPROT_TEMP']+'/{seq}/{seq}.log'
     run:
         shell('touch {output}')
         indir = snakemake_helpers.trim(input[0], '/')
         for infile in glob('%s/%s' % (indir, '*a3m')):
             inp_name = splitext(basename(infile))[0]
+            fasta = re.sub('.a3m', '.fasta', infile)
             msa = calculate_Neff.parse_msa_file(infile)
             hdm = calculate_Neff.hamming_distance_matrix(msa)
             clu = calculate_Neff.cluster_sequences(hdm,
                                                    config['MSA_ripe']['cutoff'])
             Neff = calculate_Neff.effective_family_size(clu, msa.shape[1])
+            _log = re.sub('.log$', '', log[0])
             if Neff >= config['MSA_ripe']['Nf']:
-                with open(output[0], 'a') as o:
+                with open(log[0], 'a') as o:
                     o.write('%s %s %.1f\n' % (inp_name, "ripe:", Neff))
+                snakemake_helpers.write_db(fasta, step='%s (%.1f)' %
+                                           ("Rosetta", Neff),
+                                           version=config['VERSION'],
+                                           db_fp=_log)
                 dest = re.sub('07-MSA_hhblits', '10-Rosetta', infile)
                 dest_dir = snakemake_helpers.trim(dest, '/')
                 if not exists(dest_dir):
                     makedirs(dest_dir)
                 copyfile(infile, dest)
             else:
-                with open(output[0], 'a') as o:
+                with open(log[0], 'a') as o:
                     o.write('%s %s %.1f\n' % (inp_name, "not ripe:", Neff))
+                snakemake_helpers.write_db(fasta, step='%s (%.1f)' %
+                                           ("not ripe", Neff),
+                                           version=config['VERSION'],
+                                           db_fp=_log)
                 dest = re.sub('07-MSA_hhblits', '09-not_ripe', infile)
                 dest_dir = snakemake_helpers.trim(dest, '/')
                 if not exists(dest_dir):
                     makedirs(dest_dir)
                 copyfile(infile, dest)
+
+
+rule organize_files:
+    input:
+        inputs['MICROPROT_TEMP']+'/{seq}/{seq}.msa_ripe'
+    output:
+        temp(inputs['MICROPROT_TEMP']+'/{seq}/done.{seq}')
+    run:
+        shell('touch {output}')
+        tempdir = snakemake_helpers.trim(input[0], '/')
+        logfiles = re.sub('.msa_ripe$', '', input[0])
+        # copy index log to logs
+        shell('rsync -rz {tempdir}/{wildcards.seq}* \
+               {inputs[MICROPROT_OUT]}/log/')
+        # package outputs
+        shell('tar -zcf {inputs[MICROPROT_TEMP]}/{wildcards.seq}.tar.gz \
+              {tempdir}/[0-1][0-9]-*; \
+              rsync {inputs[MICROPROT_TEMP]}/{wildcards.seq}.tar.gz \
+              {inputs[MICROPROT_OUT]}/pkg/')
+        # append DB to MICROPROT_DB (for index and main DB)
+        snakemake_helpers.append_db(logfiles, inputs['MICROPROT_DB'])
+        # copy Rosetta
+        Rosetta = '%s/%s' % (tempdir, '10-Rosetta/')
+        if exists(Rosetta):
+            shell('rsync -rz {Rosetta}* {inputs[MICROPROT_OUT]}/AB/')
+        # copy PDB
+        shell('rsync -rz --min-size=1 {tempdir}/02-split_pdb/*.match \
+              {inputs[MICROPROT_OUT]}/PDB/ 2> /dev/null')
+        # copy CM
+        shell('rsync -rz --min-size=1 {tempdir}/04-split_CM/*.match \
+              {inputs[MICROPROT_OUT]}/CM/ 2> /dev/null')

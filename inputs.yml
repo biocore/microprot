@@ -1,6 +1,7 @@
 MICROPROT_OUT: /projects/microprot/output/
+MICROPROT_TEMP: /localscratch/microprot/
+MICROPROT_DB: /projects/microprot/results/microprot_db
 
-inp_path: /projects/microprot/benchmarking/snakemake_test/
-inp_file: 2.faa
+inp_fp: /projects/microprot/benchmarking/snakemake_test/2.faa
 inp_from: 1
 inp_to: 2
