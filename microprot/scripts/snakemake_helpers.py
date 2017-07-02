@@ -40,7 +40,9 @@ def parse_inputs(inp_fp=None, inp_from=None, inp_to=None,
     SEQS = process_fasta.extract_sequences(inp_fp,
                                            identifiers=(inp_from, inp_to))
     SEQ_ids = []
-    for SEQ in SEQS:
+    processed_fh = open('%s/%s' % (microprot_out,
+                                   'processed_sequences.fasta'), 'a')
+    for i, SEQ in enumerate(SEQS):
         _seq = SEQ.metadata['id']
         _seq = _seq.replace('/', '_')
         _seq = _seq.replace('\\', '_')
@@ -49,11 +51,9 @@ def parse_inputs(inp_fp=None, inp_from=None, inp_to=None,
         SEQ.metadata['id'] = _seq
         io.write(SEQ, format='fasta', into='%s/%s.fasta' % (microprot_inp,
                                                             _seq))
-        processed_fh = open('%s/%s' % (microprot_out,
-                                       'processed_sequences.fasta'), 'a')
         io.write(SEQ, format='fasta',
                  into=processed_fh)
-        processed_fh.close()
+    processed_fh.close()
     return SEQ_ids
 
 

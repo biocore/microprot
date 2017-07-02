@@ -26,6 +26,7 @@ try:
 except KeyError:
     pass
 
+
 SEQ_ids = snakemake_helpers.parse_inputs(inp_fp=inputs['inp_fp'],
                                          inp_from=inputs['inp_from'],
                                          inp_to=inputs['inp_to'],
