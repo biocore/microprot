@@ -29,8 +29,8 @@ except KeyError:
 SEQ_ids = snakemake_helpers.parse_inputs(inp_fp=inputs['inp_fp'],
                                          inp_from=inputs['inp_from'],
                                          inp_to=inputs['inp_to'],
-                                         microprot_inp='%s/%s' % (inputs['MICROPROT_OUT'],
-                                                                  '/00-sequences'),
+                                         microprot_inp='%s/%s' % (inputs['MICROPROT_TEMP'],
+                                                                  '/ZZ-sequences'),
                                          microprot_out=inputs['MICROPROT_OUT'])
 
 
@@ -102,18 +102,13 @@ def split_x(inp_0, out_0, step="NA", version=config['VERSION'],
 
 rule all:
     input:
-        expand(inputs['MICROPROT_TEMP']+'/{seq}/done.{seq}',
+        expand(inputs['MICROPROT_TEMP']+'/done.{seq}',
                seq=SEQ_ids)
-    # run:
-        # copy outputs from temp to out
-        # shell('scp -r {inputs[MICROPROT_TEMP]}/* {inputs[MICROPROT_OUT]}; ')
-        # # clean up
-        # shell('rm -r {inputs[MICROPROT_TEMP]}')
 
 
 rule search_PDB:
     input:
-        inputs['MICROPROT_OUT']+'/00-sequences/{seq}.fasta'
+        inputs['MICROPROT_TEMP']+'/ZZ-sequences/{seq}.fasta'
     output:
         out = inputs['MICROPROT_TEMP']+'/{seq}/01-search_pdb/{seq}.out',
         a3m = inputs['MICROPROT_TEMP']+'/{seq}/01-search_pdb/{seq}.a3m'
@@ -149,8 +144,8 @@ rule split_PDB:
 
         if snakemake_helpers.not_empty(match):
             snakemake_helpers.write_db(match, step="PDB",
-                                        version=config['VERSION'],
-                                        db_fp=log[0])
+                                       version=config['VERSION'],
+                                       db_fp=log[0])
         if snakemake_helpers.not_empty(non_match):
             shell('touch {output}')
         else:
@@ -261,7 +256,7 @@ rule MSA_ripe:
     input:
         inputs['MICROPROT_TEMP']+'/{seq}/07-MSA_hhblits/{seq}'
     output:
-        temp(inputs['MICROPROT_TEMP']+'/{seq}/{seq}.msa_ripe')
+        temp(inputs['MICROPROT_TEMP']+'/{seq}/msa_ripe.{seq}')
     log:
         inputs['MICROPROT_TEMP']+'/{seq}/{seq}.log'
     run:
@@ -304,19 +299,20 @@ rule MSA_ripe:
 
 rule organize_files:
     input:
-        inputs['MICROPROT_TEMP']+'/{seq}/{seq}.msa_ripe'
+        inputs['MICROPROT_TEMP']+'/{seq}/msa_ripe.{seq}'
     output:
-        temp(inputs['MICROPROT_TEMP']+'/{seq}/done.{seq}')
+        temp(inputs['MICROPROT_TEMP']+'/done.{seq}')
     run:
         shell('touch {output}')
         tempdir = snakemake_helpers.trim(input[0], '/')
-        logfiles = re.sub('.msa_ripe$', '', input[0])
+        logfiles = re.sub('msa_ripe.', '', input[0])
         # copy index log to logs
         shell('rsync -rz {tempdir}/{wildcards.seq}* \
                {inputs[MICROPROT_OUT]}/log/')
         # package outputs
-        shell('tar -zcf {inputs[MICROPROT_TEMP]}/{wildcards.seq}.tar.gz \
-              {tempdir}/[0-1][0-9]-*; \
+        shell('cd {tempdir}; \
+              tar -zcf {inputs[MICROPROT_TEMP]}/{wildcards.seq}.tar.gz \
+              [0-1][0-9]-*; \
               rsync {inputs[MICROPROT_TEMP]}/{wildcards.seq}.tar.gz \
               {inputs[MICROPROT_OUT]}/pkg/')
         # append DB to MICROPROT_DB (for index and main DB)
@@ -324,10 +320,17 @@ rule organize_files:
         # copy Rosetta
         Rosetta = '%s/%s' % (tempdir, '10-Rosetta/')
         if exists(Rosetta):
-            shell('rsync -rz {Rosetta}* {inputs[MICROPROT_OUT]}/AB/')
+            shell('rsync -rzq {Rosetta}* {inputs[MICROPROT_OUT]}/AB/')
         # copy PDB
-        shell('rsync -rz --min-size=1 {tempdir}/02-split_pdb/*.match \
-              {inputs[MICROPROT_OUT]}/PDB/ 2> /dev/null')
+        PDB_match = glob('%s/%s' % (tempdir, '02-split_pdb/*.match'))
+        if len(PDB_match) > 0:
+            shell('rsync -rzq --min-size=1 {tempdir}/02-split_pdb/*.match \
+                  {inputs[MICROPROT_OUT]}/PDB/ 2> /dev/null')
         # copy CM
-        shell('rsync -rz --min-size=1 {tempdir}/04-split_CM/*.match \
-              {inputs[MICROPROT_OUT]}/CM/ 2> /dev/null')
+        CM_match = glob('%s/%s' % (tempdir, '04-split_CM/*.match'))
+        if len(CM_match) > 0:
+            shell('rsync -rzq --min-size=1 {tempdir}/04-split_CM/*.match \
+                  {inputs[MICROPROT_OUT]}/CM/ 2> /dev/null')
+        # clean up ONLY WHAT I'VE CREATED
+        shell('rm -r {tempdir}; \
+               rm -r {inputs[MICROPROT_TEMP]}/{wildcards.seq}.tar.gz')
