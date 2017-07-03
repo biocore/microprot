@@ -430,8 +430,8 @@ def get_q_id(hit):
     """
     # find the right ID
     _id = [_id for _id in hit['alignment'].keys()
-           if _id.startswith('Q')
-           and _id != 'Q Consensus'][0]
+           if _id.startswith('Q') and
+           _id != 'Q Consensus'][0]
     return _id
 
 
@@ -639,7 +639,7 @@ def pretty_output(mask_out):
               second holds the none-hit covered subsequences.')
 @click.option('--prob', '-p', default=None, type=float,
               help='Minimum HHsuite probability value')
-@click.option('--e_val', '-e',  default=None, type=float,
+@click.option('--e_val', '-e', default=None, type=float,
               help='Maximum E-value')
 @click.option('--frag_len', '-l', default=0, type=float,
               help='Minimum fragment length')
