@@ -1,5 +1,20 @@
-MICROPROT_MAIN: /projects/microprot/
+# input definitions
+MICROPROT_OUT: /projects/microprot/output/
+MICROPROT_TEMP: /localscratch/microprot/
+MICROPROT_DB: /projects/microprot/results/microprot_db
+
+inp_fp: /projects/microprot/benchmarking/snakemake_test/2.faa
+# process range
+inp_from: 1
+inp_to: 2
+# OR process single sequence
+# seq_no: 3
+
+# version
 VERSION: 1
+
+# compute on N threads
+THREADS: 8
 
 TOOLS:
     hhsuite: /projects/microprot/tools/hh-suite-3.0.0/build/bin
@@ -10,7 +25,6 @@ TOOLS:
 
 search_PDB:
     params: '-e 0.001'
-    threads: 8
     DB: '/projects/microprot/dbs/pdb70/pdb70'
 split_PDB:
     params:
@@ -23,7 +37,6 @@ PSIBLAST_PSSM:
 
 search_CM:
     params: '-e 0.1'
-    threads: 8
     DB: '/projects/microprot/dbs/pdb70/pdb70'
 split_CM:
     params:
@@ -32,7 +45,6 @@ split_CM:
 
 search_Pfam:
     params: '-e 0.1'
-    threads: 8
     DB: '/projects/microprot/dbs/pfamA/pfam'
 split_Pfam:
     params:
@@ -42,9 +54,8 @@ split_Pfam:
 
 MSA_hhblits:
     params: '-n 3 -e 0.001 -maxfilt 500000 -diff inf -id 99 -cov 50 -cpu 8'
-    threads: 8
     DB: '/projects/microprot/dbs/uniclust30_2017_04/uniclust30_2017_04'
 
 MSA_ripe:
     cutoff: 80
-    Nf: 64
+    Nf: 16
