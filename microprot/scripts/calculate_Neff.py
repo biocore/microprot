@@ -32,19 +32,26 @@ def parse_msa_file(infile):
     return TabularMSA(seqs)
 
 
-def hamming_distance_matrix(msa):
+def hamming_distance_matrix(msa, ignore_sequence_ids=False):
     """Compute Hamming distance matrix of an MSA.
 
     Parameters
     ----------
     msa : skbio TabularMSA
         Aligned sequences for calculating pairwise Hamming distances
+    ignore_sequence_ids : bool
+        Default is False. If true, ignore sequence identifier of alignment.
+        Useful if identifier got truncated by alignment producing program such
+        that different sequences collapse to the same identifier.
 
     Returns
     -------
     skbio DistanceMatrix
     """
-    return DistanceMatrix.from_iterable(msa, hamming, key='id', validate=False)
+    key = 'id'
+    if ignore_sequence_ids:
+        key = None
+    return DistanceMatrix.from_iterable(msa, hamming, key=key, validate=False)
 
 
 def cluster_sequences(dm, cutoff):
