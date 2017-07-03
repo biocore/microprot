@@ -94,6 +94,17 @@ class ProcessingTests(TestCase):
         with self.assertRaisesRegex(DissimilarityMatrixError, exp_errmsg):
             hamming_distance_matrix(msa)
 
+        # test that distance matrix has as many elements as sequences in msa
+        # regardless of the fact that some sequence IDs collapse
+        hdm = hamming_distance_matrix(msa, ignore_sequence_ids=True)
+        self.assertEqual(hdm.shape[0], msa.shape.sequence)
+
+        clu = cluster_sequences(hdm, 80)
+        self.assertEqual(len(clu), msa.shape.sequence)
+
+        Neff = effective_family_size(clu, msa.shape[1])
+        self.assertAlmostEqual(Neff, 49.62, places=2)
+
 
 if __name__ == '__main__':
     main()
