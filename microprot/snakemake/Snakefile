@@ -70,6 +70,7 @@ def split_x(inp_0, out_0, step="NA", version=config['VERSION'],
             prob=None,
             log=None):
     inpdir = snakemake_helpers.trim(inp_0, '/')
+    _not_empty_list = []
     for fasta_inp in glob('%s/%s' % (inpdir, '*.fasta')):
         hh_inp = re.sub('.fasta$', '.out', fasta_inp)
         outname = snakemake_helpers.trim(hh_inp, '.').split('/')[-1]
@@ -95,10 +96,15 @@ def split_x(inp_0, out_0, step="NA", version=config['VERSION'],
         if snakemake_helpers.not_empty(match):
             snakemake_helpers.write_db(match, step=step, version=version,
                                        db_fp=log)
+        # TODO this part
         if snakemake_helpers.not_empty(non_match):
-            shell('touch {out_0}')
+            _not_empty_list.append(True)
         else:
-            shell('echo "pass" > {out_0}')
+            _not_empty_list.append(False)
+    if any(_not_empty_list):
+        shell('touch {out_0}')
+    else:
+        shell('echo "pass" > {out_0}')
 
 
 rule all:
@@ -267,7 +273,7 @@ rule MSA_ripe:
             inp_name = splitext(basename(infile))[0]
             fasta = re.sub('.a3m', '.fasta', infile)
             msa = calculate_Neff.parse_msa_file(infile)
-            hdm = calculate_Neff.hamming_distance_matrix(msa)
+            hdm = calculate_Neff.hamming_distance_matrix(msa, ignore_sequence_ids=True)
             clu = calculate_Neff.cluster_sequences(hdm,
                                                    config['MSA_ripe']['cutoff'])
             Neff = calculate_Neff.effective_family_size(clu, msa.shape[1])
