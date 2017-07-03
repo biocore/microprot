@@ -5,6 +5,7 @@ from os.path import join
 from tempfile import mkdtemp
 from skbio.util import get_data_path
 from skbio import DistanceMatrix
+from skbio.stats.distance import DissimilarityMatrixError
 
 from microprot.scripts.calculate_Neff import (parse_msa_file,
                                               hamming_distance_matrix,
@@ -73,6 +74,25 @@ class ProcessingTests(TestCase):
 
     def tearDown(self):
         rmtree(self.working_dir)
+
+    def test_duplicateIDs(self):
+        # test that alignment is parsed correctly
+        infile = get_data_path('test_calculate_Neff/GRAMNEG_T1D_899_33-87.a3m')
+        msa = parse_msa_file(infile)
+        self.assertEqual(msa.shape.sequence, 524)
+        self.assertEqual(msa.shape.position, 55)
+
+        # test that error message is raised due to duplicate sequence IDs
+        exp_errmsg = (
+            "IDs must be unique. Found the following duplicate IDs: "
+            "'tr|A0A1M5BN02|A0A1M5BN02_9BACE', 'tr|R5ESH3|R5ESH3_9BACE', "
+            "'tr|J9FY14|J9FY14_9ZZZZ', 'tr|A0A0B2JK82|A0A0B2JK82_9PORP', "
+            "'tr|C9KY84|C9KY84_9BACE', 'tr|W4UV97|W4UV97_9BACE', "
+            "'tr|W0EX52|W0EX52_9PORP', 'tr|J9GQ36|J9GQ36_9ZZZZ', "
+            "'tr|R6E9S3|R6E9S3_9BACE', 'tr|I8YS30|I8YS30_BACOV', "
+            "'tr|R7DG47|R7DG47_9PORP'")
+        with self.assertRaisesRegex(DissimilarityMatrixError, exp_errmsg):
+            hamming_distance_matrix(msa)
 
 
 if __name__ == '__main__':
