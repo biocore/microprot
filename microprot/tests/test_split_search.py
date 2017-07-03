@@ -287,8 +287,7 @@ class ParsersTests(TestCase):
         self.minhit = {
             'alignment': {
                 'Q gi|556503834|r': {
-                    'sequence': 'QLKRQQSWLKNK--ALL---T-NVHGLNLENWQEEL'}}
-            }
+                    'sequence': 'QLKRQQSWLKNK--ALL---T-NVHGLNLENWQEEL'}}}
 
     def test_is_overlapping(self):
         self.assertTrue(is_overlapping((20, 100), (30, 150)))

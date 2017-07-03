@@ -68,10 +68,15 @@ def cluster_sequences(dm, cutoff):
     -------
     list of int
         flat cluster numbers to which sequences are assigned
+
+    Notes
+    -----
+    returns an empty list if the distance matrix is empty (e.g., there is only
+    one input sequence)
     """
     t = 1.0 - cutoff / 100.0
     return list(fcluster(linkage(dm.condensed_form()), t,
-                         criterion='distance'))
+                criterion='distance')) if dm.size > 1 else []
 
 
 def effective_family_size(clusters, length, Nclu=False):
@@ -104,8 +109,7 @@ def effective_family_size(clusters, length, Nclu=False):
 @click.option('--outfile', '-o', required=False,
               type=click.Path(resolve_path=True, readable=True, exists=False),
               help='Output file of calculated effective family size.')
-@click.option('--cutoff', '-c', required=False, type=int,
-              default=100,
+@click.option('--cutoff', '-c', required=False, type=int, default=100,
               help=('Percent identity cutoff for clustering sequences '
                     '(default: 100).'))
 def _calculate_Neff(infile, outfile, cutoff):

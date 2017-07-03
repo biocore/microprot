@@ -23,6 +23,7 @@ class ProcessingTests(TestCase):
         # test data files
         dir = 'test_calculate_Neff'
         self.input_a3m_fp = get_data_path(join(dir, '2phyA.a3m'))
+        self.input_single_a3m_fp = get_data_path(join(dir, 'single.a3m'))
         self.plain_msa_fp = get_data_path(join(dir, '2phyA.aln'))
         self.hamming_dm_fp = get_data_path(join(dir, '2phyA.hdm'))
         self.clusters_fp = get_data_path(join(dir, '2phyA.c80'))
@@ -46,6 +47,8 @@ class ProcessingTests(TestCase):
         with open(self.clusters_fp, 'r') as f:
             exp = [int(x.split('\t')[1]) for x in f.read().splitlines()]
         self.assertListEqual(obs, exp)
+        obs = cluster_sequences(DistanceMatrix([[0]]), 80)
+        self.assertListEqual(obs, [])
 
     def test_effective_family_size(self):
         msa = parse_msa_file(self.input_a3m_fp)
@@ -71,6 +74,10 @@ class ProcessingTests(TestCase):
         self.assertAlmostEqual(obs, exp)
         self.assertEqual(res.exit_code, 0)
         self.assertIn('Task completed.', res.output)
+        params = ['--infile', self.input_single_a3m_fp]
+        res = CliRunner().invoke(_calculate_Neff, params)
+        self.assertIn('Effective family size at 100% identity: 0.000.',
+                      res.output)
 
     def tearDown(self):
         rmtree(self.working_dir)

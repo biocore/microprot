@@ -248,7 +248,7 @@ def contact_precision(coords, pred_cons, pred_ppv, out_fh=None, con_coff=8,
               help='Contact atom (CA, CB, etc.)')
 @click.option('--cutoff', '-c', default=8,
               help='Contact distance cutoff')
-@click.option('--minsep', '-s',  default=5,
+@click.option('--minsep', '-s', default=5,
               help='Minimum sequence separation')
 @click.option('--topl', '-l', default=1,
               help='Top-L/x contacts')
