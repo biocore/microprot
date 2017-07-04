@@ -93,11 +93,9 @@ def split_x(inp_0, out_0, step="NA", version=config['VERSION'],
         if snakemake_helpers.not_empty(match):
             snakemake_helpers.write_db(match, step=step, version=version,
                                        db_fp=log)
-        # TODO this part
         if snakemake_helpers.not_empty(non_match):
             _not_empty_list.append(True)
-        else:
-            _not_empty_list.append(False)
+
     if any(_not_empty_list):
         shell('touch {out_0}')
     else:

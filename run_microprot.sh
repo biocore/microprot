@@ -1,22 +1,37 @@
 #!/bin/bash
-#PBS -N microprot_array_test
+#PBS -N microprot_test
 #PBS -m a
-#PBS -t 1-2%1
-#PBS -l nodes=1:ppn=8
+#PBS -t 1-10%10
+#PBS -l nodes=1:ppn=4
 #PBS -l mem=50gb
-#PBS -l walltime=3:00:00
-#PBS -o /home/tkosciolek/cluster/microprot_logs/${PBS_JOBNAME}_${PBS_ARRAYID}.o${PBS_JOBID}
-#PBS -e /home/tkosciolek/cluster/microprot_logs/${PBS_JOBNAME}_${PBS_ARRAYID}.e${PBS_JOBID}
+#PBS -l walltime=100:00:00
+#PBS -o /home/tkosciolek/cluster/microprot_logs/${PBS_JOBNAME}_${PBS_JOBID}.o
+#PBS -e /home/tkosciolek/cluster/microprot_logs/${PBS_JOBNAME}_${PBS_JOBID}.e
 
 set -e
+uname -a
 
 source activate microprot
-cd /projects/microprot/benchmarking/snakemake_minimal_test
 
-# tmpdir=/localscratch/joseout/JOBNAME_${PBS_ARRAYID}
-# mkdir -p ${tmpdir}
+# do I want to copy source FASTA file too?
+
+workdir="/projects/microprot/results/"
+
+
+JOBNUM=`echo ${PBS_JOBID} | cut -d '[' -f1`
+
+tmpdir=/localscratch/microprot/${PBS_JOBNAME}_${JOBNUM}
+rm -rf $tmpdir
+mkdir -p ${tmpdir}
+cd ${tmpdir}
+
+ln -s ${workdir}/config.yml ${tmpdir}
+date --rfc-3339=seconds
 
 snakemake -s /projects/microprot/microprot/snakemake/Snakefile \
-          --config seq_no=${PBS_ARRAYID} --configfile=`pwd`/config.yml
+          --configfile ${tmpdir}/config.yml \
+          --config seq_no=${PBS_ARRAYID} MICROPROT_TEMP=${tmpdir} \
+	      --restart-times 1 --keep-going --latency-wait 5
 
-# rm -r $tmpdir
+date --rfc-3339=seconds
+rm -r $tmpdir
