@@ -2,7 +2,7 @@ import numpy as np
 import click
 import os
 from skbio import io
-import process_fasta
+from microprot.scripts import process_fasta
 
 
 @click.command()
