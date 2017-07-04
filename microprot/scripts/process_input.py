@@ -1,7 +1,6 @@
 import numpy as np
 import click
 import os
-from skbio import io
 from microprot.scripts import process_fasta
 
 
@@ -61,6 +60,7 @@ def _process_fasta_input(infile, outfile, sort, min_len, max_len):
     else:
         process_fasta.write_sequences(output_fasta, '%s%s.fasta' % (fp_name,
                                                                     suffix))
+
 
 if __name__ == "__main__":
     _process_fasta_input()
