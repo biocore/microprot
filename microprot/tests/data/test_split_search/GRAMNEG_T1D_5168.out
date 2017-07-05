@@ -1,0 +1,985 @@
+Query         GRAMNEG_T1D_5168
+Match_columns 357
+No_of_seqs    1 out of 1
+Neff          1
+Searched_HMMs 55448
+Date          Tue Jul  4 01:05:19 2017
+Command       /projects/microprot/tools/hh-suite-3.0.0/build/bin/hhsearch -i /localscratch/microprot/microprot_gneg2-1885_403330/ZZ-sequences/GRAMNEG_T1D_5168.fasta -e 0.001 -cpu 4 -d /projects/microprot/dbs/pdb70/pdb70 -o /localscratch/microprot/microprot_gneg2-1885_403330/GRAMNEG_T1D_5168/01-search_pdb/GRAMNEG_T1D_5168.out -oa3m /localscratch/microprot/microprot_gneg2-1885_403330/GRAMNEG_T1D_5168/01-search_pdb/GRAMNEG_T1D_5168.a3m 
+
+ No Hit                             Prob E-value P-value  Score    SS Cols Query HMM  Template HMM
+  1 5AFO_A FIMBRIAE; CELL ADHESION  99.8 8.8E-25 1.6E-29  189.6   0.0  319   24-355     1-325 (362)
+  2 2WMP_B CHAPERONE PROTEIN PAPD,  98.1 3.5E-09 6.3E-14   78.1   0.0  118  213-355     2-122 (123)
+  3 4XOA_G PrsA (E.C.5.2.1.8); typ  98.1 3.5E-09 6.4E-14   88.3   0.0  168  157-354   102-277 (279)
+  4 2W07_B CHAPERONE PROTEIN PAPD,  98.1 6.1E-09 1.1E-13   77.2   0.0  142  201-354     2-146 (148)
+  5 3JWN_K Chaperone protein fimC,  98.0 1.3E-08 2.3E-13   76.0   0.0  143  201-354     3-152 (154)
+  6 2J2Z_B CHAPERONE PROTEIN PAPD,  97.8 6.4E-08 1.1E-12   75.1   0.0  144  199-355    21-172 (173)
+  7 2XG5_B CHAPERONE PROTEIN PAPD,  97.8 6.4E-08 1.1E-12   75.1   0.0  144  199-355    21-172 (173)
+  8 1N12_C PapE (N-terminal-delete  97.6 1.9E-07 3.5E-12   69.3   0.0  128  212-355     1-137 (138)
+  9 1N12_A PapE (N-terminal-delete  97.6 1.9E-07 3.5E-12   69.3   0.0  128  212-355     1-137 (138)
+ 10 1PDK_B CHAPERONE PROTEIN PAPD;  97.5 2.9E-07 5.2E-12   68.7   0.0  144  202-354     2-155 (157)
+ 11 3BWU_F FimD (N-Terminal Domain  97.3 1.1E-06 1.9E-11   64.7   0.0  132  213-354     2-140 (142)
+ 12 5FLU_I PAP FIMBRIAL MAJOR PILI  97.1 2.7E-06 4.9E-11   64.8   0.0  143  201-354     9-161 (163)
+ 13 4DWH_D Chaperone protein fimC,  97.1   4E-06 7.3E-11   61.9   0.0  131  212-354     2-141 (143)
+ 14 2JTY_A Type-1 fimbrial protein  97.0 4.6E-06 8.3E-11   67.5   0.0  144  199-355     6-158 (184)
+ 15 5IQM_A Protein FimG, Protein f  97.0 5.1E-06 9.2E-11   60.9   0.0  127  213-354     2-130 (132)
+ 16 5IQN_A Protein FimG, DsF_SRIRI  97.0 5.1E-06 9.2E-11   60.9   0.0  127  213-354     2-130 (132)
+ 17 2UY6_B PERIPLASMID CHAPERONE P  96.8 1.7E-05 3.1E-10   60.5   0.0  144  200-354     8-161 (163)
+ 18 5CYL_G Fimbrial subunit CupB6;  96.4 7.5E-05 1.3E-09   66.2   0.0  142  200-355   191-344 (370)
+ 19 5CYL_A Fimbrial subunit CupB6;  96.4 7.5E-05 1.3E-09   66.2   0.0  142  200-355   191-344 (370)
+ 20 3ME0_B Chaperone protein papD,  96.0 0.00026 4.7E-09   55.8   0.0  117  213-355     7-127 (128)
+ 21 4DPB_X Plastocyanin A, chlorop  63.8     3.7 6.6E-05   26.7   0.0   20   54-73     66-85  (99)
+ 22 1PLA_A PLASTOCYANIN (NMR, 30 S  59.2     5.1 9.1E-05   26.1   0.0   26   55-80     65-92  (97)
+ 23 5B1J_C Copper-containing nitri  53.4     7.4 0.00013   28.5   0.0   27   54-80     59-89  (124)
+ 24 3EF4_C Blue copper protein; el  53.4     7.4 0.00013   28.5   0.0   27   54-80     59-89  (124)
+ 25 2N0M_A Lipid modified azurin p  52.6     7.8 0.00014   28.5   0.0   21   53-73     90-114 (130)
+ 26 1BXV_A PLASTOCYANIN; COPPER PR  51.7     8.2 0.00015   25.6   0.0   21   53-73     57-77  (91)
+ 27 1BXU_A PLASTOCYANIN; COPPER PR  51.7     8.2 0.00015   25.6   0.0   21   53-73     57-77  (91)
+ 28 4HCF_B Cupredoxin 1; Structura  45.8      12 0.00021   24.7   0.0   22   57-78     70-93  (100)
+ 29 5TK2_C Inosine-5'-monophosphat  45.8      12 0.00021   24.7   0.0   22   57-78     70-93  (100)
+ 30 1PMY_A PSEUDOAZURIN (CUPREDOXI  39.9      17  0.0003   26.3   0.0   25   53-77     59-85  (123)
+ 31 4YL4_A Pseudoazurin; Blue Copp  34.8      23 0.00041   25.7   0.0   20   54-73     60-79  (124)
+ 32 1CUO_A PROTEIN (129-MER); BETA  32.0      27 0.00048   26.7   0.0   20   54-73     89-113 (129)
+ 33 1UAT_A Azurin iso-2; beta-barr  32.0      27 0.00048   26.7   0.0   20   54-73     89-113 (129)
+ 34 2JXM_A Plastocyanin, Cytochrom  31.1      28 0.00051   22.3   0.0   21   53-73     63-83  (97)
+ 35 1TEF_A Plastocyanin, chloropla  28.0      35 0.00063   22.7   0.0   20   54-73     66-85  (99)
+ 36 7PCY_A PLASTOCYANIN; ELECTRON   27.9      35 0.00063   22.7   0.0   22   53-74     64-85  (98)
+ 37 3TU6_A Pseudoazurin (Blue copp  27.8      35 0.00064   25.2   0.0   24   55-78     63-88  (127)
+ 38 1IUZ_A PLASTOCYANIN; ELECTRON   25.8      40 0.00073   22.1   0.0   23   52-74     63-85  (98)
+ 39 2H3X_C Aromatic Amine Dehydrog  25.6      41 0.00074   25.4   0.0   20   54-73     88-112 (128)
+ 40 4Y2L_F CFA/I pili major subuni  25.2      42 0.00076   28.2   0.0   52  301-355    87-151 (153)
+ 41 2OV0_A PROTEIN; beta-sandwich,  23.5      48 0.00086   22.7   0.0   22   53-74     73-94  (105)
+ 42 4Y2O_B CFA/I pili chaperone Cf  23.1      49 0.00089   27.6   0.0   51  301-354    76-139 (142)
+ 43 1ZPU_E Iron transport multicop  21.4      56   0.001   30.7   0.0   14   62-75    453-466 (534)
+
+No 1
+>5AFO_A FIMBRIAE; CELL ADHESION, LONG POLAR FIMBRIAE; HET: GOL; 1.82A {ESCHERICHIA COLI}
+Probab=99.82  E-value=8.8e-25  Score=189.64  Aligned_cols=319  Identities=27%  Similarity=0.480  Sum_probs=219.8  Template_Neff=8.500
+
+Q GRAMNEG_T1D_51   24 APKGICTPDNG-VFHSVLDFPGYVITAAQNKAGGTFNTTVT--NGGSYPAHCHCDTGTAGEFPYIYYTARINESLSYAGV  100 (357)
+Q Consensus        24 apkgictpdng-vfhsvldfpgyvitaaqnkaggtfnttvt--nggsypahchcdtgtagefpyiyytarineslsyagv  100 (357)
+                      |..|.|.|++| ...-.+++.-..+....|.+|.++.....  .++.|.+.|.|+.+..++....||++....  .   .
+T Consensus         1 a~~~~C~~~~g~~~~~~~~~~~~~~~~~~n~~G~~~~~~~~~~~~~~y~~~c~C~~~~~~~~~~~y~~~~~~~--~---~   75 (362)
+T 5AFO_A            1 ADWGPCRTASGDPFIFVTSFTKNIQNPTDNVTGQTYPDFYQWALGDKYSGVCECPSPNPTEARPTLYKTESTL--A---A   75 (362)
+T ss_dssp             CCSCBEEESSSSCEEEEEEEEEECCSGGGCSTTCEEEEEEEEECCCCEEEEECCSSSSCSSCBCCEEEEEECS--C---B
+T ss_pred             CCcceeEeCCCCceEEEEECccccCChhhcCCCcEEccceeeccCCeEEEEEeCCCCCCCCCCCEEEEEEeCC--C---C
+Confidence            35689999965 33334555433333789999998875442  445699999999986666677888776552  2   2
+
+
+Q GRAMNEG_T1D_51  101 HSNLNYYNLNSHLDVGMAIDLLGVGFVNAPFEYHANNPSGTTVYKCSRVDPLSISSGAKAQVYFYIKKPFAGKLIIPETL  180 (357)
+Q Consensus       101 hsnlnyynlnshldvgmaidllgvgfvnapfeyhannpsgttvykcsrvdplsissgakaqvyfyikkpfagkliipetl  180 (357)
+                      ....++|.+|..+++.+.+..-+.+....||....++-. ..  .|. -+....+.+.+.++.|++++|+.|...||...
+T Consensus        76 ~~~~~~y~tn~gi~v~v~~~~~~~~~~~~P~~~~~~~~~-~~--~~~-~~~~~~~~~~~~~i~l~ktg~i~g~~~i~~~~  151 (362)
+T 5AFO_A           76 GHNSTYFKITNNLEVSTRVYIANVGNVQVPFINKSNSQP-GR--ECD-QPTFGWTTGSKGQLSLYIAKPFVGEQNIPQTI  151 (362)
+T ss_dssp             CSSTTCEESSSSEEEEEEEEETTTEEEESSEEEEECCCC-BC--CCS-SCEEEECTTSEEEEEEEESSCCSSEEEEEEEE
+T ss_pred             CCCceeEEcCCCeEEEEEEEECCCceEeCCcccccCCCC-CC--ccC-CCCCcccccCEEEEEEEEccCccCEEEcCCcE
+Confidence            466789999977777776655332334566665433211 01  122 12344566889999999999999999999988
+
+
+Q GRAMNEG_T1D_51  181 IAKLYGTISRDTPVDYSKPMADVYIRGDITAPQSCEINSLQPINFDFSTIPASDFSSVVGSAV-SAHKITKTVTIKCEYL  259 (357)
+Q Consensus       181 iaklygtisrdtpvdyskpmadvyirgditapqsceinslqpinfdfstipasdfssvvgsav-sahkitktvtikceyl  259 (357)
+                      ++.+|+......+ + +.++..+.+.|.|+.|++|+|+.-+.+++||..|.+++|...+|+.. ...+....+.+.|..-
+T Consensus       152 i~~~~~~~~~~~~-~-~~~~~~v~i~g~i~~~~tC~i~~~~~~~V~fG~i~~~~f~~~~G~~~~~~~~~~f~I~l~C~~~  229 (362)
+T 5AFO_A          152 IVSVFGTKKENVY-S-SVPISQVLLSGKVTVTQGCELAAGTSLDIDFGEYQAHDFKGRTGQPPQNVQKIQKELTFNCTNI  229 (362)
+T ss_dssp             EEEEEEESSTTCC-C-SSCSEEEEEEEEEECCCEEEECTTCCCEEEEEEECGGGTTTCBTSCCTTCCCEEEEEEEEEESC
+T ss_pred             EEEEEEEeCCCcc-c-ccceEEEEEEEEEEeCCCeEEcCCCeeEEECCceeHHHccccCCCCCCCcccEEEEEEEEecCC
+Confidence            9988876543221 1 26788999999999999999998778899999999999986456532 2234556667778753
+
+
+Q GRAMNEG_T1D_51  260 GILNTDDITTSFYATESSSDNSMVVTSNPNVGVKIYDKNNREIKVNGGELSTDMGATSV--YGEKAGSVTFSAAPASLTG  337 (357)
+Q Consensus       260 gilntddittsfyatesssdnsmvvtsnpnvgvkiydknnreikvnggelstdmgatsv--ygekagsvtfsaapasltg  337 (357)
+                      .  ....+..+|..+..+.++..+-+.+++|||+|+|.+++.|+.|...-...+...+.  ......++.|.|.+....+
+T Consensus       230 ~--~~~~v~i~f~g~~~~~~~~~l~~~a~gVGI~l~~~~g~~i~~n~~~~~~~~~~~~~~~~~~~~~~~~~~A~yv~t~~  307 (362)
+T 5AFO_A          230 S--DGVHIYLSLEGTPNAAYPSAISLGNADVGAVIEDGKGNILKPNDSNSLLEMNPGSLYEYVKRKVTTTITAYPVSTTG  307 (362)
+T ss_dssp             C--TTCCEEEEEECCBCSSCTTSEECSSTTEEEEEECSSSCBCCTTCTTCCEECBCCCCBTTTEEEEEEEEEEEEEESSS
+T ss_pred             C--CCceEEEEEEecCCCCCccceecCCCceEEEEEcCCCCeeCCCCcccccccCCCCccccccceEEEEEEEEEEeCCC
+Confidence            1  11346667766654444445557899999999999888888876532111110000  1234568999999999877
+
+
+Q GRAMNEG_T1D_51  338 ARPAPGTFTATATITIEI  355 (357)
+Q Consensus       338 arpapgtftatatitiei  355 (357)
+                      ..+.||.|.|+++++|+.
+T Consensus       308 ~~v~~G~~~a~at~ti~Y  325 (362)
+T 5AFO_A          308 KLPAAGDYSGVATMHVEL  325 (362)
+T ss_dssp             SCCCSEEEEEEEEEEEEE
+T ss_pred             CCCCCeEEEEEEEEEEEE
+Confidence            889999999999999874
+
+
+No 2
+>2WMP_B CHAPERONE PROTEIN PAPD, PAPG PROTEIN; CHAPERONE, CELL ADHESION, DONOR STRAND; 2.3A {ESCHERICHIA COLI}
+Probab=98.15  E-value=3.5e-09  Score=78.10  Aligned_cols=118  Identities=11%  Similarity=0.189  Sum_probs=85.4  Template_Neff=9.200
+
+Q GRAMNEG_T1D_51  213 QSCEINSLQPINFDFSTIPASDFSSVVGSAVSAHKITKTVTIKCEYLGILNTDDITTSF--YATESS-SDNSMVVTSNPN  289 (357)
+Q Consensus       213 qsceinslqpinfdfstipasdfssvvgsavsahkitktvtikceylgilntddittsf--yatess-sdnsmvvtsnpn  289 (357)
+                      ++|+|+ -+++++||..++.+++..   +     ....+++|+|..--     .+..+|  ...... .++....+.+++
+T Consensus         2 ~~C~i~-~~~~~Vd~G~i~~~~~~~---~-----~~~~~i~l~C~~~~-----~v~~~~~~~~~~~~~~~~~~~~~~~~g   67 (123)
+T 2WMP_B            2 GGCRPS-AQSLEIKHGDLSINSANN---H-----YAAQTLSVSCDVPA-----NIRFMLLRNTTPTYSHGKKFSVGLGHG   67 (123)
+T ss_dssp             CCCEEC-CSCEEEECCSCCSSSCTT---C-----EEEEEEEEEESSCE-----EEEEEEEESSCCSSCCTTSCEEEEETT
+T ss_pred             Ccceec-CCeeEEEccccchhhcCC---c-----eeceEEEEEeCCCC-----cEEEEEEeCCCCCcccCceEEEEecCc
+Confidence            689999 789999999999999863   2     25667888998752     466667  444432 344556778999
+
+
+Q GRAMNEG_T1D_51  290 VGVKIYDKNNREIKVNGGELSTDMGATSVYGEKAGSVTFSAAPASLTGARPAPGTFTATATITIEI  355 (357)
+Q Consensus       290 vgvkiydknnreikvnggelstdmgatsvygekagsvtfsaapasltgarpapgtftatatitiei  355 (357)
+                      +|++|++. +.++..+|..+         .......++|.+.+. .++..+.+|.|+|+|+++++.
+T Consensus        68 ~gi~l~~~-~~~~~~~~~~~---------~~~~~~~~~~~a~l~-~~~~~~~~G~f~a~atl~i~y  122 (123)
+T 2WMP_B           68 WDSIVSVN-GVDTGETTMRW---------YKAGTQNLTIGSRLY-GESSKIQPGVLSGSATLLMIL  122 (123)
+T ss_dssp             EEEEEEET-TBCSSEEEEEE---------SSSEEEEEEEEEEEC-CSCCCCCCSCCEEEEEEEEEC
+T ss_pred             eeEEEEEC-CEEccccccee---------eccCceeeEEEEEEe-cCCCcccCeeeeEEEEEEEEc
+Confidence            99999994 55543333321         122356888899884 567889999999999999874
+
+
+No 3
+>4XOA_G PrsA (E.C.5.2.1.8); type I pilus, catch-bond, cell; 2.541A {Escherichia coli K-12}
+Probab=98.15  E-value=3.5e-09  Score=88.27  Aligned_cols=168  Identities=20%  Similarity=0.278  Sum_probs=99.9  Template_Neff=9.000
+
+Q GRAMNEG_T1D_51  157 GAKAQVYFYIKKPFAGKLIIPETLIAKLYGTISRDTPVDYSKPMADVYI--RGDITAPQ-SCEINSLQPINFDFSTIPAS  233 (357)
+Q Consensus       157 gakaqvyfyikkpfagkliipetliaklygtisrdtpvdyskpmadvyi--rgditapq-sceinslqpinfdfstipas  233 (357)
+                      ..+.++|+..+.|-.+..|.|.+.++.++-.-.-..+-+  .+...+.|  .|+|+.++ .|+++..+ +..||.+++  
+T Consensus       102 ~~~~~l~i~~~~p~~~~~i~~g~~l~~~~~~~~~~~~~~--~~~~~~~i~~~~~i~~~~~tC~i~~~~-~~Vdfg~v~--  176 (279)
+T 4XOA_G          102 PWPVALYLTPVSSAGGVAIKAGSLIAVLILRQTNNYNSD--DFQFVWNIYANNDVVVPTGGCDVSARD-VTVTLPDYP--  176 (279)
+T ss_dssp             ECCEEEEECCCBSSCEEEECTTCEEEEEEEEEEESSSCC--CEEEEEEEEESSCEEEECBSEEESCSE-EEEECCSTT--
+T ss_pred             eecEEEEEEccCCCCceecCCCCEEEEEEEEeecCCCCC--CceEEEEEeCCCCEEecCCceEecCCC-eEEeCCCCC--
+Confidence            334455444444434444556666665542111111111  12223334  67888876 89998753 677888775  
+
+
+Q GRAMNEG_T1D_51  234 DFSSVVGSAVSAHKITKTVTIKCEYLGILNTDDITTSFYATESSSDNSMVVT-----SNPNVGVKIYDKNNREIKVNGGE  308 (357)
+Q Consensus       234 dfssvvgsavsahkitktvtikceylgilntddittsfyatesssdnsmvvt-----snpnvgvkiydknnreikvngge  308 (357)
+                                  .+...++.+.|.--     ..+..+|.....+.++.+...     ++++||++++|. ++.|+.|+..
+T Consensus       177 ------------~~~~f~i~~~C~~~-----~~v~~~~~~~~~~~~~~~l~~~~~~~~a~gvGi~l~~~-~~~i~~~~~~  238 (279)
+T 4XOA_G          177 ------------GSVPIPLTVYCAKS-----QNLGYYLSGTTADAGNSIFTNTASFSPAQGVGVQLTRN-GTIIPANNTV  238 (279)
+T ss_dssp             ------------CCEECCCEEEESSC-----EEEEEEEESCBSSTTSCSBCCCCCSSBCBSEEEEEEET-TEECCTTCCE
+T ss_pred             ------------CCcCeeEEEEcCCC-----CeEEEEEEcCCCCCCCceeeecCCCCCCCeEEEEEEeC-CEEeCCCCce
+Confidence                        22344455667742     245556655544444444432     688999999997 6788887763
+
+
+Q GRAMNEG_T1D_51  309 LSTDMGATSVYGEKAGSVTFSAAPASLTGARPAPGTFTATATITIE  354 (357)
+Q Consensus       309 lstdmgatsvygekagsvtfsaapasltgarpapgtftatatitie  354 (357)
+                      .   ++.   ......++.|.|.+... +..+.+|.|.|++++++.
+T Consensus       239 ~---~~~---~~~~~~~~~~~A~~~~~-~~~v~~G~f~a~~~~~i~  277 (279)
+T 4XOA_G          239 S---LGA---VGTSAVSLGLTANYART-GGQVTAGNVQSIIGVTFV  277 (279)
+T ss_dssp             E---EEE---ECSSCEECCCEEEEEEC-SSCCBCEEEEEEEEEEEE
+T ss_pred             e---ccc---cCCccEEEEEEEEEEEc-CCCCCCEEEEEEEEEEEE
+Confidence            2   111   11233567888888875 678999999999999875
+
+
+No 4
+>2W07_B CHAPERONE PROTEIN PAPD, MINOR PILIN; DONOR STRAND COMPLEMENTATION, NTE, PAPD; HET: SO4; 2.2A {ESCHERICHIA COLI}
+Probab=98.08  E-value=6.1e-09  Score=77.23  Aligned_cols=142  Identities=21%  Similarity=0.391  Sum_probs=85.6  Template_Neff=9.800
+
+Q GRAMNEG_T1D_51  201 ADVYIRGDITAPQSCEINSLQPINFDFSTIPASDFSSVVGSAVSAHKITKTVTIKCEYLGILNTDDITTSFYATESSS-D  279 (357)
+Q Consensus       201 advyirgditapqsceinslqpinfdfstipasdfssvvgsavsahkitktvtikceylgilntddittsfyatesss-d  279 (357)
+                      ++|.++|.|+++ .|+|+..++.+.||..+..++|....     . .....+.+.|.--.    ..+..+|......+ +
+T Consensus         2 ~~v~~~g~v~~~-tC~i~~~~~~~V~~g~i~~~~~~~~~-----~-~~~~~i~~~C~~~~----~~v~i~f~~~~~~~~~   70 (148)
+T 2W07_B            2 VQINIRNNVYIP-PCTINNGQNIVVDFGNINPEHVDNSR-----G-EVTKTISISCPYKS----GSLWIKVTGNTMGGGQ   70 (148)
+T ss_dssp             -------CCSCC-CCEEGGGCCCEEECCSCCSCSCSSSS-----C-CEEEEEEEECCC------CCEEEEEECCBCSSSC
+T ss_pred             ceEEEEEEEECC-CceEeCCCceEEeCCccCHHHcCCCC-----C-ceEEEEEEEcCCCC----ceEEEEEEcCCCCCcc
+Confidence            468999999976 99999867789999999999997642     1 12333445665431    46677776554433 3
+
+
+Q GRAMNEG_T1D_51  280 NSMVVTSNPNVGVKIYDKN--NREIKVNGGELSTDMGATSVYGEKAGSVTFSAAPASLTGARPAPGTFTATATITIE  354 (357)
+Q Consensus       280 nsmvvtsnpnvgvkiydkn--nreikvnggelstdmgatsvygekagsvtfsaapasltgarpapgtftatatitie  354 (357)
+                      +....++..++|+++++++  +..+++++..-. .+.....-.....++.|.|.+....+..+.+|.|.+++++++.
+T Consensus        71 ~~~l~~~~~gvgi~l~~~~~~~~~i~~~~~~~~-~~~~~~~~~~~~~~~~~~a~~~~~~~~~~~~G~~~a~~~~~v~  146 (148)
+T 2W07_B           71 NNVLATNITHFGIALYQGKGMSTPLTLGNGSGN-GYRVTAGLDTARSTFTFTSVPFRNGSGILNGGDFRTTASMSMI  146 (148)
+T ss_dssp             SSEEECSSTTEEEEEEESSSSSSBCCC------------------CEEEEEEEEEEECCCSCCSCSCCEEEEEEEEE
+T ss_pred             ccccccCCCeeeEEEEecCCCCceeecCCCCCC-ceeecCCCCCcceeEEEEEEEEeCCCCccCcEEEEEEEEEEEE
+Confidence            4444566789999999998  467777765310 0000000112344788999887766667899999999999875
+
+
+No 5
+>3JWN_K Chaperone protein fimC, Protein fimF; fimbria, cell adhesion, fimh, fimc; HET: GOL; 2.69A {Escherichia coli}
+Probab=97.99  E-value=1.3e-08  Score=75.99  Aligned_cols=143  Identities=17%  Similarity=0.361  Sum_probs=95.4  Template_Neff=9.800
+
+Q GRAMNEG_T1D_51  201 ADVYIRGDITAPQSCEINSLQ-PINFDFSTIPASDFSSVVGSAVSAHKITKTVTIK-CEYLGILNTDDITTSFYATESSS  278 (357)
+Q Consensus       201 advyirgditapqsceinslq-pinfdfstipasdfssvvgsavsahkitktvtik-ceylgilntddittsfyatesss  278 (357)
+                      ++|.++|.|+ ++.|+++.-. ..+.||..|++++|... |+.  +....-++.+. |.-.-    ..+...|-.....+
+T Consensus         3 ~~v~~~g~i~-~~tC~i~~~~~~~~V~~g~i~~~~~~~~-~~~--~~~~~f~i~l~~C~~~~----~~v~i~f~~~~~~~   74 (154)
+T 3JWN_K            3 STITIRGYVR-DNGCSVAAESTNFTVDLMENAAKQFNNI-GAT--TPVVPFRILLSPCGNAV----SAVKVGFTGVADSH   74 (154)
+T ss_dssp             CEEEEEEEEE-CCCEEEEECCEECCCCSHHHHTCCSCSC-CCC--SCCEEEEEEEEEECSSC----SEEEEEEECCBCSS
+T ss_pred             ceEEEEEEEe-cCCcEeecCCCceEEeCCcccHHHhccC-CCC--CCceeEEEEeecCCCCC----cceEEEEEccCCcc
+Confidence            5789999998 7899999653 66789999999999864 332  23334455555 76432    24666665554433
+
+
+Q GRAMNEG_T1D_51  279 DNSMVV-----TSNPNVGVKIYDKNNREIKVNGGELSTDMGATSVYGEKAGSVTFSAAPASLTGARPAPGTFTATATITI  353 (357)
+Q Consensus       279 dnsmvv-----tsnpnvgvkiydknnreikvnggelstdmgatsvygekagsvtfsaapasltgarpapgtftatatiti  353 (357)
+                      +.....     ....+||+++++.+++.|..|.....  ..-.........++.|.|.+... +..+.||.|.+++++++
+T Consensus        75 ~~~~l~~~~~~~~a~gvgi~l~~~~~~~v~~~~~~~~--~~~~~~~~~~~~~~~~~a~~~~~-~~~~~~G~~~a~i~~~v  151 (154)
+T 3JWN_K           75 NANLLALENTVSAAAGLGIQLLNEQQNQIPLNAPSSA--LSWTTLTPGKPNTLNFYARLMAT-QVPVTAGHINATATFTL  151 (154)
+T ss_dssp             CTTSEECCCSSSBCBSEEEEEECTTSCBCCTTCCTTT--CCEEECCSSSCEEEEEEEEEEES-SSSCBCCBCCEEEEEEE
+T ss_pred             CcceEEccCCccccceeEEEEECCCCCcccCCCCccc--cceeecCCCCCeEEEEEEEEEEC-CCCCCCeeEEEEEEEEE
+Confidence            333332     35789999999998888887653211  11101122345678888888765 47899999999999987
+
+
+Q GRAMNEG_T1D_51  354 E  354 (357)
+Q Consensus       354 e  354 (357)
+                      +
+T Consensus       152 ~  152 (154)
+T 3JWN_K          152 E  152 (154)
+T ss_dssp             E
+T ss_pred             E
+Confidence            5
+
+
+No 6
+>2J2Z_B CHAPERONE PROTEIN PAPD, PAP FIMBRIAL; CHAPERONE/SURFACE ACTIVE PROTEIN, PERIPLASMIC, PILUS; HET: SO4; 2.3A {ESCHERICHIA COLI} SCOP: b.2.3.2
+Probab=97.77  E-value=6.4e-08  Score=75.15  Aligned_cols=144  Identities=10%  Similarity=0.191  Sum_probs=96.8  Template_Neff=9.200
+
+Q GRAMNEG_T1D_51  199 PMADVYIRGDITAPQSCEINSLQ-PINFDFSTIPASDFSSVVGSAVSAHKITKTVTI-KCEYLGIL----NTDDITTSFY  272 (357)
+Q Consensus       199 pmadvyirgditapqsceinslq-pinfdfstipasdfssvvgsavsahkitktvti-kceylgil----ntddittsfy  272 (357)
+                      .-.+|.+.|.|++ ..|+|+..+ ..++||..++.+||..  |..  ..+...++.+ .|.-.-.-    ....+...|-
+T Consensus        21 ~~~~i~~~g~i~~-~tC~i~~~~~~~~V~~g~i~~~~l~~--g~~--~~~~~f~i~l~~C~~~~~~~~~~~~~~v~i~~~   95 (173)
+T 2J2Z_B           21 WDGRAAFHGEVVR-PACTLAMEDAWQIIDMGETPVRDLQN--GFS--GPERKFSLRLRNCEFNSQGGNLFSDSRIRVTFD   95 (173)
+T ss_dssp             ---CCSSCCCCCC-CCCEEECSSTTCEEECCSCCHHHHHT--TSC--CCCEEEEEEEESSCCEETTEETTTTTSEEEEEE
+T ss_pred             CceEEEEEEEEEe-cCcccccCCCCcEEeCCCccHHHhcc--CCC--CCCEeEEEEEeCCCcccCCCCCCCCCcEEEEEE
+Confidence            4567889999987 899999864 5789999999999985  432  2344455666 47643211    0123455555
+
+
+Q GRAMNEG_T1D_51  273 ATESSSDNSMVV--TSNPNVGVKIYDKNNREIKVNGGELSTDMGATSVYGEKAGSVTFSAAPASLTGARPAPGTFTATAT  350 (357)
+Q Consensus       273 atesssdnsmvv--tsnpnvgvkiydknnreikvnggelstdmgatsvygekagsvtfsaapasltgarpapgtftatat  350 (357)
+                      ....+ ++...-  ...+++|++++|.+++.++.|+......+      .....+++|.+.+... +..+.||.|.++++
+T Consensus        96 ~~~~~-~~~~l~~~~~a~gvgi~l~~~~g~~v~~~~~~~~~~~------~~~~~~~~~~a~~~~~-~~~v~~G~~~a~~t  167 (173)
+T 2J2Z_B           96 GVRGE-TPDKFNLSGQAKGINLQIADVRGNIARAGKVMPAIPL------TGNEEALDYTLRIVRN-GKKLEAGNYFAVLG  167 (173)
+T ss_dssp             SCBCS-STTCBCCEESCBSEEEEEECTTCCBCCTTCBCCCCCC------STTCSEEEEEEEEEEC-SSCCBCSCEEEEEE
+T ss_pred             cCCCC-CCCeEEeccccceEEEEEEcCCCCeecCCceeCCeec------CCCceEEEEEEEEEEC-CCCCCceEEEEEEE
+Confidence            54433 333222  35789999999998899988765432211      2345678899998875 57899999999999
+
+
+Q GRAMNEG_T1D_51  351 ITIEI  355 (357)
+Q Consensus       351 itiei  355 (357)
+                      +++..
+T Consensus       168 ~~v~Y  172 (173)
+T 2J2Z_B          168 FRVDY  172 (173)
+T ss_dssp             EEEEE
+T ss_pred             EEEEe
+Confidence            98753
+
+
+No 7
+>2XG5_B CHAPERONE PROTEIN PAPD, PAP FIMBRIAL; CHAPERONE, CHAPERONE-SURFACE ACTIVE PROTEIN COMPLEX; HET: EC5, EC2; 2.0A {ESCHERICHIA COLI}
+Probab=97.77  E-value=6.4e-08  Score=75.15  Aligned_cols=144  Identities=10%  Similarity=0.191  Sum_probs=94.2  Template_Neff=9.200
+
+Q GRAMNEG_T1D_51  199 PMADVYIRGDITAPQSCEINSLQ-PINFDFSTIPASDFSSVVGSAVSAHKITKTVTI-KCEYLGIL----NTDDITTSFY  272 (357)
+Q Consensus       199 pmadvyirgditapqsceinslq-pinfdfstipasdfssvvgsavsahkitktvti-kceylgil----ntddittsfy  272 (357)
+                      .-.+|.+.|.|++ ..|+|+..+ ..++||..++.+||..  |..  ..+...++.+ .|.-.-.-    ....+...|-
+T Consensus        21 ~~~~i~~~g~i~~-~tC~i~~~~~~~~V~~g~i~~~~l~~--g~~--~~~~~f~i~l~~C~~~~~~~~~~~~~~v~i~~~   95 (173)
+T 2XG5_B           21 WDGRAAFHGEVVR-PACTLAMEDAWQIIDMGETPVRDLQN--GFS--GPERKFSLRLRNCEFNSQGGNLFSDSRIRVTFD   95 (173)
+T ss_dssp             ----CCSCCCCCC-CCCEEECSSTTCEEECCSCCHHHHHT--TSC--CCCEEEEEEEESSCCBCSSCBTTTTTSEEEEEE
+T ss_pred             CceEEEEEEEEEe-cCcccccCCCCcEEeCCCccHHHhcc--CCC--CCCEeEEEEEeCCCcccCCCCCCCCCcEEEEEE
+Confidence            4567889999987 899999864 5789999999999985  432  2344455666 47643211    0123455555
+
+
+Q GRAMNEG_T1D_51  273 ATESSSDNSMVV--TSNPNVGVKIYDKNNREIKVNGGELSTDMGATSVYGEKAGSVTFSAAPASLTGARPAPGTFTATAT  350 (357)
+Q Consensus       273 atesssdnsmvv--tsnpnvgvkiydknnreikvnggelstdmgatsvygekagsvtfsaapasltgarpapgtftatat  350 (357)
+                      ....+ ++...-  ...+++|++++|.+++.++.|+......+      .....+++|.+.+... +..+.||.|.++++
+T Consensus        96 ~~~~~-~~~~l~~~~~a~gvgi~l~~~~g~~v~~~~~~~~~~~------~~~~~~~~~~a~~~~~-~~~v~~G~~~a~~t  167 (173)
+T 2XG5_B           96 GVRGE-TPDKFNLSGQAKGINLQIADVRGNIARAGKVMPAIPL------TGNEEALDYTLRIVRN-GKKLEAGNYFAVLG  167 (173)
+T ss_dssp             SCBCS-STTCBCCCSSCBSEEEEEEETTCCBCCTTCBCCCCCC------C--CCEEEEEEEEEEC-SSCCBCCCC-CEEE
+T ss_pred             cCCCC-CCCeEEeccccceEEEEEEcCCCCeecCCceeCCeec------CCCceEEEEEEEEEEC-CCCCCceEEEEEEE
+Confidence            54433 333222  35789999999998899988765432211      2345678899998875 57899999999999
+
+
+Q GRAMNEG_T1D_51  351 ITIEI  355 (357)
+Q Consensus       351 itiei  355 (357)
+                      +++..
+T Consensus       168 ~~v~Y  172 (173)
+T 2XG5_B          168 FRVDY  172 (173)
+T ss_dssp             EEEEE
+T ss_pred             EEEEe
+Confidence            98753
+
+
+No 8
+>1N12_C PapE (N-terminal-deleted), Peptide corresponding to; Immunoglobulin-like fold, donor strand complementation; 1.87A {Escherichia coli} SCOP: b.2.3.2
+Probab=97.60  E-value=1.9e-07  Score=69.34  Aligned_cols=128  Identities=20%  Similarity=0.299  Sum_probs=84.7  Template_Neff=9.500
+
+Q GRAMNEG_T1D_51  212 PQSCEINSLQPINFDFSTIPASDFSSVVGSAVSAHKITKTVTIKCEYLGILNTDDITTSFYATESSSDNSMVV----TSN  287 (357)
+Q Consensus       212 pqsceinslqpinfdfstipasdfssvvgsavsahkitktvtikceylgilntddittsfyatesssdnsmvv----tsn  287 (357)
+                      |.+|.++.-   .+||..+..++|..  +.   .....-.+.+.|..-    ...+...|-.+.....+.+..    +.+
+T Consensus         1 ~~tC~i~~~---~V~~g~i~~~~~~~--~~---~~~~~f~i~l~C~~~----~~~v~~~~~~~~~~~~~~l~~~~~~~~a   68 (138)
+T 1N12_C            1 VPACTVSNT---TVDWQDVEIQTLSQ--NG---NHEKEFTVNMRCPYN----LGTMKVTITATNTYNNAILVQNTSNTSS   68 (138)
+T ss_dssp             CCCCEECCE---EEEEEEEEGGGCCT--TC---EEEEEEEEEEECSCC----CSCEEEEEECSSEETTEEECTTSCCC--
+T ss_pred             CCceEEcCc---EEecCCEEeeeecc--CC---CceEEEEEEEEccCC----CCeeEEEEEcCCCCCCceeeeCCCCCcc
+Confidence            567988875   88999999999985  32   244455566778743    134555565544322222332    678
+
+
+Q GRAMNEG_T1D_51  288 PNVGVKIYDKN----NREIKVNGGELSTDMGATSVYGEKAGSVTFSAAP-ASLTGARPAPGTFTATATITIEI  355 (357)
+Q Consensus       288 pnvgvkiydkn----nreikvnggelstdmgatsvygekagsvtfsaap-asltgarpapgtftatatitiei  355 (357)
+                      .++|++++|.+    ++.+++|..-.   ++..+. ......+.|.|.+ ....+..+.+|.|+|+++++++.
+T Consensus        69 ~gvgi~l~~~~~~~~~~~~~~~~~~~---~~~~~~-~~~~~~~~~~a~~~~~~~~~~~~~G~~~a~~t~~v~Y  137 (138)
+T 1N12_C           69 DGLLVYLYNSNAGNIGTAITLGTPFT---PGKITG-NNADKTISLHAKLGYKGNMQNLIAGPFSATATLVASY  137 (138)
+T ss_dssp             CEEEEEEEEEETTEEEEECCTTSCBC---CSCEEC-SSSEEEEEEEEEEEEESCGGGCCCEEEEEEEEEEEEE
+T ss_pred             ceEEEEEEcCCCCCCCceeecCCCcC---CccccC-CCceEEEEEEEEEeeeCCCCCcccEeEEEEEEEEEEe
+Confidence            89999999987    67787775421   111110 2235678899999 88778899999999999998864
+
+
+No 9
+>1N12_A PapE (N-terminal-deleted), Peptide corresponding to; Immunoglobulin-like fold, donor strand complementation; 1.87A {Escherichia coli} SCOP: b.2.3.2
+Probab=97.60  E-value=1.9e-07  Score=69.34  Aligned_cols=128  Identities=20%  Similarity=0.299  Sum_probs=86.3  Template_Neff=9.500
+
+Q GRAMNEG_T1D_51  212 PQSCEINSLQPINFDFSTIPASDFSSVVGSAVSAHKITKTVTIKCEYLGILNTDDITTSFYATESSSDNSMVV----TSN  287 (357)
+Q Consensus       212 pqsceinslqpinfdfstipasdfssvvgsavsahkitktvtikceylgilntddittsfyatesssdnsmvv----tsn  287 (357)
+                      |.+|.++.-   .+||..+..++|..  +.   .....-.+.+.|..-    ...+...|-.+.....+.+..    +.+
+T Consensus         1 ~~tC~i~~~---~V~~g~i~~~~~~~--~~---~~~~~f~i~l~C~~~----~~~v~~~~~~~~~~~~~~l~~~~~~~~a   68 (138)
+T 1N12_A            1 VPACTVSNT---TVDWQDVEIQTLSQ--NG---NHEKEFTVNMRCPYN----LGTMKVTITATNTYNNAILVQNTSNTSS   68 (138)
+T ss_dssp             CCCCEECCE---EEEEEEEEGGGCCT--TC---EEEEEEEEEEECSCC----CSCEEEEEECSSEETTEEECTTCBSSTT
+T ss_pred             CCceEEcCc---EEecCCEEeeeecc--CC---CceEEEEEEEEccCC----CCeeEEEEEcCCCCCCceeeeCCCCCcc
+Confidence            567988875   88999999999985  32   244455566778743    134555565544322222332    678
+
+
+Q GRAMNEG_T1D_51  288 PNVGVKIYDKN----NREIKVNGGELSTDMGATSVYGEKAGSVTFSAAP-ASLTGARPAPGTFTATATITIEI  355 (357)
+Q Consensus       288 pnvgvkiydkn----nreikvnggelstdmgatsvygekagsvtfsaap-asltgarpapgtftatatitiei  355 (357)
+                      .++|++++|.+    ++.+++|..-.   ++..+. ......+.|.|.+ ....+..+.+|.|+|+++++++.
+T Consensus        69 ~gvgi~l~~~~~~~~~~~~~~~~~~~---~~~~~~-~~~~~~~~~~a~~~~~~~~~~~~~G~~~a~~t~~v~Y  137 (138)
+T 1N12_A           69 DGLLVYLYNSNAGNIGTAITLGTPFT---PGKITG-NNADKTISLHAKLGYKGNMQNLIAGPFSATATLVASY  137 (138)
+T ss_dssp             CEEEEEEEEEETTEEEEECCTTSCBC---CSCEEC-SSSEEEEEEEEEEEEESCGGGBCCEEEEEEEEEEEEE
+T ss_pred             ceEEEEEEcCCCCCCCceeecCCCcC---CccccC-CCceEEEEEEEEEeeeCCCCCcccEeEEEEEEEEEEe
+Confidence            89999999987    67787775421   111110 2235678899999 88778899999999999998864
+
+
+No 10
+>1PDK_B CHAPERONE PROTEIN PAPD; CHAPERONE, PILUS, BACTERIAL ADHESION; 2.4A {Escherichia coli} SCOP: b.2.3.2
+Probab=97.54  E-value=2.9e-07  Score=68.68  Aligned_cols=144  Identities=19%  Similarity=0.285  Sum_probs=84.9  Template_Neff=9.900
+
+Q GRAMNEG_T1D_51  202 DVYIRGDITAPQSCEINSL-QPINFDFSTIPASDFSSVVGSAVSAHKITKTVTIK-CEYLGILNTDDITTSFYATESSSD  279 (357)
+Q Consensus       202 dvyirgditapqsceinsl-qpinfdfstipasdfssvvgsavsahkitktvtik-ceylgilntddittsfyatesssd  279 (357)
+                      +|.++|.|.+ ..|.++.- ++.+.||.+++.++|... |+.  .....-++.++ |.-..  ....+...|-......+
+T Consensus         2 ~i~~~g~i~~-~tC~i~~~~~~~~V~lg~i~~~~~~~~-~~~--~~~~~~~i~l~~C~~~~--~~~~~~i~f~~~~~~~~   75 (157)
+T 1PDK_B            2 DVAFRGNLLD-RPCHVSGDSLNKHVVFKTRASRDFWYP-PGR--SPTESFVIRLENCHATA--VGKIVTLTFKGTEEAAL   75 (157)
+T ss_dssp             -------CCC-STTEECSSTTSCEEECCCCHHHHHSST-TCB--CCCEEEEEEEESCCTTT--HHHHEEEEEECCEETTE
+T ss_pred             ceEEEEEEec-CCcEEecCcCCeEEeCCeeeHHHccCC-CCc--CCCEEEEEEEECCCCCC--CCCeEEEEEEcCCcccC
+Confidence            6788999986 88999874 367889999999999753 221  12233344443 54321  11345555655443333
+
+
+Q GRAMNEG_T1D_51  280 N-SMVVT--SNPNVGVKIYDKNN-REIKVNGGELSTDMGATSVYGEKAGSVTFSAAPASLTG----ARPAPGTFTATATI  351 (357)
+Q Consensus       280 n-smvvt--snpnvgvkiydknn-reikvnggelstdmgatsvygekagsvtfsaapasltg----arpapgtftatati  351 (357)
+                      + -+..+  ..++||++++|.++ +.++.+...- ....  .........+.|.|.+....+    ..+.||.|.+++++
+T Consensus        76 ~~~~~~~~~~a~gvgi~l~~~~~~~~i~~~~~~~-~~~~--~~~~~~~~~~~~~a~~~~~~~~~~~~~~~~G~~~a~~~~  152 (157)
+T 1PDK_B           76 PGHLKVTGVNAGRLGIALLDTDGSSLLKPGTSHN-KGQG--EKVTGNSLELPFGAYVVATPEALRTKSVVPGDYEATATF  152 (157)
+T ss_dssp             EEEECCBSTTBTTEEEEEECTTSSSBCCTTSBCC-SSTT--CBCCTTSEEEEEEEEEEECHHHHHTTCCCSSCCEEEEEE
+T ss_pred             CCeeEEcCCCCCeeEEEEEcCCCCceeCCCCCCC-CCCC--eeecCCceEEEEEEEEEeCchhhcccceeCeeEEEEEEE
+Confidence            2 22232  47899999999887 4666654321 1110  011233457888888888776    57899999999999
+
+
+Q GRAMNEG_T1D_51  352 TIE  354 (357)
+Q Consensus       352 tie  354 (357)
+                      +++
+T Consensus       153 ~i~  155 (157)
+T 1PDK_B          153 ELT  155 (157)
+T ss_dssp             EEE
+T ss_pred             EEE
+Confidence            875
+
+
+No 11
+>3BWU_F FimD (N-Terminal Domain)/Chaperone protein FimC/the; Usher, N-terminal domain, ternary complex; HET: EDO; 1.76A {Escherichia coli}
+Probab=97.32  E-value=1.1e-06  Score=64.65  Aligned_cols=132  Identities=17%  Similarity=0.335  Sum_probs=72.1  Template_Neff=9.900
+
+Q GRAMNEG_T1D_51  213 QSCEINSL-QPINFDFSTIPASDFSSVVGSAVSAHKITKTVTIK-CEYLGILNTDDITTSFYATESSSDNSMVV-----T  285 (357)
+Q Consensus       213 qsceinsl-qpinfdfstipasdfssvvgsavsahkitktvtik-ceylgilntddittsfyatesssdnsmvv-----t  285 (357)
+                      ..|.|+.- +..+.||..+..++|... ++.  .....-++++. |.-..    ..+...|.......++....     .
+T Consensus         2 ~tC~i~~~~~~~~V~lg~v~~~~~~~~-~~~--~~~~~~~i~l~~C~~~~----~~~~~~~~~~~~~~~~~~l~~~~~~~   74 (142)
+T 3BWU_F            2 NGCSVAAESTNFTVDLMENAAKQFNNI-GAT--TPVVPFRILLSPCGNAV----SAVKVGFTGVADSHNANLLALENTVS   74 (142)
+T ss_dssp             CCEEEEECCEEC--------------C-CCB--CCCEEEEEEEEEECTTC----CEEEEEEECCBCSSCTTSEECCCCTT
+T ss_pred             CCceecccCCceEEeCCcccHhHcccC-CCC--CCCeeEEEEEecCCCCC----CeeEEEEEcCCCccccceEeccCCcc
+Confidence            57888875 478889999999999864 432  22344556665 87542    24555666554444434333     2
+
+
+Q GRAMNEG_T1D_51  286 SNPNVGVKIYDKNNREIKVNGGELSTDMGATSVYGEKAGSVTFSAAPASLTGARPAPGTFTATATITIE  354 (357)
+Q Consensus       286 snpnvgvkiydknnreikvnggelstdmgatsvygekagsvtfsaapasltgarpapgtftatatitie  354 (357)
+                      ...+||+++++++++.|..++...... ... ........++|.+.+... +..+.+|+|.+.++++++
+T Consensus        75 ~~~~vgi~l~~~~~~~i~~~~~~~~~~-~~~-~~~~~~~~~~~~a~~~~~-~~~~~~G~~~a~~~~~v~  140 (142)
+T 3BWU_F           75 AASGLGIQLLNEQQNQIPLNAPSSALS-WTT-LTPGKPNTLNFYARLMAT-QVPVTAGHINATATFTLE  140 (142)
+T ss_dssp             BCBSEEEEEECTTCCBCCTTCCGGGCC-EEE-CCTTSCEEEEEEEEEEES-SSSCBCCBCEEEEEEEEE
+T ss_pred             ccCeeEEEEECCCCCeeecCCCCCccc-eee-cCCCCCeEEEEEEEEEEC-CCCCCCeeeeEEEEEEEE
+Confidence            578999999999888887765432110 000 011223467777877754 568999999999999875
+
+
+No 12
+>5FLU_I PAP FIMBRIAL MAJOR PILIN PROTEIN; STRUCTURAL PROTEIN, HELICAL POLYMER, STRAND; 3.8A {ESCHERICHIA COLI}
+Probab=97.14  E-value=2.7e-06  Score=64.83  Aligned_cols=143  Identities=13%  Similarity=0.324  Sum_probs=90.4  Template_Neff=9.500
+
+Q GRAMNEG_T1D_51  201 ADVYIRGDITAPQSCEINSLQ-PINFDFSTIPASDFSSVVGSAVSAHKITKTVTI-KCEYLGILN-----TDDITTSFYA  273 (357)
+Q Consensus       201 advyirgditapqsceinslq-pinfdfstipasdfssvvgsavsahkitktvti-kceylgiln-----tddittsfya  273 (357)
+                      .+|-++|.|++ ..|+++... ....||-.+++++|.  .|..  .....-++.+ .|.-....+     ...+...|..
+T Consensus         9 ~~v~~~g~i~~-~tC~i~~~~~~~~V~~g~i~~~~l~--~~~~--~~~~~f~i~l~~C~~~~~~~~~~~~~~~v~i~~~~   83 (163)
+T 5FLU_I            9 GKVTFNGTVVD-APCSISQKSADQSIDFGQLSKSFLE--AGGV--SKPMDLDIELVNCDITAFKGGNGAKKGTVKLAFTG   83 (163)
+T ss_dssp             EEEEEEEEEES-CSSEECHHHHEEEEEEEEEEHHHHH--TTCB--CCCEECCEEEESCCCHHHHHHTTTCCSEEEEEEES
+T ss_pred             eEEEEEEEEEe-cCceeecCCCCcEEEcCcccHHHhc--cCCc--cCCEeEEEEEeCCCcccccCCCCCCccEEEEEEEC
+Confidence            46788999987 899999874 567888999999996  2421  2333444555 376432110     1234555655
+
+
+Q GRAMNEG_T1D_51  274 TESSSDNSMV-VTSNPNVGVKIYDKNNREIKVNGGELSTDMGATSVYGEKAGSVTFSAAPASLT--GARPAPGTFTATAT  350 (357)
+Q Consensus       274 tesssdnsmv-vtsnpnvgvkiydknnreikvnggelstdmgatsvygekagsvtfsaapaslt--garpapgtftatat  350 (357)
+                      ...+.++..+ .....+|||+|++.+ +.+..++.... .   .. .......+.|.|......  +....||.|.++++
+T Consensus        84 ~~~~~~~~~l~~~~a~gvgi~l~~~~-~~~~~~~~~~~-~---~~-~~~~~~~~~~~a~~~~~~~~~~~v~~G~~~a~~~  157 (163)
+T 5FLU_I           84 PIVNGHSDELDTNGGTGTAIVVQGAG-KNVVFDGSEGD-A---NT-LKDGENVLHYTAVVKKSSAVGAAVTEGAFSAVAN  157 (163)
+T ss_dssp             CBCTTTSSSBCCSSSSSEEEEEEETT-EECCCBSCCCC-C---EE-CCSSCEEECCEEEEEECCSTTCCCCSSEEEEEEE
+T ss_pred             CCCCCCCCceeecCCCceEEEEecCC-CeeeeCCcccC-c---ee-ccCCCeEEEEEEEEEecCCCCCcccceeEEEEEE
+Confidence            5443332222 234789999999875 45655554211 1   11 133445688888887765  57899999999999
+
+
+Q GRAMNEG_T1D_51  351 ITIE  354 (357)
+Q Consensus       351 itie  354 (357)
+                      ++++
+T Consensus       158 ~~i~  161 (163)
+T 5FLU_I          158 FNLT  161 (163)
+T ss_dssp             EEEE
+T ss_pred             EEEE
+Confidence            9875
+
+
+No 13
+>4DWH_D Chaperone protein fimC, Type-1 fimbrial; PROTEIN-CHAPERONE COMPLEX, IMMUNOGLOBIN-LIKE FOLD, INVOLVED; HET: PEG, PO4, PG4, PGE; 2.5A {Escherichia coli}
+Probab=97.06  E-value=4e-06  Score=61.93  Aligned_cols=131  Identities=17%  Similarity=0.396  Sum_probs=82.6  Template_Neff=9.800
+
+Q GRAMNEG_T1D_51  212 PQSCEINSLQ-PINFDFSTIPASDFSSVVGSAVSAHKITKTVTIK-CEYLGILNTDDITTSFYATESS-SDNSMVV----  284 (357)
+Q Consensus       212 pqsceinslq-pinfdfstipasdfssvvgsavsahkitktvtik-ceylgilntddittsfyatess-sdnsmvv----  284 (357)
+                      +++|+++.-. +...||..|..++|... |...  .....++.++ |..--   ...+...|...... .++...-    
+T Consensus         2 ~~tC~i~~~~~~~~v~lg~i~~~~~~~~-g~~~--~~~~~~i~l~~C~~~~---~~~~~~~~~~~~~~~~~~~~l~~~~~   75 (143)
+T 4DWH_D            2 NAACAVDAGSVDQTVQLGQVRTASLAQE-GATS--SAVGFNIQLNDCDTNV---ASKAAVAFLGTAIDAGHTNVLALQSS   75 (143)
+T ss_dssp             CCCCEEEESSSTTEEECCCCCTTTCCST-TCBC--CCEEEEEEEESSCHHH---HHTEEEEEECCEEETTEEEEECCBC-
+T ss_pred             CCCeeecCCCCceEEECCceeHHHccCC-CCcc--CCcceEEEEeCCCCCc---ccccEEEEEccccCCCCCceeeecCC
+Confidence            5689988753 67889999999999864 4322  2334556666 76331   12344555544322 2222222    
+
+
+Q GRAMNEG_T1D_51  285 --TSNPNVGVKIYDKNNREIKVNGGELSTDMGATSVYGEKAGSVTFSAAPASLTGARPAPGTFTATATITIE  354 (357)
+Q Consensus       285 --tsnpnvgvkiydknnreikvnggelstdmgatsvygekagsvtfsaapasltgarpapgtftatatitie  354 (357)
+                        ..++++|++++|.+++.++.|+......+   .. .....+..|.|.+... + .+.+|.|++++++++.
+T Consensus        76 ~~~~~~~vgi~l~~~~~~~i~~~~~~~~~~~---~~-~~~~~~~~~~a~~~~~-~-~~~~G~~~a~~~~~v~  141 (143)
+T 4DWH_D           76 AAGSATNVGVQILDRTGAALTLDGATFSSET---TL-NNGTNTIPFQARYFAT-G-AATPGAANADATFKVQ  141 (143)
+T ss_dssp             --CBCCSEEEEEECTTSCBCCSSCCCEECCC----------CEEEEEEEEEES-S-SCCCSBCBEEEEEEEE
+T ss_pred             CCCCCCeEEEEEECCCCCeeccCCccccCce---ec-CCCcEEEEEEEEEEEc-C-CCCCeeeEEEEEEEEE
+Confidence              35789999999988888887765422211   11 2234567888888875 4 5899999999999875
+
+
+No 14
+>2JTY_A Type-1 fimbrial protein, A chain; PROTEIN/PILI/FIM, Cell projection, Fimbrium, chimera; NMR {Escherichia coli}
+Probab=97.04  E-value=4.6e-06  Score=67.45  Aligned_cols=144  Identities=16%  Similarity=0.368  Sum_probs=94.1  Template_Neff=8.300
+
+Q GRAMNEG_T1D_51  199 PMADVYIRGDITAPQSCEINSLQ-PINFDFSTIPASDFSSVVGSAVSAHKITKTVTIK-CEYLGILNTDDITTSFYATES  276 (357)
+Q Consensus       199 pmadvyirgditapqsceinslq-pinfdfstipasdfssvvgsavsahkitktvtik-ceylgilntddittsfyates  276 (357)
+                      ..+++.++|.|+ +.+|.|+.-+ ....||.+++.+||.+. |...  ....-++++. |..-.   ...+..+|..+..
+T Consensus         6 ~~~~i~~sg~v~-~~TC~i~~~~~~~~V~~g~i~~~~~~~~-g~~~--~~~~f~i~l~~C~~~~---~~~v~i~f~g~~~   78 (184)
+T 2JTY_A            6 NGGTVHFKGEVV-NAACAVDAGSVDQTVQLGQVRTASLAQE-GATS--SAVGFNIQLNDCDTNV---ASKAAVAFLGTAI   78 (184)
+T ss_dssp             SSSSCCCCSSCC-CCSSCCCHHHHEEEEEEEEEEGGGCSSE-EEEC--SCEEEEEEEEEECTTT---CSEEEEEEECCBS
+T ss_pred             CCeEEEEEEEEe-cCCeEecCCCCceEEECCceeHHHhcCC-CCcc--cCEEEEEEEcCCCCCC---CcceEEEEEcccC
+Confidence            357889999998 6899998764 57889999999999875 3221  2334455565 65532   1245555544432
+
+
+Q GRAMNEG_T1D_51  277 S-SDNS-MVV-----TSNPNVGVKIYDKNNREIKVNGGELSTDMGATSVYGEKAGSVTFSAAPASLTGARPAPGTFTATA  349 (357)
+Q Consensus       277 s-sdns-mvv-----tsnpnvgvkiydknnreikvnggelstdmgatsvygekagsvtfsaapasltgarpapgtftata  349 (357)
+                      . +++. +..     ....++|+++++.+++.+..++......+.   . ......+.|.|.+....  .+.||.|.+++
+T Consensus        79 ~~~~~~~l~~~~~~~~~a~gvgi~l~~~~~~~i~~~~~~~~~~~~---~-~~~~~~~~~~A~~~~~~--~v~~G~~~a~v  152 (184)
+T 2JTY_A           79 DAGHTNVLALQSSAAGSATNVGVQILDRTGAALTLDGATFSSETT---L-NNGTNTIPFQARYFATG--AATPGAANADA  152 (184)
+T ss_dssp             SGGGTTSBCCCSCTTTSCSSEEEEEEETTSCBCCBTSCCCCCCEE---C-CSEEEEEEEEEEEEEES--SCCCSCCCEEE
+T ss_pred             CCCCcceEEecCCCCCCcceEEEEEEcCCCCccccCCceeeceEe---c-CCCcEEEEEEEEEEEeC--CCCCEEEEEEE
+Confidence            1 1222 222     357799999999988888877654322221   1 12234677778887764  68999999999
+
+
+Q GRAMNEG_T1D_51  350 TITIEI  355 (357)
+Q Consensus       350 titiei  355 (357)
+                      +++++.
+T Consensus       153 t~~v~Y  158 (184)
+T 2JTY_A          153 TFKVQY  158 (184)
+T ss_dssp             EEEEEE
+T ss_pred             EEEEEE
+Confidence            998864
+
+
+No 15
+>5IQM_A Protein FimG, Protein fimF; Complex, Protein, FimGt, cell adhesion; 1.5A {Escherichia coli K-12}
+Probab=97.02  E-value=5.1e-06  Score=60.87  Aligned_cols=127  Identities=13%  Similarity=0.244  Sum_probs=81.0  Template_Neff=9.700
+
+Q GRAMNEG_T1D_51  213 QSCEINSLQPINFDFSTIPASDFSSVVGSAVSAHKITKTVTIK-CEYLGILNTDDITTSFYATESSSDNSMVV-TSNPNV  290 (357)
+Q Consensus       213 qsceinslqpinfdfstipasdfssvvgsavsahkitktvtik-ceylgilntddittsfyatesssdnsmvv-tsnpnv  290 (357)
+                      .+|+|+.- +...||..+++++|... |..  ..+..-.+.++ |.-..    ..++..|...... ++-+.. +..++|
+T Consensus         2 ~tC~i~~~-~~~V~~g~i~~~~~~~~-~~~--~~~~~f~i~l~~C~~~~----~~~~i~f~~~~~~-~~~~~~~~~~~gv   72 (132)
+T 5IQM_A            2 KPCTVSTT-NATVDLGDLYSFSLMSA-GAA--SAWHDVALELTNCPVGT----SRVTASFSGAADS-TGYYKNQGTAQNI   72 (132)
+T ss_dssp             CCCEESCS-EEEEEEEEEEGGGGCST-TCB--CCCEEEEEEEECCCTTC----CEEEEEEECCBCT-TSSEECCSSCSSC
+T ss_pred             CCeEeecC-CcEEEcCceeHHHhccC-CCc--CCceEeEEEEEcCCCCC----ceEEEEEecCCCc-CcceeccCCCCcE
+Confidence            47999863 67899999999999753 321  23344455666 76331    1355555444432 222222 357899
+
+
+Q GRAMNEG_T1D_51  291 GVKIYDKNNREIKVNGGELSTDMGATSVYGEKAGSVTFSAAPASLTGARPAPGTFTATATITIE  354 (357)
+Q Consensus       291 gvkiydknnreikvnggelstdmgatsvygekagsvtfsaapasltgarpapgtftatatitie  354 (357)
+                      |+.|+|++++.++.++.... .+    .-+....+..|.+.+... +..+.+|.|+|+++++++
+T Consensus        73 gi~l~~~~~~~i~~~~~~~~-~~----~~~~~~~~~~~~a~~~~~-~~~~~~G~~~a~v~~~v~  130 (132)
+T 5IQM_A           73 QLELQDDSGNTLNTGATKTV-QV----DDSSQSAHFPLQVRALTV-NGGATQGTIEAVISITYT  130 (132)
+T ss_dssp             EEEEECTTSCBCCTTCEEEE-EC----BTTTTBEEEEEEEEEECS-SSCCCSEEEEEEEEEEEE
+T ss_pred             EEEEECCCCCEecCCCceeE-ee----cCCCCeEEEEEEEEEEec-CCCccCeeEEEEEEEEEE
+Confidence            99999998877777654322 11    112344566777776653 567899999999999876
+
+
+No 16
+>5IQN_A Protein FimG, DsF_SRIRIRGYVR; Complex, Protein, FimGt, cell adhesion; HET: EDO; 1.0A {Escherichia coli K-12}
+Probab=97.02  E-value=5.1e-06  Score=60.87  Aligned_cols=127  Identities=13%  Similarity=0.244  Sum_probs=81.0  Template_Neff=9.700
+
+Q GRAMNEG_T1D_51  213 QSCEINSLQPINFDFSTIPASDFSSVVGSAVSAHKITKTVTIK-CEYLGILNTDDITTSFYATESSSDNSMVV-TSNPNV  290 (357)
+Q Consensus       213 qsceinslqpinfdfstipasdfssvvgsavsahkitktvtik-ceylgilntddittsfyatesssdnsmvv-tsnpnv  290 (357)
+                      .+|+|+.- +...||..+++++|... |..  ..+..-.+.++ |.-..    ..++..|...... ++-+.. +..++|
+T Consensus         2 ~tC~i~~~-~~~V~~g~i~~~~~~~~-~~~--~~~~~f~i~l~~C~~~~----~~~~i~f~~~~~~-~~~~~~~~~~~gv   72 (132)
+T 5IQN_A            2 KPCTVSTT-NATVDLGDLYSFSLMSA-GAA--SAWHDVALELTNCPVGT----SRVTASFSGAADS-TGYYKNQGTAQNI   72 (132)
+T ss_dssp             CCCEECCS-EEEEEEEEECGGGSCST-TCB--CCCEEEEEEEECCCTTC----CEEEEEEECCBCT-TSSEECCSSCTTC
+T ss_pred             CCeEeecC-CcEEEcCceeHHHhccC-CCc--CCceEeEEEEEcCCCCC----ceEEEEEecCCCc-CcceeccCCCCcE
+Confidence            47999863 67899999999999753 321  23344455666 76331    1355555444432 222222 357899
+
+
+Q GRAMNEG_T1D_51  291 GVKIYDKNNREIKVNGGELSTDMGATSVYGEKAGSVTFSAAPASLTGARPAPGTFTATATITIE  354 (357)
+Q Consensus       291 gvkiydknnreikvnggelstdmgatsvygekagsvtfsaapasltgarpapgtftatatitie  354 (357)
+                      |+.|+|++++.++.++.... .+    .-+....+..|.+.+... +..+.+|.|+|+++++++
+T Consensus        73 gi~l~~~~~~~i~~~~~~~~-~~----~~~~~~~~~~~~a~~~~~-~~~~~~G~~~a~v~~~v~  130 (132)
+T 5IQN_A           73 QLELQDDSGNTLNTGATKTV-QV----DDSSQSAHFPLQVRALTV-NGGATQGTIEAVISITYT  130 (132)
+T ss_dssp             EEEEECTTSCBCCTTCEEEE-EC----BTTTTBEEEEEEEEEECS-SSCCCSEEEEEEEEEEEE
+T ss_pred             EEEEECCCCCEecCCCceeE-ee----cCCCCeEEEEEEEEEEec-CCCccCeeEEEEEEEEEE
+Confidence            99999998877777654322 11    112344566777776653 567899999999999876
+
+
+No 17
+>2UY6_B PERIPLASMID CHAPERONE PAPD PROTEIN, PAP; DONOR STRAND COMPLEMENTATION, PILI/N-TERMINAL EXTENSION; 2.5A {ESCHERICHIA COLI} SCOP: b.2.3.2
+Probab=96.75  E-value=1.7e-05  Score=60.47  Aligned_cols=144  Identities=13%  Similarity=0.304  Sum_probs=87.4  Template_Neff=9.500
+
+Q GRAMNEG_T1D_51  200 MADVYIRGDITAPQSCEINSLQ-PINFDFSTIPASDFSSVVGSAVSAHKITKTVTI-KCEYLGILN-----TDDITTSFY  272 (357)
+Q Consensus       200 madvyirgditapqsceinslq-pinfdfstipasdfssvvgsavsahkitktvti-kceylgiln-----tddittsfy  272 (357)
+                      -.+|-+.|.|+. ..|.++... ...+||.++.+++|..  |..  .....-.+.+ .|.-....+     ...+...|.
+T Consensus         8 ~~~v~~~g~i~~-~tC~i~~~~~~~~V~~g~i~~~~~~~--~~~--~~~~~f~i~l~~C~~~~~~~~~~~~~~~v~i~~~   82 (163)
+T 2UY6_B            8 QGKVTFNNTVVD-APCSISQKSADQSIDFGQLSKSFLEA--GGV--SKPMDLDIELVNCDITAFKGGNGAKKGTVKLAFT   82 (163)
+T ss_dssp             --CEEEEEEEEC-CCCEEECSSTTCEEECCCCCHHHHHH--TCC--CCCEEEEEEEESSCCTTTBCC----CCSEEEEEE
+T ss_pred             CeEEEEEEEEEe-cCCeeecCCCCeEEEcCccchhhccc--CCc--cCCEEEEEEEECCCcccccCCCCCCccEEEEEEE
+Confidence            357888999987 899998763 5688999999999963  321  1222233444 465321110     023455565
+
+
+Q GRAMNEG_T1D_51  273 ATESSSDNS-MVVTSNPNVGVKIYDKNNREIKVNGGELSTDMGATSVYGEKAGSVTFSAAPASLT--GARPAPGTFTATA  349 (357)
+Q Consensus       273 atesssdns-mvvtsnpnvgvkiydknnreikvnggelstdmgatsvygekagsvtfsaapaslt--garpapgtftata  349 (357)
+                      ....+.+.. +......++|++|+++++ .+..++... ..+   .+ ......+.|.|.+....  +..+.+|.|.+++
+T Consensus        83 ~~~~~~~~~~~~~~~~~gvgi~l~~~~~-~~~~~~~~~-~~~---~~-~~~~~~~~~~a~~~~~~~~~~~v~~G~~~a~v  156 (163)
+T 2UY6_B           83 GPIVNGHSDELDTNGGTGLAIVVQGAGK-NVVFDGSEG-DAN---TL-KDGENVLHYTAVVKKSSAVGAAVTEGAFSAVA  156 (163)
+T ss_dssp             CCEETTEEEEEECBSSSCEEEEEECSSS-BCCCEEEEC-CTT---CB-CSSCCEEEEEEEEEECCSTTCCCCSSCCEEEE
+T ss_pred             CCCCCCCCcceeccCCceEEEEEEcCCC-ceeeCCccC-Ccc---cc-cCCcEEEEEEEEEEecCCCCCcccceeeEEEE
+Confidence            544333322 223557899999999854 555555432 111   11 12335677888877765  3678999999999
+
+
+Q GRAMNEG_T1D_51  350 TITIE  354 (357)
+Q Consensus       350 titie  354 (357)
+                      +++++
+T Consensus       157 t~~v~  161 (163)
+T 2UY6_B          157 NFNLT  161 (163)
+T ss_dssp             EEEEE
+T ss_pred             EEEEE
+Confidence            99876
+
+
+No 18
+>5CYL_G Fimbrial subunit CupB6; biofilm, adhesion, chaperone-usher, pilin, cell; 2.77A {Pseudomonas aeruginosa}
+Probab=96.37  E-value=7.5e-05  Score=66.22  Aligned_cols=142  Identities=16%  Similarity=0.305  Sum_probs=89.2  Template_Neff=8.400
+
+Q GRAMNEG_T1D_51  200 MADVYIRG---DITAPQSCEINSLQPINFDFSTIPASDFSSVVGSAVSAHKITKTVTIK-CEYLGILNTDDITTSFYATE  275 (357)
+Q Consensus       200 madvyirg---ditapqsceinslqpinfdfstipasdfssvvgsavsahkitktvtik-ceylgilntddittsfyate  275 (357)
+                      ...+.|.|   ..-.+..|+++.-..+++||..+..+||..+ |+...  ...-++.+. |.-.-     .+...|..+.
+T Consensus       191 ~~~i~isg~~~~~i~~~tC~v~~~~~~~V~lG~v~~~~~~~~-g~~~~--~~~fsI~l~~C~~~~-----~i~i~f~~~~  262 (370)
+T 5CYL_G          191 PASIAIGGGPPPPPIPKKCKVEVGREINVKLGSVALKNFPRV-NDTST--ERSFDISLSECAALA-----KPEIAFRDKY  262 (370)
+T ss_dssp             HHHHSTTCSCCCCCCCCCCBCCTTEEEEEEEEEECTTTCCST-TCBCC--CEEEEEEEBSCCTTC-----CCEEEEECSS
+T ss_pred             CEEEEEeCCCCCCCCCCCCEEecCCceEEECCceeHHHccCC-CCCCC--cEEEEEEcccCCCCC-----ceEEEEEcCC
+Confidence            56778888   3446789999875467899999999999764 54322  223455565 77532     3556666554
+
+
+Q GRAMNEG_T1D_51  276 SS--SDNSMVV----TSNPNVGVKIYDKN-NREIKVNGGELSTDMGATSVYGEKAGSVTFSAAPASLTG-ARPAPGTFTA  347 (357)
+Q Consensus       276 ss--sdnsmvv----tsnpnvgvkiydkn-nreikvnggelstdmgatsvygekagsvtfsaapasltg-arpapgtfta  347 (357)
+                      ..  ..+..++    ....+|||++++++ +..++.|....  .++.    .....+..|.|......+ ..+.||.|.|
+T Consensus       263 ~~~~~~~~~~l~~~~~~a~gVGIql~~~~~~~~i~~~~~~~--~~~~----~~~~~~~~~~A~y~~t~~~~~v~~G~~~a  336 (370)
+T 5CYL_G          263 VSAQQADPTILSLKSGGAAGFGIVVKNGLDQQRIRFDGTPY--PMRR----VGDSADLPLSAAYIRIGAEGELKAGVADG  336 (370)
+T ss_dssp             CCSCCSSTTSEECCSSSCSSEEEEEEETTTCSBCCSEEEEE--ECEE----ETTEEEEEEEEEEEECSCTTTCCC-CBC-
+T ss_pred             CCcccCCCceeeecCCCCCeEEEEEEeCCCCceecCCCccc--ceec----cCCeEEEEEEEEEEEeCCCCCccCEEEEE
+Confidence            21  1111222    24579999999987 57888876332  2221    223456778877776554 4789999999
+
+
+Q GRAMNEG_T1D_51  348 TATITIEI  355 (357)
+Q Consensus       348 tatitiei  355 (357)
+                      +++++++.
+T Consensus       337 ~~t~ti~Y  344 (370)
+T 5CYL_G          337 AAEFTFTF  344 (370)
+T ss_dssp             -CEEEEEC
+T ss_pred             EEEEEEEE
+Confidence            99999864
+
+
+No 19
+>5CYL_A Fimbrial subunit CupB6; biofilm, adhesion, chaperone-usher, pilin, cell; 2.77A {Pseudomonas aeruginosa}
+Probab=96.37  E-value=7.5e-05  Score=66.22  Aligned_cols=142  Identities=16%  Similarity=0.305  Sum_probs=92.2  Template_Neff=8.400
+
+Q GRAMNEG_T1D_51  200 MADVYIRG---DITAPQSCEINSLQPINFDFSTIPASDFSSVVGSAVSAHKITKTVTIK-CEYLGILNTDDITTSFYATE  275 (357)
+Q Consensus       200 madvyirg---ditapqsceinslqpinfdfstipasdfssvvgsavsahkitktvtik-ceylgilntddittsfyate  275 (357)
+                      ...+.|.|   ..-.+..|+++.-..+++||..+..+||..+ |+...  ...-++.+. |.-.-     .+...|..+.
+T Consensus       191 ~~~i~isg~~~~~i~~~tC~v~~~~~~~V~lG~v~~~~~~~~-g~~~~--~~~fsI~l~~C~~~~-----~i~i~f~~~~  262 (370)
+T 5CYL_A          191 PASIAIGGGPPPPPIPKKCKVEVGREINVKLGSVALKNFPRV-NDTST--ERSFDISLSECAALA-----KPEIAFRDKY  262 (370)
+T ss_dssp             HHHHTTTSSCCCCCCCCCCBCCTTEEEEEEEEEEEGGGCCST-TCBCC--CEEEEEEEBSCCTTC-----CCEEEEEESS
+T ss_pred             CEEEEEeCCCCCCCCCCCCEEecCCceEEECCceeHHHccCC-CCCCC--cEEEEEEcccCCCCC-----ceEEEEEcCC
+Confidence            56778888   3446789999875467899999999999764 54322  223455565 77532     3556666554
+
+
+Q GRAMNEG_T1D_51  276 SS--SDNSMVV----TSNPNVGVKIYDKN-NREIKVNGGELSTDMGATSVYGEKAGSVTFSAAPASLTG-ARPAPGTFTA  347 (357)
+Q Consensus       276 ss--sdnsmvv----tsnpnvgvkiydkn-nreikvnggelstdmgatsvygekagsvtfsaapasltg-arpapgtfta  347 (357)
+                      ..  ..+..++    ....+|||++++++ +..++.|....  .++.    .....+..|.|......+ ..+.||.|.|
+T Consensus       263 ~~~~~~~~~~l~~~~~~a~gVGIql~~~~~~~~i~~~~~~~--~~~~----~~~~~~~~~~A~y~~t~~~~~v~~G~~~a  336 (370)
+T 5CYL_A          263 VSAQQADPTILSLKSGGAAGFGIVVKNGLDQQRIRFDGTPY--PMRR----VGDSADLPLSAAYIRIGAEGELKAGVADG  336 (370)
+T ss_dssp             CCSCCSSTTSBCCCSSSCBSEEEEEEETTTCSBCCTEEEEE--ECEE----ETTEEEEEEEEEEEECCCTTTCBCEECCE
+T ss_pred             CCcccCCCceeeecCCCCCeEEEEEEeCCCCceecCCCccc--ceec----cCCeEEEEEEEEEEEeCCCCCccCEEEEE
+Confidence            21  1111222    24579999999987 57888876332  2221    223456778877776554 4789999999
+
+
+Q GRAMNEG_T1D_51  348 TATITIEI  355 (357)
+Q Consensus       348 tatitiei  355 (357)
+                      +++++++.
+T Consensus       337 ~~t~ti~Y  344 (370)
+T 5CYL_A          337 AAEFTFTF  344 (370)
+T ss_dssp             EEEEEEES
+T ss_pred             EEEEEEEE
+Confidence            99999864
+
+
+No 20
+>3ME0_B Chaperone protein papD, PapG protein; IMMUNOGLOBULIN PILIN CHAPERONE, CHAPERONE, FIMBRIUM; 2.03A {Escherichia coli}
+Probab=95.97  E-value=0.00026  Score=55.78  Aligned_cols=117  Identities=15%  Similarity=0.237  Sum_probs=70.1  Template_Neff=7.500
+
+Q GRAMNEG_T1D_51  213 QSCEINSLQPINFDFSTIPASDFSSVVGSAVSAHKITKTVTIKCEYLGILNTDDITTSFYATESS--SD--NSMVVTSNP  288 (357)
+Q Consensus       213 qsceinslqpinfdfstipasdfssvvgsavsahkitktvtikceylgilntddittsfyatess--sd--nsmvvtsnp  288 (357)
+                      .-|+|+. ++|++||.++..++...        ++.+..++|.|.-..     ++..++-.+..+  .+  +..+-.+| 
+T Consensus         7 ~~~~~~~-~~i~IdfG~l~~~~i~g--------~~~~~~~~isC~~~~-----~v~l~l~g~~~~~~~~~~~~~v~l~~-   71 (128)
+T 3ME0_B            7 GGCRPSA-QSLEIKHGDLSINSANN--------HYAAQTLSVSCDVPA-----NIRFMLLRNTTPTYSHGKKFSVGLGH-   71 (128)
+T ss_dssp             CCEEECC-SCCEEECCCSSSSCCSS--------CEEEEEEEEEESSCE-----EEEEEEEECSCCSSCCTTSCEEEEET-
+T ss_pred             CcccCCC-CceEEECCccCHHHcCC--------ceEEEEEEEEeCCCc-----eEEEEEEeCCCCCcccCccceEecCC-
+Confidence            3588877 78999998887776533        345678899998651     455444433332  11  23332344 
+
+
+Q GRAMNEG_T1D_51  289 NVGVKIYDKNNREIKVNGGELSTDMGATSVYGEKAGSVTFSAAPASLTGARPAPGTFTATATITIEI  355 (357)
+Q Consensus       289 nvgvkiydknnreikvnggelstdmgatsvygekagsvtfsaapasltgarpapgtftatatitiei  355 (357)
+                      +.+.+++        +||..+.....-...+|  ...++|.+.+ .-.+..+.+|.|+++|++++++
+T Consensus        72 gl~s~L~--------i~g~~~~~~~~i~~~~~--~~~~~i~s~L-~~~g~~~~~G~Fsgsa~L~v~y  127 (128)
+T 3ME0_B           72 GWDSIVS--------VNGVDTGETTMRWYKAG--TQNLTIGSRL-YGESSKIQPGVLSGSATLLMIL  127 (128)
+T ss_dssp             TEEEEEE--------ETTBCSSEEEEEESSSE--EEEEEEEEEE-EECSSSCCSSCCEEEEEEEEEC
+T ss_pred             CcEEEEE--------ECCEeCCCCeeEEeccC--CeeEEEEEEE-EccCCCCCCeeeeeEEEEEEec
+Confidence            6666554        44443332211111112  3377888777 3346688999999999999875
+
+
+No 21
+>4DPB_X Plastocyanin A, chloroplastic; membrane, thylakoid, transit peptide, plastocyanin-like; 1.0A {Populus nigra}
+Probab=63.78  E-value=3.7  Score=26.75  Aligned_cols=20  Identities=35%  Similarity=0.737  Sum_probs=14.0  Template_Neff=11.200
+
+Q GRAMNEG_T1D_51   54 AGGTFNTTVTNGGSYPAHCH   73 (357)
+Q Consensus        54 aggtfnttvtnggsypahch   73 (357)
+                      .|+++..+.+..|.|..|||
+T Consensus        66 ~g~~~~~~~~~~G~~~~~c~   85 (99)
+T 4DPB_X           66 KGETFEVALSNKGEYSFYCS   85 (99)
+T ss_dssp             TTCEEEEECCSCEEEEEECG
+T ss_pred             CCCEEEEEeCCCEEEEEEec
+Confidence            34455556667889999995
+
+
+No 22
+>1PLA_A PLASTOCYANIN (NMR, 30 STRUCTURES); ELECTRON TRANSPORT PROTEIN; HET: CU; NMR {Petroselinum crispum} SCOP: b.6.1.1
+Probab=59.22  E-value=5.1  Score=26.12  Aligned_cols=26  Identities=38%  Similarity=0.802  Sum_probs=16.9  Template_Neff=11.100
+
+Q GRAMNEG_T1D_51   55 GGTFNTTVTNGGSYPAHC--HCDTGTAG   80 (357)
+Q Consensus        55 ggtfnttvtnggsypahc--hcdtgtag   80 (357)
+                      +.++..+..+.|.|..+|  ||+.|..|
+T Consensus        65 ~~~~~~~~~~~g~~~~~c~~h~~~gm~g   92 (97)
+T 1PLA_A           65 GETYEVTLTEKGTYKFYCEPHAGAGMKG   92 (97)
+T ss_dssp             SCEEEECCCSSEEEEEECSSGGGTTCEE
+T ss_pred             ceEEEEEcCCCEEEEEEecCcccCCcEE
+Confidence            445555667888999999  45444443
+
+
+No 23
+>5B1J_C Copper-containing nitrite reductase (E.C.1.7.2.1), Blue; complex, copper nitrite reductase, electron; 3.0A {Alcaligenes xylosoxydans xylosoxydans}
+Probab=53.42  E-value=7.4  Score=28.50  Aligned_cols=27  Identities=22%  Similarity=0.381  Sum_probs=16.9  Template_Neff=9.500
+
+Q GRAMNEG_T1D_51   54 AGGTFNTTVT--NGGSYPAHC--HCDTGTAG   80 (357)
+Q Consensus        54 aggtfnttvt--nggsypahc--hcdtgtag   80 (357)
+                      .|.++..+++  ..|.|..||  ||..|..+
+T Consensus        59 ~g~~~~~~~~~~~~G~y~~~C~~h~~~gm~~   89 (124)
+T 5B1J_C           59 GGFSKEVVFNAEKEGLYVLKCAPHYGMGMVV   89 (124)
+T ss_dssp             EEESSCEEEECCSCSEEEEECGGGGGGTCEE
+T ss_pred             CCceEEEEEeCCCCEEEEEEecCCcccCcEE
+Confidence            3445555555  788999999  46554433
+
+
+No 24
+>3EF4_C Blue copper protein; electron transfer, blue copper protein; HET: PO4; 1.18A {Hyphomicrobium denitrificans}
+Probab=53.42  E-value=7.4  Score=28.50  Aligned_cols=27  Identities=22%  Similarity=0.381  Sum_probs=16.9  Template_Neff=9.500
+
+Q GRAMNEG_T1D_51   54 AGGTFNTTVT--NGGSYPAHC--HCDTGTAG   80 (357)
+Q Consensus        54 aggtfnttvt--nggsypahc--hcdtgtag   80 (357)
+                      .|.++..+++  ..|.|..||  ||..|..+
+T Consensus        59 ~g~~~~~~~~~~~~G~y~~~C~~h~~~gm~~   89 (124)
+T 3EF4_C           59 GGFSKEVVFNAEKEGLYVLKCAPHYGMGMVV   89 (124)
+T ss_dssp             CCTTCCEEEECCSSEEEEEECTTTGGGTCEE
+T ss_pred             CCceEEEEEeCCCCEEEEEEecCCcccCcEE
+Confidence            3445555555  788999999  46554433
+
+
+No 25
+>2N0M_A Lipid modified azurin protein; Neisseria, copper protein, azurin-family, metal; HET: CU1; NMR {Neisseria gonorrhoeae}
+Probab=52.60  E-value=7.8  Score=28.50  Aligned_cols=21  Identities=24%  Similarity=0.452  Sum_probs=15.9  Template_Neff=9.600
+
+Q GRAMNEG_T1D_51   53 KAGGTFNTTVT----NGGSYPAHCH   73 (357)
+Q Consensus        53 kaggtfnttvt----nggsypahch   73 (357)
+                      ..|.++..+++    .-|.|..|||
+T Consensus        90 ~pg~~~~~~~~~~~~~~G~y~~~C~  114 (130)
+T 2N0M_A           90 GGGEESSLTLDPAKLADGDYKFACT  114 (130)
+T ss_dssp             CTTCEEEEEECGGGGGGSCEEEECC
+T ss_pred             cCCcEEEEEEecccCCCceEEEEeC
+Confidence            35666666666    7899999995
+
+
+No 26
+>1BXV_A PLASTOCYANIN; COPPER PROTEIN, ELECTRON TRANSFER; 1.8A {Synechococcus elongatus} SCOP: b.6.1.1
+Probab=51.71  E-value=8.2  Score=25.58  Aligned_cols=21  Identities=33%  Similarity=0.700  Sum_probs=16.1  Template_Neff=10.500
+
+Q GRAMNEG_T1D_51   53 KAGGTFNTTVTNGGSYPAHCH   73 (357)
+Q Consensus        53 kaggtfnttvtnggsypahch   73 (357)
+                      ..|+++..+....|.|..|||
+T Consensus        57 ~~g~~~~~~~~~~G~~~~~c~   77 (91)
+T 1BXV_A           57 SPGETFEATFSEPGTYTYYCE   77 (91)
+T ss_dssp             STTCEEEEECCSCEEEEEECT
+T ss_pred             CCCCEEEEEeCCCEEEEEEec
+Confidence            356667677778899999998
+
+
+No 27
+>1BXU_A PLASTOCYANIN; COPPER PROTEIN, ELECTRON TRANSFER; 1.9A {Synechococcus elongatus} SCOP: b.6.1.1
+Probab=51.71  E-value=8.2  Score=25.58  Aligned_cols=21  Identities=33%  Similarity=0.700  Sum_probs=16.1  Template_Neff=10.500
+
+Q GRAMNEG_T1D_51   53 KAGGTFNTTVTNGGSYPAHCH   73 (357)
+Q Consensus        53 kaggtfnttvtnggsypahch   73 (357)
+                      ..|+++..+....|.|..|||
+T Consensus        57 ~~g~~~~~~~~~~G~~~~~c~   77 (91)
+T 1BXU_A           57 SPGETFEATFSEPGTYTYYCE   77 (91)
+T ss_dssp             STTCEEEEECCSCEEEEEECT
+T ss_pred             CCCCEEEEEeCCCEEEEEEec
+Confidence            356667677778899999998
+
+
+No 28
+>4HCF_B Cupredoxin 1; Structural Genomics, NIAID, National Institute; 1.703A {Bacillus anthracis}
+Probab=45.77  E-value=12  Score=24.66  Aligned_cols=22  Identities=23%  Similarity=0.484  Sum_probs=15.4  Template_Neff=11.000
+
+Q GRAMNEG_T1D_51   57 TFNTTVTNGGSYPAHC--HCDTGT   78 (357)
+Q Consensus        57 tfnttvtnggsypahc--hcdtgt   78 (357)
+                      ++..+....|.|..||  ||+.+.
+T Consensus        70 ~~~~~~~~~G~~~~~c~~~~~~~~   93 (100)
+T 4HCF_B           70 NITVKPKSAGTYELICRYHLLKGM   93 (100)
+T ss_dssp             EEEECCCSCEEEEEECTTTGGGTC
+T ss_pred             EEEEeCCCCEEEEEEeccchhcCc
+Confidence            4666667889999999  555443
+
+
+No 29
+>5TK2_C Inosine-5'-monophosphate dehydrogenase,Inosine-5'-monophosphate dehydrogenase (E.C.1.1.1.205,1.1.1.205); Cupredoxin, beta sandwich, Structural Genomics; HET: MSE, MLT; 1.4A {Bacillus anthracis str. Ames}
+Probab=45.77  E-value=12  Score=24.66  Aligned_cols=22  Identities=23%  Similarity=0.484  Sum_probs=15.4  Template_Neff=11.000
+
+Q GRAMNEG_T1D_51   57 TFNTTVTNGGSYPAHC--HCDTGT   78 (357)
+Q Consensus        57 tfnttvtnggsypahc--hcdtgt   78 (357)
+                      ++..+....|.|..||  ||+.+.
+T Consensus        70 ~~~~~~~~~G~~~~~c~~~~~~~~   93 (100)
+T 5TK2_C           70 NITVKPKSAGTYELICRYHLLKGM   93 (100)
+T ss_dssp             EEEECCCSCEEEEEECSSCSSSCC
+T ss_pred             EEEEeCCCCEEEEEEeccchhcCc
+Confidence            4666667889999999  555443
+
+
+No 30
+>1PMY_A PSEUDOAZURIN (CUPREDOXIN); ELECTRON TRANSFER(CUPROPROTEIN); 1.5A {Methylobacterium extorquens} SCOP: b.6.1.1
+Probab=39.92  E-value=17  Score=26.28  Aligned_cols=25  Identities=20%  Similarity=0.331  Sum_probs=18.5  Template_Neff=9.800
+
+Q GRAMNEG_T1D_51   53 KAGGTFNTTVTNGGSYPAHCH--CDTG   77 (357)
+Q Consensus        53 kaggtfnttvtnggsypahch--cdtg   77 (357)
+                      ..|+++..+++..|.|..+|+  |..|
+T Consensus        59 ~~g~~~~~~~~~~G~~~~~C~~h~~~G   85 (123)
+T 1PMY_A           59 TVGQEAVVKFDKEGVYGFKCAPHYMMG   85 (123)
+T ss_dssp             CTTSCEEEECCSCEEEEEECSTTTTTT
+T ss_pred             cCCCEEEEEcCCCEEEEEEcccchhcC
+Confidence            356777778888899999996  5444
+
+
+No 31
+>4YL4_A Pseudoazurin; Blue Copper Protein, Electron Transfer; HET: GOL; 1.1A {Achromobacter cycloclastes}
+Probab=34.81  E-value=23  Score=25.73  Aligned_cols=20  Identities=25%  Similarity=0.536  Sum_probs=15.5  Template_Neff=9.700
+
+Q GRAMNEG_T1D_51   54 AGGTFNTTVTNGGSYPAHCH   73 (357)
+Q Consensus        54 aggtfnttvtnggsypahch   73 (357)
+                      .++++..+...-|.|..|||
+T Consensus        60 ~~~~~~~~~~~~G~~~~~c~   79 (124)
+T 4YL4_A           60 INENYKVTFTAPGVYGVKCT   79 (124)
+T ss_dssp             TTCCEEEECCSCEEEEEECT
+T ss_pred             CCCeEEEEcCCCEEEEEEeC
+Confidence            45667777778889999996
+
+
+No 32
+>1CUO_A PROTEIN (129-MER); BETA BARREL, periplasmic, electron transport; 1.6A {Methylomonas sp. J} SCOP: b.6.1.1
+Probab=32.03  E-value=27  Score=26.69  Aligned_cols=20  Identities=15%  Similarity=0.393  Sum_probs=15.0  Template_Neff=8.600
+
+Q GRAMNEG_T1D_51   54 AGGTFNTTVT-----NGGSYPAHCH   73 (357)
+Q Consensus        54 aggtfnttvt-----nggsypahch   73 (357)
+                      +|.++.-+.+     .-|.|..|||
+T Consensus        89 pG~~~~~~f~~~~~~~~G~y~y~C~  113 (129)
+T 1CUO_A           89 GGEKTSVKFKVSALSKDEAYTYFCS  113 (129)
+T ss_dssp             TTCEEEEEEEGGGCCTTSCEEEECC
+T ss_pred             CCeEEEEEEEeCCCCCCeeEEEEeC
+Confidence            4556666666     7899999996
+
+
+No 33
+>1UAT_A Azurin iso-2; beta-barrel, ELECTRON TRANSPORT; 1.9A {Methylomonas sp. J} SCOP: b.6.1.1
+Probab=32.03  E-value=27  Score=26.69  Aligned_cols=20  Identities=15%  Similarity=0.393  Sum_probs=15.0  Template_Neff=8.600
+
+Q GRAMNEG_T1D_51   54 AGGTFNTTVT-----NGGSYPAHCH   73 (357)
+Q Consensus        54 aggtfnttvt-----nggsypahch   73 (357)
+                      +|.++.-+.+     .-|.|..|||
+T Consensus        89 pG~~~~~~f~~~~~~~~G~y~y~C~  113 (129)
+T 1UAT_A           89 GGEKTSVKFKVSALSKDEAYTYFCS  113 (129)
+T ss_dssp             TTCEEEEEEEGGGCCTTSCEEEECC
+T ss_pred             CCeEEEEEEEeCCCCCCeeEEEEeC
+Confidence            4556666666     7899999996
+
+
+No 34
+>2JXM_A Plastocyanin, Cytochrome f; Electron transport, Metal-binding, Transport; HET: HEC, CU; NMR {Prochlorothrix hollandica} SCOP: b.6.1.1
+Probab=31.15  E-value=28  Score=22.33  Aligned_cols=21  Identities=24%  Similarity=0.569  Sum_probs=15.8  Template_Neff=11.300
+
+Q GRAMNEG_T1D_51   53 KAGGTFNTTVTNGGSYPAHCH   73 (357)
+Q Consensus        53 kaggtfnttvtnggsypahch   73 (357)
+                      .+++++..+.+.-|.|..+||
+T Consensus        63 ~~~~~~~~~~~~~g~~~~~c~   83 (97)
+T 2JXM_A           63 APGSFYSVTLGTPGTYSFYCT   83 (97)
+T ss_dssp             SCSCCEEEECCSCSEEEEECS
+T ss_pred             CCCeEEEEEcCCCEEEEEecc
+Confidence            345666667777899999997
+
+
+No 35
+>1TEF_A Plastocyanin, chloroplast; Plastocyanin, disulfide bond, mutant, blue; 1.9A {Spinacia oleracea}
+Probab=27.98  E-value=35  Score=22.68  Aligned_cols=20  Identities=30%  Similarity=0.670  Sum_probs=15.8  Template_Neff=10.700
+
+Q GRAMNEG_T1D_51   54 AGGTFNTTVTNGGSYPAHCH   73 (357)
+Q Consensus        54 aggtfnttvtnggsypahch   73 (357)
+                      .++++....+..|.|..|||
+T Consensus        66 ~~~~~~~~~~~~g~~~~~c~   85 (99)
+T 1TEF_A           66 PGECYKVTLTEKGTYKFYCS   85 (99)
+T ss_dssp             TTCEEEEECCSCEEEEEECT
+T ss_pred             CCCEEEEEeCCCEEEEEEec
+Confidence            45667777778899999998
+
+
+No 36
+>7PCY_A PLASTOCYANIN; ELECTRON TRANSPORT PROTEIN; 1.8A {Ulva prolifera} SCOP: b.6.1.1
+Probab=27.89  E-value=35  Score=22.73  Aligned_cols=22  Identities=27%  Similarity=0.452  Sum_probs=17.0  Template_Neff=10.600
+
+Q GRAMNEG_T1D_51   53 KAGGTFNTTVTNGGSYPAHCHC   74 (357)
+Q Consensus        53 kaggtfnttvtnggsypahchc   74 (357)
+                      ..|+++..++++.|.|..|||.
+T Consensus        64 ~~g~~~~~~~~~~G~~~~~c~~   85 (98)
+T 7PCY_A           64 SKGQTVVRKLTTPGTYGVYCDP   85 (98)
+T ss_dssp             STTCEEEEECCSCEEEEEECST
+T ss_pred             CCCCEEEEEcCCCEEEEEeccC
+Confidence            4566677778889999999963
+
+
+No 37
+>3TU6_A Pseudoazurin (Blue copper protein); cupredoxins, beta barrel, electron transfer; 2.0A {Sinorhizobium meliloti}
+Probab=27.77  E-value=35  Score=25.24  Aligned_cols=24  Identities=21%  Similarity=0.448  Sum_probs=16.6  Template_Neff=9.300
+
+Q GRAMNEG_T1D_51   55 GGTFNTTVTNGGSYPAHCH--CDTGT   78 (357)
+Q Consensus        55 ggtfnttvtnggsypahch--cdtgt   78 (357)
+                      +.++..+...-|.|..|||  |..|-
+T Consensus        63 ~~~~~~~~~~~G~~~~~c~~h~~~Gm   88 (127)
+T 3TU6_A           63 NEEITVTLSKPGVYMYQCAPHVGMGM   88 (127)
+T ss_dssp             TCCCEEECCSCEEEEEECTTTGGGTC
+T ss_pred             ccEEEEEcCCCEEEEEEecCCcccce
+Confidence            4456666678899999997  54443
+
+
+No 38
+>1IUZ_A PLASTOCYANIN; ELECTRON TRANSPORT; 1.6A {Ulva pertusa} SCOP: b.6.1.1
+Probab=25.85  E-value=40  Score=22.10  Aligned_cols=23  Identities=26%  Similarity=0.440  Sum_probs=16.7  Template_Neff=10.900
+
+Q GRAMNEG_T1D_51   52 NKAGGTFNTTVTNGGSYPAHCHC   74 (357)
+Q Consensus        52 nkaggtfnttvtnggsypahchc   74 (357)
+                      -..|+++..+.++-|.|..|||-
+T Consensus        63 ~~~g~~~~~~~~~~g~~~~~c~~   85 (98)
+T 1IUZ_A           63 NSKGETVVRKLSTPGVYGVYCEP   85 (98)
+T ss_dssp             CSTTCEEEEECCSCEEEEEECTT
+T ss_pred             cCCCcEEEEEeCCCEEEEEEccc
+Confidence            34456677777788899998864
+
+
+No 39
+>2H3X_C Aromatic Amine Dehydrogenase (E.C.1.4.99.4), Azurin; Quinoprotein, tryptophan tryptophylquinone,cupredoxin, electron transfer; 2.5A {Alcaligenes faecalis}
+Probab=25.61  E-value=41  Score=25.45  Aligned_cols=20  Identities=30%  Similarity=0.534  Sum_probs=14.6  Template_Neff=8.800
+
+Q GRAMNEG_T1D_51   54 AGGTFNTTVT-----NGGSYPAHCH   73 (357)
+Q Consensus        54 aggtfnttvt-----nggsypahch   73 (357)
+                      .|.++..+.+     .-|.|..|||
+T Consensus        88 pg~t~~~~f~~~~~~~~G~y~~~C~  112 (128)
+T 2H3X_C           88 GGETDSVTFDVSKLKEGEDYAFFCS  112 (128)
+T ss_dssp             TTCEEEEEEEGGGSCSSCCEEEECC
+T ss_pred             CCcEEEEEEEeCCCCCCeEEEEEeC
+Confidence            4556666665     5799999996
+
+
+No 40
+>4Y2L_F CFA/I pili major subunit CfaB; Enterotoxigenic Escherichia coli, periplasmic chaperone; HET: IPA; 1.746A {Escherichia coli O78:H11 (strain H10407 / ETEC)}
+Probab=25.22  E-value=42  Score=28.17  Aligned_cols=52  Identities=23%  Similarity=0.443  Sum_probs=31.4  Template_Neff=6.600
+
+Q GRAMNEG_T1D_51  301 EIKVNGGELSTDMGATSVY-------------GEKAGSVTFSAAPASLTGARPAPGTFTATATITIEI  355 (357)
+Q Consensus       301 eikvnggelstdmgatsvy-------------gekagsvtfsaapasltgarpapgtftatatitiei  355 (357)
+                      ++++||.+|++.  ++.+.             +++.-...+++.+.. .+..+++|.++.+..+.+|-
+T Consensus        87 ~V~~~g~~Lttt--~~~i~~~~l~~~~~~~a~~~~~~~L~Isa~~~~-~~~~~~~G~YtG~V~Lvfe~  151 (153)
+T 4Y2L_F           87 SVSWGGQVLSTT--AKEFEAAALGYSASGVNGVSSSQELVISAAPKT-AGTAPTAGNYSGVVSLVMTL  151 (153)
+T ss_dssp             EEEETTEECCSS--CEEECCGGGGHHHHSSTTBCCCEEEEEEECCSS-TTSCCCSEEEEEEEEEEEEE
+T ss_pred             EEEECCEECccC--CEEEeehhhcccCCcCCCcceeEEEEEEecCCC-CCCCCCCEEEEEEEEEEEEc
+Confidence            467788888752  33331             223334555555311 44678899999998887763
+
+
+No 41
+>2OV0_A PROTEIN; beta-sandwich, ELECTRON TRANSPORT; 0.75A {Paracoccus denitrificans} SCOP: b.6.1.1
+Probab=23.52  E-value=48  Score=22.70  Aligned_cols=22  Identities=32%  Similarity=0.605  Sum_probs=16.8  Template_Neff=10.300
+
+Q GRAMNEG_T1D_51   53 KAGGTFNTTVTNGGSYPAHCHC   74 (357)
+Q Consensus        53 kaggtfnttvtnggsypahchc   74 (357)
+                      ..|+++..+...-|.|..|||.
+T Consensus        73 ~~~~~~~~~~~~~G~~~~~c~~   94 (105)
+T 2OV0_A           73 KKEQAYSLTFTEAGTYDYHCTP   94 (105)
+T ss_dssp             CTTEEEEEEECSCEEEEEECSS
+T ss_pred             CCCceEEEEcCCCEEEEEEccC
+Confidence            3456777777788999999985
+
+
+No 42
+>4Y2O_B CFA/I pili chaperone CfaA, CFA/I; Enterotoxigenic Escherichia coli, periplasmic chaperone; HET: PGE; 2.419A {Escherichia coli O78:H11 (strain H10407 / ETEC)}
+Probab=23.15  E-value=49  Score=27.64  Aligned_cols=51  Identities=24%  Similarity=0.459  Sum_probs=30.3  Template_Neff=6.400
+
+Q GRAMNEG_T1D_51  301 EIKVNGGELSTDMGATSVYG-------------EKAGSVTFSAAPASLTGARPAPGTFTATATITIE  354 (357)
+Q Consensus       301 eikvnggelstdmgatsvyg-------------ekagsvtfsaapasltgarpapgtftatatitie  354 (357)
+                      ++++||.+|++.  ++.+..             ++.-...+++.+.. .+..+++|.++.+..+.+|
+T Consensus        76 ~V~lng~~Lttt--~~~i~~~~l~~~~~~~a~~~~~~~L~Isa~~~~-~~~~~~~G~YsG~V~Lvf~  139 (142)
+T 4Y2O_B           76 SVSWGGQVLSTT--AKEFEAAALGYSASGVNGVSSSQELVISAAPKT-AGTAPTAGNYSGVVSLVMT  139 (142)
+T ss_dssp             EEEETTEECCSS--CEECCCCCSCCCCCTTCCCCCCEEEEEEECCSS-SSCCCCCSCCEEEEEEEEE
+T ss_pred             EEEECCEECccC--CEEEehhhhcccCCcCCCCCeeEEEEEEecCCC-CCCCCCCEEEEEEEEEEEe
+Confidence            477888888763  333311             12223344544211 4567889999999888776
+
+
+No 43
+>1ZPU_E Iron transport multicopper oxidase FET3; multicopper oxidase, ferroxidase, iron transport; HET: NDG, BMA, NAG, CU1, MAN; 2.8A {Saccharomyces cerevisiae}
+Probab=21.38  E-value=56  Score=30.72  Aligned_cols=14  Identities=36%  Similarity=0.738  Sum_probs=10.6  Template_Neff=8.700
+
+Q GRAMNEG_T1D_51   62 VTNGGSYPAHCHCD   75 (357)
+Q Consensus        62 vtnggsypahchcd   75 (357)
+                      ..|.|.+..|||..
+T Consensus       453 adnpG~w~~HCHi~  466 (534)
+T 1ZPU_E          453 ADNPGVWFFHCHIE  466 (534)
+T ss_dssp             CCSCEEEEEEECCH
+T ss_pred             cCCCceEEEEEeeH
+Confidence            45788888888864
+
+
