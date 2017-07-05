@@ -1,0 +1,1593 @@
+Query         GRAMNEG_T1D_3144_1-275
+Match_columns 275
+No_of_seqs    1 out of 1
+Neff          1
+Searched_HMMs 55448
+Date          Tue Jul  4 10:38:31 2017
+Command       /projects/microprot/tools/hh-suite-3.0.0/build/bin/hhsearch -i /localscratch/microprot/microprot_gneg3-2018_403648/GRAMNEG_T1D_3144/03-search_CM/GRAMNEG_T1D_3144_1-275.fasta -e 0.1 -cpu 4 -d /projects/microprot/dbs/pdb70/pdb70 -o /localscratch/microprot/microprot_gneg3-2018_403648/GRAMNEG_T1D_3144/03-search_CM/GRAMNEG_T1D_3144_1-275.out -oa3m /localscratch/microprot/microprot_gneg3-2018_403648/GRAMNEG_T1D_3144/03-search_CM/GRAMNEG_T1D_3144_1-275.a3m 
+
+ No Hit                             Prob E-value P-value  Score    SS Cols Query HMM  Template HMM
+  1 2X27_X OUTER MEMBRANE PROTEIN   94.3  0.0059 1.1E-07   43.6   0.0  166   30-198     8-211 (212)
+  2 1G90_A OUTER MEMBRANE PROTEIN   93.7   0.011 1.9E-07   40.1   0.0  160   30-200     5-173 (176)
+  3 2K0L_A Outer membrane protein   93.5   0.013 2.4E-07   42.3   0.0  161   29-200    16-195 (216)
+  4 2MHL_A Outer membrane protein   92.6   0.025 4.5E-07   39.6   0.0   47   30-76      5-59  (192)
+  5 1QJP_A OUTER MEMBRANE PROTEIN   90.0   0.093 1.7E-06   35.2   0.0   47   30-76      5-56  (171)
+  6 2N2L_A Outer membrane protein   88.8    0.14 2.5E-06   33.5   0.0   26   51-76     23-48  (156)
+  7 3QRA_A Attachment invasion loc  86.4    0.26 4.7E-06   32.1   0.0   23   53-75     26-48  (157)
+  8 4RLC_A Outer membrane porin F;  85.5    0.32 5.7E-06   34.8   0.0   45   28-74     17-61  (175)
+  9 2JMM_A Outer membrane protein   85.1    0.34 6.2E-06   33.5   0.0  138   30-200     5-153 (156)
+ 10 2F1V_E Outer membrane protein   85.1    0.34 6.2E-06   36.2   0.0  136   53-198    35-192 (197)
+ 11 1P4T_A outer membrane protein   83.4    0.47 8.4E-06   31.9   0.0   36   30-67      4-39  (155)
+ 12 2M06_A Outer membrane protein   78.6    0.94 1.7E-05   29.9   0.0   20   54-73     21-41  (148)
+ 13 2LHF_A Outer membrane protein   77.2     1.1   2E-05   32.0   0.0   23   53-76     37-59  (179)
+ 14 1QJ8_A OUTER MEMBRANE PROTEIN   76.4     1.2 2.2E-05   29.4   0.0   20   54-73     21-41  (148)
+ 15 4CGK_B SECRETED 45 KDA PROTEIN  66.1     3.1 5.6E-05   34.3   0.0   37  216-252    40-76  (392)
+ 16 4CGK_A SECRETED 45 KDA PROTEIN  66.1     3.1 5.6E-05   34.3   0.0   37  216-252    40-76  (392)
+ 17 1JOC_A Early Endosomal Autoant  57.1     5.8 0.00011   28.0   0.0   34  221-254     3-36  (125)
+ 18 1KFN_A MAJOR OUTER MEMBRANE LI  47.3      11 0.00019   27.8   0.0   33  215-247    18-50  (56)
+ 19 1CXZ_B HUMAN RHOA COMPLEXED WI  47.2      11 0.00019   28.4   0.0   24  235-258    62-85  (86)
+ 20 4Q4G_X Peptidoglycan endopepti  46.9      11  0.0002   33.2   0.0   32  217-248    53-84  (472)
+ 21 2L3L_A Tubulin-specific chaper  44.4      13 0.00023   27.6   0.0   47  215-261    58-109 (111)
+ 22 2Q6Q_B Spindle pole body compo  41.9      15 0.00027   28.9   0.0   19  214-232    16-34  (74)
+ 23 2Q6Q_A Spindle pole body compo  41.9      15 0.00027   28.9   0.0   19  214-232    16-34  (74)
+ 24 1XTG_B NEUROTOXIN BONT/A, Syna  39.9      17  0.0003   23.1   0.0   44  216-259     4-47  (59)
+ 25 4ILO_B CT398; hypothetical pro  37.5      19 0.00035   28.8   0.0   21  243-263    91-111 (257)
+ 26 3U1C_A Tropomyosin alpha-1 cha  37.0      20 0.00036   26.1   0.0   42  219-260    27-68  (101)
+ 27 5LOW_L Rabphilin-3A, Synaptoso  36.2      21 0.00038   25.2   0.0   47  213-259    25-71  (82)
+ 28 5LOW_E Rabphilin-3A, Synaptoso  36.2      21 0.00038   25.2   0.0   47  213-259    25-71  (82)
+ 29 4UG3_B CELL CYCLE PROTEIN GPSB  35.9      21 0.00038   25.1   0.0   45  210-257    26-70  (71)
+ 30 4UG3_A CELL CYCLE PROTEIN GPSB  35.9      21 0.00038   25.1   0.0   45  210-257    26-70  (71)
+ 31 3B5N_H Synaptobrevin homolog 1  35.9      21 0.00038   23.4   0.0   47  214-260     9-55  (64)
+ 32 3B5N_D Synaptobrevin homolog 1  35.9      21 0.00038   23.4   0.0   47  214-260     9-55  (64)
+ 33 1N7S_D vesicle-associated memb  35.3      22 0.00039   23.3   0.0   47  213-259     8-54  (66)
+ 34 2GUV_D Major outer membrane li  34.9      22 0.00041   26.0   0.0   31  216-246    19-49  (56)
+ 35 4YY1_B HA1, HA2; Hemagglutinin  34.3      23 0.00042   31.3   0.0   66  195-261    24-93  (164)
+ 36 1RU7_B hemagglutinin; HEMAGGLU  34.0      24 0.00043   31.1   0.0   49  212-260    40-92  (160)
+ 37 5MG8_B Structural maintenance   33.5      24 0.00044   29.2   0.0   12  242-253    78-89  (294)
+ 38 2N1T_D Vesicle-associated memb  33.4      25 0.00045   23.9   0.0   47  213-259    16-62  (74)
+ 39 5E62_D Hemagglutinin-esterase;  33.2      25 0.00045   30.7   0.0   49  212-260    33-85  (149)
+ 40 4YV3_B vimentin; cytoskeleton,  33.1      25 0.00045   22.8   0.0   44  215-258    13-56  (78)
+ 41 4YV3_A vimentin; cytoskeleton,  33.1      25 0.00045   22.8   0.0   44  215-258    13-56  (78)
+ 42 1EQ7_A CORE STRUCTURE OF THE O  32.9      26 0.00046   25.9   0.0   31  216-246    19-49  (56)
+ 43 3BT6_B Influenza B hemagglutin  32.7      26 0.00046   31.1   0.0   66  195-261    24-93  (169)
+ 44 2EFR_A General control protein  32.6      26 0.00047   25.1   0.0   37  218-254    73-109 (155)
+ 45 4M44_D Hemagglutinin HA1, Hema  32.5      26 0.00047   31.4   0.0   63  198-261    27-93  (182)
+ 46 1JCD_B MAJOR OUTER MEMBRANE LI  32.4      26 0.00047   25.5   0.0   31  216-246    19-49  (52)
+ 47 1JCD_C MAJOR OUTER MEMBRANE LI  32.4      26 0.00047   25.5   0.0   31  216-246    19-49  (52)
+ 48 4KPS_B Hemagglutinin; receptor  32.2      27 0.00048   30.9   0.0   49  212-260    39-91  (165)
+ 49 2XDJ_B UNCHARACTERIZED PROTEIN  31.7      27 0.00049   25.8   0.0   40  215-254    27-66  (83)
+ 50 3SWK_A Vimentin; cytoskeleton,  31.6      28  0.0005   23.3   0.0   44  215-258    21-64  (86)
+ 51 1T8Z_C Major outer membrane li  31.4      28  0.0005   25.4   0.0   31  216-246    19-49  (53)
+ 52 3U59_B Tropomyosin beta chain;  31.1      28 0.00051   25.5   0.0   40  220-259    28-67  (101)
+ 53 3U59_D Tropomyosin beta chain;  31.1      28 0.00051   25.5   0.0   40  220-259    28-67  (101)
+ 54 5E65_D Hemagglutinin-esterase;  31.1      29 0.00051   30.8   0.0   49  212-260    41-93  (166)
+ 55 4GXX_B Hemagglutinin HA1 chain  30.8      29 0.00052   31.0   0.0   49  212-260    40-92  (176)
+ 56 4QY1_N hemagglutinin; receptor  30.3      30 0.00054   30.8   0.0   50  212-261    40-93  (174)
+ 57 4F23_B Hemagglutinin; hemagglu  29.3      32 0.00058   34.6   0.0   88  171-261   326-427 (515)
+ 58 1AVY_B FIBRITIN; BACTERIOPHAGE  29.3      32 0.00058   26.4   0.0   41  216-256     2-42  (74)
+ 59 1AVY_C FIBRITIN; BACTERIOPHAGE  29.3      32 0.00058   26.4   0.0   41  216-256     2-42  (74)
+ 60 4KDQ_D Hemagglutinin; homotrim  29.2      32 0.00058   30.4   0.0   50  212-261    40-93  (164)
+ 61 1JSD_B HAEMAGGLUTININ (HA1 CHA  29.0      33 0.00059   30.7   0.0   49  212-260    40-92  (176)
+ 62 4YPC_A vimentin; cytoskeleton,  28.5      34 0.00061   22.7   0.0   42  216-257    14-55  (83)
+ 63 1GL2_D ENDOBREVIN, SYNTAXIN 7,  28.4      34 0.00061   22.5   0.0   46  214-259     8-53  (65)
+ 64 4FQV_D Hemagglutinin HA1, Hema  28.4      34 0.00061   30.6   0.0   50  212-261    40-93  (176)
+ 65 4WY4_D Human Vamp 8 (10-74), H  28.1      35 0.00063   22.3   0.0   45  214-258    10-54  (65)
+ 66 4BSG_B HEMAGGLUTININ; VIRAL PR  27.6      36 0.00065   30.4   0.0   49  212-260    40-92  (177)
+ 67 2JNK_A Hyalurononglucosaminida  27.5      36 0.00065   26.5   0.0   53  209-261    26-78  (140)
+ 68 2OZN_B O-GlcNAcase nagJ, Hyalu  27.5      36 0.00065   26.5   0.0   53  209-261    26-78  (140)
+ 69 4O5N_B Hemagglutinin HA1 chain  27.2      37 0.00066   30.3   0.0   50  212-261    40-93  (176)
+ 70 2NOC_A Putative periplasmic pr  27.2      37 0.00066   26.7   0.0   20    1-20      1-20  (99)
+ 71 2NPS_D Vesicle-associated memb  27.1      37 0.00067   23.6   0.0   45  214-258    18-62  (82)
+ 72 3WHE_K Hemagglutinin, immunogl  26.3      39 0.00071   33.8   0.0   87  171-260   313-413 (493)
+ 73 3KU3_B Hemagglutinin HA1 chain  26.1      40 0.00072   30.1   0.0   50  212-261    40-93  (174)
+ 74 5BR0_B Hemagglutinin; influenz  25.8      41 0.00073   30.0   0.0   50  212-261    40-93  (171)
+ 75 4FNK_B Hemagglutinin HA1 chain  25.5      41 0.00075   30.0   0.0   50  212-261    40-93  (174)
+ 76 4UO0_B HEMAGGLUTININ; VIRAL PR  25.4      42 0.00075   29.9   0.0   65  195-260    24-92  (172)
+ 77 1KIL_D Synaptobrevin SNARE mot  25.3      42 0.00076   22.1   0.0   46  214-259     9-54  (66)
+ 78 3MUD_A DNA repair protein XRCC  25.1      43 0.00077   26.4   0.0   40  218-257   131-170 (175)
+ 79 3MUD_B DNA repair protein XRCC  25.1      43 0.00077   26.4   0.0   40  218-257   131-170 (175)
+ 80 4RSJ_A Chromosome partition pr  25.0      43 0.00077   28.0   0.0   42  219-260   221-262 (276)
+ 81 1HGI_F HEMAGGLUTININ (BROMELAI  24.3      45 0.00081   29.8   0.0   50  212-261    40-93  (175)
+ 82 1FLC_F HAEMAGGLUTININ-ESTERASE  24.2      46 0.00082   29.8   0.0   50  212-261    40-93  (175)
+ 83 5JJF_B sensory rhodopsin; sens  24.1      46 0.00083   22.3   0.0   41  212-252   109-149 (163)
+ 84 3TRT_B Vimentin; cytoskeleton,  23.8      47 0.00085   21.6   0.0   19  236-254    56-74  (77)
+ 85 3OL1_D Vimentin; Structural Ge  23.8      47 0.00085   24.5   0.0   41  216-256    42-82  (119)
+ 86 3UF1_D Vimentin (E.C.08670 (VI  23.8      47 0.00085   24.5   0.0   41  216-256    42-82  (119)
+ 87 4B8V_A EXTRACELLULAR PROTEIN 6  23.5      48 0.00087   24.3   0.0   18    1-18      1-18  (228)
+ 88 4B9H_A EXTRACELLULAR PROTEIN 6  23.5      48 0.00087   24.3   0.0   18    1-18      1-18  (228)
+ 89 2EFR_A General control protein  23.2      49 0.00088   23.6   0.0    1  249-249   125-125 (155)
+ 90 4ZRY_A Keratin, type I cytoske  22.9      50  0.0009   23.4   0.0    1  248-248    43-43  (124)
+ 91 3NA7_A HP0958; flagellar bioge  22.5      52 0.00093   27.2   0.0   30  224-253    55-84  (256)
+ 92 1UYN_X NALP; AUTOTRANSPORTER,   22.5      52 0.00093   25.2   0.0   66  114-181   170-248 (308)
+ 93 2WZ7_E UNCHARACTERIZED PROTEIN  22.2      53 0.00095   23.8   0.0   32  220-251    25-56  (75)
+ 94 3JBU_z PROTEIN/RNA Complex; si  21.5      56   0.001   26.4   0.0   24    1-24     41-64  (87)
+ 95 2JEE_A CELL DIVISION PROTEIN Z  21.5      56   0.001   24.0   0.0   42  216-257    28-69  (81)
+ 96 5SVA_T DNA-directed RNA polyme  21.2      57   0.001   29.7   0.0   37  218-254    91-127 (284)
+ 97 3TNU_A Keratin, type I cytoske  20.9      58  0.0011   23.4   0.0    1  227-227    50-50  (131)
+ 98 4ZRY_B Keratin, type I cytoske  20.9      58  0.0011   22.7   0.0   18  216-233    28-45  (120)
+ 99 5IHS_A Endoglucanase, glycosid  20.5      61  0.0011   25.0   0.0   13    1-13      2-14  (347)
+
+No 1
+>2X27_X OUTER MEMBRANE PROTEIN OPRG; MEMBRANE PROTEIN, BETA BARREL, CHANNEL; HET: C8E; 2.4A {PSEUDOMONAS AERUGINOSA}
+Probab=94.25  E-value=0.0059  Score=43.57  Aligned_cols=166  Identities=13%  Similarity=0.202  Sum_probs=77.1  Template_Neff=11.300
+
+Q GRAMNEG_T1D_31   30 DNWSVEVNAGAITPLTHSAF-------------FKSMRPGFGVGFSKQLTPIFGLGFQGMGYI-NTTPSKTAFDVSDVSL   95 (275)
+Q Consensus        30 dnwsvevnagaitplthsaf-------------fksmrpgfgvgfskqltpifglgfqgmgyi-nttpsktafdvsdvsl   95 (275)
+                      +.|.|.+.+|...|.....-             -.....++++++..++++-++++.+.. |. ....+...-+....+.
+T Consensus         8 ~~~~v~~~~g~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~gy~~~~~~~~~~~~~-~~~~~~~~~~~~~~~~~~~   86 (212)
+T 2X27_X            8 GDFIIRGGFATVDPDDSSSDIKLDGAKQRGTKATVDSDTQLGLTFTYMFADKWGVELVAA-TPFNHQVDVKGLGPGLDGK   86 (212)
+T ss_dssp             TCEEEEEEEEEEEECCEECCCEETTEECTTCEEEECCEEEEEEEEEEESSSSEEEEEEEE-SCEEEEEEEECC---CCEE
+T ss_pred             CCeEEEEEEEEeeCCCCCCceeecCcccCCceEEEcCCceEEEEEEEEccCCEEEEEEEE-cCcceeeEecCCCCCCCcc
+Confidence            45666666665554332211             123456778888899999988887532 22 1111111000000011
+
+
+Q GRAMNEG_T1D_31   96 LGKVNLM--NLFASYQGQP---RLFEIEAVAGMGWLHYYVNGD------------GDQNSWSTRFGLNFNFNLGETKAWT  158 (275)
+Q Consensus        96 lgkvnlm--nlfasyqgqp---rlfeieavagmgwlhyyvngd------------gdqnswstrfglnfnfnlgetkawt  158 (275)
+                      ..+.+..  .+.+.|.-..   .-|.+-+.+|+|+.+.-....            .....|...+|+.+.+.+.  +.|.
+T Consensus        87 ~~~~~~~~~~~~~~~~~~~~~~~~~~~y~~~G~g~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~g~G~~y~l~--~~~~  164 (212)
+T 2X27_X           87 LADIKQLPPTLLLQYYPMGGTNSAFQPYGGLGVNYTTFFDEDLASNRKAQGFSSMKLQDSWGLAGELGFDYMLN--EHAL  164 (212)
+T ss_dssp             EEEEEEECCEEEEEECTTTTSCCSEEEEEEEEEEEEEEEEEEECHHHHHTTCEEEEECCEEEEEEEEEEEEESS--SSEE
+T ss_pred             eeEEEEeCCEEEEEEccCCCCCCceeeEEEEeeeEEEEeccchhccccccccceeeeeccceEEEEEEEEEEcC--CCEE
+Confidence            1122211  1222222110   234455556666554332211            2234566666666666665  4566
+
+
+Q GRAMNEG_T1D_31  159 LGIKPAIVYDMQ-GN--FP----ETKSRFNANNAAFELTAGLTYHFK  198 (275)
+Q Consensus       159 lgikpaivydmq-gn--fp----etksrfnannaafeltagltyhfk  198 (275)
+                      +++.....+... ..  .+    ........+.....+++|+.|+|.
+T Consensus       165 l~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Gl~y~F~  211 (212)
+T 2X27_X          165 FNMAVWYMDIDTKASINGPSALGVNKTKVDVDVDPWVYMIGFGYKFH  211 (212)
+T ss_dssp             EEEEEEEECCEEEEEEECCTTTTCSEEEEEEECCEEEEEEEEEEEEC
+T ss_pred             EEEEEEEeeccceEEEeCCcccCCCccEEEEecccEEEEEEEEEEcc
+Confidence            666554433211 00  00    011233445566788999999984
+
+
+No 2
+>1G90_A OUTER MEMBRANE PROTEIN A; BETA BARREL, INTEGRAL MEMBRANE PROTEIN; NMR {Escherichia coli} SCOP: f.4.1.1
+Probab=93.69  E-value=0.011  Score=40.10  Aligned_cols=160  Identities=11%  Similarity=0.066  Sum_probs=75.0  Template_Neff=11.800
+
+Q GRAMNEG_T1D_31   30 DNWSVEVNAGAITPLTHS-----AFFKSMRPGFGVGFSKQLTPIFGLGFQGMGYINTTPSKTAFDVSDVSLLGKVNLMNL  104 (275)
+Q Consensus        30 dnwsvevnagaitplths-----affksmrpgfgvgfskqltpifglgfqgmgyinttpsktafdvsdvsllgkvnlmnl  104 (275)
+                      ++|.+.+.+|....-.-.     ..-.....+++++...++++-+++.+......... .....  .+...--......+
+T Consensus         5 ~~~~vg~~~g~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-~~~~~--~~~~~~~~~~~~~~   81 (176)
+T 1G90_A            5 NTWYTGAKLGFSQYHDTGFINNNGPTHENQLGAGAFGGYQVNPYVGFEMGYDFLGRMP-YKGSV--ENGAYKAQGVQLTA   81 (176)
+T ss_dssp             EEEEEEEEEEEECCCSSSCCBSSCCCCSSEEEEEEEEEEEETTTEEEEEEEEECCSCT-TCSSC--CCSCCCCEEEEEEE
+T ss_pred             CCceeeeEEeeEEecCCCcccCCcccccccceeeEEEEeeecCcEEEEEEeeeccccc-ceecc--ccceEEEEeeeEEE
+Confidence            457777777765432211     11234456778888889999888776543322211 11100  00000000011111
+
+
+Q GRAMNEG_T1D_31  105 FASYQGQPRLFEIEAVAGMGWLHYYVNG----DGDQNSWSTRFGLNFNFNLGETKAWTLGIKPAIVYDMQGNFPETKSRF  180 (275)
+Q Consensus       105 fasyqgqprlfeieavagmgwlhyyvng----dgdqnswstrfglnfnfnlgetkawtlgikpaivydmqgnfpetksrf  180 (275)
+                      ...|.-. +-+...+-+|.++.++-...    ......+...+++.+.+.+.+  .|.+.+.....++.....     ..
+T Consensus        82 ~~~~~~~-~~~~~~~~~G~~~~~~~~~~~~~~~~~~~~~~~~~g~G~~y~~~~--~~~l~~~~~~~~~~~~~~-----~~  153 (176)
+T 1G90_A           82 KLGYPIT-DDLDIYTRLGGMVFRADTKSNVYGKNHDTGVSPVFAGGVEYAITP--EIATRLEYQFTNNIGDAH-----TI  153 (176)
+T ss_dssp             EEEEESS-SSEEEEEEEEEEEEECCCCSBTTBCCCCEEEEEEEEEEEEEEEET--TEEEEEEEECCCCCCCBT-----TT
+T ss_pred             EEeeecC-CCeEEEEEeeEEEEEEEeeeceeceeeccceeeEEEEEEEEEcCC--CEEEEEEEEEEecCCccc-----cc
+Confidence            1222211 12444555666665554322    123345555566666666654  455554444333211110     01
+
+
+Q GRAMNEG_T1D_31  181 NANNAAFELTAGLTYHFKTS  200 (275)
+Q Consensus       181 nannaafeltagltyhfkts  200 (275)
+                      ..+.....+++|+.|+|...
+T Consensus       154 ~~~~~~~~~~~g~~y~Fg~~  173 (176)
+T 1G90_A          154 GTRPDNGMLSLGVSYRFGQG  173 (176)
+T ss_dssp             TCCCCCCEEEEEEEEECCSS
+T ss_pred             cCCcccceEEEEEEEEcCCc
+Confidence            12345577889999999753
+
+
+No 3
+>2K0L_A Outer membrane protein A; OMPA, membrane protein, TROSY, sidechain; NMR {Klebsiella pneumoniae}
+Probab=93.46  E-value=0.013  Score=42.30  Aligned_cols=161  Identities=12%  Similarity=0.073  Sum_probs=74.2  Template_Neff=11.100
+
+Q GRAMNEG_T1D_31   29 TDNWSVEVNAGAITPLTHSA----------FFKSMRPGFGVGFSKQLTPIFGLGFQGMGYINTTPSKTAFDVSDVSLLGK   98 (275)
+Q Consensus        29 tdnwsvevnagaitplthsa----------ffksmrpgfgvgfskqltpifglgfqgmgyinttpsktafdvsdvsllgk   98 (275)
+                      .++|.+.+..|....-....          .......++|++...++.+.++++..-.. .........  ..+...-..
+T Consensus        16 ~~~~~vg~~~g~~~~~~~~~~~~~~~~~~~~~~~~~~~~~l~~gy~~~~~~~~~~~~~~-~~~~~~~~~--~~~~~~~~~   92 (216)
+T 2K0L_A           16 DNTWYAGGKLGWSQYHDTGFYGNGFQNNNGPTRNDQLGAGAFGGYQVNPYLGFEMGYDW-LGRMAYKGS--VDNGAFKAQ   92 (216)
+T ss_dssp             CCCEEEEEEEECSCCCCSCCCCCSCCCSCCCSCCCCCEEEEEEEEEEETTEEEEEEEEE-CCCCCCCCS--SCCCSSCCC
+T ss_pred             cCCceeEEEEEEeecCCccccCCccccCCCCcCcccceeEEEEEeeecccEEEEEEEee-cccceeEee--ecceeEEEE
+Confidence            46788888877654433211          23445677788888898888887665332 222211110  001111001
+
+
+Q GRAMNEG_T1D_31   99 VNLMNLFASYQGQPRLFEIEAVAGMGWLHYYVN---------GDGDQNSWSTRFGLNFNFNLGETKAWTLGIKPAIVYDM  169 (275)
+Q Consensus        99 vnlmnlfasyqgqprlfeieavagmgwlhyyvn---------gdgdqnswstrfglnfnfnlgetkawtlgikpaivydm  169 (275)
+                      .-.+.+-..|.-. +.+.+-+-+|.++...-..         ...+.+.+...+|+.+.+.+.  +.|.+.+.....+..
+T Consensus        93 ~~~~~~~~~~~~~-~~~~~y~~~G~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~g~G~~y~l~--~~~~l~~~~~~~~~~  169 (216)
+T 2K0L_A           93 GVQLTAKLGYPIT-DDLDIYTRLGGMVWRADSKGNYASTGVSRSEHDTGVSPVFAGGVEWAVT--RDIATRLEYQWVNNI  169 (216)
+T ss_dssp             EEEEEEEEEEESS-SSEEEEEEEEEEEEECCCCCSCCCSSSCCCCCCEEEEEEEEEEEEEECS--SSCEEEEEESSCSSC
+T ss_pred             EEEEEEEEeeecC-CCeEEEEEeEEEEEEeeeeeeeeeccceeeeecceeeeEEEEEEEEEcC--CCEEEEEEEEEEecc
+Confidence            1111222222221 2344444455554432211         122233444445555555554  346665544433321
+
+
+Q GRAMNEG_T1D_31  170 QGNFPETKSRFNANNAAFELTAGLTYHFKTS  200 (275)
+Q Consensus       170 qgnfpetksrfnannaafeltagltyhfkts  200 (275)
+                      . +.  ..  ...+.....+.+|++|.|...
+T Consensus       170 ~-~~--~~--~~~~~~~~~~~~G~~y~Fg~~  195 (216)
+T 2K0L_A          170 G-DA--GT--VGTRPDNGMLSLGVSYRFGQE  195 (216)
+T ss_dssp             C-CC--SC--CCCSSCSCCCEEEEEEECCCC
+T ss_pred             c-CC--Cc--ccCCcccceEEEEEEEEeCCC
+Confidence            1 00  00  112345578899999999653
+
+
+No 4
+>2MHL_A Outer membrane protein W; integral membrane protein, beta barrel; NMR {Escherichia coli}
+Probab=92.62  E-value=0.025  Score=39.58  Aligned_cols=47  Identities=13%  Similarity=0.273  Sum_probs=28.1  Template_Neff=11.400
+
+Q GRAMNEG_T1D_31   30 DNWSVEVNAGAITPLTHSA--------FFKSMRPGFGVGFSKQLTPIFGLGFQGM   76 (275)
+Q Consensus        30 dnwsvevnagaitplthsa--------ffksmrpgfgvgfskqltpifglgfqgm   76 (275)
+                      +.|.|.+.+|...+..+..        .-.....++++.+..+++|-++++....
+T Consensus         5 ~~~~v~~~~g~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~gy~~~~~~~~~~~~~   59 (192)
+T 2MHL_A            5 GEFFMRAGSATVRPTEGAGGTLGSLGGFSVTNNTQLGLTFTYMATDNIGVELLAA   59 (192)
+T ss_dssp             SCEEEEEEEEEEECCCCSCSSSCCCCCCCCCCCCEEEEEEEEECSSSEEEEEEEC
+T ss_pred             CceEEEEeeEEEeeCCCCCCcccccceeEEcCCeEEEEEEEEEecCCEEEEEEEe
+Confidence            4555555555555444321        1122345677778889999988877654
+
+
+No 5
+>1QJP_A OUTER MEMBRANE PROTEIN A; OUTER MEMBRANE; HET: C8E; 1.65A {ESCHERICHIA COLI} SCOP: f.4.1.1
+Probab=89.96  E-value=0.093  Score=35.19  Aligned_cols=47  Identities=15%  Similarity=0.116  Sum_probs=26.8  Template_Neff=11.900
+
+Q GRAMNEG_T1D_31   30 DNWSVEVNAGAITPLTHS-----AFFKSMRPGFGVGFSKQLTPIFGLGFQGM   76 (275)
+Q Consensus        30 dnwsvevnagaitplths-----affksmrpgfgvgfskqltpifglgfqgm   76 (275)
+                      ++|.+.+..|....-.-.     ..-..-.++++++...+++|-+++..+-.
+T Consensus         5 ~~~~v~~~~g~~~~~~~~~~~~~~~~~~~~~~~~~~~~y~~~~~~~~~~~~~   56 (171)
+T 1QJP_A            5 NTWYTGAKLGWSQYHDTGFINNNGPTHENKLGAGAFGGYQVNPYVGFEMGYD   56 (171)
+T ss_dssp             TEEEEEEEEEEEC-------------CCCEEEEEEEEEEEEETTEEEEEEEE
+T ss_pred             CcceeEEEEEeeEecCCCCccCCCccccccceEEEEEEeeecCcEEEEEEee
+Confidence            456666666654322211     11344567788888889999888776543
+
+
+No 6
+>2N2L_A Outer membrane protein X; membrane protein; NMR {Yersinia pestis}
+Probab=88.83  E-value=0.14  Score=33.53  Aligned_cols=26  Identities=12%  Similarity=0.133  Sum_probs=18.5  Template_Neff=12.100
+
+Q GRAMNEG_T1D_31   51 KSMRPGFGVGFSKQLTPIFGLGFQGM   76 (275)
+Q Consensus        51 ksmrpgfgvgfskqltpifglgfqgm   76 (275)
+                      .....++++++..+++|-++++....
+T Consensus        23 ~~~~~~~~~~~~y~~~~~~~~~~~~~   48 (156)
+T 2N2L_A           23 DKNPRGFNLKYRYEFNNDWGVIGSFA   48 (156)
+T ss_dssp             SCCCEEEEEEEEEESSSSEEEEEEEE
+T ss_pred             CCCCceEEEEEEEeecCCEEEEEEEe
+Confidence            44556777888888888777776544
+
+
+No 7
+>3QRA_A Attachment invasion locus protein; beta-barrel protein, attachment and invasion; HET: C8E; 1.801A {Yersinia pestis}
+Probab=86.38  E-value=0.26  Score=32.08  Aligned_cols=23  Identities=13%  Similarity=0.151  Sum_probs=15.2  Template_Neff=12.200
+
+Q GRAMNEG_T1D_31   53 MRPGFGVGFSKQLTPIFGLGFQG   75 (275)
+Q Consensus        53 mrpgfgvgfskqltpifglgfqg   75 (275)
+                      ...++++++..+++|.+++++..
+T Consensus        26 ~~~~~~~~~~~~~~~~~~~~~~~   48 (157)
+T 3QRA_A           26 NPRGFNLKYRYEFNNDWGVIGSF   48 (157)
+T ss_dssp             CCEEEEEEEEEESSSSEEEEEEE
+T ss_pred             CCceEEEEEEEeecCCEEEEEEE
+Confidence            34566777777788777766543
+
+
+No 8
+>4RLC_A Outer membrane porin F; outer membrane protein, beta-barrel, TRANSPORT; HET: C8E; 1.6A {Pseudomonas aeruginosa}
+Probab=85.50  E-value=0.32  Score=34.79  Aligned_cols=45  Identities=11%  Similarity=-0.038  Sum_probs=27.4  Template_Neff=10.600
+
+Q GRAMNEG_T1D_31   28 FTDNWSVEVNAGAITPLTHSAFFKSMRPGFGVGFSKQLTPIFGLGFQ   74 (275)
+Q Consensus        28 ftdnwsvevnagaitplthsaffksmrpgfgvgfskqltpifglgfq   74 (275)
+                      ..++|.|.+.+|...+-....  ..-..++++++..+++|-+++...
+T Consensus        17 ~~~~~~vg~~~g~~~~~~~~~--~~~~~~~~~~~gy~~~~~~~~~~~   61 (175)
+T 4RLC_A           17 GQNSVEIEAFGKRYFTDSVRN--MKNADLYGGSIGYFLTDDVELALS   61 (175)
+T ss_dssp             CTTCEEEEEEEEEEC-----------CEEEEEEEEEESSSSEEEEEE
+T ss_pred             ccceEEEEeeceeeeccceee--ccccceeEEEEEEecCCCEEEEEE
+Confidence            356788888888887643322  234566777788889888877654
+
+
+No 9
+>2JMM_A Outer membrane protein A; membrane protein; NMR {Escherichia coli}
+Probab=85.10  E-value=0.34  Score=33.51  Aligned_cols=138  Identities=12%  Similarity=0.063  Sum_probs=64.1  Template_Neff=10.900
+
+Q GRAMNEG_T1D_31   30 DNWSVEVNAGAITPLTHSAFFKSMRPGFGVGFSKQLTPIFGLGFQGMGYINTTPSKTAFDVSDVSLLGKVNLMNLFASYQ  109 (275)
+Q Consensus        30 dnwsvevnagaitplthsaffksmrpgfgvgfskqltpifglgfqgmgyinttpsktafdvsdvsllgkvnlmnlfasyq  109 (275)
+                      ++|.+.+..|....-    .  ...+++++....+++|.+++.++   |..........+...+.+..+..+.       
+T Consensus         5 ~~~~~g~~~g~~~~~----~--~~~~~~~~~~gy~~~~~~~~~~~---~~~~~~~~~~~~~~~~~~~~~~~~~-------   68 (156)
+T 2JMM_A            5 NTWYTGAKLGWSQYS----R--ENQLGAGAFGGYQVNPYVGFEMG---YDWLGRMPRKAQGVQLTAKLGYPKL-------   68 (156)
+T ss_dssp             SEEEEEEEEEEETTC----C--SSCCEEEEEEEEECSSSEEEEEE---EEEECSSSSCEEEEEEEEEEEECTT-------
+T ss_pred             CcceEEEEEeeEEee----c--CCceEEEEEEEEEecCeEEEEEE---EeecccccceEEEEEEEEEEeeecc-------
+Confidence            456666655543211    1  44566777777788887665543   2222211111111111222211110       
+
+
+Q GRAMNEG_T1D_31  110 GQPRLFEIEAVAGMGWLHYYVNG-------DGDQNSWSTRFGLNFNFN----LGETKAWTLGIKPAIVYDMQGNFPETKS  178 (275)
+Q Consensus       110 gqprlfeieavagmgwlhyyvng-------dgdqnswstrfglnfnfn----lgetkawtlgikpaivydmqgnfpetks  178 (275)
+                       ....+.+-.-+|.++.+.-...       +.+.+.++..+++.++++    +.  +.|.+.+.-...+..         
+T Consensus        69 -~~~~~~~y~~~G~~~~~~~~~~~~~~~~~~~~~~~~~~~~g~G~~~~~~~~~~--~~~~l~~~~~~~~~~---------  136 (156)
+T 2JMM_A           69 -GTDDLDIYTRLGGMVWRADTSDKDGNGYISAAEASVSPVFAGGVEYVIRRRIT--PEIATRLEYQWTNNA---------  136 (156)
+T ss_dssp             -CTTTCEEEEEEEEEEESSBCCCCCSSSCCCCCBCCCCEEEEEEEEEECSSSCS--SSEEEEEEEEEESSS---------
+T ss_pred             -CCCCEEEEEEEEEEEEEEeeccCCCCceeecccceEeeEEEEEeEEEEeeeec--CCEEEEEEEEEEecC---------
+Confidence             0123334444444443332211       123445555555555555    54  456665544333321         
+
+
+Q GRAMNEG_T1D_31  179 RFNANNAAFELTAGLTYHFKTS  200 (275)
+Q Consensus       179 rfnannaafeltagltyhfkts  200 (275)
+                           +....+.+|+.|+|..+
+T Consensus       137 -----~~~~~~~~G~~y~f~~~  153 (156)
+T 2JMM_A          137 -----SDNGMLSLGVSYRFGQG  153 (156)
+T ss_dssp             -----SCEEEEEEEEEEESCSS
+T ss_pred             -----CccceEEEEEEEEeCCC
+Confidence                 14578889999999754
+
+
+No 10
+>2F1V_E Outer membrane protein W; outer membrane protein beta barrel; HET: GOL; 2.7A {Escherichia coli K12}
+Probab=85.09  E-value=0.34  Score=36.16  Aligned_cols=136  Identities=12%  Similarity=0.170  Sum_probs=61.7  Template_Neff=10.000
+
+Q GRAMNEG_T1D_31   53 MRPGFGVGFSKQLTPIFGLGFQGMGYINTTPSK-----TAFDVS--DVSLLGKVNLMNLFASYQGQPRLFEIEAVAGMGW  125 (275)
+Q Consensus        53 mrpgfgvgfskqltpifglgfqgmgyinttpsk-----tafdvs--dvsllgkvnlmnlfasyqgqprlfeieavagmgw  125 (275)
+                      ...++++.+..+++|-|++++. .+|......+     ...+.+  .+.+..+..+...       .+.|.+-..+|+|.
+T Consensus        35 ~~~~~~~~~gy~~~~~~~~~~~-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~y~~~~~-------~~~~~py~~~G~g~  106 (197)
+T 2F1V_E           35 NNTQLGLTFTYMATDNIGVELL-AATPFRHKIGTRATGDIATVHHLPPTLMAQWYFGDA-------SSKFRPYVGAGINY  106 (197)
+T ss_dssp             CEEEEEEEEEEESSSSEEEEEE-EESCEEEEEEETTTEEEEEEEEECCEEEEEEECSCT-------TCSEEEEEEEEEEE
+T ss_pred             CCeEEEEEEEEEcCCCEEEEEE-EEeCceEEecCCCCcceEEEEEeCCEEEEEEEeCCc-------ccceeEEEEeEEEE
+Confidence            4456777778888888888752 3333211101     111111  1112222221110       02344445566665
+
+
+Q GRAMNEG_T1D_31  126 LHYYVNG------------DGDQNSWSTRFGLNFNFNLGETKAWTLGIKPAIVYDM---QGNFPETKSRFNANNAAFELT  190 (275)
+Q Consensus       126 lhyyvng------------dgdqnswstrfglnfnfnlgetkawtlgikpaivydm---qgnfpetksrfnannaafelt  190 (275)
+                      .+.-...            ......|+..+|+.+.+.+.+.  |.+....-..+..   ..+.+......+.+-..+.++
+T Consensus       107 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~g~G~~y~l~~~--~~l~~~~~y~~~~~~~~~~~~~~~~~~~~~~~~~~~~  184 (197)
+T 2F1V_E          107 TTFFDNGFNDHGKEAGLSDLSLKDSWGAAGQVGVDYLINRD--WLVNMSVWYMDIDTTANYKLGGAQQHDSVRLDPWVFM  184 (197)
+T ss_dssp             EEEEEEEECHHHHHTTEEEEEECCEEEEEEEEEEEEECSSS--EEEEEEEEEECCEEEEEEEESSCCCCEEEECCCEEEE
+T ss_pred             EEEEcCccccCCccccceeeeecCceEEeEEEEEEEEecCC--EEEEEEEEEEecCcceEEEecCceeeeeeEeccEEEE
+Confidence            4433222            1234556666777667776654  4444333222211   111221122233333456677
+
+
+Q GRAMNEG_T1D_31  191 AGLTYHFK  198 (275)
+Q Consensus       191 agltyhfk  198 (275)
+                      +|+.|.|.
+T Consensus       185 ~~~~~~~~  192 (197)
+T 2F1V_E          185 FSAGYRFH  192 (197)
+T ss_dssp             EEEEEEEC
+T ss_pred             EEEecccc
+Confidence            88888775
+
+
+No 11
+>1P4T_A outer membrane protein NsgA; beta barrel, outer membrane protein; HET: CXE; 2.55A {Neisseria meningitidis} SCOP: f.4.1.1
+Probab=83.43  E-value=0.47  Score=31.91  Aligned_cols=36  Identities=6%  Similarity=0.020  Sum_probs=20.1  Template_Neff=11.500
+
+Q GRAMNEG_T1D_31   30 DNWSVEVNAGAITPLTHSAFFKSMRPGFGVGFSKQLTP   67 (275)
+Q Consensus        30 dnwsvevnagaitplthsaffksmrpgfgvgfskqltp   67 (275)
+                      +.|.+.+.+|...+-..  ....-..++++....++.+
+T Consensus         4 ~~~~~g~~~g~~~~~~~--~~~~~~~~~~~~~gy~~~~   39 (155)
+T 1P4T_A            4 SGFYVQADAAHAKASSS--LGSAKGFSPRISAGYRIND   39 (155)
+T ss_dssp             EEEEEEEEEEEEEEECS--SCEEEEECCEEEEEEEETT
+T ss_pred             cceEEEEEEEecccccc--cCCCCceeeEEEEEEEEcc
+Confidence            45666666665433221  1233445667777788888
+
+
+No 12
+>2M06_A Outer membrane protein X; beta barrel, MEMBRANE PROTEIN; NMR {Escherichia coli}
+Probab=78.61  E-value=0.94  Score=29.90  Aligned_cols=20  Identities=15%  Similarity=0.174  Sum_probs=13.6  Template_Neff=11.700
+
+Q GRAMNEG_T1D_31   54 RPGFGVGFSKQLTP-IFGLGF   73 (275)
+Q Consensus        54 rpgfgvgfskqltp-ifglgf   73 (275)
+                      ..++++++..+++| .++++.
+T Consensus        21 ~~~~~~~~~~~~~~~~~~~~~   41 (148)
+T 2M06_A           21 MGGFNLKYRYEEDNSPLGVIG   41 (148)
+T ss_dssp             EEEEEEEEEECCSSSCCEEEE
+T ss_pred             cCcEEEEEEEeeCCCcEEEEE
+Confidence            34667777788888 666654
+
+
+No 13
+>2LHF_A Outer membrane protein H1; beta-barrel, membrane protein; NMR {Pseudomonas aeruginosa}
+Probab=77.16  E-value=1.1  Score=31.97  Aligned_cols=23  Identities=4%  Similarity=-0.256  Sum_probs=14.9  Template_Neff=10.700
+
+Q GRAMNEG_T1D_31   53 MRPGFGVGFSKQLTPIFGLGFQGM   76 (275)
+Q Consensus        53 mrpgfgvgfskqltpifglgfqgm   76 (275)
+                      ..+++++.+.. +++.++++...+
+T Consensus        37 ~~~~~~~~~gy-~~~~~~~~~~~~   59 (179)
+T 2LHF_A           37 NTGTWGIRAGQ-QFEQGRYYATYE   59 (179)
+T ss_dssp             SSCEEEEEEEE-EETTEEEEEEEE
+T ss_pred             cCceEEEEEEE-EcCCeEEEEEEE
+Confidence            34555666666 888888876543
+
+
+No 14
+>1QJ8_A OUTER MEMBRANE PROTEIN X; MEMBRANE PROTEIN, BETA-BARREL, BACTERIAL DEFENSE; HET: C8E; 1.9A {ESCHERICHIA COLI} SCOP: f.4.1.1
+Probab=76.36  E-value=1.2  Score=29.36  Aligned_cols=20  Identities=15%  Similarity=0.174  Sum_probs=14.8  Template_Neff=11.700
+
+Q GRAMNEG_T1D_31   54 RPGFGVGFSKQLTP-IFGLGF   73 (275)
+Q Consensus        54 rpgfgvgfskqltp-ifglgf   73 (275)
+                      ..+++++++.+++| .++++.
+T Consensus        21 ~~~~~~~~~~~~~~~~~~~~~   41 (148)
+T 1QJ8_A           21 MGGFNLKYRYEEDNSPLGVIG   41 (148)
+T ss_dssp             EEEEEEEEEEECTTCSEEEEE
+T ss_pred             cceEEEEEEEEeCCCcEEEEE
+Confidence            45778888888888 666654
+
+
+No 15
+>4CGK_B SECRETED 45 KDA PROTEIN; CELL CYCLE, PEPTIDOGLYCAN, CHAP, CELL; HET: PG4; 2.55A {STREPTOCOCCUS PNEUMONIAE}
+Probab=66.09  E-value=3.1  Score=34.33  Aligned_cols=37  Identities=14%  Similarity=0.258  Sum_probs=12.8  Template_Neff=10.100
+
+Q GRAMNEG_T1D_31  216 EIDGLNSSINALRSEVNNKDGELNTANRQINGLQKDL  252 (275)
+Q Consensus       216 eidglnssinalrsevnnkdgelntanrqinglqkdl  252 (275)
+                      +++.+...+..+..++...+.++..+..+|+.+++++
+T Consensus        40 ~l~~l~~~~~~~~~~l~~l~~~i~~~~~~i~~~~~~l   76 (392)
+T 4CGK_B           40 KISNLTAQQQEAQKQVDQIQEQVSAIQAEQSNLQAEN   76 (392)
+T ss_dssp             -----CCHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
+T ss_pred             HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
+Confidence            3444444444444444444444333333333333333
+
+
+No 16
+>4CGK_A SECRETED 45 KDA PROTEIN; CELL CYCLE, PEPTIDOGLYCAN, CHAP, CELL; HET: PG4; 2.55A {STREPTOCOCCUS PNEUMONIAE}
+Probab=66.09  E-value=3.1  Score=34.33  Aligned_cols=37  Identities=14%  Similarity=0.258  Sum_probs=14.0  Template_Neff=10.100
+
+Q GRAMNEG_T1D_31  216 EIDGLNSSINALRSEVNNKDGELNTANRQINGLQKDL  252 (275)
+Q Consensus       216 eidglnssinalrsevnnkdgelntanrqinglqkdl  252 (275)
+                      +++.+...+..+..++...+.++..+..+|+.+++++
+T Consensus        40 ~l~~l~~~~~~~~~~l~~l~~~i~~~~~~i~~~~~~l   76 (392)
+T 4CGK_A           40 KISNLTAQQQEAQKQVDQIQEQVSAIQAEQSNLQAEN   76 (392)
+T ss_dssp             --CCCCHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
+T ss_pred             HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
+Confidence            3444444444444444444444333333333333333
+
+
+No 17
+>1JOC_A Early Endosomal Autoantigen 1; FYVE domain, inositol 3-phosphate binding; HET: ITP; 2.2A {Homo sapiens} SCOP: g.50.1.1, h.1.21.1
+Probab=57.10  E-value=5.8  Score=27.96  Aligned_cols=34  Identities=21%  Similarity=0.346  Sum_probs=21.3  Template_Neff=9.600
+
+Q GRAMNEG_T1D_31  221 NSSINALRSEVNNKDGELNTANRQINGLQKDLEE  254 (275)
+Q Consensus       221 nssinalrsevnnkdgelntanrqinglqkdlee  254 (275)
+                      ++.|++|+..+.+.+.++....+++..+++.+++
+T Consensus         3 ~~~~~~l~~~~~~~~~e~e~l~~~~~~l~~~l~~   36 (125)
+T 1JOC_A            3 QDERRALLERCLKGEGEIEKLQTKVLELQRKLDN   36 (125)
+T ss_dssp             CHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
+T ss_pred             HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHh
+Confidence            4556666666666666666666666666665554
+
+
+No 18
+>1KFN_A MAJOR OUTER MEMBRANE LIPOPROTEIN; LIPOPROTEIN, PROTEIN FOLDING, HELIX CAPPING; 1.65A {Escherichia coli} SCOP: h.1.16.1
+Probab=47.29  E-value=11  Score=27.79  Aligned_cols=33  Identities=24%  Similarity=0.421  Sum_probs=21.3  Template_Neff=4.200
+
+Q GRAMNEG_T1D_31  215 AEIDGLNSSINALRSEVNNKDGELNTANRQING  247 (275)
+Q Consensus       215 aeidglnssinalrsevnnkdgelntanrqing  247 (275)
+                      +.+|.|.+-|++||++|+.--.|-..||..|..
+T Consensus        18 skv~qls~dv~~lr~~v~~ak~EA~RAN~RlDN   50 (56)
+T 1KFN_A           18 AKVDQASNDANAARSDAQAAKDDAARANQRLDN   50 (56)
+T ss_dssp             HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHT
+T ss_pred             HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
+Confidence            345666666777777777766666666665543
+
+
+No 19
+>1CXZ_B HUMAN RHOA COMPLEXED WITH KINASE; PROTEIN-PROTEIN COMPLEX, ANTIPARALLEL COILED-COIL, SIGNALING; HET: GSP; 2.2A {Homo sapiens} SCOP: a.2.6.1
+Probab=47.24  E-value=11  Score=28.41  Aligned_cols=24  Identities=21%  Similarity=0.344  Sum_probs=21.1  Template_Neff=6.100
+
+Q GRAMNEG_T1D_31  235 DGELNTANRQINGLQKDLEECRTK  258 (275)
+Q Consensus       235 dgelntanrqinglqkdleecrtk  258 (275)
+                      ..||..+|++|..|+.+|+++.+.
+T Consensus        62 e~eL~~an~kI~~L~~~L~~L~~~   85 (86)
+T 1CXZ_B           62 ELLLRGSSRRLDLLHQQLQELHAH   85 (86)
+T ss_dssp             HHHHHHHHHHHHHHHHHHHHHHTT
+T ss_pred             HHHHHHHHHHHHHHHHHHHHHHhc
+Confidence            578999999999999999988653
+
+
+No 20
+>4Q4G_X Peptidoglycan endopeptidase RipA (E.C.3.4.-.-); alpha-beta, cell wall hydrolase, HYDROLASE; 0.97A {Mycobacterium tuberculosis}
+Probab=46.89  E-value=11  Score=33.16  Aligned_cols=32  Identities=19%  Similarity=0.285  Sum_probs=0.0  Template_Neff=9.100
+
+Q GRAMNEG_T1D_31  217 IDGLNSSINALRSEVNNKDGELNTANRQINGL  248 (275)
+Q Consensus       217 idglnssinalrsevnnkdgelntanrqingl  248 (275)
+                      ++.+...|+.++.++...+.+++.+..+++.+
+T Consensus        53 l~~~~~~l~~~~~~l~~~~~~~~~a~~~~~~~   84 (472)
+T 4Q4G_X           53 VAKANQRLQDLSDEVQAEQESVNKAMVDVETA   84 (472)
+T ss_dssp             --------------------------------
+T ss_pred             HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
+Confidence            33333333344444333333333333333333
+
+
+No 21
+>2L3L_A Tubulin-specific chaperone C; CHAPERONE, tubulin binding cofactor; NMR {Homo sapiens}
+Probab=44.39  E-value=13  Score=27.62  Aligned_cols=47  Identities=21%  Similarity=0.278  Sum_probs=37.8  Template_Neff=7.800
+
+Q GRAMNEG_T1D_31  215 AEIDGLNSSINALRSEVNNKDGELN-----TANRQINGLQKDLEECRTKVVP  261 (275)
+Q Consensus       215 aeidglnssinalrsevnnkdgeln-----tanrqinglqkdleecrtkvvp  261 (275)
+                      ..++.+...|..|+..+...-.-|-     .+..+|+.|+..+++.|.++.|
+T Consensus        58 ~~l~~i~~~i~~L~~~~~~as~~LP~YD~r~~~~~l~~L~~~l~~~r~~l~P  109 (111)
+T 2L3L_A           58 ERLEEAASRLQGLQKLINDSVFFLAAYDLRQGQEALARLQAALAERRRGLQP  109 (111)
+T ss_dssp             HHHHHHHHHHHHHHHHHHHSTTTSCHHHHHHHHHHHHHHHHHHHHHHHHHSC
+T ss_pred             HHHHHHHHHHHHHHHHHHHHHhhcCHHHHHHHHHHHHHHHHHHHHHHHhhCC
+Confidence            6788888999999988887655544     4567889999999999988877
+
+
+No 22
+>2Q6Q_B Spindle pole body component SPC42; Spc42p, spindle pole body, budding; 1.97A {Saccharomyces cerevisiae}
+Probab=41.92  E-value=15  Score=28.86  Aligned_cols=19  Identities=37%  Similarity=0.410  Sum_probs=16.9  Template_Neff=3.200
+
+Q GRAMNEG_T1D_31  214 QAEIDGLNSSINALRSEVN  232 (275)
+Q Consensus       214 qaeidglnssinalrsevn  232 (275)
+                      |-|||.|++.+..||+.+-
+T Consensus        16 qeEI~RL~~L~~SLR~KLi   34 (74)
+T 2Q6Q_B           16 QNEIFELKKIAETLRSKLE   34 (74)
+T ss_dssp             HHHHHHHHHHHHHHHHHHH
+T ss_pred             HHHHHHHHHHHHHHHHHHH
+Confidence            8899999999999998764
+
+
+No 23
+>2Q6Q_A Spindle pole body component SPC42; Spc42p, spindle pole body, budding; 1.97A {Saccharomyces cerevisiae}
+Probab=41.92  E-value=15  Score=28.86  Aligned_cols=19  Identities=37%  Similarity=0.410  Sum_probs=16.9  Template_Neff=3.200
+
+Q GRAMNEG_T1D_31  214 QAEIDGLNSSINALRSEVN  232 (275)
+Q Consensus       214 qaeidglnssinalrsevn  232 (275)
+                      |-|||.|++.+..||+.+-
+T Consensus        16 qeEI~RL~~L~~SLR~KLi   34 (74)
+T 2Q6Q_A           16 QNEIFELKKIAETLRSKLE   34 (74)
+T ss_dssp             HHHHHHHHHHHHHHHHHHH
+T ss_pred             HHHHHHHHHHHHHHHHHHH
+Confidence            8899999999999998764
+
+
+No 24
+>1XTG_B NEUROTOXIN BONT/A, Synaptosomal-associated protein 25; botox, botulism, exosites, toxin; 2.1A {Clostridium botulinum} SCOP: h.1.15.1
+Probab=39.87  E-value=17  Score=23.07  Aligned_cols=44  Identities=23%  Similarity=0.436  Sum_probs=34.0  Template_Neff=8.900
+
+Q GRAMNEG_T1D_31  216 EIDGLNSSINALRSEVNNKDGELNTANRQINGLQKDLEECRTKV  259 (275)
+Q Consensus       216 eidglnssinalrsevnnkdgelntanrqinglqkdleecrtkv  259 (275)
+                      .++.|.+++..|+.-...-..|++.-|++|..+..+.+....++
+T Consensus         4 ~l~~l~~~v~~lk~~a~~i~~el~~q~~~l~~l~~~~~~~~~~l   47 (59)
+T 1XTG_B            4 NLEQVSGIIGNLRHMALDMGNEIDTQNRQIDRIMEKADSNKTRI   47 (59)
+T ss_dssp             HHHHHHHHHHHHHHHHHHHSSCCCCSCCCBCCCCCCCCSSCCEE
+T ss_pred             HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
+Confidence            46777788888888777788888888888888888877665544
+
+
+No 25
+>4ILO_B CT398; hypothetical protein, DNA/RNA binding, coiled-coil; 2.12A {Chlamydia trachomatis}
+Probab=37.50  E-value=19  Score=28.82  Aligned_cols=21  Identities=14%  Similarity=0.338  Sum_probs=9.9  Template_Neff=9.300
+
+Q GRAMNEG_T1D_31  243 RQINGLQKDLEECRTKVVPVE  263 (275)
+Q Consensus       243 rqinglqkdleecrtkvvpve  263 (275)
+                      +++..|+++++..+.++...|
+T Consensus        91 ke~~aL~~Ei~~l~~~~~~lE  111 (257)
+T 4ILO_B           91 DEFNALTQEMTAANKERRTLE  111 (257)
+T ss_dssp             HHHHHHHHHHHHHHHHHHHHH
+T ss_pred             HHHHHHHHHHHHHHHHHHHHH
+Confidence            344445555555544444443
+
+
+No 26
+>3U1C_A Tropomyosin alpha-1 chain; Anti-parallel coiled coil, CONTRACTILE PROTEIN; 1.8A {Gallus gallus}
+Probab=36.98  E-value=20  Score=26.10  Aligned_cols=42  Identities=5%  Similarity=0.105  Sum_probs=26.5  Template_Neff=7.900
+
+Q GRAMNEG_T1D_31  219 GLNSSINALRSEVNNKDGELNTANRQINGLQKDLEECRTKVV  260 (275)
+Q Consensus       219 glnssinalrsevnnkdgelntanrqinglqkdleecrtkvv  260 (275)
+                      .+...+..+.++....+.++.+..+.|..|+.|++.+..++-
+T Consensus        27 ~~e~~~k~~e~~~~~~e~ev~~l~~ki~~le~eld~~~~~l~   68 (101)
+T 3U1C_A           27 QAEADKKAAEERSKQLEDDIVQLEKQLRVTEDSRDQVLEELH   68 (101)
+T ss_dssp             HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
+T ss_pred             HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
+Confidence            333444555556666677777777777777777776665443
+
+
+No 27
+>5LOW_L Rabphilin-3A, Synaptosomal-associated protein 25; membrane fusion, calcium, C2 domain; HET: CA, GOL; 2.8A {Rattus norvegicus}
+Probab=36.16  E-value=21  Score=25.16  Aligned_cols=47  Identities=21%  Similarity=0.399  Sum_probs=38.5  Template_Neff=7.800
+
+Q GRAMNEG_T1D_31  213 NQAEIDGLNSSINALRSEVNNKDGELNTANRQINGLQKDLEECRTKV  259 (275)
+Q Consensus       213 nqaeidglnssinalrsevnnkdgelntanrqinglqkdleecrtkv  259 (275)
+                      +...+|.|...+..|+.-..+-..|++.-|+.|..|..+.+....++
+T Consensus        25 ~D~~Ld~L~~~v~~Lk~ia~~i~~El~~Qn~~Ld~l~~~~d~~~~~l   71 (82)
+T 5LOW_L           25 MDENLEQVSGIIGNLRHMALDMGNEIDTQNRQIDRIMEKADSNKTRI   71 (82)
+T ss_dssp             HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
+T ss_pred             HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
+Confidence            45667888899999998888888899999999999988887765544
+
+
+No 28
+>5LOW_E Rabphilin-3A, Synaptosomal-associated protein 25; membrane fusion, calcium, C2 domain; HET: CA, GOL; 2.8A {Rattus norvegicus}
+Probab=36.16  E-value=21  Score=25.16  Aligned_cols=47  Identities=21%  Similarity=0.399  Sum_probs=38.5  Template_Neff=7.800
+
+Q GRAMNEG_T1D_31  213 NQAEIDGLNSSINALRSEVNNKDGELNTANRQINGLQKDLEECRTKV  259 (275)
+Q Consensus       213 nqaeidglnssinalrsevnnkdgelntanrqinglqkdleecrtkv  259 (275)
+                      +...+|.|...+..|+.-..+-..|++.-|+.|..|..+.+....++
+T Consensus        25 ~D~~Ld~L~~~v~~Lk~ia~~i~~El~~Qn~~Ld~l~~~~d~~~~~l   71 (82)
+T 5LOW_E           25 MDENLEQVSGIIGNLRHMALDMGNEIDTQNRQIDRIMEKADSNKTRI   71 (82)
+T ss_dssp             HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
+T ss_pred             HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
+Confidence            45667888899999998888888899999999999988887765544
+
+
+No 29
+>4UG3_B CELL CYCLE PROTEIN GPSB; CELL CYCLE, BACTERIAL GROWTH REGULATION; 2.8A {BACILLUS SUBTILIS}
+Probab=35.91  E-value=21  Score=25.14  Aligned_cols=45  Identities=20%  Similarity=0.374  Sum_probs=24.8  Template_Neff=7.100
+
+Q GRAMNEG_T1D_31  210 KVYNQAEIDGLNSSINALRSEVNNKDGELNTANRQINGLQKDLEECRT  257 (275)
+Q Consensus       210 kvynqaeidglnssinalrsevnnkdgelntanrqinglqkdleecrt  257 (275)
+                      .-|+..|+|..   |..+..++..-..+.....++|..|++.+++.+.
+T Consensus        26 rGYd~~eVD~f---L~~v~~~~~~l~~e~~~l~~~i~~L~~~l~~~~~   70 (71)
+T 4UG3_B           26 RGYKQEDVDKF---LDMIIKDYETFHQEIEELQQENLQLKKQLEEASK   70 (71)
+T ss_dssp             TCECHHHHHHH---HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHC---
+T ss_pred             CCCCHHHHHHH---HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHhh
+Confidence            56888887764   3444444444444445556666666666665543
+
+
+No 30
+>4UG3_A CELL CYCLE PROTEIN GPSB; CELL CYCLE, BACTERIAL GROWTH REGULATION; 2.8A {BACILLUS SUBTILIS}
+Probab=35.91  E-value=21  Score=25.14  Aligned_cols=45  Identities=20%  Similarity=0.374  Sum_probs=24.8  Template_Neff=7.100
+
+Q GRAMNEG_T1D_31  210 KVYNQAEIDGLNSSINALRSEVNNKDGELNTANRQINGLQKDLEECRT  257 (275)
+Q Consensus       210 kvynqaeidglnssinalrsevnnkdgelntanrqinglqkdleecrt  257 (275)
+                      .-|+..|+|..   |..+..++..-..+.....++|..|++.+++.+.
+T Consensus        26 rGYd~~eVD~f---L~~v~~~~~~l~~e~~~l~~~i~~L~~~l~~~~~   70 (71)
+T 4UG3_A           26 RGYKQEDVDKF---LDMIIKDYETFHQEIEELQQENLQLKKQLEEASK   70 (71)
+T ss_dssp             EEECHHHHHHH---HHHHHHHHHHHHHHHHHHHHHHHHHHHHTTC---
+T ss_pred             CCCCHHHHHHH---HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHhh
+Confidence            56888887764   3444444444444445556666666666665543
+
+
+No 31
+>3B5N_H Synaptobrevin homolog 1, Protein SSO1; SNARE complex, syntaxin, synaptobrevin, snap-25; 1.6A {Saccharomyces cerevisiae}
+Probab=35.89  E-value=21  Score=23.44  Aligned_cols=47  Identities=13%  Similarity=0.319  Sum_probs=38.1  Template_Neff=8.400
+
+Q GRAMNEG_T1D_31  214 QAEIDGLNSSINALRSEVNNKDGELNTANRQINGLQKDLEECRTKVV  260 (275)
+Q Consensus       214 qaeidglnssinalrsevnnkdgelntanrqinglqkdleecrtkvv  260 (275)
+                      ...++.|.+.+..|+.-..+-..|+..-|++|..|..+.+....++-
+T Consensus         9 d~~l~~l~~~v~~Lk~~a~~i~~el~~Qn~~ld~l~~~~d~~~~~l~   55 (64)
+T 3B5N_H            9 DRNLDQIQQVSNRLKKMALTTGKELDSQQKRLNNIEESTDDLDINLH   55 (64)
+T ss_dssp             HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
+T ss_pred             HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
+Confidence            45677888888889888888888999999999999988877665543
+
+
+No 32
+>3B5N_D Synaptobrevin homolog 1, Protein SSO1; SNARE complex, syntaxin, synaptobrevin, snap-25; 1.6A {Saccharomyces cerevisiae}
+Probab=35.89  E-value=21  Score=23.44  Aligned_cols=47  Identities=13%  Similarity=0.319  Sum_probs=38.1  Template_Neff=8.400
+
+Q GRAMNEG_T1D_31  214 QAEIDGLNSSINALRSEVNNKDGELNTANRQINGLQKDLEECRTKVV  260 (275)
+Q Consensus       214 qaeidglnssinalrsevnnkdgelntanrqinglqkdleecrtkvv  260 (275)
+                      ...++.|.+.+..|+.-..+-..|+..-|++|..|..+.+....++-
+T Consensus         9 d~~l~~l~~~v~~Lk~~a~~i~~el~~Qn~~ld~l~~~~d~~~~~l~   55 (64)
+T 3B5N_D            9 DRNLDQIQQVSNRLKKMALTTGKELDSQQKRLNNIEESTDDLDINLH   55 (64)
+T ss_dssp             HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
+T ss_pred             HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
+Confidence            45677888888889888888888999999999999988877665543
+
+
+No 33
+>1N7S_D vesicle-associated membrane protein 2/Syntaxin 1A/SNAP-25A; neuronal SNARE protein complex, four; HET: MPD; 1.45A {Rattus norvegicus} SCOP: h.1.15.1
+Probab=35.33  E-value=22  Score=23.31  Aligned_cols=47  Identities=21%  Similarity=0.399  Sum_probs=37.4  Template_Neff=8.600
+
+Q GRAMNEG_T1D_31  213 NQAEIDGLNSSINALRSEVNNKDGELNTANRQINGLQKDLEECRTKV  259 (275)
+Q Consensus       213 nqaeidglnssinalrsevnnkdgelntanrqinglqkdleecrtkv  259 (275)
+                      +...+|.|.+.+..|+.-...-..|+..-|++|..|..+.+....++
+T Consensus         8 ~d~~ld~l~~~v~~Lk~~a~~i~~el~~q~~~ld~l~~~~d~~~~~l   54 (66)
+T 1N7S_D            8 MDENLEQVSGIIGNLRHMALDMGNEIDTQNRQIDRIMEKADSNKTRI   54 (66)
+T ss_dssp             HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
+T ss_pred             HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
+Confidence            45677888888888888888888888888888888888877655544
+
+
+No 34
+>2GUV_D Major outer membrane lipoprotein; LIPOPROTEIN, PROTEIN FOLDING, PENTAMER, PHENYLALANINE-ZIPPER; 1.4A {Escherichia coli} SCOP: h.1.16.1
+Probab=34.89  E-value=22  Score=25.95  Aligned_cols=31  Identities=19%  Similarity=0.417  Sum_probs=20.8  Template_Neff=4.500
+
+Q GRAMNEG_T1D_31  216 EIDGLNSSINALRSEVNNKDGELNTANRQIN  246 (275)
+Q Consensus       216 eidglnssinalrsevnnkdgelntanrqin  246 (275)
+                      .+|.|.+-+++||++|..--.|-..||..|.
+T Consensus        19 kVdqLs~dV~al~sdv~~a~~EA~RAN~RlD   49 (56)
+T 2GUV_D           19 KFDQFSNDFNAFRSDFQAFKDDFARFNQRFD   49 (56)
+T ss_dssp             HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
+T ss_pred             HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
+Confidence            4566777777777777766666666665554
+
+
+No 35
+>4YY1_B HA1, HA2; Hemagglutinin, IMMUNE SYSTEM; HET: SIA, NAG, GAL; 3.1A {unidentified influenza virus}
+Probab=34.27  E-value=23  Score=31.25  Aligned_cols=66  Identities=29%  Similarity=0.492  Sum_probs=46.8  Template_Neff=2.800
+
+Q GRAMNEG_T1D_31  195 YHFKTSTGNHYFTKVKVYNQAEIDGLNSSINALRSEVNN----KDGELNTANRQINGLQKDLEECRTKVVP  261 (275)
+Q Consensus       195 yhfktstgnhyftkvkvynqaeidglnssinalrsevnn----kdgelntanrqinglqkdleecrtkvvp  261 (275)
+                      ||-..+.|.-+-...+ --|+-||++..-+|.|+...|.    -++|.+...++|+.|.|..+..++.+..
+T Consensus        24 ~~h~n~~G~G~aAd~~-STQ~aiDkIt~kvN~li~k~N~~fe~i~~efs~~E~rI~~l~~~idD~~~d~ws   93 (164)
+T 4YY1_B           24 YHHENSQGSGYAADRE-STQKAIDGITNKVNSIINKMNTQFEAVDHEFSNLERRIGNLNKRMEDGFLDVWT   93 (164)
+T ss_dssp             EEEESSSCCEEEECHH-HHHHHHHHHHHHHHHHHHHTCCCCCCCCCCCCTTCHHHHHHHHHHHHHHHHHHH
+T ss_pred             hccccCCCCCccccHH-HHHHHHHHHHHHHHHHHHHHHHHHHHHHHhhHHHHHHHHHHHHHhhhcchHHHh
+Confidence            3333444444433222 4588899999999988877664    3678888899999999998888877654
+
+
+No 36
+>1RU7_B hemagglutinin; HEMAGGLUTININ, ENVELOPE PROTEIN, GLYCOPROTEIN, Viral; 2.3A {Influenza A virus (A/Puerto Rico/8/34(H1N1))} SCOP: h.3.1.1
+Probab=34.02  E-value=24  Score=31.11  Aligned_cols=49  Identities=16%  Similarity=0.353  Sum_probs=39.6  Template_Neff=2.800
+
+Q GRAMNEG_T1D_31  212 YNQAEIDGLNSSINALRSEVNN----KDGELNTANRQINGLQKDLEECRTKVV  260 (275)
+Q Consensus       212 ynqaeidglnssinalrsevnn----kdgelntanrqinglqkdleecrtkvv  260 (275)
+                      --|+-||++..-+|.|+...|.    -++|++...++|+.|.+..|..++.+.
+T Consensus        40 STQ~aidkIt~kvN~li~k~N~~fe~i~~efs~~E~rI~~l~~~idD~~~d~w   92 (160)
+T 1RU7_B           40 STQNAINGITNKVNSVIEKMNIQFTAVGKEFNKLEKRMENLNNKVDDGFLDIW   92 (160)
+T ss_dssp             HHHHHHHHHHHHHHHHHHHSCCEEEECCCCCCTTCHHHHHHHHHHHHHHHHHH
+T ss_pred             HHHHHHHHhHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHhhhhHHHHH
+Confidence            3588899999999988877664    367888888999999998888877654
+
+
+No 37
+>5MG8_B Structural maintenance of chromosomes protein; SMC, Structural Maintenance of Chromosomes; HET: SO4, GOL; 2.75A {Schizosaccharomyces pombe}
+Probab=33.52  E-value=24  Score=29.22  Aligned_cols=12  Identities=17%  Similarity=0.332  Sum_probs=4.6  Template_Neff=8.900
+
+Q GRAMNEG_T1D_31  242 NRQINGLQKDLE  253 (275)
+Q Consensus       242 nrqinglqkdle  253 (275)
+                      .++++.+++.++
+T Consensus        78 ~~e~~~l~~~l~   89 (294)
+T 5MG8_B           78 ANKISDQSEHLK   89 (294)
+T ss_dssp             HHHHHHHHGGGT
+T ss_pred             HHHHHHHHHHHH
+Confidence            333333333333
+
+
+No 38
+>2N1T_D Vesicle-associated membrane protein 2, Syntaxin-1A; Synaptotagmin-1, C2B domain, Syntaxin-1A, Synaptobrevin-2; NMR {Rattus norvegicus}
+Probab=33.37  E-value=25  Score=23.85  Aligned_cols=47  Identities=21%  Similarity=0.399  Sum_probs=37.8  Template_Neff=8.300
+
+Q GRAMNEG_T1D_31  213 NQAEIDGLNSSINALRSEVNNKDGELNTANRQINGLQKDLEECRTKV  259 (275)
+Q Consensus       213 nqaeidglnssinalrsevnnkdgelntanrqinglqkdleecrtkv  259 (275)
+                      +...+|.|.+.+..|+.-..+-..|+..-|++|..|..+++....++
+T Consensus        16 ~d~~Ld~l~~~v~~Lk~~a~~i~~El~~qn~~ld~l~~~~d~~~~~l   62 (74)
+T 2N1T_D           16 MDENLEQVSGIIGNLRHMALDMGNEIDTQNRQIDRIMEKADSNKTRI   62 (74)
+T ss_dssp             HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
+T ss_pred             HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
+Confidence            34567888888888988888888899999999999888887766554
+
+
+No 39
+>5E62_D Hemagglutinin-esterase; influenza, complex, HEF, HYDROLASE; HET: NAG, GAL, 5N6, MAN, BMA, Z3Q; 2.203A {Influenza D virus (D/swine/Oklahoma/1334/2011)}
+Probab=33.22  E-value=25  Score=30.69  Aligned_cols=49  Identities=27%  Similarity=0.508  Sum_probs=39.7  Template_Neff=2.800
+
+Q GRAMNEG_T1D_31  212 YNQAEIDGLNSSINALRSEVNN----KDGELNTANRQINGLQKDLEECRTKVV  260 (275)
+Q Consensus       212 ynqaeidglnssinalrsevnn----kdgelntanrqinglqkdleecrtkvv  260 (275)
+                      --|+-||+...-+|.|+...|.    -++|.+...++|+.|.+..|..|+.+.
+T Consensus        33 STQ~aidkIt~kln~li~k~N~~~e~i~~ef~~~E~rI~~l~~~i~d~~~d~w   85 (149)
+T 5E62_D           33 STQAGFDKIGKDIQQLRNDTNAAIEGFNGRIAHDEQAIKNLAKEIEDARAEAL   85 (149)
+T ss_dssp             CSCCCCHHHHHHHHHHHHTTHHHHHHHHTCCCEEEECCSSCCHHHHHHHHHHH
+T ss_pred             HHHHHHHHHHHHHHHHHHhHHHHHHHhHhchhhHHHHHHHHHHHHHHHHHHHH
+Confidence            4688899999999988877664    367888888999999998888877654
+
+
+No 40
+>4YV3_B vimentin; cytoskeleton, intermediate filament, vimentin, alpha-helical; HET: MSE; 2.0A {Homo sapiens}
+Probab=33.13  E-value=25  Score=22.83  Aligned_cols=44  Identities=18%  Similarity=0.311  Sum_probs=25.2  Template_Neff=9.500
+
+Q GRAMNEG_T1D_31  215 AEIDGLNSSINALRSEVNNKDGELNTANRQINGLQKDLEECRTK  258 (275)
+Q Consensus       215 aeidglnssinalrsevnnkdgelntanrqinglqkdleecrtk  258 (275)
+                      .+++.+-..+..++....+...........+..+++++++....
+T Consensus        13 ~e~~~~~~~~~~~~~k~e~e~~~~~~l~~~~~~l~k~~d~~~~~   56 (78)
+T 4YV3_B           13 VERDNLAEDIMRLREKLQEEMLQREEAENTLQSFRQDVDNASLA   56 (78)
+T ss_dssp             HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
+T ss_pred             HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
+Confidence            44555555555555555555555555566666777766655433
+
+
+No 41
+>4YV3_A vimentin; cytoskeleton, intermediate filament, vimentin, alpha-helical; HET: MSE; 2.0A {Homo sapiens}
+Probab=33.13  E-value=25  Score=22.83  Aligned_cols=44  Identities=18%  Similarity=0.311  Sum_probs=25.2  Template_Neff=9.500
+
+Q GRAMNEG_T1D_31  215 AEIDGLNSSINALRSEVNNKDGELNTANRQINGLQKDLEECRTK  258 (275)
+Q Consensus       215 aeidglnssinalrsevnnkdgelntanrqinglqkdleecrtk  258 (275)
+                      .+++.+-..+..++....+...........+..+++++++....
+T Consensus        13 ~e~~~~~~~~~~~~~k~e~e~~~~~~l~~~~~~l~k~~d~~~~~   56 (78)
+T 4YV3_A           13 VERDNLAEDIMRLREKLQEEMLQREEAENTLQSFRQDVDNASLA   56 (78)
+T ss_dssp             HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
+T ss_pred             HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
+Confidence            44555555555555555555555555566666777766655433
+
+
+No 42
+>1EQ7_A CORE STRUCTURE OF THE OUTER; lipoprotein, outer membrane, protein folding; 1.9A {Escherichia coli} SCOP: h.1.16.1
+Probab=32.86  E-value=26  Score=25.85  Aligned_cols=31  Identities=29%  Similarity=0.594  Sum_probs=20.3  Template_Neff=4.200
+
+Q GRAMNEG_T1D_31  216 EIDGLNSSINALRSEVNNKDGELNTANRQIN  246 (275)
+Q Consensus       216 eidglnssinalrsevnnkdgelntanrqin  246 (275)
+                      .+|.|.+-+++||++|+.--.|-..||..|.
+T Consensus        19 kVdqLs~dV~aL~sdv~~ak~EA~RAN~RlD   49 (56)
+T 1EQ7_A           19 KVDQLSNDVNAMRSDVQAAKDDAARANQRLD   49 (56)
+T ss_dssp             HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
+T ss_pred             HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
+Confidence            4566677777777777766666666665554
+
+
+No 43
+>3BT6_B Influenza B hemagglutinin (HA); Antigenic variation, membrane fusion, Envelope; HET: NAG, NDG; 2.8A {Influenza B virus}
+Probab=32.73  E-value=26  Score=31.12  Aligned_cols=66  Identities=17%  Similarity=0.326  Sum_probs=46.8  Template_Neff=2.800
+
+Q GRAMNEG_T1D_31  195 YHFKTSTGNHYFTKVKVYNQAEIDGLNSSINALRSEVNNK----DGELNTANRQINGLQKDLEECRTKVVP  261 (275)
+Q Consensus       195 yhfktstgnhyftkvkvynqaeidglnssinalrsevnnk----dgelntanrqinglqkdleecrtkvvp  261 (275)
+                      ||-..+.|.-+-...+ --|+-||++..-+|.|+...|.+    .+|.+...++|+.|.|..+..++.+..
+T Consensus        24 ~~h~n~~g~G~aad~~-StQ~aid~It~kvn~li~k~N~~fe~v~~efs~~E~rI~~L~~~vdD~~~D~ws   93 (169)
+T 3BT6_B           24 YTSHGAHGVAVAADLK-STQEAINKITKNLNSLSELEVKNLQRLSGAMDELHNEILELDEKVDDLRADTIS   93 (169)
+T ss_dssp             EEEEETTEEEEEECTT-HHHHHHHHHHHHHHHHHHCCCCCCCCCTTCCTTTCHHHHHHHHHHHHHHHHHHH
+T ss_pred             ccccCCCcccccccHH-HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHhHHHHHHHHH
+Confidence            3333444444433322 35888999999999998876643    678888899999999988888877654
+
+
+No 44
+>2EFR_A General control protein GCN4 and; DESTABILIZING CLUSTER, HYDROPHOBIC CORE, CONTRACTILE; 1.8A {Saccharomyces cerevisiae, Oryctolagus cuniculus}
+Probab=32.63  E-value=26  Score=25.06  Aligned_cols=37  Identities=19%  Similarity=0.417  Sum_probs=16.9  Template_Neff=10.100
+
+Q GRAMNEG_T1D_31  218 DGLNSSINALRSEVNNKDGELNTANRQINGLQKDLEE  254 (275)
+Q Consensus       218 dglnssinalrsevnnkdgelntanrqinglqkdlee  254 (275)
+                      +.+...+..|.+++......++...+++..|.+.+++
+T Consensus        73 ~~~~~e~~~l~~~l~~~~~~~~~~e~~~~~l~~~i~~  109 (155)
+T 2EFR_A           73 DKYEEEIKVLSDKLKEAETRAEFAERSVTKLEKSIDD  109 (155)
+T ss_dssp             HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
+T ss_pred             HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
+Confidence            3334444444444444444444444444444444333
+
+
+No 45
+>4M44_D Hemagglutinin HA1, Hemagglutinin HA2; receptor binding, fusion, sialic acid; HET: SIA, NAG, GAL; 2.5A {Influenza B virus}
+Probab=32.51  E-value=26  Score=31.40  Aligned_cols=63  Identities=16%  Similarity=0.316  Sum_probs=45.6  Template_Neff=2.700
+
+Q GRAMNEG_T1D_31  198 KTSTGNHYFTKVKVYNQAEIDGLNSSINALRSEVNNK----DGELNTANRQINGLQKDLEECRTKVVP  261 (275)
+Q Consensus       198 ktstgnhyftkvkvynqaeidglnssinalrsevnnk----dgelntanrqinglqkdleecrtkvvp  261 (275)
+                      ..+.|.-+-...+ --|+-||+++.-+|.|+...|.+    .+|++...++|+.|.|..+..++.+..
+T Consensus        27 ~n~~G~G~aAd~~-StQ~aidkIt~kvN~li~k~N~~fe~i~~efs~~E~rI~~L~k~vdD~~~D~ws   93 (182)
+T 4M44_D           27 HGAHGVAVAADLK-STQEAINKITKNLNSLSELEVKNLQRLSGAMDELHNEILELDEKVDDLRADTIS   93 (182)
+T ss_dssp             EETTEEEEEECHH-HHHHHHHHHHHHHHHHHSCCCCCBCCCSSCCTTTTHHHHHHHHHHHHHHHHHHH
+T ss_pred             cCCCcccccccHH-HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHhHHHHHHHHH
+Confidence            3344444433222 35888999999999998876653    678888899999999998888877654
+
+
+No 46
+>1JCD_B MAJOR OUTER MEMBRANE LIPOPROTEIN; LIPOPROTEIN, PROTEIN FOLDING, HELIX CAPPING; 1.3A {Escherichia coli} SCOP: h.1.16.1
+Probab=32.39  E-value=26  Score=25.46  Aligned_cols=31  Identities=23%  Similarity=0.338  Sum_probs=19.2  Template_Neff=4.200
+
+Q GRAMNEG_T1D_31  216 EIDGLNSSINALRSEVNNKDGELNTANRQIN  246 (275)
+Q Consensus       216 eidglnssinalrsevnnkdgelntanrqin  246 (275)
+                      .+|.|.+-+++||++|+.--.|-..||..|.
+T Consensus        19 kVdqLs~dV~al~sdv~~ak~EA~RAN~RlD   49 (52)
+T 1JCD_B           19 KADQASNDANAARSDAQAAKDDAARANQRAD   49 (52)
+T ss_dssp             HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
+T ss_pred             HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
+Confidence            4566666677777776666555555555443
+
+
+No 47
+>1JCD_C MAJOR OUTER MEMBRANE LIPOPROTEIN; LIPOPROTEIN, PROTEIN FOLDING, HELIX CAPPING; 1.3A {Escherichia coli} SCOP: h.1.16.1
+Probab=32.39  E-value=26  Score=25.46  Aligned_cols=31  Identities=23%  Similarity=0.338  Sum_probs=19.2  Template_Neff=4.200
+
+Q GRAMNEG_T1D_31  216 EIDGLNSSINALRSEVNNKDGELNTANRQIN  246 (275)
+Q Consensus       216 eidglnssinalrsevnnkdgelntanrqin  246 (275)
+                      .+|.|.+-+++||++|+.--.|-..||..|.
+T Consensus        19 kVdqLs~dV~al~sdv~~ak~EA~RAN~RlD   49 (52)
+T 1JCD_C           19 KADQASNDANAARSDAQAAKDDAARANQRAD   49 (52)
+T ss_dssp             HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
+T ss_pred             HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
+Confidence            4566666677777776666555555555443
+
+
+No 48
+>4KPS_B Hemagglutinin; receptor binding, VIRAL PROTEIN; HET: SIA, NAG, GAL; 2.587A {Influenza A virus}
+Probab=32.24  E-value=27  Score=30.94  Aligned_cols=49  Identities=27%  Similarity=0.451  Sum_probs=39.6  Template_Neff=2.800
+
+Q GRAMNEG_T1D_31  212 YNQAEIDGLNSSINALRSEVNN----KDGELNTANRQINGLQKDLEECRTKVV  260 (275)
+Q Consensus       212 ynqaeidglnssinalrsevnn----kdgelntanrqinglqkdleecrtkvv  260 (275)
+                      --|+-||+++.-+|.|+...|.    -++|++...++|+.|.+..+..++.+.
+T Consensus        39 STQ~aidkIt~klN~li~k~N~~fe~i~~efs~~E~rI~~l~~~idD~~~d~w   91 (165)
+T 4KPS_B           39 STQKAIDQITTKINNIIDKMNGNYDSIRGEFNQVEKRINMLADRIDDAVTDIW   91 (165)
+T ss_dssp             HHHHHHHHHHHHHHHHHHTCCSCCSCCCCCCCTTCHHHHHHHHHHHHHHHHHH
+T ss_pred             HHHHHHHHHHHHHHHHHHHHhHHHHHHHHhHHHHHHHHHHHHHHHhHHHHHHH
+Confidence            3588899999999988877664    367888888999999988888877654
+
+
+No 49
+>2XDJ_B UNCHARACTERIZED PROTEIN YBGF; UNKNOWN FUNCTION; 1.82A {ESCHERICHIA COLI}
+Probab=31.71  E-value=27  Score=25.85  Aligned_cols=40  Identities=15%  Similarity=0.324  Sum_probs=21.2  Template_Neff=6.400
+
+Q GRAMNEG_T1D_31  215 AEIDGLNSSINALRSEVNNKDGELNTANRQINGLQKDLEE  254 (275)
+Q Consensus       215 aeidglnssinalrsevnnkdgelntanrqinglqkdlee  254 (275)
+                      +.|+.|...|..||.++..-.-++....++...++.|++.
+T Consensus        27 ~rl~~Le~el~~LrGqvE~l~~~l~ql~~~~~~l~~dld~   66 (83)
+T 2XDJ_B           27 QQLSDNQSDIDSLRGQIQENQYQLNQVVERQKQILLQIDS   66 (83)
+T ss_dssp             HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
+T ss_pred             HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
+Confidence            3455555555555555555555555555555555556543
+
+
+No 50
+>3SWK_A Vimentin; cytoskeleton, intermediate filament, alpha-helix, STRUCTURAL; 1.7A {Homo sapiens}
+Probab=31.56  E-value=28  Score=23.25  Aligned_cols=44  Identities=18%  Similarity=0.311  Sum_probs=25.0  Template_Neff=9.300
+
+Q GRAMNEG_T1D_31  215 AEIDGLNSSINALRSEVNNKDGELNTANRQINGLQKDLEECRTK  258 (275)
+Q Consensus       215 aeidglnssinalrsevnnkdgelntanrqinglqkdleecrtk  258 (275)
+                      .+++.+-..+..++....+...........+..+.+++++....
+T Consensus        21 ~e~~~~~~~~~~~~~k~e~e~~~~~~~e~~~~~lkk~~d~~~~~   64 (86)
+T 3SWK_A           21 VERDNLAEDIMRLREKLQEEMLQREEAENTLQSFRQDVDNASLA   64 (86)
+T ss_dssp             HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHTTHHHHHHH
+T ss_pred             HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
+Confidence            34455555555555555555555555666666777766655433
+
+
+No 51
+>1T8Z_C Major outer membrane lipoprotein; LIPOPROTEIN, PROTEIN FOLDING, PENTAMER, TRYPTOPHAN-ZIPPER; HET: SO4, 12P; 1.45A {Escherichia coli} SCOP: h.1.16.1
+Probab=31.45  E-value=28  Score=25.41  Aligned_cols=31  Identities=19%  Similarity=0.196  Sum_probs=19.8  Template_Neff=4.200
+
+Q GRAMNEG_T1D_31  216 EIDGLNSSINALRSEVNNKDGELNTANRQIN  246 (275)
+Q Consensus       216 eidglnssinalrsevnnkdgelntanrqin  246 (275)
+                      .+|.|.+-+++||++|..--.|-..||..|.
+T Consensus        19 kVdqLs~dV~al~sdv~~ak~EA~RAN~RlD   49 (53)
+T 1T8Z_C           19 KWDQWSNDWNAWRSDWQAWKDDWARWNQRWD   49 (53)
+T ss_dssp             HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
+T ss_pred             HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
+Confidence            4566666777777777666666666665543
+
+
+No 52
+>3U59_B Tropomyosin beta chain; Muscle contraction, Actin, CONTRACTILE PROTEIN; 2.5A {Gallus gallus}
+Probab=31.12  E-value=28  Score=25.46  Aligned_cols=40  Identities=10%  Similarity=0.248  Sum_probs=22.5  Template_Neff=7.700
+
+Q GRAMNEG_T1D_31  220 LNSSINALRSEVNNKDGELNTANRQINGLQKDLEECRTKV  259 (275)
+Q Consensus       220 lnssinalrsevnnkdgelntanrqinglqkdleecrtkv  259 (275)
+                      +.+.+..+..+....+.++...+|.|..|+.||+....++
+T Consensus        28 ~e~~lk~~~~~~~~~e~ev~~L~~ki~~le~eld~~e~~l   67 (101)
+T 3U59_B           28 AEADKKQAEDRCKQLEEEQQGLQKKLKGTEDEVEKYSESV   67 (101)
+T ss_dssp             HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
+T ss_pred             HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
+Confidence            3334444444445555666666677777776666555443
+
+
+No 53
+>3U59_D Tropomyosin beta chain; Muscle contraction, Actin, CONTRACTILE PROTEIN; 2.5A {Gallus gallus}
+Probab=31.12  E-value=28  Score=25.46  Aligned_cols=40  Identities=10%  Similarity=0.248  Sum_probs=22.5  Template_Neff=7.700
+
+Q GRAMNEG_T1D_31  220 LNSSINALRSEVNNKDGELNTANRQINGLQKDLEECRTKV  259 (275)
+Q Consensus       220 lnssinalrsevnnkdgelntanrqinglqkdleecrtkv  259 (275)
+                      +.+.+..+..+....+.++...+|.|..|+.||+....++
+T Consensus        28 ~e~~lk~~~~~~~~~e~ev~~L~~ki~~le~eld~~e~~l   67 (101)
+T 3U59_D           28 AEADKKQAEDRCKQLEEEQQGLQKKLKGTEDEVEKYSESV   67 (101)
+T ss_dssp             HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
+T ss_pred             HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
+Confidence            3334444444445555666666677777776666555443
+
+
+No 54
+>5E65_D Hemagglutinin-esterase; influenza virus, HEF, membrane, HYDROLASE; HET: BMA, NAG, MAN, GAL, 5N6; 2.2A {Influenza D virus (D/swine/Oklahoma/1334/2011)}
+Probab=31.10  E-value=29  Score=30.81  Aligned_cols=49  Identities=27%  Similarity=0.508  Sum_probs=39.8  Template_Neff=2.600
+
+Q GRAMNEG_T1D_31  212 YNQAEIDGLNSSINALRSEVNN----KDGELNTANRQINGLQKDLEECRTKVV  260 (275)
+Q Consensus       212 ynqaeidglnssinalrsevnn----kdgelntanrqinglqkdleecrtkvv  260 (275)
+                      --|+-||+...-+|.|++..|.    -++|.+...++|+.|.|..|..|..+.
+T Consensus        41 STQ~aidkIt~kvn~li~k~N~~fe~v~~efs~~E~rI~~L~~~ieD~~~D~w   93 (166)
+T 5E65_D           41 STQAGFDKIGKDIQQLRNDTNAAIEGFNGRIAHDEQAIKNLAKEIEDARAEAL   93 (166)
+T ss_dssp             CSCCCCHHHHHHHHHHHHTTHHHHHHHHTCCCEEEECCSSCCHHHHHHHHHHH
+T ss_pred             HHHHHHHHHHHHHHHHHHhHHHHHHHhHhchhhHHHHHHHHHHHHHHHHHHHH
+Confidence            4688899999889888877664    367888889999999998888877654
+
+
+No 55
+>4GXX_B Hemagglutinin HA1 chain, Hemagglutinin HA2; viral fusion protein, virus attachment; HET: BMA, NAG, MAN; 1.799A {Influenza A virus}
+Probab=30.84  E-value=29  Score=30.99  Aligned_cols=49  Identities=24%  Similarity=0.457  Sum_probs=39.8  Template_Neff=2.700
+
+Q GRAMNEG_T1D_31  212 YNQAEIDGLNSSINALRSEVNNK----DGELNTANRQINGLQKDLEECRTKVV  260 (275)
+Q Consensus       212 ynqaeidglnssinalrsevnnk----dgelntanrqinglqkdleecrtkvv  260 (275)
+                      --|+-||.+..-+|.|+...|.+    ++|++...++|+.|.+..+..++.+.
+T Consensus        40 STQ~aidkIt~klN~li~k~N~~fe~i~~efs~~E~rI~~l~~~i~D~~~d~w   92 (176)
+T 4GXX_B           40 STQNAIDGITNKVNSVIEKMNTQFTAVGKEFNNLERRIENLNKKVDDGFLDIW   92 (176)
+T ss_dssp             HHHHHHHHHHHHHHHHHHHSCCEEEECCCCCCTTCHHHHHHHHHHHHHHHHHH
+T ss_pred             HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHhhhchHHHH
+Confidence            35888999999999888776653    78888889999999998888877654
+
+
+No 56
+>4QY1_N hemagglutinin; receptor binding, memebrane fusion, VIRAL; HET: SIA, NAG, GAL; 2.594A {Influenza A virus}
+Probab=30.32  E-value=30  Score=30.81  Aligned_cols=50  Identities=22%  Similarity=0.294  Sum_probs=40.8  Template_Neff=2.900
+
+Q GRAMNEG_T1D_31  212 YNQAEIDGLNSSINALRSEVNN----KDGELNTANRQINGLQKDLEECRTKVVP  261 (275)
+Q Consensus       212 ynqaeidglnssinalrsevnn----kdgelntanrqinglqkdleecrtkvvp  261 (275)
+                      --|+-||++..-+|.|++..|.    -++|.+...++|+.|.|..+..++.+..
+T Consensus        40 STQ~Aid~It~kvN~li~k~N~~fe~i~~efs~~E~rI~~L~~~idD~~~d~ws   93 (174)
+T 4QY1_N           40 STQAAIDQITGKLNRLVEKTNTEFESIESEFSEIEHQIGNVINWTKDSITDIWT   93 (174)
+T ss_dssp             HHHHHHHHHHHHHHHHHCCCCCCBCCCSCSSSCCCHHHHHHHHHHHHHHHHHHH
+T ss_pred             HHHHHHHHHHHHHHHHHHHHHHHHHHHHHhhHHHHHHHHHHHHHhhhhhhHHHH
+Confidence            3588899999888888877664    3678888899999999999888877654
+
+
+No 57
+>4F23_B Hemagglutinin; hemagglutinin, sialic acid, glycolysation, membrane; HET: NAG; 1.7A {Influenza A virus}
+Probab=29.30  E-value=32  Score=34.56  Aligned_cols=88  Identities=24%  Similarity=0.417  Sum_probs=62.4  Template_Neff=3.800
+
+Q GRAMNEG_T1D_31  171 GNFPETKSR--FNANNAAFELTA---GL-----TYHFKTSTGNHYFTKVKVYNQAEIDGLNSSINALRSEVNN----KDG  236 (275)
+Q Consensus       171 gnfpetksr--fnannaafelta---gl-----tyhfktstgnhyftkvkvynqaeidglnssinalrsevnn----kdg  236 (275)
+                      -|.|+.++|  |-| -|.|- ..   |+     .||-..+.|.-|-...| --|+-||++..-+|.|+...|.    -++
+T Consensus       326 RNvP~~~sRGlFGA-IAGFI-EgGW~GmvdGWyG~~h~N~qG~G~AAD~~-STQ~Aid~It~kvN~ii~k~N~~fe~i~~  402 (515)
+T 4F23_B          326 RNVPSIVERGLFGA-IAGFI-EGGWPGLINGWYGFQHQNEQGTGIAADKT-STQKAINEITTKINNIIEKMNGNYDSIRG  402 (515)
+T ss_dssp             CCCGGGGGGTCEEE-ECSCC-SSCCCTTTSCEEEEEEEETTEEEEEECHH-HHHHHHHHHHHHHHHHHHTCCSCCSCCCC
+T ss_pred             ccCCchhhchhhHH-HHHHh-hcCccchhhhhceeccccccCCCcccCHH-HHHHHHHHHHHHHHHHHHHHhHHHHHHHH
+Confidence            467877777  665 44441 11   22     45544544766655544 4688999998888888876664    478
+
+
+Q GRAMNEG_T1D_31  237 ELNTANRQINGLQKDLEECRTKVVP  261 (275)
+Q Consensus       237 elntanrqinglqkdleecrtkvvp  261 (275)
+                      |.+...++|+.|.|..|+.++.+--
+T Consensus       403 ef~~~E~rI~~l~~~v~D~~~d~w~  427 (515)
+T 4F23_B          403 EFNQVEKRINMIADRVDDAVTDIWS  427 (515)
+T ss_dssp             CCCTTCHHHHHHHHHHHHHHHHHHH
+T ss_pred             HHHHHHHHHHHHHHHHHHHHHHHHh
+Confidence            9999999999999999998887655
+
+
+No 58
+>1AVY_B FIBRITIN; BACTERIOPHAGE T4, STRUCTURAL PROTEIN, CHAPERONE; 1.85A {Enterobacteria phage T4} SCOP: h.1.17.1
+Probab=29.29  E-value=32  Score=26.43  Aligned_cols=41  Identities=32%  Similarity=0.509  Sum_probs=19.1  Template_Neff=4.400
+
+Q GRAMNEG_T1D_31  216 EIDGLNSSINALRSEVNNKDGELNTANRQINGLQKDLEECR  256 (275)
+Q Consensus       216 eidglnssinalrsevnnkdgelntanrqinglqkdleecr  256 (275)
+                      |-.||-.++..|...+..++.+.++..+.+.++|++.++..
+T Consensus         2 ee~GL~~tv~~l~t~i~g~~~~~~~~~~~~~~i~~~v~~L~   42 (74)
+T 1AVY_B            2 EESGLTNKIKAIETDIASVRQEVNTAKGNISSLQGDVQALQ   42 (74)
+T ss_dssp             ------------------CTTHHHHHHHHHHHHHHHHHHHH
+T ss_pred             CcccchHHHHHHHHhHhhchhhhhhcccchhhHHHHHHHHH
+Confidence            34577888888888999999998888888888888877665
+
+
+No 59
+>1AVY_C FIBRITIN; BACTERIOPHAGE T4, STRUCTURAL PROTEIN, CHAPERONE; 1.85A {Enterobacteria phage T4} SCOP: h.1.17.1
+Probab=29.29  E-value=32  Score=26.43  Aligned_cols=41  Identities=32%  Similarity=0.509  Sum_probs=31.3  Template_Neff=4.400
+
+Q GRAMNEG_T1D_31  216 EIDGLNSSINALRSEVNNKDGELNTANRQINGLQKDLEECR  256 (275)
+Q Consensus       216 eidglnssinalrsevnnkdgelntanrqinglqkdleecr  256 (275)
+                      |-.||-.++..|...+..++.+.++..+.+.++|++.++..
+T Consensus         2 ee~GL~~tv~~l~t~i~g~~~~~~~~~~~~~~i~~~v~~L~   42 (74)
+T 1AVY_C            2 EESGLTNKIKAIETDIASVRQEVNTAKGNISSLQGDVQALQ   42 (74)
+T ss_dssp             ----CCCTHHHHHHTHHHHHHHHHHHHHHHHHHHHHHHHHH
+T ss_pred             CcccchHHHHHHHHhHhhchhhhhhcccchhhHHHHHHHHH
+Confidence            34577888888888999999998888888888888877665
+
+
+No 60
+>4KDQ_D Hemagglutinin; homotrimer, virus attachment and membrane; HET: NAG; 2.604A {Influenza A virus}
+Probab=29.16  E-value=32  Score=30.38  Aligned_cols=50  Identities=28%  Similarity=0.444  Sum_probs=40.2  Template_Neff=2.900
+
+Q GRAMNEG_T1D_31  212 YNQAEIDGLNSSINALRSEVNN----KDGELNTANRQINGLQKDLEECRTKVVP  261 (275)
+Q Consensus       212 ynqaeidglnssinalrsevnn----kdgelntanrqinglqkdleecrtkvvp  261 (275)
+                      --|+-||+++.-+|.++...|.    -.+|.+...++|+.|.|..+..++.+..
+T Consensus        40 StQ~aidkIt~kvN~liek~N~qfe~v~~efs~~E~rI~~L~~~idD~~~d~ws   93 (164)
+T 4KDQ_D           40 STQKAIDGVTNKVNSIIDKMNTQFEAVGREFNNLERRIENLNKKMEDGFLDVWT   93 (164)
+T ss_dssp             HHHHHHHHHHHHHHHHHHHTSSCCCCCCCCCCTTCHHHHHHHHHHHHHHHHHHH
+T ss_pred             HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHhhhchhHHHH
+Confidence            3588899988888888876664    3678888889999999998888877654
+
+
+No 61
+>1JSD_B HAEMAGGLUTININ (HA1 CHAIN), HAEMAGGLUTININ (HA2; influenza, Viral protein; HET: NAG; 1.8A {Influenza A virus (A/swine/Hong Kong/9/98(H9N2))} SCOP: h.3.1.1
+Probab=29.04  E-value=33  Score=30.68  Aligned_cols=49  Identities=18%  Similarity=0.371  Sum_probs=39.6  Template_Neff=2.700
+
+Q GRAMNEG_T1D_31  212 YNQAEIDGLNSSINALRSEVNNK----DGELNTANRQINGLQKDLEECRTKVV  260 (275)
+Q Consensus       212 ynqaeidglnssinalrsevnnk----dgelntanrqinglqkdleecrtkvv  260 (275)
+                      --|+-||++..-+|.|+...|.+    ++|.+...++|+.|.|..+..++.+.
+T Consensus        40 STQ~aidkIt~klN~li~k~N~~fe~i~~efs~~E~rI~~l~~~i~D~~~d~w   92 (176)
+T 1JSD_B           40 STQKAIDKITSKVNNIVDKMNKQYGIIDHEFSEIETRLNMINNKIDDQIQDIW   92 (176)
+T ss_dssp             HHHHHHHHHHHHHHHHHHHHCCCCCCCCCCCCTTCHHHHHHHHHHHHHHHHHH
+T ss_pred             HHHHHHHHHHHHHHHHHHHHHHHHHHhHHHhHHHHHHHHHHHHHHhHHHHHHH
+Confidence            35888999998888888776653    67888888999999998888877654
+
+
+No 62
+>4YPC_A vimentin; cytoskeleton, intermediate filament, vimentin, alpha-helical; 1.44A {Homo sapiens}
+Probab=28.49  E-value=34  Score=22.68  Aligned_cols=42  Identities=19%  Similarity=0.328  Sum_probs=20.9  Template_Neff=9.300
+
+Q GRAMNEG_T1D_31  216 EIDGLNSSINALRSEVNNKDGELNTANRQINGLQKDLEECRT  257 (275)
+Q Consensus       216 eidglnssinalrsevnnkdgelntanrqinglqkdleecrt  257 (275)
+                      +++.+-.-+..++................|..+.+++++...
+T Consensus        14 e~~~~~~~~~~~k~k~e~e~~~~~~~e~~~~~lkk~~d~~~~   55 (83)
+T 4YPC_A           14 ERDNLAEDIMRLREKLQEEMLQREEAENTLQSFRQDVDNASL   55 (83)
+T ss_dssp             HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
+T ss_pred             HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
+Confidence            344444444444444444444444555566666666655443
+
+
+No 63
+>1GL2_D ENDOBREVIN, SYNTAXIN 7, VESICLE TRANSPORT; MEMBRANE PROTEIN, MEMBRANE FUSION PROTEIN; 1.9A {RATTUS NORVEGICUS} SCOP: h.1.15.1
+Probab=28.45  E-value=34  Score=22.53  Aligned_cols=46  Identities=26%  Similarity=0.329  Sum_probs=35.6  Template_Neff=8.400
+
+Q GRAMNEG_T1D_31  214 QAEIDGLNSSINALRSEVNNKDGELNTANRQINGLQKDLEECRTKV  259 (275)
+Q Consensus       214 qaeidglnssinalrsevnnkdgelntanrqinglqkdleecrtkv  259 (275)
+                      ...++.|.+.+..|+.-..+-..|++.-|.+|+.|..+.+....++
+T Consensus         8 d~~L~~l~~~v~~Lk~~a~~i~~Ei~~Q~~~ld~l~~~~d~~~~~l   53 (65)
+T 1GL2_D            8 DAGLDALSSIISRQKQMGQEIGNELDEQNEIIDDLANLVENTDEKL   53 (65)
+T ss_dssp             CHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
+T ss_pred             HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
+Confidence            3467788888888888888888888888888888888777655443
+
+
+No 64
+>4FQV_D Hemagglutinin HA1, Hemagglutinin HA2, Antibody; viral fusion protein, immunoglobulin, virus; 5.75A {Influenza A virus}
+Probab=28.43  E-value=34  Score=30.55  Aligned_cols=50  Identities=26%  Similarity=0.336  Sum_probs=40.4  Template_Neff=2.800
+
+Q GRAMNEG_T1D_31  212 YNQAEIDGLNSSINALRSEVNN----KDGELNTANRQINGLQKDLEECRTKVVP  261 (275)
+Q Consensus       212 ynqaeidglnssinalrsevnn----kdgelntanrqinglqkdleecrtkvvp  261 (275)
+                      --|+-||++..-+|.|+...|.    -++|.+...++|+.|.|..+..++.+..
+T Consensus        40 STQ~aidkIt~kvN~li~k~N~~fe~i~~efs~~E~rI~~L~~~idD~~~d~ws   93 (176)
+T 4FQV_D           40 STQSAIDQITGKLNRLIEKTNQQFELIDNEFTEVERQIGNVINWTRDSMTEVWS   93 (176)
+T ss_dssp             HHHHHHHHHHHHHHHHSCCCCCCBCCCSCSSSCCCHHHHHHHHHHHHHHHHHHH
+T ss_pred             HHHHHHHHHHHHHHHHHHHHHHHHHHHHHhhHHHHHHHHHHHHHHhhhhHHHHH
+Confidence            3588899999888888877664    3678888889999999988888877654
+
+
+No 65
+>4WY4_D Human Vamp 8 (10-74), Human; autophagy, SNARE, fusion; 1.4A {Homo sapiens}
+Probab=28.08  E-value=35  Score=22.29  Aligned_cols=45  Identities=11%  Similarity=0.274  Sum_probs=35.5  Template_Neff=8.600
+
+Q GRAMNEG_T1D_31  214 QAEIDGLNSSINALRSEVNNKDGELNTANRQINGLQKDLEECRTK  258 (275)
+Q Consensus       214 qaeidglnssinalrsevnnkdgelntanrqinglqkdleecrtk  258 (275)
+                      ...++.|.+.+..|+.-...-..|++.-|++|..|..+.+....+
+T Consensus        10 d~~l~~l~~~v~~lk~~a~~i~~El~~Qn~~ld~l~~~~d~~~~~   54 (65)
+T 4WY4_D           10 DSNLDELSMGLGRLKDIALGMQTEIEEQDDILDRLTTKVDKLDVN   54 (65)
+T ss_dssp             HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
+T ss_pred             HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
+Confidence            345778888888888888888888999999998888877765444
+
+
+No 66
+>4BSG_B HEMAGGLUTININ; VIRAL PROTEIN, H7N9, H5N1, FOWL; HET: SO4, NAG; 2.1A {INFLUENZA A (VIRUS A/TURKEY/ITALY/214845/2002 (H7N3))}
+Probab=27.61  E-value=36  Score=30.43  Aligned_cols=49  Identities=24%  Similarity=0.351  Sum_probs=39.1  Template_Neff=2.800
+
+Q GRAMNEG_T1D_31  212 YNQAEIDGLNSSINALRSEVNNK----DGELNTANRQINGLQKDLEECRTKVV  260 (275)
+Q Consensus       212 ynqaeidglnssinalrsevnnk----dgelntanrqinglqkdleecrtkvv  260 (275)
+                      --|+-||.+.+-+|.|+...|.+    ++|++...++|+.|.+..+..++.+.
+T Consensus        40 STQ~aidkIt~klN~li~k~N~~fe~i~~efse~E~rI~~l~~~idD~~~d~w   92 (177)
+T 4BSG_B           40 STQSAIDQITGKLNRLIEKTNQQFELIDNEFTEVEKQIGNVINWTRDSMTEVW   92 (177)
+T ss_dssp             HHHHHHHHHHHHHHHHSCCCSCEECCCSCSSSCCCHHHHHHHHHHHHHHHHHH
+T ss_pred             HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHhhhhhHHH
+Confidence            35888999999999888776643    67888888899998888888777654
+
+
+No 67
+>2JNK_A Hyalurononglucosaminidase (E.C.3.2.1.35); calcium-binding, HYDROLASE; NMR {Clostridium perfringens}
+Probab=27.51  E-value=36  Score=26.49  Aligned_cols=53  Identities=21%  Similarity=0.308  Sum_probs=31.8  Template_Neff=7.500
+
+Q GRAMNEG_T1D_31  209 VKVYNQAEIDGLNSSINALRSEVNNKDGELNTANRQINGLQKDLEECRTKVVP  261 (275)
+Q Consensus       209 vkvynqaeidglnssinalrsevnnkdgelntanrqinglqkdleecrtkvvp  261 (275)
+                      ..-|.+.-.+.|++.|++...-.++.+-.-...+..+..|+.-++.++..+++
+T Consensus        26 ~g~Y~~~s~~~L~~aI~~A~~v~~~~~~tq~ev~~a~~~L~~Ai~~F~~~~~~   78 (140)
+T 2JNK_A           26 VGEYHKGAKDGLTVEINKAEEVFNKEDATEEEINLAKESLEGAIARFNSLLIE   78 (140)
+T ss_dssp             TTBBCSSHHHHHHHHHHHHHHHHTCSSTTTTTHHHHHHHHHHHHHHHTTTSCC
+T ss_pred             cccCCHHHHHHHHHHHHHHHHHHcCCCCCHHHHHHHHHHHHHHHHHHHhcccc
+Confidence            34566667777888887777766665444444444555555555555554443
+
+
+No 68
+>2OZN_B O-GlcNAcase nagJ, Hyalurononglucosaminidase; EF HAND, TOXIN; 1.6A {Clostridium perfringens}
+Probab=27.51  E-value=36  Score=26.49  Aligned_cols=53  Identities=21%  Similarity=0.308  Sum_probs=31.8  Template_Neff=7.500
+
+Q GRAMNEG_T1D_31  209 VKVYNQAEIDGLNSSINALRSEVNNKDGELNTANRQINGLQKDLEECRTKVVP  261 (275)
+Q Consensus       209 vkvynqaeidglnssinalrsevnnkdgelntanrqinglqkdleecrtkvvp  261 (275)
+                      ..-|.+.-.+.|++.|++...-.++.+-.-...+..+..|+.-++.++..+++
+T Consensus        26 ~g~Y~~~s~~~L~~aI~~A~~v~~~~~~tq~ev~~a~~~L~~Ai~~F~~~~~~   78 (140)
+T 2OZN_B           26 VGEYHKGAKDGLTVEINKAEEVFNKEDATEEEINLAKESLEGAIARFNSLLIE   78 (140)
+T ss_dssp             TTSBCTTHHHHHHHHHHHHHHHHSSTTCCHHHHHHHHHHHHHHHHHHHHTBCC
+T ss_pred             cccCCHHHHHHHHHHHHHHHHHHcCCCCCHHHHHHHHHHHHHHHHHHHhcccc
+Confidence            34566667777888887777766665444444444555555555555554443
+
+
+No 69
+>4O5N_B Hemagglutinin HA1 chain, Hemagglutinin HA2; viral fusion protein, virus attachment; HET: BMA, NAG, GOL; 1.75A {Influenza A virus}
+Probab=27.23  E-value=37  Score=30.34  Aligned_cols=50  Identities=26%  Similarity=0.405  Sum_probs=40.4  Template_Neff=2.800
+
+Q GRAMNEG_T1D_31  212 YNQAEIDGLNSSINALRSEVNN----KDGELNTANRQINGLQKDLEECRTKVVP  261 (275)
+Q Consensus       212 ynqaeidglnssinalrsevnn----kdgelntanrqinglqkdleecrtkvvp  261 (275)
+                      --|+-||++..-+|.|+...|.    -++|.+...++|+.|.|..+..++.+..
+T Consensus        40 StQ~aidkIt~kvNsliek~N~qfe~v~~efs~~E~rI~~l~~~idD~~~d~ws   93 (176)
+T 4O5N_B           40 STQAAIDQINGKLNRLIGKTNEKFHQIEKEFSEVEGRIQDLEKYVEDTKIDLWS   93 (176)
+T ss_dssp             HHHHHHHHHHHHHHHHSSCCEEECSCCCCCCSSCCCHHHHHHHHHHHHHHHHHH
+T ss_pred             HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHhHHHHHHHHHHHHHhHHHhHHHHH
+Confidence            4588899988888888876654    4788888899999999999888877654
+
+
+No 70
+>2NOC_A Putative periplasmic protein; GFT NMR, StR106, Structural Genomics; NMR {Salmonella choleraesuis} SCOP: d.230.6.1
+Probab=27.21  E-value=37  Score=26.68  Aligned_cols=20  Identities=20%  Similarity=0.145  Sum_probs=13.7  Template_Neff=5.400
+
+Q GRAMNEG_T1D_31    1 MKKSIILLAFVLGAFTANAQ   20 (275)
+Q Consensus         1 mkksiillafvlgaftanaq   20 (275)
+                      |||++++++++|+.++..+.
+T Consensus         1 MK~~~~~~~l~l~~~s~sa~   20 (99)
+T 2NOC_A            1 MKTGYKVMLGALAFVVTNVY   20 (99)
+T ss_dssp             CCCCCCCCCCCCCCCCCCCC
+T ss_pred             ChHHHHHHHHHHHHHHHHHh
+Confidence            89988877777766554443
+
+
+No 71
+>2NPS_D Vesicle-associated membrane protein 4, Syntaxin; Vesicle fusion, SNARE complex, early; 2.5A {Mus musculus}
+Probab=27.06  E-value=37  Score=23.60  Aligned_cols=45  Identities=18%  Similarity=0.378  Sum_probs=35.4  Template_Neff=8.100
+
+Q GRAMNEG_T1D_31  214 QAEIDGLNSSINALRSEVNNKDGELNTANRQINGLQKDLEECRTK  258 (275)
+Q Consensus       214 qaeidglnssinalrsevnnkdgelntanrqinglqkdleecrtk  258 (275)
+                      ...+|.|.+.+..|+.-..+-.-|+..-|..|..|..+.+....+
+T Consensus        18 d~~ld~L~~~v~~lk~~a~~i~~El~~Qn~~Ld~l~~~~d~~~~~   62 (82)
+T 2NPS_D           18 DEQLELVSGSIGVLKNMSQRIGGELEEQAVMLEDFSHELESTQSR   62 (82)
+T ss_dssp             CCTHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
+T ss_pred             HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
+Confidence            456778888888888888888888888888888888877765443
+
+
+No 72
+>3WHE_K Hemagglutinin, immunoglobulin heavy chain, immunoglobulin; VIRAL PROTEIN-IMMUNE SYSTEM complex; HET: BMA, NAG, MAN; 4.0A {Influenza A virus}
+Probab=26.33  E-value=39  Score=33.82  Aligned_cols=87  Identities=28%  Similarity=0.458  Sum_probs=60.8  Template_Neff=3.800
+
+Q GRAMNEG_T1D_31  171 GNFPETKSR--FNANNAAFELTA---GL-----TYHFKTSTGNHYFTKVKVYNQAEIDGLNSSINALRSEVNN----KDG  236 (275)
+Q Consensus       171 gnfpetksr--fnannaafelta---gl-----tyhfktstgnhyftkvkvynqaeidglnssinalrsevnn----kdg  236 (275)
+                      -|.|..++|  |-| -|.|- ..   |+     .||-..+.|.-|-...| --|+-||++..-+|.|+...|.    -++
+T Consensus       313 RNvP~~~sRGlFGA-IAGFI-EgGW~GmvdGWyG~~h~N~qG~G~AAD~~-STQ~AId~It~kvN~ii~k~n~~fe~i~~  389 (493)
+T 3WHE_K          313 RNVPEKQTRGLFGA-IAGFI-ENGWEGMIDGWYGFRHQNSEGTGQAADLK-STQAAIDQINGKLNRVIEKTNEKFHQIEK  389 (493)
+T ss_dssp             BCCCCCCCCSSSCC-CCCST-TCCCTTCCSCSEEEEEEETTEEEEEECHH-HHHHHHHHHHHHHHHHSCSCCEECSCCCC
+T ss_pred             cCCCchhcccchHH-HHhhh-hccccchhcceeeeeeecCCCCChhhcHH-HHHHHHHHHHHHHHHHHHHHHHHHHHHHH
+Confidence            467777777  666 44442 12   22     45545544766655544 4688999988888888776654    478
+
+
+Q GRAMNEG_T1D_31  237 ELNTANRQINGLQKDLEECRTKVV  260 (275)
+Q Consensus       237 elntanrqinglqkdleecrtkvv  260 (275)
+                      |.+...++|+.|.|-.|+-++.+-
+T Consensus       390 ef~~~E~rI~~l~~~v~D~~~d~w  413 (493)
+T 3WHE_K          390 EFSEVEGRIQDLEKYVEDTKIDLW  413 (493)
+T ss_dssp             CCSSCCTHHHHHHHHHHHHHHHHH
+T ss_pred             HHHHHHHHHHHHHHHhchhhhhHH
+Confidence            999999999999999988877664
+
+
+No 73
+>3KU3_B Hemagglutinin HA1 chain, Hemagglutinin HA2; viral envelope protein, hemagglutinin, viral; HET: NAG; 1.6A {Influenza A virus}
+Probab=26.11  E-value=40  Score=30.11  Aligned_cols=50  Identities=22%  Similarity=0.394  Sum_probs=40.4  Template_Neff=2.700
+
+Q GRAMNEG_T1D_31  212 YNQAEIDGLNSSINALRSEVNN----KDGELNTANRQINGLQKDLEECRTKVVP  261 (275)
+Q Consensus       212 ynqaeidglnssinalrsevnn----kdgelntanrqinglqkdleecrtkvvp  261 (275)
+                      --|+-||++..-+|.|+...|.    -++|.+...++|+.|.+..+..++.+..
+T Consensus        40 STQ~aidkIt~kvN~li~k~N~~fe~i~~efs~~E~rI~~l~~~idD~~~d~ws   93 (174)
+T 3KU3_B           40 STQKAFDGITNKVNSVIEKMNTQFEAVGKEFSNLERRLENLNKKMEDGFLDVWT   93 (174)
+T ss_dssp             HHHHHHHHHHHHHHHHHHHTSSCCCCCCCCCCTTCHHHHHHHHHHHHHHHHHHH
+T ss_pred             HHHHHHHHHHHHHHHHHHHHHHHHHHHhHHhHHHHHHHHHHHHHhhhchHHHHH
+Confidence            3588899998888888877664    4788888899999999988888877654
+
+
+No 74
+>5BR0_B Hemagglutinin; influenza, heamgglutinin, VIRAL PROTEIN; HET: FUC, BMA, NAG, MAN; 2.39A {Influenza A virus (A/TAIWAN/2/2013 (H6N1))}
+Probab=25.83  E-value=41  Score=29.99  Aligned_cols=50  Identities=28%  Similarity=0.453  Sum_probs=40.1  Template_Neff=2.700
+
+Q GRAMNEG_T1D_31  212 YNQAEIDGLNSSINALRSEVNN----KDGELNTANRQINGLQKDLEECRTKVVP  261 (275)
+Q Consensus       212 ynqaeidglnssinalrsevnn----kdgelntanrqinglqkdleecrtkvvp  261 (275)
+                      --|+-||++..-+|.|++..|.    -++|.+...++|+.|.|..+..++.+..
+T Consensus        40 StQ~aidkIt~kvN~li~k~N~qfe~v~~efs~~E~rI~~l~~~i~D~~~d~ws   93 (171)
+T 5BR0_B           40 STQKAIDGITNKVNSIINKMNTQFEAVDHEFSNLERRIGNLNKRMEDGFLDVWT   93 (171)
+T ss_dssp             HHHHHHHHHHHHHHHHHHHTCCCCCCCCCCCCTTCHHHHHHHHHHHHHHHHHHH
+T ss_pred             HHHHHHHHHHHHHHHHHHHHHHHHHHHHHhhhHHHHHHHHHHHHhhhccchHHh
+Confidence            4588899988888888876654    4678888889999999988888877654
+
+
+No 75
+>4FNK_B Hemagglutinin HA1 chain, Hemagglutinin HA2; viral fusion protein, virus attachment; HET: GOL, BMA, NAG, SO4, MAN; 1.901A {Influenza A virus}
+Probab=25.51  E-value=41  Score=30.00  Aligned_cols=50  Identities=24%  Similarity=0.389  Sum_probs=40.3  Template_Neff=2.700
+
+Q GRAMNEG_T1D_31  212 YNQAEIDGLNSSINALRSEVNN----KDGELNTANRQINGLQKDLEECRTKVVP  261 (275)
+Q Consensus       212 ynqaeidglnssinalrsevnn----kdgelntanrqinglqkdleecrtkvvp  261 (275)
+                      --|+-||++..-+|.|++..|.    -++|.+...++|+.|.+..+..++.+..
+T Consensus        40 StQ~aidkIt~kvN~ii~k~N~qfe~v~~efs~~E~rI~~l~~~idD~~~d~w~   93 (174)
+T 4FNK_B           40 STQAAIDQINGKLNRVIEKTNEKFHQIEKEFSEVEGRIQDLEKYVEDTKIDLWS   93 (174)
+T ss_dssp             HHHHHHHHHHHHHHHHHSCCCEECSCCCCCCSSCCCHHHHHHHHHHHHHHHHHH
+T ss_pred             HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHhHHHHHHHHHHHHHhHHHhHHHHH
+Confidence            4588899988888888876654    4788888899999999999888877654
+
+
+No 76
+>4UO0_B HEMAGGLUTININ; VIRAL PROTEIN, INFLUENZA; HET: FUC, BMA, NAG, EDO, MAN; 1.9A {INFLUENZA A VIRUS (A/EQUINE/RICHMOND/1/2007)(H3N8))}
+Probab=25.45  E-value=42  Score=29.91  Aligned_cols=65  Identities=22%  Similarity=0.399  Sum_probs=45.1  Template_Neff=2.900
+
+Q GRAMNEG_T1D_31  195 YHFKTSTGNHYFTKVKVYNQAEIDGLNSSINALRSEVNN----KDGELNTANRQINGLQKDLEECRTKVV  260 (275)
+Q Consensus       195 yhfktstgnhyftkvkvynqaeidglnssinalrsevnn----kdgelntanrqinglqkdleecrtkvv  260 (275)
+                      ||-..+.|.-+-...+ --|+-||+++.-+|.++...|.    -++|.+...++|+.|.+..+..++.+.
+T Consensus        24 ~~h~n~~g~G~aad~~-StQ~aidkIt~kvN~liek~N~qfe~v~~efs~~E~rI~~L~~~idD~~~D~w   92 (172)
+T 4UO0_B           24 FRYQNSEGTGQAADLK-STQTAIDQINEKLNRVIERTNEKFHQIEKEFSEVEGRIQDLEKYVEDTKIDLW   92 (172)
+T ss_dssp             EEEEETTEEEEEECHH-HHHHHHHHHTTGGGGTSCCCCEECCCCCCCCSSCCCHHHHHHHHHHHHHHHHH
+T ss_pred             eeeecCCCCCcccchH-HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHhHHHHHHHHHHHHHhhhhhhHHH
+Confidence            3333444444433222 3588899988888888876664    367888888899999888888777654
+
+
+No 77
+>1KIL_D Synaptobrevin SNARE motif, Syntaxin SNARE; Helix bound to four helix; 2.3A {Rattus norvegicus} SCOP: h.1.15.1
+Probab=25.29  E-value=42  Score=22.05  Aligned_cols=46  Identities=22%  Similarity=0.424  Sum_probs=33.1  Template_Neff=8.500
+
+Q GRAMNEG_T1D_31  214 QAEIDGLNSSINALRSEVNNKDGELNTANRQINGLQKDLEECRTKV  259 (275)
+Q Consensus       214 qaeidglnssinalrsevnnkdgelntanrqinglqkdleecrtkv  259 (275)
+                      ...+|.|.+.+..|+.-...-..|+..-|++|..|..+.+....++
+T Consensus         9 d~~ld~l~~~v~~Lk~~a~~i~~el~~qn~~ld~l~~~~d~~~~~l   54 (66)
+T 1KIL_D            9 DENLEQVSGIIGNLRHMALDMGNEIDTQNRQIDRIMEKADSNKTRI   54 (66)
+T ss_dssp             HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
+T ss_pred             HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
+Confidence            4556777777778877777777778888888888777776655443
+
+
+No 78
+>3MUD_A DNA repair protein XRCC4, Tropomyosin; tropomysoin, overlap complex, coiled-coils, Contractile; 2.2A {Homo Sapiens,Gallus gallus}
+Probab=25.14  E-value=43  Score=26.37  Aligned_cols=40  Identities=5%  Similarity=0.029  Sum_probs=30.0  Template_Neff=8.200
+
+Q GRAMNEG_T1D_31  218 DGLNSSINALRSEVNNKDGELNTANRQINGLQKDLEECRT  257 (275)
+Q Consensus       218 dglnssinalrsevnnkdgelntanrqinglqkdleecrt  257 (275)
+                      |-+..++..|..++..-..++...+.++..|+.+|++|-.
+T Consensus       131 ~~~~~~~~~le~~l~~l~~~l~~~~~~~~~Lk~eld~~l~  170 (175)
+T 3MUD_A          131 CYCLDTTAKNEKSIDDLEEKVAHAKEENLNMHQMLDQTLL  170 (175)
+T ss_dssp             HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
+T ss_pred             HHHHHHHHHcHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
+Confidence            3445666667777777777888888888888888888754
+
+
+No 79
+>3MUD_B DNA repair protein XRCC4, Tropomyosin; tropomysoin, overlap complex, coiled-coils, Contractile; 2.2A {Homo Sapiens,Gallus gallus}
+Probab=25.14  E-value=43  Score=26.37  Aligned_cols=40  Identities=5%  Similarity=0.029  Sum_probs=30.0  Template_Neff=8.200
+
+Q GRAMNEG_T1D_31  218 DGLNSSINALRSEVNNKDGELNTANRQINGLQKDLEECRT  257 (275)
+Q Consensus       218 dglnssinalrsevnnkdgelntanrqinglqkdleecrt  257 (275)
+                      |-+..++..|..++..-..++...+.++..|+.+|++|-.
+T Consensus       131 ~~~~~~~~~le~~l~~l~~~l~~~~~~~~~Lk~eld~~l~  170 (175)
+T 3MUD_B          131 CYCLDTTAKNEKSIDDLEEKVAHAKEENLNMHQMLDQTLL  170 (175)
+T ss_dssp             HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
+T ss_pred             HHHHHHHHHcHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
+Confidence            3445666667777777777888888888888888888754
+
+
+No 80
+>4RSJ_A Chromosome partition protein Smc; Smc hinge domain with coiled; 3.5A {Pyrococcus furiosus}
+Probab=25.01  E-value=43  Score=28.03  Aligned_cols=42  Identities=26%  Similarity=0.393  Sum_probs=34.4  Template_Neff=8.400
+
+Q GRAMNEG_T1D_31  219 GLNSSINALRSEVNNKDGELNTANRQINGLQKDLEECRTKVV  260 (275)
+Q Consensus       219 glnssinalrsevnnkdgelntanrqinglqkdleecrtkvv  260 (275)
+                      .|...+..++.++...+.++...+.+++.+++..++|+-+.-
+T Consensus       221 ~l~~~~~~l~~~~~~~~~~l~~l~~~~~~~~~~~~~~~~~~~  262 (276)
+T 4RSJ_A          221 KLREKVESLRRRKEALEGELNSLKIELRSLENASFELRIKLS  262 (276)
+T ss_dssp             HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
+T ss_pred             HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
+Confidence            556677777888888888888889999999999999987754
+
+
+No 81
+>1HGI_F HEMAGGLUTININ (BROMELAIN DIGESTED) COMPLEXED WITH; INFLUENZA VIRUS HEMAGGLUTININ, Viral protein; HET: BMA, NAG, ANA; 2.7A {Influenza A virus} SCOP: h.3.1.1
+Probab=24.33  E-value=45  Score=29.79  Aligned_cols=50  Identities=24%  Similarity=0.389  Sum_probs=40.1  Template_Neff=2.800
+
+Q GRAMNEG_T1D_31  212 YNQAEIDGLNSSINALRSEVNN----KDGELNTANRQINGLQKDLEECRTKVVP  261 (275)
+Q Consensus       212 ynqaeidglnssinalrsevnn----kdgelntanrqinglqkdleecrtkvvp  261 (275)
+                      --|+-||++..-+|.|+...|.    -++|.+...++|+.|.+..+..++.+..
+T Consensus        40 STQ~aidkIt~kvN~li~k~N~qfe~i~~efs~~E~rI~~l~~~idD~~~d~ws   93 (175)
+T 1HGI_F           40 STQAAIDQINGKLNRVIEKTNEKFHQIEKEFSEVEGRIQDLEKYVEDTKIDLWS   93 (175)
+T ss_dssp             HHHHHHHHHHHHHHHHHSCCCEECSCCCCCCSSCCCHHHHHHHHHHHHHHHHHH
+T ss_pred             HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHhHHHHHHHHHHHHHhHHHhHHHHH
+Confidence            3588899988888888876654    4678888889999999988888877654
+
+
+No 82
+>1FLC_F HAEMAGGLUTININ-ESTERASE-FUSION GLYCOPROTEIN; ESTERASE, RECEPTOR BINDING, MEMBRANE FUSION; HET: NDG, BMA, NAG, MAN; 3.2A {Influenza C virus (C/Johannesburg/1/66)} SCOP: h.3.1.1
+Probab=24.17  E-value=46  Score=29.77  Aligned_cols=50  Identities=16%  Similarity=0.350  Sum_probs=39.4  Template_Neff=2.700
+
+Q GRAMNEG_T1D_31  212 YNQAEIDGLNSSINALRSEVNN----KDGELNTANRQINGLQKDLEECRTKVVP  261 (275)
+Q Consensus       212 ynqaeidglnssinalrsevnn----kdgelntanrqinglqkdleecrtkvvp  261 (275)
+                      --|+-||+...-+|.+++..|.    -++|.+...++|+.|.|..|..|..+..
+T Consensus        40 STQ~aidkItnkvNsliekmN~qfe~v~~efs~~E~rI~~L~k~idD~~~d~w~   93 (175)
+T 1FLC_F           40 SAEKGFEKIGNDIQILKSSINIAIEKLNDRISHDEQAIRDLTLEIENARSEALL   93 (175)
+T ss_dssp             CCTTTHHHHHHHHHHHHHHHHHHHHTCCCCCCCEEECSCSCCHHHHHHHHHHHH
+T ss_pred             HHHHHHHHHHHHHHHHHHHHHHHHHHHHHhccHHHHHHHHHHHHHHHHHHHHHH
+Confidence            4588899988888888876654    3678888889999999988888876553
+
+
+No 83
+>5JJF_B sensory rhodopsin; sensory rhodopsin II, transducer, membrane; HET: LFA, RET, BOG; 1.9A {Natronomonas pharaonis}
+Probab=24.07  E-value=46  Score=22.35  Aligned_cols=41  Identities=20%  Similarity=0.264  Sum_probs=23.1  Template_Neff=11.600
+
+Q GRAMNEG_T1D_31  212 YNQAEIDGLNSSINALRSEVNNKDGELNTANRQINGLQKDL  252 (275)
+Q Consensus       212 ynqaeidglnssinalrsevnnkdgelntanrqinglqkdl  252 (275)
+                      ....|+..+..++|.+..++...-.++....+++...+++.
+T Consensus       109 ~~~~e~~~l~~~~~~~~~~l~~~~~~~~~~~~~~~~~~~~a  149 (163)
+T 5JJF_B          109 RREDEIGDLYAAFDEMRQSVRTSLEDAKNAREDAEQAQKRA  149 (163)
+T ss_pred             cCcCHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
+Confidence            34556667777777777666655444444444444444333
+
+
+No 84
+>3TRT_B Vimentin; cytoskeleton, intermediate filament, vimentin, alpha-helix; HET: GOL, SO4; 2.3A {Homo sapiens}
+Probab=23.80  E-value=47  Score=21.59  Aligned_cols=19  Identities=21%  Similarity=0.359  Sum_probs=10.0  Template_Neff=9.400
+
+Q GRAMNEG_T1D_31  236 GELNTANRQINGLQKDLEE  254 (275)
+Q Consensus       236 gelntanrqinglqkdlee  254 (275)
+                      .|+...+++|..|+.+++.
+T Consensus        56 ~e~~el~~~i~~l~~e~~~   74 (77)
+T 3TRT_B           56 QESTEYRRQVQSLTMEVDA   74 (77)
+T ss_dssp             HHHHHHHHHHHHHHHHHHH
+T ss_pred             HHHHHHHHHHHHHHHHHHH
+Confidence            3444555566666555543
+
+
+No 85
+>3OL1_D Vimentin; Structural Genomics, PSI-2, Protein Structure; 2.81A {Homo sapiens}
+Probab=23.77  E-value=47  Score=24.55  Aligned_cols=41  Identities=20%  Similarity=0.346  Sum_probs=17.9  Template_Neff=8.200
+
+Q GRAMNEG_T1D_31  216 EIDGLNSSINALRSEVNNKDGELNTANRQINGLQKDLEECR  256 (275)
+Q Consensus       216 eidglnssinalrsevnnkdgelntanrqinglqkdleecr  256 (275)
+                      +++.+...+..+++......+........+..+.|++++..
+T Consensus        42 e~~~~~~~~~~~k~k~e~e~~~~~~le~~~~~lkk~ld~~~   82 (119)
+T 3OL1_D           42 ERDNLAEDIMRLREKLQEEMLQREEAENTLQSFRQDVDNAS   82 (119)
+T ss_dssp             HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
+T ss_pred             HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
+Confidence            34444444444444433333333344444455555554443
+
+
+No 86
+>3UF1_D Vimentin (E.C.08670 (VIME_HUMAN)); Structural Genomics, PSI-Biology, Protein Structure; 2.81A {Homo sapiens}
+Probab=23.77  E-value=47  Score=24.55  Aligned_cols=41  Identities=20%  Similarity=0.346  Sum_probs=17.9  Template_Neff=8.200
+
+Q GRAMNEG_T1D_31  216 EIDGLNSSINALRSEVNNKDGELNTANRQINGLQKDLEECR  256 (275)
+Q Consensus       216 eidglnssinalrsevnnkdgelntanrqinglqkdleecr  256 (275)
+                      +++.+...+..+++......+........+..+.|++++..
+T Consensus        42 e~~~~~~~~~~~k~k~e~e~~~~~~le~~~~~lkk~ld~~~   82 (119)
+T 3UF1_D           42 ERDNLAEDIMRLREKLQEEMLQREEAENTLQSFRQDVDNAS   82 (119)
+T ss_dssp             HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
+T ss_pred             HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
+Confidence            34444444444444433333333344444455555554443
+
+
+No 87
+>4B8V_A EXTRACELLULAR PROTEIN 6; SUGAR BINDING PROTEIN, CHITIN, LYSM; HET: NDG, NAG; 1.59A {PASSALORA FULVA}
+Probab=23.45  E-value=48  Score=24.27  Aligned_cols=18  Identities=28%  Similarity=0.438  Sum_probs=0.0  Template_Neff=11.000
+
+Q GRAMNEG_T1D_31    1 MKKSIILLAFVLGAFTAN   18 (275)
+Q Consensus         1 mkksiillafvlgaftan   18 (275)
+                      |++.+|+++++|+++.+.
+T Consensus         1 ~~~~~~~~~~~~~~~~~~   18 (228)
+T 4B8V_A            1 MQSMILFAAALMGAAVNG   18 (228)
+T ss_dssp             ------------------
+T ss_pred             ChhHHHHHHHHHHHHHcc
+Confidence            777777777777776643
+
+
+No 88
+>4B9H_A EXTRACELLULAR PROTEIN 6; SUGAR BINDING PROTEIN; HET: NDG, NAG, I3C; 2.1A {PASSALORA FULVA}
+Probab=23.45  E-value=48  Score=24.27  Aligned_cols=18  Identities=28%  Similarity=0.438  Sum_probs=0.0  Template_Neff=11.000
+
+Q GRAMNEG_T1D_31    1 MKKSIILLAFVLGAFTAN   18 (275)
+Q Consensus         1 mkksiillafvlgaftan   18 (275)
+                      |++.+|+++++|+++.+.
+T Consensus         1 ~~~~~~~~~~~~~~~~~~   18 (228)
+T 4B9H_A            1 MQSMILFAAALMGAAVNG   18 (228)
+T ss_dssp             ------------------
+T ss_pred             ChhHHHHHHHHHHHHHcc
+Confidence            777777777777776643
+
+
+No 89
+>2EFR_A General control protein GCN4 and; DESTABILIZING CLUSTER, HYDROPHOBIC CORE, CONTRACTILE; 1.8A {Saccharomyces cerevisiae, Oryctolagus cuniculus}
+Probab=23.18  E-value=49  Score=23.63  Aligned_cols=1  Identities=0%  Similarity=0.000  Sum_probs=0.0  Template_Neff=10.100
+
+No 90
+>4ZRY_A Keratin, type I cytoskeletal 10; keratin, intermediate filament, coiled-coil, skin; 3.30012502044A {Homo sapiens}
+Probab=22.92  E-value=50  Score=23.40  Aligned_cols=1  Identities=0%  Similarity=0.000  Sum_probs=0.0  Template_Neff=9.400
+
+No 91
+>3NA7_A HP0958; flagellar biogenesis, flagellum export, C4; HET: EPE; 2.2A {Helicobacter pylori}
+Probab=22.48  E-value=52  Score=27.16  Aligned_cols=30  Identities=27%  Similarity=0.417  Sum_probs=11.8  Template_Neff=8.500
+
+Q GRAMNEG_T1D_31  224 INALRSEVNNKDGELNTANRQINGLQKDLE  253 (275)
+Q Consensus       224 inalrsevnnkdgelntanrqinglqkdle  253 (275)
+                      +..++.++...+.++.....+|+.+++++.
+T Consensus        55 l~~l~~~~~~~e~~l~~~~~~i~~~~~~l~   84 (256)
+T 3NA7_A           55 KLALKLQVSKNEQTLQDTNAKIASIQKKMS   84 (256)
+T ss_dssp             HHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
+T ss_pred             HHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
+Confidence            333333333333444444444444443333
+
+
+No 92
+>1UYN_X NALP; AUTOTRANSPORTER, TRANSLOCATOR DOMAIN, MEMBRANE PROTEIN; HET: CXE, SO4; 2.6A {NEISSERIA MENINGITIDIS} SCOP: f.4.5.1
+Probab=22.45  E-value=52  Score=25.20  Aligned_cols=66  Identities=12%  Similarity=0.115  Sum_probs=35.1  Template_Neff=11.100
+
+Q GRAMNEG_T1D_31  114 LFEIEAVAGMGWLHYYVNG-------------DGDQNSWSTRFGLNFNFNLGETKAWTLGIKPAIVYDMQGNFPETKSRF  180 (275)
+Q Consensus       114 lfeieavagmgwlhyyvng-------------dgdqnswstrfglnfnfnlgetkawtlgikpaivydmqgnfpetksrf  180 (275)
+                      -+.|+..+++.+.+....+             ..+.+++..+.|+.+...+..  .|.+-.+-...++..+.-+....+|
+T Consensus       170 ~~~i~P~~~l~~~~~~~~~~~e~g~~~~l~~~~~~~~~~~~~~G~~~~~~~~~--~~~~~~~~~~~~~~~~~~~~~~~~~  247 (308)
+T 1UYN_X          170 TGDLTVEGGLRYDLLKQDAFAEKGSALGWSGNSLTEGTLVGLAGLKLSQPLSD--KAVLFATAGVERDLNGRDYTVTGGF  247 (308)
+T ss_dssp             CCEEEEEEEEEEEEEEECCEEEESCTTCCEECCEEEEEEEEEEEEEEEEECSS--SEEEEEEEEEEEESSCCCCCCCC--
+T ss_pred             ceEEEEEEEEEEEEeeccceeeeccccceEeeecccceEEEEeEEEEEeeccc--eEEEEEEEEEEEecCCCceEEeeEe
+Confidence            3556666666665543322             123456667777777766654  4555555556666655544444444
+
+
+Q GRAMNEG_T1D_31  181 N  181 (275)
+Q Consensus       181 n  181 (275)
+                      .
+T Consensus       248 ~  248 (308)
+T 1UYN_X          248 T  248 (308)
+T ss_dssp             -
+T ss_pred             e
+Confidence            4
+
+
+No 93
+>2WZ7_E UNCHARACTERIZED PROTEIN YBGF; UNKNOWN FUNCTION; HET: GOL; 2.48A {ESCHERICHIA COLI}
+Probab=22.17  E-value=53  Score=23.77  Aligned_cols=32  Identities=16%  Similarity=0.371  Sum_probs=16.5  Template_Neff=6.600
+
+Q GRAMNEG_T1D_31  220 LNSSINALRSEVNNKDGELNTANRQINGLQKD  251 (275)
+Q Consensus       220 lnssinalrsevnnkdgelntanrqinglqkd  251 (275)
+                      +..-|+.|+.++..-.|.+...+.++..+++.
+T Consensus        25 l~~rl~~Lq~ei~~LrGqvE~l~~ql~~l~~~   56 (75)
+T 2WZ7_E           25 LQQQLSDNQSDIDSLRGQIQENQYQLNQVVER   56 (75)
+T ss_dssp             HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
+T ss_pred             HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
+Confidence            34445555555555555555555555544443
+
+
+No 94
+>3JBU_z PROTEIN/RNA Complex; single particle analysis, ribosome stalling; 3.64A {Escherichia coli K-12}
+Probab=21.49  E-value=56  Score=26.40  Aligned_cols=24  Identities=38%  Similarity=0.481  Sum_probs=20.6  Template_Neff=1.100
+
+Q GRAMNEG_T1D_31    1 MKKSIILLAFVLGAFTANAQSVVE   24 (275)
+Q Consensus         1 mkksiillafvlgaftanaqsvve   24 (275)
+                      |||..|.+|..|.+|..-||....
+T Consensus        41 MKKTAIAiAVAlAgFATvAQAapK   64 (87)
+T 3JBU_z           41 MKKTAIAIAVALAGFATVAQAEQK   64 (87)
+T ss_pred             hhHHHHHHHHHHHHHHHHHHHHHc
+Confidence            899999999999999888886543
+
+
+No 95
+>2JEE_A CELL DIVISION PROTEIN ZAPB; FTSZ, SEPTUM, COILED-COIL, CELL DIVISION; 2.8A {ESCHERICHIA COLI}
+Probab=21.48  E-value=56  Score=24.05  Aligned_cols=42  Identities=26%  Similarity=0.349  Sum_probs=16.8  Template_Neff=6.500
+
+Q GRAMNEG_T1D_31  216 EIDGLNSSINALRSEVNNKDGELNTANRQINGLQKDLEECRT  257 (275)
+Q Consensus       216 eidglnssinalrsevnnkdgelntanrqinglqkdleecrt  257 (275)
+                      |+..|..-+..|+.|++....+.....+++..|+..++..+.
+T Consensus        28 En~~Lr~~~~~l~~e~~~~~~~~e~l~~e~~~L~~e~~~~~~   69 (81)
+T 2JEE_A           28 EIEELKEKNNSLSQEVQNAQHQREELERENNHLKEQQNGWQE   69 (81)
+T ss_dssp             HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
+T ss_pred             HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
+Confidence            334444444444444333333333333334444444444333
+
+
+No 96
+>5SVA_T DNA-directed RNA polymerase II subunit; Transcriptional Initiation, Mediator, Pre-Initiation Complex; 15.3A {Saccharomyces cerevisiae}
+Probab=21.20  E-value=57  Score=29.72  Aligned_cols=37  Identities=11%  Similarity=0.257  Sum_probs=23.7  Template_Neff=5.600
+
+Q GRAMNEG_T1D_31  218 DGLNSSINALRSEVNNKDGELNTANRQINGLQKDLEE  254 (275)
+Q Consensus       218 dglnssinalrsevnnkdgelntanrqinglqkdlee  254 (275)
+                      +.+...|..||.++...|..+...-++++..+++|..
+T Consensus        91 qe~~~rI~~L~~ei~~LD~~ik~il~~L~e~r~eL~~  127 (284)
+T 5SVA_T           91 DNIYRNLQKIDKDSEELDSKTRKILEILNECHDELKA  127 (284)
+T ss_dssp             HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHCC
+T ss_pred             HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHh
+Confidence            3445567777777777777666666666655555554
+
+
+No 97
+>3TNU_A Keratin, type I cytoskeletal 14; Coiled-coil, Structural Support, CYTOSOLIC PROTEIN; 3.005A {Homo sapiens}
+Probab=20.92  E-value=58  Score=23.39  Aligned_cols=1  Identities=0%  Similarity=0.000  Sum_probs=0.0  Template_Neff=9.300
+
+No 98
+>4ZRY_B Keratin, type I cytoskeletal 10; keratin, intermediate filament, coiled-coil, skin; 3.30012502044A {Homo sapiens}
+Probab=20.89  E-value=58  Score=22.73  Aligned_cols=18  Identities=56%  Similarity=0.770  Sum_probs=8.6  Template_Neff=9.600
+
+Q GRAMNEG_T1D_31  216 EIDGLNSSINALRSEVNN  233 (275)
+Q Consensus       216 eidglnssinalrsevnn  233 (275)
+                      ||..++..|..|++++..
+T Consensus        28 ei~~lr~~i~~l~~~~~~   45 (120)
+T 4ZRY_B           28 EISELNRVIQRLRSEIDN   45 (120)
+T ss_dssp             HHHHHHHHHHHHHHHHHH
+T ss_pred             HHHHHHHHHHHHHHHHHH
+Confidence            444445555555444443
+
+
+No 99
+>5IHS_A Endoglucanase, glycoside hydrolase family 5; Endoglucanase, TIM barrel, HYDROLASE; 1.1A {Cytophaga hutchinsonii (strain ATCC 33406 / NCIMB 9469)}
+Probab=20.46  E-value=61  Score=24.99  Aligned_cols=13  Identities=31%  Similarity=0.383  Sum_probs=0.0  Template_Neff=11.400
+
+Q GRAMNEG_T1D_31    1 MKKSIILLAFVLG   13 (275)
+Q Consensus         1 mkksiillafvlg   13 (275)
+                      |||.|+++++++.
+T Consensus         2 Mk~~~~~~~~~~~   14 (347)
+T 5IHS_A            2 MIKKISVVLVLLT   14 (347)
+T ss_dssp             -------------
+T ss_pred             hhHHHHHHHHHHH
+Confidence            7887765544443
+
+
