@@ -197,8 +197,9 @@ def _parse_hit_block(block):
     block = {}
     while(idx+1 < len(lines)):
         # determin start and end column of alignment content
-        content = lines[idx+1].split()[3]
-        startCol = lines[idx+1].find(content)
+        [coord, content] = lines[idx+1].split()[2:4]
+        coord_pos = lines[idx+1].find(coord)
+        startCol = lines[idx+1].find(content, coord_pos)
         endCol = startCol + len(content)
         while((idx+1 < len(lines)) & (lines[idx] != '')):
             start = None
