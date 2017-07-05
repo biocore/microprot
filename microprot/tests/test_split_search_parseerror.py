@@ -3,7 +3,7 @@ from unittest import TestCase, main
 from skbio.util import get_data_path
 
 from microprot.scripts.split_search import (mask_sequence,
-                                            correct_header_positions)
+                                            parse_pdb_match)
 
 
 class ParsersTests(TestCase):
@@ -25,6 +25,10 @@ class ParsersTests(TestCase):
                           min_prob=95.0,
                           min_fragment_length=40)
 
+        with self.assertRaisesRegex(ValueError,
+                                    "with base 10: 'EG_T1D_51'"):
+            parse_pdb_match(self.file_hhsearch1)
+
     def test_split_search_parseerror_2(self):
         with self.assertRaisesRegex(ValueError,
                                     "with base 10: 'MNEG_T1D_31'"):
@@ -32,6 +36,10 @@ class ParsersTests(TestCase):
                           self.file_fasta2,
                           min_prob=95.0,
                           min_fragment_length=40)
+
+        with self.assertRaisesRegex(ValueError,
+                                    "with base 10: 'MNEG_T1D_31'"):
+            parse_pdb_match(self.file_hhsearch2)
 
 
 if __name__ == '__main__':
