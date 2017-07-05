@@ -53,7 +53,7 @@ split_Pfam:
         min_fragment_length: 40
 
 MSA_hhblits:
-    params: '-n 3 -e 0.001 -maxfilt 500000 -diff inf -id 99 -cov 50 -cpu 8'
+    params: '-n 3 -e 0.001 -maxfilt 500000 -diff inf -id 99 -cov 50'
     DB: '/projects/microprot/dbs/uniclust30_2017_04/uniclust30_2017_04'
 
 MSA_ripe:
