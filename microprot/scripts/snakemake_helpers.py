@@ -6,6 +6,16 @@ from skbio import io
 
 
 def not_empty(fname):
+    """ Check if a directory exists and/or file exists and is not empty
+    Parameters
+    ----------
+    fname: string
+        file path with filename
+
+    Returns
+    -------
+    bool
+    """
     if os.path.exists(fname) and os.path.getsize(fname) > 0:
         return True
     else:
@@ -13,6 +23,19 @@ def not_empty(fname):
 
 
 def trim(inp_str, symbol):
+    """ Trim a string up to a symbol
+    Parameters
+    ----------
+    inp_str : string
+        input string
+    symbol : string
+        symbol to split on
+
+    Returns
+    -------
+    out : string
+        trimmed output
+    """
     if isinstance(inp_str, str) and isinstance(symbol, str):
         out = symbol.join(inp_str.split(symbol)[:-1])
     else:
@@ -88,4 +111,6 @@ def write_db(fname, step=None, version=1, db_fp='/tmp/protein_db'):
 def append_db(source_root, dest_root):
     for ext in ['', '.index']:
         _dest = open('%s%s' % (dest_root, ext), 'a')
-        _dest.write(open('%s%s' % (source_root, ext), 'r').read())
+        _source_path = '%s%s' % (source_root, ext)
+        if not_empty(_source_path):
+            _dest.write(open(_source_path, 'r').read())

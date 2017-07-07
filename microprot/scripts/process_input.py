@@ -1,6 +1,6 @@
+import os
 import numpy as np
 import click
-import os
 from microprot.scripts import process_fasta
 
 
@@ -8,16 +8,16 @@ from microprot.scripts import process_fasta
 @click.option('--infile', '-i', required=True,
               type=click.Path(resolve_path=True, readable=True, exists=True),
               help='Input protein sequence file in FASTA format.')
-@click.option('--outfile', '-o', required=False,
+@click.option('--outfile', '-o', required=False, default=None,
               type=click.Path(resolve_path=True, readable=True, exists=False),
               help='Output protein sequence file in FASTA format.')
-@click.option('--sort', '-s', required=False, is_flag=True,
+@click.option('--sort_by_len', '-s', required=False, is_flag=True,
               help='Sort sequences by length')
-@click.option('--min_len', '-m', required=False, default=1,
+@click.option('--min_len', '-m', required=False, default=1, type=int,
               help='Minimum sequence length to be included in output.')
-@click.option('--max_len', '-x', required=False, default=10000,
+@click.option('--max_len', '-x', required=False, default=100000, type=int,
               help='Maximum sequence length to be included in output.')
-def _process_fasta_input(infile, outfile, sort, min_len, max_len):
+def _process_fasta_input(infile, outfile, sort_by_len, min_len, max_len):
     fp = infile
     fp_name = os.path.splitext(fp)[0]
 
@@ -26,11 +26,9 @@ def _process_fasta_input(infile, outfile, sort, min_len, max_len):
 
     suffix = []
 
-    if sort is True:
+    if sort_by_len is True:
         suffix.append('_sorted')
-        s = []
-        for seq in fasta:
-            s.append(len(seq))
+        s = [len(seq) for seq in fasta]
         idx = sorted(range(len(s)), key=lambda k: s[k])
         fasta = fasta[idx]
         for i, seq in enumerate(fasta):
@@ -42,24 +40,19 @@ def _process_fasta_input(infile, outfile, sort, min_len, max_len):
                 output_fasta = output_fasta[:i]
                 break
     else:
-        idx = []
-        for i, seq in enumerate(fasta):
-            if len(seq) >= min_len and len(seq) <= max_len:
-                idx.append(i)
-        output_fasta = fasta[idx]
+        output_fasta = [seq for seq in fasta if min_len <= len(seq) <= max_len]
 
+    # checks if settings changed from default
     if min_len > 1:
         suffix.append('%s%i' % ('_min', min_len))
-    if max_len != 10000:
+    if max_len != 100000:
         suffix.append('%s%i' % ('_max', max_len))
 
     suffix = ''.join(suffix)
 
-    if outfile:
-        process_fasta.write_sequences(output_fasta, outfile)
-    else:
-        process_fasta.write_sequences(output_fasta, '%s%s.fasta' % (fp_name,
-                                                                    suffix))
+    if outfile is None:
+        outfile = '%s%s.fasta' % (fp_name, suffix)
+    process_fasta.write_sequences(output_fasta, outfile)
 
 
 if __name__ == "__main__":
