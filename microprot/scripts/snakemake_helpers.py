@@ -44,18 +44,50 @@ def trim(inp_str, symbol):
 
 
 def msa_size(msa_fp):
+    """ Determine size of an MSA
+    Parameters
+    ----------
+    msa_fp : str
+        File path to an MSA file (a3m or just root of file name)
+
+    Returns
+    -------
+    msa_size : int
+        size of an MSA
+    """
     msa_dir, msa_ext = os.path.splitext(os.path.abspath(msa_fp))
     if msa_ext != '.a3m':
         msa_ext = '.a3m'
     with open(''.join([msa_dir, msa_ext]), 'r') as f:
         lines = f.readlines()
-    msa_size = len([line for line in lines if line.startswith('>')])-1
+    msa_size = sum(1 for line in lines if line.startswith('>')) - 1
     return msa_size
 
 
 def parse_inputs(inp_fp=None, inp_from=None, inp_to=None,
                  microprot_inp=None, microprot_out=None):
+    """ Parse multi-sequence FASTA file into single-sequence, remove any
+    problematic characters from the name and add intormation to
+    `processed_sequences.fasta` file
+    Parameters
+    ----------
+    inp_fp : str
+        file path to a multi-sequence FASTA file
+    inp_from : int
+        number of the first sequence in the input file
+    inp_to : int
+        number of the last sequence in the input file
+    microprot_inp : str
+        input directory where individual files from inp_fp will be placed
+    microprot_out : str
+        output directory path where processed_sequences.fasta file will \
+        be created
 
+    Returns
+    -------
+    SEQ_ids : list of str
+        list of sequence ids picked from the inp_fp
+    """
     for _dir in [microprot_inp, microprot_out]:
         if not os.path.exists(_dir):
             os.makedirs(_dir)
@@ -83,6 +115,19 @@ def parse_inputs(inp_fp=None, inp_from=None, inp_to=None,
 # TODO
 # adding MSA size information omitted for now
 def write_db(fname, step=None, version=1, db_fp='/tmp/protein_db'):
+    """Append protein name and other information into the sequence DB
+    Parameters
+    ----------
+    fname : str
+        fasta file file path
+    step : str
+        processing step information (e.g. PDB, CM)
+    version : int
+        processing version
+    db_fp : str
+        output database information. sequence with header will be appended
+        to `db_fp` and header with processing information do `db_fp.index`
+    """
     prots = process_fasta.extract_sequences(fname)
     # fp = trim(fname, '/')
     for prot in prots:
@@ -109,6 +154,14 @@ def write_db(fname, step=None, version=1, db_fp='/tmp/protein_db'):
 
 
 def append_db(source_root, dest_root):
+    """Append per-sequence information to an aggregate database
+    Parameters
+    ----------
+    source_root : str
+        root of the filename of the per-sequence database
+    dest_soot : str
+        root of the filename of the destination sequence databse
+    """
     for ext in ['', '.index']:
         _dest = open('%s%s' % (dest_root, ext), 'a')
         _source_path = '%s%s' % (source_root, ext)
