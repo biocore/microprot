@@ -1,0 +1,61 @@
+# input definitions
+MICROPROT_OUT: /projects/microprot/output/
+MICROPROT_TEMP: /localscratch/microprot/
+MICROPROT_DB: /projects/microprot/results/microprot_db
+
+inp_fp: /projects/microprot/benchmarking/snakemake_test/2.faa
+# process range
+inp_from: 1
+inp_to: 2
+# OR process single sequence
+# seq_no: 3
+
+# version
+VERSION: 1
+
+# compute on N threads
+THREADS: 8
+
+TOOLS:
+    hhsuite: /projects/microprot/tools/hh-suite-3.0.0/build/bin
+    blast: /projects/microprot/tools/blast-2.2.26
+    psipred: /projects/microprot/tools/psipred4
+    disopred: /projects/microprot/tools/disopred3
+    metapsicov: /projects/microprot/tools/contact_predictions/metaPSICOV
+
+search_PDB:
+    params: '-e 0.001'
+    DB: '/projects/microprot/dbs/pdb70/pdb70'
+split_PDB:
+    params:
+        min_prob: 95.0
+        min_fragment_length: 40
+
+PSIBLAST_PSSM:
+    params: '-j 3 -h 0.001'
+    DB: '/projects/microprot/dbs/uniref90/Jun_2017/uniref90'
+
+search_CM:
+    params: '-e 0.1'
+    DB: '/projects/microprot/dbs/pdb70/pdb70'
+split_CM:
+    params:
+        max_evalue: 0.1
+        min_fragment_length: 40
+
+search_Pfam:
+    params: '-e 0.1'
+    DB: '/projects/microprot/dbs/pfamA/pfam'
+split_Pfam:
+    params:
+        max_evalue: 0.01
+        min_prob: 90.0
+        min_fragment_length: 40
+
+MSA_hhblits:
+    params: '-n 3 -e 0.001 -maxfilt 500000 -diff inf -id 99 -cov 50'
+    DB: '/projects/microprot/dbs/uniclust30_2017_04/uniclust30_2017_04'
+
+MSA_ripe:
+    cutoff: 80
+    Nf: 16
