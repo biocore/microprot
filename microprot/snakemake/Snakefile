@@ -23,6 +23,11 @@ try:
 except KeyError:
     pass
 
+# create output directories if they don't exist
+for _out_dir_name in ['PDB', 'CM', 'AB', 'log', 'pkg']:
+    _out_dir_path = '%s/%s' % (config['MICROPROT_OUT'], _out_dir_name)
+    if not exists(_out_dir_path):
+        makedirs(_out_dir_path)
 
 SEQ_ids = snakemake_helpers.parse_inputs(inp_fp=config['inp_fp'],
                                          inp_from=config['inp_from'],
