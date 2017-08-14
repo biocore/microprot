@@ -63,16 +63,13 @@ According to our criteria, hits 1 and 2 are matches (probability >= 90.0 and fra
 So `CP00000.0_1.match` file will contain sequences:
 ```
 >CP00000.0_1_10-30
----------EXAMPLEEXAMPLEEXAMPL-----------------------------------------
-------------------------------
+EXAMPLEEXAMPLEEXAMPL
 >CP00000.0_1_33-88
----------------------------------EXAMPLEEXAMPLEEXAMPLEEXAMPLEEXAMPLEEX
-AMPLEEXAMPLEEXAMPL------------
+EXAMPLEEXAMPLEEXAMPLEEXAMPLEEXAMPLEEXAMPLEEXAMPLEEXAMPL
 ```
 and `CP00000.0_1.non_match` will contain sequence:
 ```
 >CP00000.0_1_89-100
-----------------------------------------------------------------------
-------------------EXAMPLEEXAMP
+EXAMPLEEXAMP
 ```
 Sub-sequences `CP00000.0_1_1-9` and `CP00000.0_1_31-33` will be dropped from subsequent analyses, as they did not match `minimum fragment length` criteria.
