@@ -582,10 +582,11 @@ def mask_sequence(hhsuite_fp, fullsequence_fp, subsequences_fp=None,
 
     for hit in subseqs_pos:
         _id = get_q_id(hit)
-        header = "%s %s" % (correct_header_positions(
+        match_id = hit['Hit'].split()[0]
+        header = "%s %s %s" % (correct_header_positions(
             query_id,
             hit['alignment'][_id]['start'],
-            hit['alignment'][_id]['end']), query_desc)
+            hit['alignment'][_id]['end']), '# %s' % match_id, query_desc)
         seq = hit['alignment'][_id]['sequence'].replace('-', '')
         results['match'].append((header, seq, hit['alignment'][_id]['start']))
 
