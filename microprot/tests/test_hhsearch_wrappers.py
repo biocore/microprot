@@ -42,9 +42,9 @@ class SplitSeq(TestCase):
                           'test_split_search/NC_000913.3_2.fasta')
 
     def test_mask_sequence_filtering(self):
-        s1 = (('gi|556503834|ref|NC_000913.3|_2_1-461 # 337 # 2799 # 1 # ID=1_'
-               '2;partial=00;start_type=ATG;rbs_motif=GGAG/GAGG;rbs_spacer='
-               '5-10bp;gc_cont=0.531'),
+        s1 = (('gi|556503834|ref|NC_000913.3|_2_1-461 # 2j0w_A # 337 # 2799 # '
+               '1 # ID=1_2;partial=00;start_type=ATG;rbs_motif=GGAG/GAGG;rbs_s'
+               'pacer=5-10bp;gc_cont=0.531'),
               ('MRVLKFGGTSVANAERFLRVADILESNARQGQVATVLSAPAKITNHLVAMIEKTISGQDALP'
                'NISDAERIFAELLTGLAAAQPGFPLAQLKTFVDQEFAQIKHVLHGISLLGQCPDSINAALIC'
                'RGEKMSIAIMAGVLEARGHNVTVIDPVEKLLAVGHYLESTVDIAESTRRIAASRIPADHMVL'
@@ -56,9 +56,9 @@ class SplitSeq(TestCase):
         s2 = (('gi|556503834|ref|NC_000913.3|_2_462-463 # 337 # 2799 # 1 # ID='
                '1_2;partial=00;start_type=ATG;rbs_motif=GGAG/GAGG;rbs_spacer='
                '5-10bp;gc_cont=0.531'), 'TD')
-        s3 = (('gi|556503834|ref|NC_000913.3|_2_464-815 # 337 # 2799 # 1 # ID='
-               '1_2;partial=00;start_type=ATG;rbs_motif=GGAG/GAGG;rbs_spacer='
-               '5-10bp;gc_cont=0.531'),
+        s3 = (('gi|556503834|ref|NC_000913.3|_2_464-815 # 1ebf_A # 337 # 2799 '
+               '# 1 # ID=1_2;partial=00;start_type=ATG;rbs_motif=GGAG/GAGG;rbs'
+               '_spacer=5-10bp;gc_cont=0.531'),
               ('QVIEVFVIGVGGVGGALLEQLKRQQSWLKNKHIDLRVCGVANSKALLTNVHGLNLENWQEEL'
                'AQAKEPFNLGRLIRLVKEYHLLNPVIVDCTSSQAVADQYADFLREGFHVVTPNKKANTSSMD'
                'YYHQLRYAAEKSRRKFLYDTNVGAGLPVIENLQNLLNAGDELMKFSGILSGSLSYIFGKLDE'
@@ -117,9 +117,9 @@ class SplitSeq(TestCase):
                'NLNNMAMFSVSGPGMKGMVGMAARVFAAMSRARISVVLITQSSSEYSISFCVPQSDCVRAER'
                'AMQEEFYLELKEGLLEPLAVTERLAIISVVGDGMRTLRGISAKFFAALARANINIVAIAQGS'
                'SERSISVVVNNDDATTGVRVTHQMLFN')
-        header = ('gi|556503834|ref|NC_000913.3|_2_1-461 # 337 # 2799 # 1 # ID'
-                  '=1_2;partial=00;start_type=ATG;rbs_motif=GGAG/GAGG;rbs_spac'
-                  'er=5-10bp;gc_cont=0.531')
+        header = ('gi|556503834|ref|NC_000913.3|_2_1-461 # 2j0w_A # 337 # 2799'
+                  ' # 1 # ID=1_2;partial=00;start_type=ATG;rbs_motif=GGAG/GAGG'
+                  ';rbs_spacer=5-10bp;gc_cont=0.531')
 
         exp = (header, seq)
         obs = mask_sequence(self.file_a, self.file_query,
@@ -155,6 +155,7 @@ class SplitSeq(TestCase):
         with captured_output() as (out, err):
             pretty_output(mask_obs)
         output = out.getvalue()
+        self.maxDiff = None
         self.assertEqual(output, pretty)
 
 
