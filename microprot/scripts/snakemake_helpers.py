@@ -55,10 +55,11 @@ def msa_size(msa_fp):
     msa_size : int
         size of an MSA
     """
-    msa_dir, msa_ext = os.path.splitext(os.path.abspath(msa_fp))
-    if msa_ext != '.a3m':
-        msa_ext = '.a3m'
-    with open(''.join([msa_dir, msa_ext]), 'r') as f:
+    # msa_dir, msa_ext = os.path.splitext(os.path.abspath(msa_fp))
+    # if msa_ext != '.a3m':
+    #     msa_ext = '.a3m'
+    # with open(''.join([msa_dir, msa_ext]), 'r') as f:
+    with open(msa_fp, 'r') as f:
         lines = f.readlines()
     msa_size = sum(1 for line in lines if line.startswith('>')) - 1
     return msa_size
@@ -112,8 +113,6 @@ def parse_inputs(inp_fp=None, inp_from=None, inp_to=None,
     return SEQ_ids
 
 
-# TODO
-# adding MSA size information omitted for now
 def write_db(fname, step=None, version=1, db_fp='/tmp/protein_db'):
     """Append protein name and other information into the sequence DB
     Parameters
@@ -129,7 +128,6 @@ def write_db(fname, step=None, version=1, db_fp='/tmp/protein_db'):
         to `db_fp` and header with processing information do `db_fp.index`
     """
     prots = process_fasta.extract_sequences(fname)
-    # fp = trim(fname, '/')
     for prot in prots:
         prot_name = prot.metadata['id']
         timestamp = str(datetime.now()).split('.')[0]
@@ -137,14 +135,14 @@ def write_db(fname, step=None, version=1, db_fp='/tmp/protein_db'):
         `msa_fp` needs to be retrieved from 1 level up (e.g. 01 folder,
         instead of 02 folder. For future consideration. Added as issue #48
         """
-        # msa_fp = '%s/%s' % (fp, prot_name)
-        # msa_size = msa_size(msa_fp)
+        # msa_fp = '%s/%s' % (trim(fname, '/'), prot_name)
+        # msa_size_len = msa_size(msa_fp)
 
-        # > protein_name # source # commit_no # timestamp # (msa_size)
+        # > protein_name # source # commit_no # timestamp # msa_size
         append_idx = '>%s # %s # %i # %s\n' % (prot_name,
-                                               step,
-                                               version,
-                                               timestamp)
+                                                    step,
+                                                    version,
+                                                    timestamp)
         with open('%s.index' % db_fp, 'a') as f:
             f.write(append_idx)
 
