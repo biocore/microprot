@@ -112,8 +112,6 @@ def copy_out(source_dir='01-PDB', dest_dir='PDB', tempdir='/dev/null'):
     if len(X_match) > 0:
         X_match_names = [re.sub('.match', '', _match) for _match in X_match
                          if snakemake_helpers.not_empty(_match)]
-        # TODO
-        # fix needed here - returns all files, not only non_empty match
         for _match in X_match_names:
             shell('rsync -rzq --min-size=1 {_match}.{{match,out,a3m}} \
                   {config[MICROPROT_OUT]}/{dest_dir}/ 2> /dev/null')
@@ -193,19 +191,20 @@ rule search_split_CM:
                     log=log[0])
 
 
-rule search_Pfam:
+rule search_split_Pfam:
     input:
         config['MICROPROT_TEMP']+'/{seq}/02-CM/{seq}'
     output:
-        temp(config['MICROPROT_TEMP']+'/{seq}/03-search_Pfam/{seq}')
+        temp(config['MICROPROT_TEMP']+'/{seq}/03-Pfam/{seq}')
     log:
-        config['MICROPROT_TEMP']+'/{seq}/{seq}.log'
+        config['MICROPROT_TEMP']+'/{seq}/{seq}'
     threads: config['THREADS']
     run:
         if snakemake_helpers.not_empty(input[0]):
             shell('echo "pass" > {output}')
         else:
             shell('echo -e "SEARCH PFAM\n-----------" >> {log}')
+            logfile = '%s.log' % log[0]
             search_x(input[0], output[0],
                      params=config['search_Pfam']['params'],
                      n_cpu=config['THREADS'],
@@ -213,19 +212,10 @@ rule search_Pfam:
                      log=log[0], hh='hhsearch',
                      match_exp='non_match')
 
-
-rule split_Pfam:
-    input:
-        rules.search_Pfam.output[0]
-    output:
-        temp(config['MICROPROT_TEMP']+'/{seq}/03-split_Pfam/{seq}')
-    log:
-        config['MICROPROT_TEMP']+'/{seq}/{seq}'
-    run:
-        if snakemake_helpers.not_empty(input[0]):
+        if snakemake_helpers.not_empty(output[0]):
             shell('echo "pass" > {output}')
         else:
-            split_x(input[0], output[0],
+            split_x(output[0], output[0],
                     step="Pfam",
                     frag_len=config['split_Pfam']['params']['min_fragment_length'],
                     e_val=config['split_Pfam']['params']['max_evalue'],
@@ -235,7 +225,7 @@ rule split_Pfam:
 
 rule MSA_hhblits:
     input:
-        config['MICROPROT_TEMP']+'/{seq}/03-split_Pfam/{seq}'
+        config['MICROPROT_TEMP']+'/{seq}/03-Pfam/{seq}'
     output:
         temp(config['MICROPROT_TEMP']+'/{seq}/04-MSA_hhblits/{seq}')
     log:

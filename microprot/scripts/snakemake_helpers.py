@@ -48,17 +48,18 @@ def msa_size(msa_fp):
     Parameters
     ----------
     msa_fp : str
-        File path to an MSA file (a3m or just root of file name)
+        File path to an MSA file (a3m or root of file name)
 
     Returns
     -------
     msa_size : int
         size of an MSA
     """
-    # msa_dir, msa_ext = os.path.splitext(os.path.abspath(msa_fp))
-    # if msa_ext != '.a3m':
-    #     msa_ext = '.a3m'
-    # with open(''.join([msa_dir, msa_ext]), 'r') as f:
+    msa_dir, msa_ext = os.path.splitext(os.path.abspath(msa_fp))
+    if msa_ext != '.a3m':
+        msa_ext = '.a3m'
+        msa_fp = ''.join([msa_dir, msa_ext])
+
     with open(msa_fp, 'r') as f:
         lines = f.readlines()
     msa_size = sum(1 for line in lines if line.startswith('>')) - 1
@@ -131,18 +132,15 @@ def write_db(fname, step=None, version=1, db_fp='/tmp/protein_db'):
     for prot in prots:
         prot_name = prot.metadata['id']
         timestamp = str(datetime.now()).split('.')[0]
-        """
-        `msa_fp` needs to be retrieved from 1 level up (e.g. 01 folder,
-        instead of 02 folder. For future consideration. Added as issue #48
-        """
-        # msa_fp = '%s/%s' % (trim(fname, '/'), prot_name)
-        # msa_size_len = msa_size(msa_fp)
+        msa_size_len = msa_size(fname)
 
-        # > protein_name # source # commit_no # timestamp # msa_size
-        append_idx = '>%s # %s # %i # %s\n' % (prot_name,
+        # > protein_name # source # msa_size # commit_no # timestamp
+        append_idx = '>%s # %s # %i # %i # %s\n' % (prot_name,
                                                     step,
+                                                    msa_size_len,
                                                     version,
-                                                    timestamp)
+                                                    timestamp
+                                                    )
         with open('%s.index' % db_fp, 'a') as f:
             f.write(append_idx)
 
