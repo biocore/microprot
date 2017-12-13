@@ -1,0 +1,300 @@
+Query         T0831 SHPRH, Homo sapiens, 419 residues
+Match_columns 419
+No_of_seqs    1 out of 1
+Neff          1
+Searched_HMMs 55448
+Date          Wed Dec  6 15:51:27 2017
+Command       /projects/microprot/tools/hh-suite-3.0.0/build/bin/hhsearch -i /localscratch/microprot/microprot_domain_benchmark-25_639813_25/ZZ-sequences/T0831.fasta -e 0.001 -cpu 4 -d /projects/microprot/dbs/pdb70/pdb70 -o /localscratch/microprot/microprot_domain_benchmark-25_639813_25/T0831/01-PDB/T0831.out -oa3m /localscratch/microprot/microprot_domain_benchmark-25_639813_25/T0831/01-PDB/T0831.a3m 
+
+ No Hit                             Prob E-value P-value  Score    SS Cols Query HMM  Template HMM
+  1 4QN1_A E3 ubiquitin-protein li 100.0 1.6E-80 2.8E-85  555.5   0.0  419    1-419     2-420 (420)
+  2 4KIK_B Inhibitor of nuclear fa  66.4       3 5.5E-05   42.7   0.0   60  304-365   487-551 (677)
+  3 5EBZ_L Inhibitor of nuclear fa  29.4      32 0.00057   35.5   0.0   60  300-361   469-533 (655)
+  4 3RO3_A G-protein-signaling mod  28.8      33  0.0006   21.8   0.0   36   22-57      6-41  (164)
+  5 4Y6W_A NaB(AB)3ACb - putative   28.5      34 0.00061   23.6   0.0   37   22-58      7-43  (229)
+  6 4AIF_B AH RECEPTOR-INTERACTING  28.0      35 0.00063   21.8   0.0   37   21-57      4-40  (144)
+  7 2N8I_A Designed Protein DA05;   25.5      42 0.00075   18.9   0.0   34   21-54     24-57  (100)
+  8 4Y6W_A NaB(AB)3ACb - putative   24.7      44 0.00079   23.1   0.0   37   21-57     48-84  (229)
+  9 5FZR_C DESIGNED TPR PROTEIN; U  24.6      44  0.0008   19.8   0.0   28   27-54     41-68  (109)
+ 10 3RKV_A putative peptidylprolyl  22.6      51 0.00092   22.0   0.0   34   23-56      9-42  (162)
+ 11 5FZS_A DESIGNED TPR PROTEIN; U  22.4      52 0.00094   19.5   0.0   28   27-54     41-68  (109)
+ 12 4Y6W_A NaB(AB)3ACb - putative   22.4      52 0.00094   22.7   0.0   38   23-60    176-213 (229)
+ 13 2PZI_A Probable serine/threoni  21.1      58   0.001   31.6   0.0   30   26-55    535-564 (681)
+ 14 3RO3_A G-protein-signaling mod  21.1      58   0.001   20.7   0.0   36   21-56     85-120 (164)
+ 15 4Y6C_A Q17M; Tetratricopeptide  21.0      58   0.001   22.6   0.0   37   22-58      7-43  (229)
+ 16 4J8E_B Hsc70-interacting prote  20.2      62  0.0011   22.4   0.0   41   14-54     30-70  (175)
+
+No 1
+>4QN1_A E3 ubiquitin-protein ligase SHPRH; SHPRH, E3 ligase, RING, Ubiquitin; 2.48A {Homo sapiens}
+Probab=100.00  E-value=1.6e-80  Score=555.49  Aligned_cols=419  Identities=100%  Similarity=1.445  Sum_probs=363.5  Template_Neff=8.500
+
+Q T0831             1 TMEELLTSLQKKCGTECEEAHRQLVCALNGLAGIHIIKGEYALAAELYREVLRSSEEHKGKLKTDSLQRLHATHNLMELL   80 (419)
+Q Consensus         1 tmeelltslqkkcgteceeahrqlvcalnglagihiikgeyalaaelyrevlrsseehkgklktdslqrlhathnlmell   80 (419)
+                      ||+|++..|-++|-+|||+++|++|.++|||||||||+|+|..|+++||+||+..+++++++++|+||++|+.|||.+++
+T Consensus         2 tmeell~~Li~k~~~eceea~R~~v~~~NgLAgl~~l~~~~~~A~~~YrevL~~~~~~~~~~~~D~Lq~iH~l~NL~~~l   81 (420)
+T 4QN1_A            2 TMEELLTSLQKKCGTECEEAHRQLVCALNGLAGIHIIKGEYALAAELYREVLRSSEEHKGKLKTDSLQRLHATHNLMELL   81 (420)
+T ss_dssp             HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHTCHHHHHHHHHHHHHHHHHTTTTCCCCHHHHHHHHHHHHHCC
+T ss_pred             CHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHhCCHHHHHHHHHHHHHHHHHhhcCCccchHHHHHHHhhHHHHH
+Confidence            79999999999999999999999999999999999999999999999999999999999999999999999999999999
+
+
+Q T0831            81 IARHPGIPPTLRDGRLEEEAKQLREHYMSKCNTEVAEAQQALYPVQQTIHELQRKIHSNSPWWLNVIHRAIEFTIDEELV  160 (419)
+Q Consensus        81 iarhpgipptlrdgrleeeakqlrehymskcntevaeaqqalypvqqtihelqrkihsnspwwlnvihraieftideelv  160 (419)
+                      ...+||+||+++|..+.+++.+++..|++++...+..|++.+.++.+.+++++.+.++.++||+.+++.+++..++..++
+T Consensus        82 ~~~~~~~~~~~~~~~l~~~~~~l~~~Yl~~~~~~~~~a~~~~~~~~~~~~~~~~~~~~~~~Ww~~~l~~~~~~~~~~~l~  161 (420)
+T 4QN1_A           82 IARHPGIPPTLRDGRLEEEAKQLREHYMSKCNTEVAEAQQALYPVQQTIHELQRKIHSNSPWWLNVIHRAIEFTIDEELV  161 (420)
+T ss_dssp             CCCTTSSCCCTTTTTHHHHHHHHHHHHHHHHHHHHHHHHHTTHHHHHHHHHHHHSSCSSSCHHHHHHHHHHHTTCHHHHH
+T ss_pred             HhcCCCCCCCcchhHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHhhccCCcHHHHHHHHHHHCCCcHHHH
+Confidence            99999999999999999999999999999999999999999999999999999888889999999999988778999999
+
+
+Q T0831           161 QRVRNEITSNYKQQTGKLSMSEKFRDCRGLQFLLTTQMEELNKCQKLVREAVKNLEGPPSRNVIESATVCHLRPARLPLN  240 (419)
+Q Consensus       161 qrvrneitsnykqqtgklsmsekfrdcrglqfllttqmeelnkcqklvreavknlegppsrnviesatvchlrparlpln  240 (419)
+                      ++|+++++.+|.+..|..++..+|++.+||.+.+++.+++|.++.+-+.+++++|++||..++++++..||++|.+-+..
+T Consensus       162 ~~i~~~l~~~~~~~~~~~~~~~~~~s~~gL~~~l~~~l~~L~~~R~~l~~~l~~L~~~~~~~~v~~~~~Ch~~~~~~~~~  241 (420)
+T 4QN1_A          162 QRVRNEITSNYKQQTGKLSMSEKFRDCRGLQFLLTTQMEELNKCQKLVREAVKNLEGPPSRNVIESATVCHLRPARLPLN  241 (420)
+T ss_dssp             HHHHHHHCCC----------GGGCSSHHHHHHHHHHHHHHHHHHHHHHHHHHHTTCSSCCHHHHHHHCCCCCSCSSSCCC
+T ss_pred             HHHHHHHHhhcccccCCcccccccccHHHHHHHHHHHHHHHHHHHHHHHHHHHhhcCCCcHHHHHHhhcCCCCCCCCCCC
+Confidence            99999999999877777789999999999999999999999999999999999999999999999999999999987778
+
+
+Q T0831           241 CCVFCKADELFTEYESKLFSNTVKGQTAIFEEMIEDEEGLVDDRAPTTTRGLWAISETERSMKAILSFAKSHRFDVEFVD  320 (419)
+Q Consensus       241 ccvfckadelfteyesklfsntvkgqtaifeemiedeeglvddraptttrglwaisetersmkailsfakshrfdvefvd  320 (419)
+                      .|.+|++++.|..||+.||+.+.+|.+..+++++++++|..++.....++|.|+.|+.|+.+|.|++|++++.|+.+++.
+T Consensus       242 ~C~~C~~~~~~~~yE~~Lf~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~g~~~~S~~e~~lk~i~~~~r~~~~~~~~~~  321 (420)
+T 4QN1_A          242 CCVFCKADELFTEYESKLFSNTVKGQTAIFEEMIEDEEGLVDDRAPTTTRGLWAISETERSMKAILSFAKSHRFDVEFVD  321 (420)
+T ss_dssp             CSHHHHHHHHHHHHHHHHBCCC-----------------------------CCSBCHHHHHHHHHHHHHHHTTCCHHHHH
+T ss_pred             CCCccccHHHHHHHHHHHhhcccCCCccchHhhhhccccccccCCCcccCCcccccHHHHHHHHHHHHHHhcCCCHHHHH
+Confidence            99999999999999999999999999999999999999999988888999999999999999999999999999999999
+
+
+Q T0831           321 EGSTSMDLFEAWKKEYKLLHEYWMALRNRVSAVDELAMATERLRVRDPREPKPNPPVLHIIEPHEVEQNRIKLLNDKAVA  400 (419)
+Q Consensus       321 egstsmdlfeawkkeykllheywmalrnrvsavdelamaterlrvrdprepkpnppvlhiiepheveqnrikllndkava  400 (419)
+                      +|..-++++++|||||+.++.+|++.+..++|.|||.|++-|+|.++|.++.|+||..++|.|+++++.+.++.+++.++
+T Consensus       322 ~~~~hl~~le~~rkEf~~~r~lw~~~~~~l~a~DEL~ma~~Rlrl~~~~e~~~~~~~~~~i~~~ev~~~~~~~~~e~~~a  401 (420)
+T 4QN1_A          322 EGSTSMDLFEAWKKEYKLLHEYWMALRNRVSAVDELAMATERLRVRDPREPKPNPPVLHIIEPHEVEQNRIKLLNDKAVA  401 (420)
+T ss_dssp             HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHCCCEECCC---------CCEECTTCHHHHHHHHHHHHHHH
+T ss_pred             HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHchhhheeCCCCCCCCCCCcccccCHHHHHHHHHHHHHHHHHH
+Confidence            99999999999999999999999999999999999999999999999999999999999999999999999999999999
+
+
+Q T0831           401 TSQLQKKLGQLLYLTNLEK  419 (419)
+Q Consensus       401 tsqlqkklgqllyltnlek  419 (419)
+                      ...|++++|||.||.||.|
+T Consensus       402 ~~~l~r~~gqLrYL~nL~k  420 (420)
+T 4QN1_A          402 TSQLQKKLGQLLYLTNLEK  420 (420)
+T ss_dssp             HHHHHHHHHHHHHHHTTCC
+T ss_pred             HHHHHHHHHHHHHHhcccC
+Confidence            9999999999999999976
+
+
+No 2
+>4KIK_B Inhibitor of nuclear factor kappa-B; kinase, NkB signaling, TRANSFERASE; HET: KSA; 2.83A {Homo sapiens}
+Probab=66.37  E-value=3  Score=42.65  Aligned_cols=60  Identities=30%  Similarity=0.281  Sum_probs=43.8  Template_Neff=7.000
+
+Q T0831           304 AILSF-AKSHRFDV----EFVDEGSTSMDLFEAWKKEYKLLHEYWMALRNRVSAVDELAMATERLRV  365 (419)
+Q Consensus       304 ailsf-akshrfdv----efvdegstsmdlfeawkkeykllheywmalrnrvsavdelamaterlrv  365 (419)
+                      +-++| -+|..||+    |-+|-|.+|.|+|++||.-..-+--.-.  .|+|+-.||-+||...-.|
+T Consensus       487 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~--~~~~~~~~~~~~~~~~~~~  551 (677)
+T 4KIK_B          487 AKLDFFKTSIQIDLEKYSEQTEFGITSDKLLLAWREMEQAVELCGR--ENEVKLLVERMMALQTDIV  551 (677)
+T ss_dssp             HHHHHHHHHHHHHHHHHHHTTTTTCCCHHHHHHHHHHHHHTTSCCC--HHHHHHHHHHHHHHHHHHH
+T ss_pred             HHHHHHHHHHHHhHHHHHhhhccCCcHHHHHHHHHHHHHHHHhcCc--hHHHHHHHHHHHHHHhhHh
+Confidence            33444 46788887    4678899999999999987766654433  7888888888887654433
+
+
+No 3
+>5EBZ_L Inhibitor of nuclear factor kappa-B; kinase, inhibitor, Transferase-transferase inhibitor complex; HET: 5LS, 5TM, GLC, 5TH, 5TL, 5TK, Z4K, PDX, 5TJ; 4.5A {Homo sapiens}
+Probab=29.43  E-value=32  Score=35.46  Aligned_cols=60  Identities=25%  Similarity=0.409  Sum_probs=43.9  Template_Neff=6.900
+
+Q T0831           300 RSMKAILS-FAKSHRFDVE----FVDEGSTSMDLFEAWKKEYKLLHEYWMALRNRVSAVDELAMATE  361 (419)
+Q Consensus       300 rsmkails-fakshrfdve----fvdegstsmdlfeawkkeykllheywmalrnrvsavdelamate  361 (419)
+                      ...||-|. |-||..||++    -+|-|..|.|.|++||.-..-+-.| ..|. +++-.|+-+|+..
+T Consensus       469 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-~~~~-~~~~~~~~~~~~~  533 (655)
+T 5EBZ_L          469 QQLKAKLEFFHKSIQLDLERYSEQMTYGISSEKMLKAWKEMEEKAIHY-AEVG-VIGYLEDQIMSLH  533 (655)
+T ss_dssp             HHHHHHHHHHHHHHHHHHHHHHTCSSSSSCCSSHHHHHHHHHHHHHHC-CCTT-TTHHHHHHHHHHH
+T ss_pred             HHHHHHHHHHHHhHhhhHHHHHHHhhcCCCHHHHHHHHHHHHHHhhcH-HHHh-HHHHHHHHHHHHh
+Confidence            34566665 4689999985    5788889999999999876655444 2344 8888888877654
+
+
+No 4
+>3RO3_A G-protein-signaling modulator 2, peptide of; asymmetric cell division, PROTEIN BINDING; 1.1A {Mus musculus}
+Probab=28.83  E-value=33  Score=21.84  Aligned_cols=36  Identities=19%  Similarity=0.169  Sum_probs=28.6  Template_Neff=13.700
+
+Q T0831            22 RQLVCALNGLAGIHIIKGEYALAAELYREVLRSSEE   57 (419)
+Q Consensus        22 rqlvcalnglagihiikgeyalaaelyrevlrssee   57 (419)
+                      ...+.+++.++.++...|.|..|.+++.+++.....
+T Consensus         6 ~~~~~~~~~~~~~~~~~~~~~~a~~~~~~~~~~~~~   41 (164)
+T 3RO3_A            6 AAQGRAFGNLGNTHYLLGNFRDAVIAHEQRLLIAKE   41 (164)
+T ss_dssp             HHHHHHHHHHHHHHHHTTCHHHHHHHHHHHHHHHHH
+T ss_pred             HHHHHHHHHHHHHHHhhhcHHHHHHHHHHHHHHHHH
+Confidence            345667788888999999999999999988765543
+
+
+No 5
+>4Y6W_A NaB(AB)3ACb - putative P. anserina; Tetratricopeptide repeat, 42PR, TPR, UNKNOWN; 1.587A {Podospora anserina}
+Probab=28.51  E-value=34  Score=23.61  Aligned_cols=37  Identities=19%  Similarity=0.135  Sum_probs=29.6  Template_Neff=13.400
+
+Q T0831            22 RQLVCALNGLAGIHIIKGEYALAAELYREVLRSSEEH   58 (419)
+Q Consensus        22 rqlvcalnglagihiikgeyalaaelyrevlrsseeh   58 (419)
+                      .....+++.++.++...|.+..|.++|++++....+.
+T Consensus         7 ~~~~~~~~~l~~~~~~~~~~~~A~~~~~~~~~~~~~~   43 (229)
+T 4Y6W_A            7 PSRLRSQHELARRYQQNGQVQEAVELLEQVVAIQAKT   43 (229)
+T ss_dssp             GGGGGGHHHHHHHHHHTTCHHHHHHHHHHHHHHHHHH
+T ss_pred             HHHHHHHHHHHHHHHHcCCHHHHHHHHHHHHHHHHHH
+Confidence            3455677888889999999999999999988765443
+
+
+No 6
+>4AIF_B AH RECEPTOR-INTERACTING PROTEIN, HEAT SHOCK; SIGNALING PROTEIN-PEPTIDE COMPLEX, ARYL HYDROCARBON; 2.006A {HOMO SAPIENS}
+Probab=28.02  E-value=35  Score=21.81  Aligned_cols=37  Identities=14%  Similarity=0.099  Sum_probs=29.6  Template_Neff=13.200
+
+Q T0831            21 HRQLVCALNGLAGIHIIKGEYALAAELYREVLRSSEE   57 (419)
+Q Consensus        21 hrqlvcalnglagihiikgeyalaaelyrevlrssee   57 (419)
+                      +...+.++..++.++.-.|.|..|.+.|.+++.....
+T Consensus         4 ~~~~~~~~~~~~~~~~~~~~~~~a~~~~~~a~~~~~~   40 (144)
+T 4AIF_B            4 KAKAVPLIHQEGNRLYREGHVKEAAAKYYDAIACLKN   40 (144)
+T ss_dssp             GGSHHHHHHHHHHHHHHTTCHHHHHHHHHHHHHHHHH
+T ss_pred             HhhHHHHHHHHHHHHHHcCCHHHHHHHHHHHHHHHHH
+Confidence            4456667788888999999999999999988875543
+
+
+No 7
+>2N8I_A Designed Protein DA05; designed protein, DE NOVO PROTEIN; NMR {synthetic construct}
+Probab=25.49  E-value=42  Score=18.94  Aligned_cols=34  Identities=15%  Similarity=0.025  Sum_probs=24.1  Template_Neff=14.000
+
+Q T0831            21 HRQLVCALNGLAGIHIIKGEYALAAELYREVLRS   54 (419)
+Q Consensus        21 hrqlvcalnglagihiikgeyalaaelyrevlrs   54 (419)
+                      +.....+...++.++...|+|..|.+.+...+..
+T Consensus        24 ~~~~~~~~~~~~~~~~~~~~~~~a~~~~~~~~~~   57 (100)
+T 2N8I_A           24 GELMGRALYNIGLEKNKMGKVKEAIEYFLRAKKV   57 (100)
+T ss_dssp             HHHHHHHHHHHHHHHHHHTCHHHHHHHHHHHHHH
+T ss_pred             hHHHHHHHHHHHHHHHHcCCHHHHHHHHHHHHHH
+Confidence            3445556677777888888888888877776654
+
+
+No 8
+>4Y6W_A NaB(AB)3ACb - putative P. anserina; Tetratricopeptide repeat, 42PR, TPR, UNKNOWN; 1.587A {Podospora anserina}
+Probab=24.75  E-value=44  Score=23.05  Aligned_cols=37  Identities=22%  Similarity=0.240  Sum_probs=28.7  Template_Neff=13.400
+
+Q T0831            21 HRQLVCALNGLAGIHIIKGEYALAAELYREVLRSSEE   57 (419)
+Q Consensus        21 hrqlvcalnglagihiikgeyalaaelyrevlrssee   57 (419)
+                      +.....++..++.++...|.+..|.+++++++.....
+T Consensus        48 ~~~~~~~~~~l~~~~~~~~~~~~a~~~~~~~~~~~~~   84 (229)
+T 4Y6W_A           48 HPSRLASQHELARAYQANGQVQEAVELLEQVVAIQAK   84 (229)
+T ss_dssp             CHHHHHHHHHHHHHHHHTTCHHHHHHHHHHHHHHHHH
+T ss_pred             ChHHHHHHHHHHHHHHHcCCHHHHHHHHHHHHHHHHH
+Confidence            3445566777888888999999999999988776543
+
+
+No 9
+>5FZR_C DESIGNED TPR PROTEIN; UNKNOWN FUNCTION, TETRATRICOPEPTIDE REPEAT; 2.045A {SYNTHETIC CONSTRUCT}
+Probab=24.60  E-value=44  Score=19.79  Aligned_cols=28  Identities=21%  Similarity=0.275  Sum_probs=16.7  Template_Neff=13.500
+
+Q T0831            27 ALNGLAGIHIIKGEYALAAELYREVLRS   54 (419)
+Q Consensus        27 alnglagihiikgeyalaaelyrevlrs   54 (419)
+                      .+..++-++...|.+..|.+++.+.+..
+T Consensus        41 ~~~~~~~~~~~~~~~~~a~~~~~~~~~~   68 (109)
+T 5FZR_C           41 TLSNLANLLAQEGKAEEAIKYMRKAVSL   68 (109)
+T ss_dssp             HHHHHHHHHHHTTCHHHHHHHHHHHHHH
+T ss_pred             HHHHHHHHHHHcCCHHHHHHHHHHHHcc
+Confidence            3444555566666777776666665543
+
+
+No 10
+>3RKV_A putative peptidylprolyl isomerase; structural genomics, APC102156, PSI-BIOLOGY, Midwest; 2.41A {Caenorhabditis elegans}
+Probab=22.59  E-value=51  Score=22.00  Aligned_cols=34  Identities=24%  Similarity=0.336  Sum_probs=27.7  Template_Neff=12.800
+
+Q T0831            23 QLVCALNGLAGIHIIKGEYALAAELYREVLRSSE   56 (419)
+Q Consensus        23 qlvcalnglagihiikgeyalaaelyrevlrsse   56 (419)
+                      ....++..++.+++-.|.|..|.++|++.+....
+T Consensus         9 ~~~~~~~~~~~~~~~~~~~~~A~~~~~~~~~~~~   42 (162)
+T 3RKV_A            9 KSVEALRQKGNELFVQKDYKEAIDAYRDALTRLD   42 (162)
+T ss_dssp             HHHHHHHHHHHHHHHTTCHHHHHHHHHHHHHHHH
+T ss_pred             HHHHHHHHHHHHHHHcCCHHHHHHHHHHHHHHHH
+Confidence            3455677888899999999999999999887543
+
+
+No 11
+>5FZS_A DESIGNED TPR PROTEIN; UNKNOWN FUNCTION, TETRATRICOPEPTIDE REPEAT; 1.652A {SYNTHETIC CONSTRUCT}
+Probab=22.40  E-value=52  Score=19.48  Aligned_cols=28  Identities=21%  Similarity=0.275  Sum_probs=17.7  Template_Neff=13.500
+
+Q T0831            27 ALNGLAGIHIIKGEYALAAELYREVLRS   54 (419)
+Q Consensus        27 alnglagihiikgeyalaaelyrevlrs   54 (419)
+                      .+..++-++...|.+..|.+.|.+.+..
+T Consensus        41 ~~~~~~~~~~~~~~~~~a~~~~~~~~~~   68 (109)
+T 5FZS_A           41 TLSNLANLLAQEGKAEEAIKYMRKAVSL   68 (109)
+T ss_dssp             HHHHHHHHHHHTTCHHHHHHHHHHHHHH
+T ss_pred             HHHHHHHHHHHcCCHHHHHHHHHHHHhh
+Confidence            4455556666677777777777666543
+
+
+No 12
+>4Y6W_A NaB(AB)3ACb - putative P. anserina; Tetratricopeptide repeat, 42PR, TPR, UNKNOWN; 1.587A {Podospora anserina}
+Probab=22.37  E-value=52  Score=22.68  Aligned_cols=38  Identities=18%  Similarity=0.147  Sum_probs=28.9  Template_Neff=13.400
+
+Q T0831            23 QLVCALNGLAGIHIIKGEYALAAELYREVLRSSEEHKG   60 (419)
+Q Consensus        23 qlvcalnglagihiikgeyalaaelyrevlrsseehkg   60 (419)
+                      ....++..++-++.-.|.+..|.+.|.+++........
+T Consensus       176 ~~~~~~~~l~~~~~~~g~~~~A~~~~~~~~~~~~~~~~  213 (229)
+T 4Y6W_A          176 SRLASQHELARAYQANGQRQEAQELLEQVRAIQAKTQR  213 (229)
+T ss_dssp             HHHHHHHHHHHHHHHTTCHHHHHHHHHHHHHHHHHHHC
+T ss_pred             HHHHHHHHHHHHHHHCCCHHHHHHHHHHHHHHHHHcch
+Confidence            34456667777888899999999999998877665443
+
+
+No 13
+>2PZI_A Probable serine/threonine-protein kinase pknG (E.C.2.7.11.1); Serine/Threonine-Protein Kinase, ATP-recognition, Kinase-inhibitor complex; HET: GOL, AXX; 2.4A {Mycobacterium tuberculosis}
+Probab=21.09  E-value=58  Score=31.59  Aligned_cols=30  Identities=30%  Similarity=0.231  Sum_probs=24.9  Template_Neff=9.400
+
+Q T0831            26 CALNGLAGIHIIKGEYALAAELYREVLRSS   55 (419)
+Q Consensus        26 calnglagihiikgeyalaaelyrevlrss   55 (419)
+                      .+|+||+.+|...|+|..|.+.|++.+..+
+T Consensus       535 ~~l~~lg~~~~~~g~~~~A~~~~~~~~~~~  564 (681)
+T 2PZI_A          535 SAAFGLARARSAEGDRVGAVRTLDEVPPTS  564 (681)
+T ss_dssp             HHHHHHHHHHHHTTCHHHHHHHHHTSCTTS
+T ss_pred             HHHHHhHHHHhhcCCcchHHHhhccCCCCC
+Confidence            788899999999999999999998855443
+
+
+No 14
+>3RO3_A G-protein-signaling modulator 2, peptide of; asymmetric cell division, PROTEIN BINDING; 1.1A {Mus musculus}
+Probab=21.06  E-value=58  Score=20.72  Aligned_cols=36  Identities=11%  Similarity=0.050  Sum_probs=25.1  Template_Neff=13.700
+
+Q T0831            21 HRQLVCALNGLAGIHIIKGEYALAAELYREVLRSSE   56 (419)
+Q Consensus        21 hrqlvcalnglagihiikgeyalaaelyrevlrsse   56 (419)
+                      +.....+++.++.++...|.+..|.+.+.+.+....
+T Consensus        85 ~~~~~~~~~~~~~~~~~~~~~~~a~~~~~~~~~~~~  120 (164)
+T 3RO3_A           85 RAVEAQSCYSLGNTYTLLQDYEKAIDYHLKHLAIAQ  120 (164)
+T ss_dssp             HHHHHHHHHHHHHHHHHTTCHHHHHHHHHHHHHHHH
+T ss_pred             HHHHHHHHHHHHHHHHHcccHHHHHHHHHHHHHHHH
+Confidence            334455667777778888888888888877766544
+
+
+No 15
+>4Y6C_A Q17M; Tetratricopeptide repeat, 42PR, TPR, UNKNOWN; HET: SO4, MSE; 1.772A {Podospora anserina}
+Probab=20.96  E-value=58  Score=22.56  Aligned_cols=37  Identities=19%  Similarity=0.135  Sum_probs=29.3  Template_Neff=13.300
+
+Q T0831            22 RQLVCALNGLAGIHIIKGEYALAAELYREVLRSSEEH   58 (419)
+Q Consensus        22 rqlvcalnglagihiikgeyalaaelyrevlrsseeh   58 (419)
+                      .....++..++.++.-.|.+..|.++|++.+......
+T Consensus         7 ~~~~~~~~~l~~~~~~~g~~~~A~~~~~~~~~~~~~~   43 (229)
+T 4Y6C_A            7 PSRLRSQHELARRYQQNGQVQEAVELLEQVVAIQAKT   43 (229)
+T ss_dssp             GGGGGHHHHHHHHHHHTTCHHHHHHHHHHHHHHHHTT
+T ss_pred             HHHHHHHHHHHHHHHHcCCHHHHHHHHHHHHHHHHHH
+Confidence            3455667788889999999999999999988765443
+
+
+No 16
+>4J8E_B Hsc70-interacting protein; tetratricopeptide repeat, solenoid, Co-chaperone, cytosol; HET: GOL; 2.6A {Rattus norvegicus}
+Probab=20.20  E-value=62  Score=22.40  Aligned_cols=41  Identities=22%  Similarity=0.229  Sum_probs=32.7  Template_Neff=12.400
+
+Q T0831            14 GTECEEAHRQLVCALNGLAGIHIIKGEYALAAELYREVLRS   54 (419)
+Q Consensus        14 gteceeahrqlvcalnglagihiikgeyalaaelyrevlrs   54 (419)
+                      ..+..+.......+++.++-+++-.|.|..|.++|.+++..
+T Consensus        30 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~A~~~~~~~~~~   70 (175)
+T 4J8E_B           30 NAEITEAMMDEANEKKGAAIDALNDGELQKAIDLFTDAIKL   70 (175)
+T ss_dssp             TSCCCHHHHHHHHHHHHHHHHHHHTTCHHHHHHHHHHHHHH
+T ss_pred             ChHhcHHHHHHHHHHHHHHHHHHHCCCHHHHHHHHHHHHHH
+Confidence            33455556667778888999999999999999999988764
+
+
