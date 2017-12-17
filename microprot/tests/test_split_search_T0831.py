@@ -16,19 +16,19 @@ class ParsersTests(TestCase):
         self.fp_seqs = get_data_path('test_split_search/T0831.fna')
 
     def test_mask_sequence(self):
-        # obs = mask_sequence(self.fp_out, self.fp_seqs, subsequences_fp='kurt_',
-        #                     min_prob=95.0, max_evalue=0.1,
-        #                     min_fragment_length=40)
-        #
-        # self.assertEqual(
-        #     obs['match'][0][1],
-        #     ('TMEELLTSLQKKCGTECEEAHRQLVCALNGLAGIHIIKGEYALAAELYREVLRSSEEHKGKLK'
-        #      'TDSLQRLHATHNLMELLIARHPGIPPTLRDGRLEEEAKQLREHYMSKCNTEVAEAQQALYPVQ'
-        #      'QTIHELQRKIHSNSPWWLNVIHRAIEFTIDEELVQRVRNEITSNYKQQTGKLSMSEKFRDCRG'
-        #      'LQFLLTTQMEELNKCQKLVREAVKNLEGPPSRNVIESATVCHLRPARLPLNCCVFCKADELFT'
-        #      'EYESKLFSNTVKGQTAIFEEMIEDEEGLVDDRAPTTTRGLWAISETERSMKAILSFAKSHRFD'
-        #      'VEFVDEGSTSMDLFEAWKKEYKLLHEYWMALRNRVSAVDELAMATERLRVRDPREPKPNPPVL'
-        #      'HIIEPHEVEQNRIKLLNDKAVATSQLQKKLGQLLYLTNLEK'))
+        obs = mask_sequence(self.fp_out, self.fp_seqs, subsequences_fp='kurt_',
+                            min_prob=95.0, max_evalue=0.1,
+                            min_fragment_length=40)
+
+        self.assertEqual(
+            obs['match'][0][1],
+            ('TMEELLTSLQKKCGTECEEAHRQLVCALNGLAGIHIIKGEYALAAELYREVLRSSEEHKGKLK'
+             'TDSLQRLHATHNLMELLIARHPGIPPTLRDGRLEEEAKQLREHYMSKCNTEVAEAQQALYPVQ'
+             'QTIHELQRKIHSNSPWWLNVIHRAIEFTIDEELVQRVRNEITSNYKQQTGKLSMSEKFRDCRG'
+             'LQFLLTTQMEELNKCQKLVREAVKNLEGPPSRNVIESATVCHLRPARLPLNCCVFCKADELFT'
+             'EYESKLFSNTVKGQTAIFEEMIEDEEGLVDDRAPTTTRGLWAISETERSMKAILSFAKSHRFD'
+             'VEFVDEGSTSMDLFEAWKKEYKLLHEYWMALRNRVSAVDELAMATERLRVRDPREPKPNPPVL'
+             'HIIEPHEVEQNRIKLLNDKAVATSQLQKKLGQLLYLTNLEK'))
 
         exp_0 = {
             'Probab': 100.0,
@@ -140,14 +140,22 @@ class ParsersTests(TestCase):
             'Hit': ('4QN1_A E3 ubiquitin-protein ligase SHPRH; SHPRH, E3 ligas'
                     'e, RING, Ubiquitin; 2.48A {Homo sapiens}')
             }
-        # obs = parse_pdb_match(self.fp_out)
-        # self.assertEqual(obs[0], exp_0)
+        obs = parse_pdb_match(self.fp_out)
+        for k in obs[0].keys():
+            if type(obs[0][k]) == dict():
+                self.assertCountEqual(obs[0][k], exp_0[k])
+            else:
+                self.assertEqual(obs[0][k], exp_0[k])
 
         with open(get_data_path('test_split_search/T0831_block0.out'),
                   'r') as f:
             block = "".join(f.readlines())
         obs = _parse_hit_block(block)
-        self.assertEqual(obs, exp_0)
+        for k in obs.keys():
+            if type(obs[k]) == dict():
+                self.assertCountEqual(obs[k], exp_0[k])
+            else:
+                self.assertEqual(obs[k], exp_0[k])
 
 
 if __name__ == '__main__':
