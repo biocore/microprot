@@ -16,7 +16,7 @@ class ParsersTests(TestCase):
         self.fp_seqs = get_data_path('test_split_search/T0831.fna')
 
     def test_mask_sequence(self):
-        obs = mask_sequence(self.fp_out, self.fp_seqs,
+        obs = mask_sequence(self.fp_out, self.fp_seqs, subsequences_fp='kurt_',
                             min_prob=95.0, max_evalue=0.1,
                             min_fragment_length=40)
         print(obs)
