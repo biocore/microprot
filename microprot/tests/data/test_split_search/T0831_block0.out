@@ -1,0 +1,64 @@
+No 1
+>4QN1_A E3 ubiquitin-protein ligase SHPRH; SHPRH, E3 ligase, RING, Ubiquitin; 2.48A {Homo sapiens}
+Probab=100.00  E-value=1.6e-80  Score=555.49  Aligned_cols=419  Identities=100%  Similarity=1.445  Sum_probs=363.5  Template_Neff=8.500
+
+Q T0831             1 TMEELLTSLQKKCGTECEEAHRQLVCALNGLAGIHIIKGEYALAAELYREVLRSSEEHKGKLKTDSLQRLHATHNLMELL   80 (419)
+Q Consensus         1 tmeelltslqkkcgteceeahrqlvcalnglagihiikgeyalaaelyrevlrsseehkgklktdslqrlhathnlmell   80 (419)
+                      ||+|++..|-++|-+|||+++|++|.++|||||||||+|+|..|+++||+||+..+++++++++|+||++|+.|||.+++
+T Consensus         2 tmeell~~Li~k~~~eceea~R~~v~~~NgLAgl~~l~~~~~~A~~~YrevL~~~~~~~~~~~~D~Lq~iH~l~NL~~~l   81 (420)
+T 4QN1_A            2 TMEELLTSLQKKCGTECEEAHRQLVCALNGLAGIHIIKGEYALAAELYREVLRSSEEHKGKLKTDSLQRLHATHNLMELL   81 (420)
+T ss_dssp             HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHTCHHHHHHHHHHHHHHHHHTTTTCCCCHHHHHHHHHHHHHCC
+T ss_pred             CHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHhCCHHHHHHHHHHHHHHHHHhhcCCccchHHHHHHHhhHHHHH
+Confidence            79999999999999999999999999999999999999999999999999999999999999999999999999999999
+
+
+Q T0831            81 IARHPGIPPTLRDGRLEEEAKQLREHYMSKCNTEVAEAQQALYPVQQTIHELQRKIHSNSPWWLNVIHRAIEFTIDEELV  160 (419)
+Q Consensus        81 iarhpgipptlrdgrleeeakqlrehymskcntevaeaqqalypvqqtihelqrkihsnspwwlnvihraieftideelv  160 (419)
+                      ...+||+||+++|..+.+++.+++..|++++...+..|++.+.++.+.+++++.+.++.++||+.+++.+++..++..++
+T Consensus        82 ~~~~~~~~~~~~~~~l~~~~~~l~~~Yl~~~~~~~~~a~~~~~~~~~~~~~~~~~~~~~~~Ww~~~l~~~~~~~~~~~l~  161 (420)
+T 4QN1_A           82 IARHPGIPPTLRDGRLEEEAKQLREHYMSKCNTEVAEAQQALYPVQQTIHELQRKIHSNSPWWLNVIHRAIEFTIDEELV  161 (420)
+T ss_dssp             CCCTTSSCCCTTTTTHHHHHHHHHHHHHHHHHHHHHHHHHTTHHHHHHHHHHHHSSCSSSCHHHHHHHHHHHTTCHHHHH
+T ss_pred             HhcCCCCCCCcchhHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHhhccCCcHHHHHHHHHHHCCCcHHHH
+Confidence            99999999999999999999999999999999999999999999999999999888889999999999988778999999
+
+
+Q T0831           161 QRVRNEITSNYKQQTGKLSMSEKFRDCRGLQFLLTTQMEELNKCQKLVREAVKNLEGPPSRNVIESATVCHLRPARLPLN  240 (419)
+Q Consensus       161 qrvrneitsnykqqtgklsmsekfrdcrglqfllttqmeelnkcqklvreavknlegppsrnviesatvchlrparlpln  240 (419)
+                      ++|+++++.+|.+..|..++..+|++.+||.+.+++.+++|.++.+-+.+++++|++||..++++++..||++|.+-+..
+T Consensus       162 ~~i~~~l~~~~~~~~~~~~~~~~~~s~~gL~~~l~~~l~~L~~~R~~l~~~l~~L~~~~~~~~v~~~~~Ch~~~~~~~~~  241 (420)
+T 4QN1_A          162 QRVRNEITSNYKQQTGKLSMSEKFRDCRGLQFLLTTQMEELNKCQKLVREAVKNLEGPPSRNVIESATVCHLRPARLPLN  241 (420)
+T ss_dssp             HHHHHHHCCC----------GGGCSSHHHHHHHHHHHHHHHHHHHHHHHHHHHTTCSSCCHHHHHHHCCCCCSCSSSCCC
+T ss_pred             HHHHHHHHhhcccccCCcccccccccHHHHHHHHHHHHHHHHHHHHHHHHHHHhhcCCCcHHHHHHhhcCCCCCCCCCCC
+Confidence            99999999999877777789999999999999999999999999999999999999999999999999999999987778
+
+
+Q T0831           241 CCVFCKADELFTEYESKLFSNTVKGQTAIFEEMIEDEEGLVDDRAPTTTRGLWAISETERSMKAILSFAKSHRFDVEFVD  320 (419)
+Q Consensus       241 ccvfckadelfteyesklfsntvkgqtaifeemiedeeglvddraptttrglwaisetersmkailsfakshrfdvefvd  320 (419)
+                      .|.+|++++.|..||+.||+.+.+|.+..+++++++++|..++.....++|.|+.|+.|+.+|.|++|++++.|+.+++.
+T Consensus       242 ~C~~C~~~~~~~~yE~~Lf~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~g~~~~S~~e~~lk~i~~~~r~~~~~~~~~~  321 (420)
+T 4QN1_A          242 CCVFCKADELFTEYESKLFSNTVKGQTAIFEEMIEDEEGLVDDRAPTTTRGLWAISETERSMKAILSFAKSHRFDVEFVD  321 (420)
+T ss_dssp             CSHHHHHHHHHHHHHHHHBCCC-----------------------------CCSBCHHHHHHHHHHHHHHHTTCCHHHHH
+T ss_pred             CCCccccHHHHHHHHHHHhhcccCCCccchHhhhhccccccccCCCcccCCcccccHHHHHHHHHHHHHHhcCCCHHHHH
+Confidence            99999999999999999999999999999999999999999988888999999999999999999999999999999999
+
+
+Q T0831           321 EGSTSMDLFEAWKKEYKLLHEYWMALRNRVSAVDELAMATERLRVRDPREPKPNPPVLHIIEPHEVEQNRIKLLNDKAVA  400 (419)
+Q Consensus       321 egstsmdlfeawkkeykllheywmalrnrvsavdelamaterlrvrdprepkpnppvlhiiepheveqnrikllndkava  400 (419)
+                      +|..-++++++|||||+.++.+|++.+..++|.|||.|++-|+|.++|.++.|+||..++|.|+++++.+.++.+++.++
+T Consensus       322 ~~~~hl~~le~~rkEf~~~r~lw~~~~~~l~a~DEL~ma~~Rlrl~~~~e~~~~~~~~~~i~~~ev~~~~~~~~~e~~~a  401 (420)
+T 4QN1_A          322 EGSTSMDLFEAWKKEYKLLHEYWMALRNRVSAVDELAMATERLRVRDPREPKPNPPVLHIIEPHEVEQNRIKLLNDKAVA  401 (420)
+T ss_dssp             HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHCCCEECCC---------CCEECTTCHHHHHHHHHHHHHHH
+T ss_pred             HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHchhhheeCCCCCCCCCCCcccccCHHHHHHHHHHHHHHHHHH
+Confidence            99999999999999999999999999999999999999999999999999999999999999999999999999999999
+
+
+Q T0831           401 TSQLQKKLGQLLYLTNLEK  419 (419)
+Q Consensus       401 tsqlqkklgqllyltnlek  419 (419)
+                      ...|++++|||.||.||.|
+T Consensus       402 ~~~l~r~~gqLrYL~nL~k  420 (420)
+T 4QN1_A          402 TSQLQKKLGQLLYLTNLEK  420 (420)
+T ss_dssp             HHHHHHHHHHHHHHHTTCC
+T ss_pred             HHHHHHHHHHHHHHhcccC
+Confidence            9999999999999999976
+
+

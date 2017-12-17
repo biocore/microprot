@@ -209,7 +209,7 @@ def _parse_hit_block(block):
                 parts = lines[idx][:startCol].split()
                 try:
                     start = int(parts[-1])  # check if last part is a number
-                    name = lines[idx][:lines[idx][:startCol].find(parts[-1])]
+                    name = lines[idx][:lines[idx][:startCol].rfind(parts[-1])]
                 except ValueError:
                     name = lines[idx][:startCol]
                 name = name.rstrip()
