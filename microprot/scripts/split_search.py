@@ -170,6 +170,7 @@ def _parse_hit_block(block):
     -------
     A dict holding all information about the aligment.
     """
+
     hit = {}
     lines = block.split('\n')
 
