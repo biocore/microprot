@@ -508,7 +508,7 @@ def correct_header_positions(header, new_start, new_end, out=sys.stderr):
 
 def mask_sequence(hhsuite_fp, fullsequence_fp, subsequences_fp=None,
                   min_prob=None, max_pvalue=None, max_evalue=None,
-                  min_fragment_length=0):
+                  min_fragment_length=0, min_identity=0):
     """ Splits a protein sequence according to HHsuits results.
 
     The returned sub-sequences will seamlessly build the full sequence if
@@ -541,6 +541,10 @@ def mask_sequence(hhsuite_fp, fullsequence_fp, subsequences_fp=None,
     min_fragment_length: int
         Minimal fragment length of a hit to be included in the resulting list.
         Default: 0, i.e. no filtering on fragment length.
+    min_identity: float
+        Minimum pair-wise sequence identity of a hit to be included in the
+        resulting list.
+        Default: 0, i.e. no filtering on sequence identity.
 
     Returns
     -------
@@ -570,6 +574,8 @@ def mask_sequence(hhsuite_fp, fullsequence_fp, subsequences_fp=None,
         hits = [hit for hit in hits if hit['E-value'] <= max_evalue]
     if min_fragment_length is not None:
         hits = [hit for hit in hits if frag_size(hit) >= min_fragment_length]
+    if min_identity is not None:
+        hits = [hit for hit in hits if hit['Identities'] >= min_identity]
 
     # read the original protein file, used to run HHsearch
     p = Protein.read(fullsequence_fp, seq_num=1)
@@ -647,13 +653,15 @@ def pretty_output(mask_out):
               help='Minimum fragment length')
 @click.option('--p_val', '-v', default=None, type=float,
               help='Maximum P-value')
+@click.option('--identity', '-i', default=0, type=float,
+              help='Minimum pair-wise sequence identity')
 @click.argument('hh_fp', nargs=1, type=click.Path(exists=True))
 @click.argument('fullseq_fp', nargs=1, type=click.Path(exists=True))
 def _split_search(hh_fp, fullseq_fp, subseq_fp,
                   prob,
                   p_val,
                   e_val,
-                  frag_len):
+                  frag_len, identity):
 
     _out = mask_sequence(hh_fp,
                          fullseq_fp,
@@ -661,7 +669,7 @@ def _split_search(hh_fp, fullseq_fp, subseq_fp,
                          prob,
                          p_val,
                          e_val,
-                         frag_len)
+                         frag_len, min_identity=identity)
 
     if subseq_fp is None:
         pretty_output(_out)
