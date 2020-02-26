@@ -48,8 +48,8 @@ timpestamp
 echo -e "\nCREATE OCC FILE...\n"
 #===============================
 PATH_LIN="${DBDIR}/${DB_NAME}"
-python add_occ_from_linclust.py "${PATH_LIN}_clu_occ.tsv" \
-"${OUTPUT}.tsv" "${OUTPUT}_app.tsv"
+python add_occ_from_linclust.py -c "${PATH_LIN}_clu_occ.tsv" \
+-f "${OUTPUT}.tsv" -o "${OUTPUT}_app.tsv"
 
 # Calculate cluster sizes (here: occurrences) from the
 # output app tsv file and saves results to occ tsv file
@@ -80,8 +80,8 @@ mmseqs result2flat "${SEQUENCE_DB}" "${SEQUENCE_DB}" \
 
 echo -e "\nAdd headers with cluster sizes to fasta file\n"
 
-python add_occ_to_fasta.py "${OUTPUT}_clu_occ.tsv" "${OUTPUT_FASTA}" \
-"${OUTPUT_FASTA%.*}_clulen.fasta" "${OUTPUT_FASTA%.*}_stat.tsv"
+python add_occ_to_fasta.py -c "${OUTPUT}_clu_occ.tsv" -f "${OUTPUT_FASTA}" \
+-o "${OUTPUT_FASTA%.*}_clulen.fasta" -s "${OUTPUT_FASTA%.*}_stat.tsv"
 timestamp
 
 END=$(date +%s.%N)
