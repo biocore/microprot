@@ -1,27 +1,26 @@
-"""
-Script:
-- adds cluster sizes (here: occurrences) to
-  representative sequence headers in .fasta file
-- creates tsv file for statistical analysis with
-  the structure: sequence_length\tcluster_size
-"""
-
-import sys
+import click
 import re
 
 
+@click.command()
+@click.option('--occ_file', '-c', required=True,
+              type=click.Path(resolve_path=True, readable=True, exists=True),
+              help='Path to clust occ tsv file.')
+@click.option('--fasta_file', '-f', required=True,
+              type=click.Path(resolve_path=True, readable=True, exists=True),
+              help='Path to fasta file.')
+@click.option('--out_fasta_file', '-o', required=True,
+              type=click.Path(resolve_path=True, readable=True, exists=False),
+              help='Path to output fasta file with extended headers.')
+@click.option('--out_stat_file', '-s', required=True,
+              type=click.Path(resolve_path=True, readable=True, exists=False),
+              help='Path to output file for statistical analysis.')
 def add_occ(occ_file, fasta_file, out_fasta_file, out_stat_file):
     """
-    Parameters
-    ----------
-    occ_file : path
-        path to clust occ tsv file
-    fasta_file : path
-        path to fasta file
-    out_fasta_file : path
-        path to output fasta file with extended headers
-    out_stat_file : path
-        path to output file for statistical analysis
+    Add cluster sizes (here: occurrences) to representative
+    sequence headers in .fasta file and creates tsv file for
+    statistical analysis with the structure:
+    sequence_length\tcluster_size
     """
 
     print("Reading cluster sizes...")
@@ -67,11 +66,4 @@ def add_occ(occ_file, fasta_file, out_fasta_file, out_stat_file):
 
 
 if __name__ == "__main__":
-    if len(sys.argv) != 5:
-        print("Wrong number of arguments!")
-    else:
-        occ_file = sys.argv[1]
-        fasta_file = sys.argv[2]
-        out_fasta_file = sys.argv[3]
-        out_stat_file = sys.argv[4]
-        add_occ(occ_file, fasta_file, out_fasta_file, out_stat_file)
+    add_occ()
